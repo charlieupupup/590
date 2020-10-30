@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/utilities.dart';
 
 class TabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green[100],
+      color: colorHoneydew,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.min,

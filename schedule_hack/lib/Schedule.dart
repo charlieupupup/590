@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/DateBanner.dart';
 
 import 'package:schedule_hack/TabBar.dart' as T;
+import 'package:schedule_hack/utilities.dart';
 
 class Schedule extends StatelessWidget {
   Schedule({Key key, this.title}) : super(key: key);
@@ -24,7 +25,7 @@ class Schedule extends StatelessWidget {
           ),
         ],
         title: Text('ScheduleHack'),
-        backgroundColor: Colors.green[100],
+        backgroundColor: colorHoneydew,
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
