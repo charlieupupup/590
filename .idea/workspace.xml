@@ -24,8 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d3d23fac-3dc7-4a1c-90b9-7cc2b8e959a4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Course.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Courses.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Courses.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Courses.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +224,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604087609828</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Text pixel overflow fixed with ellipses">
+      <created>1604088235508</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1604088235508</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Text pixel overflow fixed with ellipses">
+      <created>1604088257533</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1604088257533</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,7 +269,8 @@
     <MESSAGE value="Fixed background color of Scaffolds" />
     <MESSAGE value="Added Course Object to hold course data.&#10;Created Courses class to hold course UI / interaction" />
     <MESSAGE value="Updated Courses UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Courses UI" />
+    <MESSAGE value="Text pixel overflow fixed with ellipses" />
+    <option name="LAST_COMMIT_MESSAGE" value="Text pixel overflow fixed with ellipses" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

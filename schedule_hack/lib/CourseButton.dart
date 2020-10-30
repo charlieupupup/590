@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Course.dart';
 
 class CourseButton extends StatelessWidget {
   String courseName;
   int colorCount;
 
-  CourseButton(String name, int count) {
-    this.courseName = name;
+  CourseButton(Course course, int count) {
+    this.courseName = course.getName;
     this.colorCount = count;
   }
 

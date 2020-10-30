@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule_hack/TabBar.dart' as T;
 
-class Courses extends StatelessWidget {
+class CourseList extends StatelessWidget {
+  CourseList();
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +38,19 @@ class Courses extends StatelessWidget {
       body: Container(
         child: ListView(
           children: [
-            CourseButton('ECE 590: TDC',0),
-            CourseButton('ECE 651: Software Engineering',1)
+            CourseButton(createCourse('ECE 590: TDC'),0),
+            CourseButton(createCourse('ECE 651: Software Engineering'),1)
           ],
         ),
       ),
     );
   }
+  
+  // Create Course
+  Course createCourse(String name){
+    Course c1 = new Course();
+    c1.setName = name;
+    return c1;
+  }
+
 }

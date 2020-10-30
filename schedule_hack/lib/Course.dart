@@ -5,31 +5,32 @@ class Course {
   String courseTime;
   String courseDate;
 
+  Course();
   // Constructor
-  Course(String name, String time, String date){
+  Course.long(String name, String time, String date){
     this.courseName = name;
     this.courseTime = time;
     this.courseDate = date;
   }
 
   // Getters
-  String getName(){
+  String get getName{
     return courseName;
   }
-  String getTime(){
+  String get getTime{
     return courseTime;
   }
-  String getDate(){
+  String get getDate{
     return courseDate;
   }
   // Setters
-  void setName(String n){
+  set setName(String n){
     this.courseName = n;
   }
-  void setTime(String t){
+  set setTime(String t){
     this.courseTime = t;
   }
-  void setDate(String d){
+  set setDate(String d){
     this.courseDate = d;
   }
 }
