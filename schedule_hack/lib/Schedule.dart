@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/DateBanner.dart';
 import 'package:intl/intl.dart';
-import 'package:schedule_hack/TabBar.dart' as T;
 import 'package:schedule_hack/utilities.dart';
 
 class Schedule extends StatelessWidget {
@@ -43,7 +42,7 @@ class Schedule extends StatelessWidget {
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
-        child: T.TabBar().build(context),
+        // child: T.TabBar().build(context),
       ),
       body: Container(
         child: ListView(
