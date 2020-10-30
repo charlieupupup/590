@@ -22,16 +22,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/590.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" afterDir="false" />
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Changed color of date banner and variable name to date">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/ios/Flutter/Release.xcconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,9 +63,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -90,6 +90,35 @@
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added method to convert hex to colors and final colors from color palette in utilities.dart">
+      <created>1604021921138</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604021921138</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Removed counter from main.dart">
+      <created>1604021942673</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604021942673</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Changed color of date banner and variable name to date">
+      <created>1604021987020</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604021987020</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changed color of date banner and variable name to date">
+      <created>1604021997644</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604021997644</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -104,6 +133,12 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added method to convert hex to colors and final colors from color palette in utilities.dart" />
+    <MESSAGE value="Removed counter from main.dart" />
+    <MESSAGE value="Changed color of date banner and variable name to date" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed color of date banner and variable name to date" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603985148390">
       <screen x="0" y="23" width="1440" height="797" />
@@ -117,34 +152,38 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="355" y="171" key="#main.dart/0.23.1440.797@0.23.1440.797" timestamp="1603984656921" />
-    <state width="1048" height="204" key="GridCell.Tab.0.bottom" timestamp="1604021337268">
+    <state x="464" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1604023017850">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1048" height="204" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1604021337268" />
+    <state x="464" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.797@0.23.1440.797" timestamp="1604023017850" />
+    <state width="1398" height="204" key="GridCell.Tab.0.bottom" timestamp="1604023056396">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state width="1398" height="204" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1604023056396" />
     <state width="1226" height="204" key="GridCell.Tab.0.bottom/0.23.1440.798@0.23.1440.798" timestamp="1603994424805" />
-    <state width="1048" height="204" key="GridCell.Tab.0.center" timestamp="1604021337267">
+    <state width="1398" height="204" key="GridCell.Tab.0.center" timestamp="1604023056396">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1048" height="204" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1604021337267" />
+    <state width="1398" height="204" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1604023056396" />
     <state width="1226" height="204" key="GridCell.Tab.0.center/0.23.1440.798@0.23.1440.798" timestamp="1603994424804" />
-    <state width="1048" height="204" key="GridCell.Tab.0.left" timestamp="1604021337267">
+    <state width="1398" height="204" key="GridCell.Tab.0.left" timestamp="1604023056395">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1048" height="204" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1604021337267" />
+    <state width="1398" height="204" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1604023056395" />
     <state width="1226" height="204" key="GridCell.Tab.0.left/0.23.1440.798@0.23.1440.798" timestamp="1603994424804" />
-    <state width="1048" height="204" key="GridCell.Tab.0.right" timestamp="1604021337268">
+    <state width="1398" height="204" key="GridCell.Tab.0.right" timestamp="1604023056396">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1048" height="204" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1604021337268" />
+    <state width="1398" height="204" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1604023056396" />
     <state width="1226" height="204" key="GridCell.Tab.0.right/0.23.1440.798@0.23.1440.798" timestamp="1603994424805" />
     <state x="185" y="32" key="SettingsEditor" timestamp="1603985300160">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="185" y="32" key="SettingsEditor/0.23.1440.797@0.23.1440.797" timestamp="1603985300160" />
-    <state x="330" y="185" key="Vcs.Push.Dialog.v2" timestamp="1603909058718">
+    <state x="330" y="185" key="Vcs.Push.Dialog.v2" timestamp="1604022017384">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state x="330" y="185" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1603909058718" />
+    <state x="330" y="185" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1604022017384" />
     <state x="424" y="240" key="git4idea.merge.GitPullDialog" timestamp="1604018768554">
       <screen x="0" y="23" width="1440" height="797" />
     </state>

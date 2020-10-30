@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/utilities.dart';
 
+
 class DateBanner extends StatelessWidget {
   DateBanner({Key key, this.date}) : super(key: key);
   final String date;
@@ -18,13 +19,13 @@ class DateBanner extends StatelessWidget {
             date,
             style: TextStyle(
                 fontSize: 24,
-                color: BLACKCORAL),
+                color: colorBlackCoral),
 
           )
         ],
         mainAxisAlignment: MainAxisAlignment.center,
       ),
-      decoration: BoxDecoration(color: MELON),
+      decoration: BoxDecoration(color: colorMelon),
     );
   }
 }
