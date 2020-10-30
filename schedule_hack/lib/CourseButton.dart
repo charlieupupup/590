@@ -27,7 +27,6 @@ class CourseButton extends StatelessWidget {
       child: Column(
         //mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: RaisedButton(
@@ -42,10 +41,11 @@ class CourseButton extends StatelessWidget {
                 margin: const EdgeInsets.all(24.0),
                 child: Row(
                   children: [
-                    Text(
+                    Expanded(child: Text(
                       courseName,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontSize: 24, color: colorBlackCoral),
-                    )
+                    ))
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
