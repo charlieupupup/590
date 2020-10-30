@@ -10,8 +10,10 @@ class Schedule extends StatelessWidget {
   String today;
 
   String getToday() {
-    DateTime date = DateTime.now();
-    return DateFormat('EEEE').format(date);
+    String dayOfWeek = new DateFormat('EEEE').format(DateTime.now());
+    String date = new DateFormat.yMMMMd('en_US').format(DateTime.now());
+    String today = dayOfWeek + ", " + date;
+    return today;
   }
 
   @override
