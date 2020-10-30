@@ -48,12 +48,6 @@ class Schedule extends StatelessWidget {
         child: ListView(
           children: [DateBanner(date: this.getFormattedDate())],
         ),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("images/background.jpeg"),
-            fit: BoxFit.cover,
-          ),
-        ),
       ),
     );
   }
