@@ -23,18 +23,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Removed all icons and replaced with recolored icons">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/PlaceHolderWidget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/TabBar.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_6P_API_25" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -45,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="courtney-testing" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,6 +68,18 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/schedule_hack/images" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="FlutterRunConfigurationType" factoryName="Flutter">
@@ -199,12 +208,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added method to convert hex to colors and final colors from color palette in utilities.dart" />
@@ -223,93 +233,48 @@
     <option name="LAST_COMMIT_MESSAGE" value="Removed all icons and replaced with recolored icons" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603985148390">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.797@0.23.1440.797" timestamp="1603985148390" />
-    <state x="460" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1603985115997">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="460" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog/0.23.1440.797@0.23.1440.797" timestamp="1603985115997" />
-    <state x="395" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604094432578">
-      <screen x="0" y="23" width="1440" height="801" />
-    </state>
-    <state x="395" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.801@0.23.1440.801" timestamp="1604094432578" />
-    <state x="355" y="171" key="#main.dart" timestamp="1603984656921">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="355" y="171" key="#main.dart/0.23.1440.797@0.23.1440.797" timestamp="1603984656921" />
-    <state x="464" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1604023017850">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="464" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.797@0.23.1440.797" timestamp="1604023017850" />
-    <state width="635" height="105" key="GridCell.Tab.0.bottom" timestamp="1604094432613">
-      <screen x="0" y="23" width="1440" height="801" />
-    </state>
-    <state width="698" height="204" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1604072112100" />
-    <state width="1226" height="204" key="GridCell.Tab.0.bottom/0.23.1440.798@0.23.1440.798" timestamp="1603994424805" />
-    <state width="635" height="105" key="GridCell.Tab.0.bottom/0.23.1440.801@0.23.1440.801" timestamp="1604094432613" />
-    <state width="635" height="105" key="GridCell.Tab.0.center" timestamp="1604094432612">
-      <screen x="0" y="23" width="1440" height="801" />
-    </state>
-    <state width="698" height="204" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1604072112099" />
-    <state width="1226" height="204" key="GridCell.Tab.0.center/0.23.1440.798@0.23.1440.798" timestamp="1603994424804" />
-    <state width="635" height="105" key="GridCell.Tab.0.center/0.23.1440.801@0.23.1440.801" timestamp="1604094432612" />
-    <state width="635" height="105" key="GridCell.Tab.0.left" timestamp="1604094432612">
-      <screen x="0" y="23" width="1440" height="801" />
-    </state>
-    <state width="698" height="204" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1604072112099" />
-    <state width="1226" height="204" key="GridCell.Tab.0.left/0.23.1440.798@0.23.1440.798" timestamp="1603994424804" />
-    <state width="635" height="105" key="GridCell.Tab.0.left/0.23.1440.801@0.23.1440.801" timestamp="1604094432612" />
-    <state width="635" height="105" key="GridCell.Tab.0.right" timestamp="1604094432613">
-      <screen x="0" y="23" width="1440" height="801" />
-    </state>
-    <state width="698" height="204" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1604072112100" />
-    <state width="1226" height="204" key="GridCell.Tab.0.right/0.23.1440.798@0.23.1440.798" timestamp="1603994424805" />
-    <state width="635" height="105" key="GridCell.Tab.0.right/0.23.1440.801@0.23.1440.801" timestamp="1604094432613" />
-    <state x="14" y="92" key="MergeDialog" timestamp="1604068121572">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="14" y="92" key="MergeDialog/0.23.1440.797@0.23.1440.797" timestamp="1604068121572" />
-    <state x="70" y="190" width="1040" height="463" key="MultipleFileMergeDialog" timestamp="1604068121609">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="70" y="190" width="1040" height="463" key="MultipleFileMergeDialog/0.23.1440.797@0.23.1440.797" timestamp="1604068121609" />
-    <state x="185" y="32" key="SettingsEditor" timestamp="1604025768335">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="185" y="32" key="SettingsEditor/0.23.1440.797@0.23.1440.797" timestamp="1604025768335" />
-    <state x="330" y="185" key="Vcs.Push.Dialog.v2" timestamp="1604071723188">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="330" y="185" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1604071723188" />
-    <state x="503" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604094582834">
-      <screen x="0" y="23" width="1440" height="801" />
-    </state>
-    <state x="503" y="342" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.797@0.23.1440.797" timestamp="1604025351837" />
-    <state x="503" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.801@0.23.1440.801" timestamp="1604094582834" />
-    <state x="454" y="217" key="git4idea.merge.GitMergeDialog" timestamp="1604025401094">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="454" y="217" key="git4idea.merge.GitMergeDialog/0.23.1440.797@0.23.1440.797" timestamp="1604025401094" />
-    <state x="424" y="240" key="git4idea.merge.GitPullDialog" timestamp="1604068045873">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="424" y="240" key="git4idea.merge.GitPullDialog/0.23.1440.797@0.23.1440.797" timestamp="1604068045873" />
-    <state x="395" y="144" width="670" height="676" key="search.everywhere.popup" timestamp="1603908766225">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="395" y="144" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1603908766225" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/schedule_hack/lib/main.dart</url>
-          <line>26</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
+    <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.797@0.23.1440.797" />
+    <state x="460" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog" />
+    <state x="460" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog/0.23.1440.797@0.23.1440.797" />
+    <state x="395" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" />
+    <state x="395" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.801@0.23.1440.801" />
+    <state x="355" y="171" key="#main.dart" />
+    <state x="355" y="171" key="#main.dart/0.23.1440.797@0.23.1440.797" />
+    <state x="464" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" />
+    <state x="464" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.797@0.23.1440.797" />
+    <state width="635" height="105" key="GridCell.Tab.0.bottom" />
+    <state width="698" height="204" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" />
+    <state width="1226" height="204" key="GridCell.Tab.0.bottom/0.23.1440.798@0.23.1440.798" />
+    <state width="635" height="105" key="GridCell.Tab.0.bottom/0.23.1440.801@0.23.1440.801" />
+    <state width="635" height="105" key="GridCell.Tab.0.center" />
+    <state width="698" height="204" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" />
+    <state width="1226" height="204" key="GridCell.Tab.0.center/0.23.1440.798@0.23.1440.798" />
+    <state width="635" height="105" key="GridCell.Tab.0.center/0.23.1440.801@0.23.1440.801" />
+    <state width="635" height="105" key="GridCell.Tab.0.left" />
+    <state width="698" height="204" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" />
+    <state width="1226" height="204" key="GridCell.Tab.0.left/0.23.1440.798@0.23.1440.798" />
+    <state width="635" height="105" key="GridCell.Tab.0.left/0.23.1440.801@0.23.1440.801" />
+    <state width="635" height="105" key="GridCell.Tab.0.right" />
+    <state width="698" height="204" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" />
+    <state width="1226" height="204" key="GridCell.Tab.0.right/0.23.1440.798@0.23.1440.798" />
+    <state width="635" height="105" key="GridCell.Tab.0.right/0.23.1440.801@0.23.1440.801" />
+    <state x="14" y="92" key="MergeDialog" />
+    <state x="14" y="92" key="MergeDialog/0.23.1440.797@0.23.1440.797" />
+    <state x="70" y="190" width="1040" height="463" key="MultipleFileMergeDialog" />
+    <state x="70" y="190" width="1040" height="463" key="MultipleFileMergeDialog/0.23.1440.797@0.23.1440.797" />
+    <state x="185" y="32" key="SettingsEditor" />
+    <state x="185" y="32" key="SettingsEditor/0.23.1440.797@0.23.1440.797" />
+    <state x="330" y="185" key="Vcs.Push.Dialog.v2" />
+    <state x="330" y="185" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" />
+    <state x="503" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" />
+    <state x="503" y="342" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.797@0.23.1440.797" />
+    <state x="503" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.801@0.23.1440.801" />
+    <state x="454" y="217" key="git4idea.merge.GitMergeDialog" />
+    <state x="454" y="217" key="git4idea.merge.GitMergeDialog/0.23.1440.797@0.23.1440.797" />
+    <state x="424" y="240" key="git4idea.merge.GitPullDialog" />
+    <state x="424" y="240" key="git4idea.merge.GitPullDialog/0.23.1440.797@0.23.1440.797" />
+    <state x="395" y="144" width="670" height="676" key="search.everywhere.popup" />
+    <state x="395" y="144" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" />
   </component>
 </project>

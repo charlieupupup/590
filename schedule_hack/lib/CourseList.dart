@@ -4,7 +4,7 @@ import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:intl/intl.dart';
-import 'package:schedule_hack/TabBar.dart' as T;
+//import 'package:schedule_hack/TabBar.dart' as T;
 
 class CourseList extends StatelessWidget {
   CourseList();
@@ -34,7 +34,7 @@ class CourseList extends StatelessWidget {
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
-        child: T.TabBar().build(context),
+        //child: T.TabBar().build(context),
       ),
       body: Container(
         child: ListView(
