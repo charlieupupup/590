@@ -16,7 +16,7 @@ final Color colorHoneydew = HexToColor('#D9F3E2');
 final Color colorAeroBlue = HexToColor('#B8F2E6');
 final Color colorPowderBlue = HexToColor('#AED9E0');
 final Color colorBlackCoral = HexToColor('#5E6472');
-
+final Color colorIvory = HexToColor('#F5F9F0');
 
 
 

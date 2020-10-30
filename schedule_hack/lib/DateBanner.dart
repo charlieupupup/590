@@ -19,7 +19,7 @@ class DateBanner extends StatelessWidget {
             date,
             style: TextStyle(
                 fontSize: 24,
-                color: colorBlackCoral),
+                color: colorIvory),
 
           )
         ],

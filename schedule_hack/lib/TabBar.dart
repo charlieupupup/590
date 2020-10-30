@@ -10,9 +10,9 @@ class TabBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildIcon(Colors.white, Icons.school, 'Schedule'),
-          _buildIcon(Colors.white, Icons.favorite, 'Self-Care'),
-          _buildIcon(Colors.white, Icons.calendar_today, 'Courses'),
+          _buildIcon(colorBlackCoral, Icons.school, 'Schedule'),
+          _buildIcon(colorBlackCoral, Icons.favorite, 'Self-Care'),
+          _buildIcon(colorBlackCoral, Icons.calendar_today, 'Courses'),
         ],
       ),
     );

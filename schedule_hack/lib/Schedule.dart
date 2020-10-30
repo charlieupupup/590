@@ -15,16 +15,21 @@ class Schedule extends StatelessWidget {
       appBar: AppBar(
         leading: Icon(
           Icons.arrow_back_ios,
-          color: Colors.black,
+          color: colorBlackCoral,
         ),
         actions: [
           Row(
             children: [
-              Icon(Icons.settings),
+              Icon(Icons.settings, color: colorBlackCoral),
             ],
           ),
         ],
-        title: Text('ScheduleHack'),
+        title: Text('ScheduleHack',
+          style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w400,
+          color: colorBlackCoral)
+        ),
         backgroundColor: colorHoneydew,
       ),
       bottomNavigationBar: SizedBox(
