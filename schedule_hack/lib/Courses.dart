@@ -37,7 +37,7 @@ class Courses extends StatelessWidget {
         child: ListView(
           children: [
             CourseButton('ECE 590: TDC',0),
-            CourseButton('ECE 651: SW',1)
+            CourseButton('ECE 651: Software Engineering',1)
           ],
         ),
       ),
