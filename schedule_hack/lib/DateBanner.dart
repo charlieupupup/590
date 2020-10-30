@@ -11,6 +11,7 @@ class DateBanner extends StatelessWidget {
     // TODO: implement build
     return Center(
       child: Container(
+        margin: const EdgeInsets.all(24.0),
         child: Row(
           children: [
             Text(

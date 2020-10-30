@@ -22,9 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Adjusted tab and nav bar colors">
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Changed dimensions on top banner">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604025234943</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changed dimensions on top banner">
+      <created>1604027834556</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1604027834556</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,7 +169,8 @@
     <MESSAGE value="Added google font dependencies" />
     <MESSAGE value="adjusted colors to match prototype" />
     <MESSAGE value="Adjusted tab and nav bar colors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted tab and nav bar colors" />
+    <MESSAGE value="Changed dimensions on top banner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed dimensions on top banner" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603985148390">
@@ -182,25 +189,25 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="464" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.797@0.23.1440.797" timestamp="1604023017850" />
-    <state width="678" height="204" key="GridCell.Tab.0.bottom" timestamp="1604027448663">
+    <state width="1374" height="204" key="GridCell.Tab.0.bottom" timestamp="1604029178970">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="678" height="204" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1604027448663" />
+    <state width="1374" height="204" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1604029178970" />
     <state width="1226" height="204" key="GridCell.Tab.0.bottom/0.23.1440.798@0.23.1440.798" timestamp="1603994424805" />
-    <state width="678" height="204" key="GridCell.Tab.0.center" timestamp="1604027448663">
+    <state width="1374" height="204" key="GridCell.Tab.0.center" timestamp="1604029178969">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="678" height="204" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1604027448663" />
+    <state width="1374" height="204" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1604029178969" />
     <state width="1226" height="204" key="GridCell.Tab.0.center/0.23.1440.798@0.23.1440.798" timestamp="1603994424804" />
-    <state width="678" height="204" key="GridCell.Tab.0.left" timestamp="1604027448662">
+    <state width="1374" height="204" key="GridCell.Tab.0.left" timestamp="1604029178968">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="678" height="204" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1604027448662" />
+    <state width="1374" height="204" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1604029178968" />
     <state width="1226" height="204" key="GridCell.Tab.0.left/0.23.1440.798@0.23.1440.798" timestamp="1603994424804" />
-    <state width="678" height="204" key="GridCell.Tab.0.right" timestamp="1604027448663">
+    <state width="1374" height="204" key="GridCell.Tab.0.right" timestamp="1604029178969">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="678" height="204" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1604027448663" />
+    <state width="1374" height="204" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1604029178969" />
     <state width="1226" height="204" key="GridCell.Tab.0.right/0.23.1440.798@0.23.1440.798" timestamp="1603994424805" />
     <state x="185" y="32" key="SettingsEditor" timestamp="1604025768335">
       <screen x="0" y="23" width="1440" height="797" />
