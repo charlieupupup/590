@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/CourseButton.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule_hack/TabBar.dart' as T;
@@ -31,7 +32,15 @@ class Courses extends StatelessWidget {
       bottomNavigationBar: SizedBox(
         height: 58,
         child: T.TabBar().build(context),
-      )
+      ),
+      body: Container(
+        child: ListView(
+          children: [
+            CourseButton('ECE 590: TDC',0),
+            CourseButton('ECE 651: SW',1)
+          ],
+        ),
+      ),
     );
   }
 }
