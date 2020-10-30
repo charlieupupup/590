@@ -32,7 +32,7 @@ class Schedule extends StatelessWidget {
       ),
       body: Container(
         child: ListView(
-          children: [DateBanner(info: 'hi drew')],
+          children: [DateBanner(date: 'hi drew')],
         ),
         decoration: BoxDecoration(
           image: DecorationImage(
