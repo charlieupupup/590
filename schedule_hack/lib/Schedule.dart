@@ -22,6 +22,7 @@ class Schedule extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leading: Icon(
           Icons.arrow_back_ios,
           color: colorBlackCoral,
