@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CourseList(),
-     /* home: Schedule(
+      //home: CourseList(),
+      home: Schedule(
           title: 'ScheduleHack',
-          date: DateTime.now()), *///initialize with today's date
+          date: DateTime.now()), //initialize with today's date
     );
   }
 }
