@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Schedule(title: 'ScheduleHack'),
+      home: Schedule(
+          title: 'ScheduleHack',
+          date: DateTime.now()), //initialize with today's date
     );
   }
 }
-
-

@@ -5,15 +5,16 @@ import 'package:schedule_hack/TabBar.dart' as T;
 import 'package:schedule_hack/utilities.dart';
 
 class Schedule extends StatelessWidget {
-  Schedule({Key key, this.title}) : super(key: key);
+  Schedule({Key key, this.title, this.date}) : super(key: key);
   final String title;
-  String today;
+  DateTime date;
 
-  String getToday() {
-    String dayOfWeek = new DateFormat('EEEE').format(DateTime.now());
-    String date = new DateFormat.yMMMMd('en_US').format(DateTime.now());
-    String today = dayOfWeek + ", " + date;
-    return today;
+  //returns String with date formatted e.g. Monday, January 1, 2020
+  String getFormattedDate() {
+    String dayOfWeek = new DateFormat('EEEE').format(this.date);
+    String monthDayYear = new DateFormat.yMMMMd('en_US').format(this.date);
+    String fullDate = dayOfWeek + ", " + monthDayYear;
+    return fullDate;
   }
 
   @override
@@ -45,7 +46,7 @@ class Schedule extends StatelessWidget {
       ),
       body: Container(
         child: ListView(
-          children: [DateBanner(date: this.getToday())],
+          children: [DateBanner(date: this.getFormattedDate())],
         ),
         decoration: BoxDecoration(
           image: DecorationImage(
