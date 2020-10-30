@@ -23,11 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3d23fac-3dc7-4a1c-90b9-7cc2b8e959a4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/AddButton.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Course.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Courses.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604088257533</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Refactor Courses to CourseList.dart &amp; updated Course to dart setter / getter format">
+      <created>1604089652774</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1604089652774</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -270,7 +276,8 @@
     <MESSAGE value="Added Course Object to hold course data.&#10;Created Courses class to hold course UI / interaction" />
     <MESSAGE value="Updated Courses UI" />
     <MESSAGE value="Text pixel overflow fixed with ellipses" />
-    <option name="LAST_COMMIT_MESSAGE" value="Text pixel overflow fixed with ellipses" />
+    <MESSAGE value="Refactor Courses to CourseList.dart &amp; updated Course to dart setter / getter format" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Courses to CourseList.dart &amp; updated Course to dart setter / getter format" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

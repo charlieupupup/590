@@ -3,6 +3,7 @@ import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Course.dart';
 
+// Course button UI element
 class CourseButton extends StatelessWidget {
   String courseName;
   int colorCount;
@@ -26,7 +27,6 @@ class CourseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),

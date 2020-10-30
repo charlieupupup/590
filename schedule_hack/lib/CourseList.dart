@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/AddButton.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -38,6 +39,7 @@ class CourseList extends StatelessWidget {
       body: Container(
         child: ListView(
           children: [
+            AddButton(),
             CourseButton(createCourse('ECE 590: TDC'),0),
             CourseButton(createCourse('ECE 651: Software Engineering'),1)
           ],
@@ -45,7 +47,7 @@ class CourseList extends StatelessWidget {
       ),
     );
   }
-  
+
   // Create Course
   Course createCourse(String name){
     Course c1 = new Course();
