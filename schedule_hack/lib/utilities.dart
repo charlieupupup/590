@@ -9,13 +9,13 @@ class HexToColor extends Color{
   HexToColor(final String code) : super(_hexToColor(code));
 }
 
-final Color MELON = HexToColor('#FFA69E');
-final Color ALMOND = HexToColor('#F0E0D0');
-final Color BEIGE = HexToColor('#EAF3E0');
-final Color HONEYDEW = HexToColor('#D9F3E2');
-final Color AEROBLUE = HexToColor('#B8F2E6');
-final Color POWDERBLUE = HexToColor('#AED9E0');
-final Color BLACKCORAL = HexToColor('#5E6472');
+final Color colorMelon = HexToColor('#FFA69E');
+final Color colorAlmond = HexToColor('#F0E0D0');
+final Color colorBeige = HexToColor('#EAF3E0');
+final Color colorHoneydew = HexToColor('#D9F3E2');
+final Color colorAeroBlue = HexToColor('#B8F2E6');
+final Color colorPowderBlue = HexToColor('#AED9E0');
+final Color colorBlackCoral = HexToColor('#5E6472');
 
 
 
