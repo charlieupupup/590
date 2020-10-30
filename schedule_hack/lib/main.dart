@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schedule_hack/Schedule.dart';
+import 'package:schedule_hack/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schedule_hack/utilities.dart';
 
@@ -21,9 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Schedule(
-          title: 'ScheduleHack',
-          date: DateTime.now()), //initialize with today's date
+      home: Home(),
     );
   }
 }

@@ -22,44 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Fixed background color of Scaffolds">
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Removed all icons and replaced with recolored icons">
+      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/PlaceHolderWidget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/airplane-mode-off.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/background.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/battery-level.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/bluetooth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/books.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/calendar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/classroom-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/classroom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/delete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/double_left_white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/double_right_white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/exercise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/expand_more.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/flash-light.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/hamburger_menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/heart-health.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/home-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/home.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/lock-orientation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/lock-portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/meeting_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/modify.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/no-audio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/phone.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/scorecard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/search.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/settings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/signal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/sleep.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/speaker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/teacher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/top_banner_back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/images/wi-fi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/TabBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/TabBar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/TabBar.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604067062860</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Removed all icons and replaced with recolored icons">
+      <created>1604071711123</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1604071711123</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -243,7 +219,8 @@
     <MESSAGE value="Added intl/intl.dart dependency for date formatter" />
     <MESSAGE value="Added method to format date and placed that in banner" />
     <MESSAGE value="Fixed background color of Scaffolds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed background color of Scaffolds" />
+    <MESSAGE value="Removed all icons and replaced with recolored icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed all icons and replaced with recolored icons" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603985148390">
@@ -254,6 +231,10 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="460" y="225" key="#com.intellij.ide.util.TreeFileChooserDialog/0.23.1440.797@0.23.1440.797" timestamp="1603985115997" />
+    <state x="395" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604094432578">
+      <screen x="0" y="23" width="1440" height="801" />
+    </state>
+    <state x="395" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.801@0.23.1440.801" timestamp="1604094432578" />
     <state x="355" y="171" key="#main.dart" timestamp="1603984656921">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
@@ -262,26 +243,30 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="464" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.797@0.23.1440.797" timestamp="1604023017850" />
-    <state width="672" height="204" key="GridCell.Tab.0.bottom" timestamp="1604067841987">
-      <screen x="0" y="23" width="1440" height="797" />
+    <state width="635" height="105" key="GridCell.Tab.0.bottom" timestamp="1604094432613">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state width="672" height="204" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1604067841987" />
+    <state width="698" height="204" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1604072112100" />
     <state width="1226" height="204" key="GridCell.Tab.0.bottom/0.23.1440.798@0.23.1440.798" timestamp="1603994424805" />
-    <state width="672" height="204" key="GridCell.Tab.0.center" timestamp="1604067841986">
-      <screen x="0" y="23" width="1440" height="797" />
+    <state width="635" height="105" key="GridCell.Tab.0.bottom/0.23.1440.801@0.23.1440.801" timestamp="1604094432613" />
+    <state width="635" height="105" key="GridCell.Tab.0.center" timestamp="1604094432612">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state width="672" height="204" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1604067841986" />
+    <state width="698" height="204" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1604072112099" />
     <state width="1226" height="204" key="GridCell.Tab.0.center/0.23.1440.798@0.23.1440.798" timestamp="1603994424804" />
-    <state width="672" height="204" key="GridCell.Tab.0.left" timestamp="1604067841985">
-      <screen x="0" y="23" width="1440" height="797" />
+    <state width="635" height="105" key="GridCell.Tab.0.center/0.23.1440.801@0.23.1440.801" timestamp="1604094432612" />
+    <state width="635" height="105" key="GridCell.Tab.0.left" timestamp="1604094432612">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state width="672" height="204" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1604067841985" />
+    <state width="698" height="204" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1604072112099" />
     <state width="1226" height="204" key="GridCell.Tab.0.left/0.23.1440.798@0.23.1440.798" timestamp="1603994424804" />
-    <state width="672" height="204" key="GridCell.Tab.0.right" timestamp="1604067841986">
-      <screen x="0" y="23" width="1440" height="797" />
+    <state width="635" height="105" key="GridCell.Tab.0.left/0.23.1440.801@0.23.1440.801" timestamp="1604094432612" />
+    <state width="635" height="105" key="GridCell.Tab.0.right" timestamp="1604094432613">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state width="672" height="204" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1604067841986" />
+    <state width="698" height="204" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1604072112100" />
     <state width="1226" height="204" key="GridCell.Tab.0.right/0.23.1440.798@0.23.1440.798" timestamp="1603994424805" />
+    <state width="635" height="105" key="GridCell.Tab.0.right/0.23.1440.801@0.23.1440.801" timestamp="1604094432613" />
     <state x="14" y="92" key="MergeDialog" timestamp="1604068121572">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
@@ -294,14 +279,15 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="185" y="32" key="SettingsEditor/0.23.1440.797@0.23.1440.797" timestamp="1604025768335" />
-    <state x="330" y="185" key="Vcs.Push.Dialog.v2" timestamp="1604067835319">
+    <state x="330" y="185" key="Vcs.Push.Dialog.v2" timestamp="1604071723188">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state x="330" y="185" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1604067835319" />
-    <state x="503" y="342" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604025351837">
-      <screen x="0" y="23" width="1440" height="797" />
+    <state x="330" y="185" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1604071723188" />
+    <state x="503" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604094582834">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="503" y="342" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.797@0.23.1440.797" timestamp="1604025351837" />
+    <state x="503" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.801@0.23.1440.801" timestamp="1604094582834" />
     <state x="454" y="217" key="git4idea.merge.GitMergeDialog" timestamp="1604025401094">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
@@ -314,5 +300,16 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="395" y="144" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1603908766225" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/schedule_hack/lib/main.dart</url>
+          <line>26</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
