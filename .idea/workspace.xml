@@ -22,8 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Changed dimensions on top banner">
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Added EdgeInsets to move date banner down">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604027834556</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added EdgeInsets to move date banner down">
+      <created>1604030098985</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604030098985</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,7 +179,8 @@
     <MESSAGE value="adjusted colors to match prototype" />
     <MESSAGE value="Adjusted tab and nav bar colors" />
     <MESSAGE value="Changed dimensions on top banner" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed dimensions on top banner" />
+    <MESSAGE value="Added EdgeInsets to move date banner down" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added EdgeInsets to move date banner down" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603985148390">

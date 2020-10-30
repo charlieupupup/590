@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/DateBanner.dart';
-
+import 'package:intl/intl.dart';
 import 'package:schedule_hack/TabBar.dart' as T;
 import 'package:schedule_hack/utilities.dart';
 
 class Schedule extends StatelessWidget {
   Schedule({Key key, this.title}) : super(key: key);
   final String title;
+  String today;
+
+  String getToday() {
+    DateTime date = DateTime.now();
+    return DateFormat('EEEE').format(date);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +31,10 @@ class Schedule extends StatelessWidget {
           ),
         ],
         title: Text('ScheduleHack',
-          style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.w400,
-          color: colorBlackCoral)
-        ),
+            style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w400,
+                color: colorBlackCoral)),
         backgroundColor: colorHoneydew,
       ),
       bottomNavigationBar: SizedBox(
@@ -38,7 +43,7 @@ class Schedule extends StatelessWidget {
       ),
       body: Container(
         child: ListView(
-          children: [DateBanner(date: 'hi drew')],
+          children: [DateBanner(date: this.getToday())],
         ),
         decoration: BoxDecoration(
           image: DecorationImage(
