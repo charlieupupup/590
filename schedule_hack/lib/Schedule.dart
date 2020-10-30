@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:schedule_hack/info.dart';
+import 'package:schedule_hack/DateBanner.dart';
 
-import 'menu.dart';
+import 'package:schedule_hack/TabBar.dart' as T;
 
-MaterialApp home() {
-  return MaterialApp(
-    title: 'ScheduleHack',
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-    ),
-    home: Home(title: 'ScheduleHack'),
-  );
-}
-
-class Home extends StatelessWidget {
-  Home({Key key, this.title}) : super(key: key);
+class Schedule extends StatelessWidget {
+  Schedule({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
@@ -39,11 +28,11 @@ class Home extends StatelessWidget {
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
-        child: menu,
+        child: T.TabBar().build(context),
       ),
       body: Container(
         child: ListView(
-          children: [Info(info: 'hi drew')],
+          children: [DateBanner(info: 'hi drew')],
         ),
         decoration: BoxDecoration(
           image: DecorationImage(

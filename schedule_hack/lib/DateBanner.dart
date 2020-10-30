@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Info extends StatelessWidget {
-  Info({Key key, this.info}) : super(key: key);
+class DateBanner extends StatelessWidget {
+  DateBanner({Key key, this.info}) : super(key: key);
   final String info;
 
   @override
