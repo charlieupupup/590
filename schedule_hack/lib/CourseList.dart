@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:schedule_hack/DateBanner.dart';
-import 'package:intl/intl.dart';
+import 'package:schedule_hack/AddButton.dart';
+import 'package:schedule_hack/Course.dart';
+import 'package:schedule_hack/CourseButton.dart';
 import 'package:schedule_hack/utilities.dart';
+import 'package:intl/intl.dart';
+//import 'package:schedule_hack/TabBar.dart' as T;
 
-class Schedule extends StatelessWidget {
-  Schedule({Key key, this.title, this.date}) : super(key: key);
-  final String title;
-  DateTime date;
-
-  //returns String with date formatted e.g. Monday, January 1, 2020
-  String getFormattedDate() {
-    String dayOfWeek = new DateFormat('EEEE').format(this.date);
-    String monthDayYear = new DateFormat.yMMMMd('en_US').format(this.date);
-    String fullDate = dayOfWeek + ", " + monthDayYear;
-    return fullDate;
-  }
+class CourseList extends StatelessWidget {
+  CourseList();
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -33,7 +25,7 @@ class Schedule extends StatelessWidget {
             ],
           ),
         ],
-        title: Text('ScheduleHack',
+        title: Text('Courses',
             style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w400,
@@ -42,13 +34,25 @@ class Schedule extends StatelessWidget {
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
-        // child: T.TabBar().build(context),
+        //child: T.TabBar().build(context),
       ),
       body: Container(
         child: ListView(
-          children: [DateBanner(date: this.getFormattedDate())],
+          children: [
+            AddButton(),
+            CourseButton(createCourse('ECE 590: TDC'),0),
+            CourseButton(createCourse('ECE 651: Software Engineering'),1)
+          ],
         ),
       ),
     );
   }
+
+  // Create Course
+  Course createCourse(String name){
+    Course c1 = new Course();
+    c1.setName = name;
+    return c1;
+  }
+
 }
