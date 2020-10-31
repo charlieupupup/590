@@ -22,10 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Removed all icons and replaced with recolored icons">
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/590.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/590.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -200,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604071711123</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Update with master">
+      <created>1604096442145</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1604096442145</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,7 +241,8 @@
     <MESSAGE value="Added method to format date and placed that in banner" />
     <MESSAGE value="Fixed background color of Scaffolds" />
     <MESSAGE value="Removed all icons and replaced with recolored icons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed all icons and replaced with recolored icons" />
+    <MESSAGE value="Update with master" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update with master" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
