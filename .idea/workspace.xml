@@ -22,12 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/Assignment.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CheckmarkButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CheckmarkButton.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Course.dart" afterDir="false" />
-    </list>
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604172655366</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added Assignment class, updated Course class">
+      <created>1604173822642</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1604173822642</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -305,7 +307,8 @@
     <MESSAGE value="Made checkmarkbutton and cancelbutton classes" />
     <MESSAGE value="Added comments" />
     <MESSAGE value="Hit cancel button anywhere and taks back to last page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hit cancel button anywhere and taks back to last page" />
+    <MESSAGE value="Added Assignment class, updated Course class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Assignment class, updated Course class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
