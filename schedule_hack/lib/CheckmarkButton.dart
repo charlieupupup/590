@@ -1,6 +1,8 @@
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/PlaceHolderWidget.dart';
+
 
 // Class that builds checkmark green button
 // Takes in index to know where to pass user next depending on where used
@@ -18,7 +20,9 @@ class _CheckmarkButtonState extends State<CheckmarkButton>{
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: (){},
+      onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorPowderBlue)));
+      },
       color: colorHoneydew,
       child: Image.asset(
         'images/checkmark.png',
