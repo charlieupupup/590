@@ -5,10 +5,6 @@ import 'package:flutter/material.dart';
 // Class that builds cancel (x) red button
 // Takes in index to know where to pass user next depending on where used
 class CancelButton extends StatefulWidget {
-  int index;
-  CancelButton(int i){
-    this.index = i;
-  }
   @override
   State<StatefulWidget> createState() {
     return _CancelButtonState();
@@ -18,7 +14,10 @@ class _CancelButtonState extends State<CancelButton>{
     @override
     Widget build(BuildContext context) {
       return MaterialButton(
-          onPressed: (){},
+          onPressed: (){
+            // cancel just go back to last page (pop)
+            Navigator.of(context).pop();
+          },
         color: colorMelon,
         child: Image.asset(
           'images/delete.png',

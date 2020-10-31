@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:schedule_hack/CancelButton.dart';
+import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +51,7 @@ class _AddButtonState extends State<AddButton> {
     );
   }
 
+  // Build material dialog popup (manual, photo, pdf)
   _showMaterialDialog(){
     showDialog(context: context,
       builder: (_) => new AlertDialog(
@@ -74,8 +77,7 @@ class _AddButtonState extends State<AddButton> {
       )
     );
   }
-
-  // Build individual buttons for popup
+  // Build individual buttons for popup (manual, photo, pdf)
   Widget _buildButton(String buttonName, int index){
     return Center(
       child: Padding(
@@ -96,6 +98,9 @@ class _AddButtonState extends State<AddButton> {
               case 2: {
                 //Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorPowderBlue)));
                 // TODO: Change page to photo upload
+                String message = 'Take a photo of your syllabus to automatically upload assignment due dates. You will have the '
+                    'opportunity to manually add assignments';
+                _showMaterialDialog2(message);
                 break;
               }
               case 3: {
@@ -124,21 +129,31 @@ class _AddButtonState extends State<AddButton> {
         ),
       ),
     );
-     Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        color: colorPowderBlue,
-        onPressed: (){
-          // Handle onPressed
-        },
-        child: Text(
-          buttonName,
-          style: TextStyle(fontSize: 24, color: colorBlackCoral, fontWeight: FontWeight.bold),
-        ),
-      ),
+  }
+  // Second popup with message for user on what's about to happen
+  _showMaterialDialog2(String message){
+    showDialog(context: context,
+        builder: (_) => new AlertDialog(
+          elevation: 16,
+          actions: <Widget> [
+            Center(
+              child: Text(
+                message,
+                style: TextStyle(fontSize: 24, color: colorBlackCoral, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center
+              ),
+            ),
+            Container(
+              child: ButtonBar(
+                alignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  CancelButton(),
+                  CheckmarkButton(1)
+                ],
+              ),
+            )
+          ],
+        )
     );
   }
 }
