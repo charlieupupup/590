@@ -23,10 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/590.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/590.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/AddButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/AddButton.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +209,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604096442145</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Change page to courses home">
+      <created>1604163387247</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1604163387247</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Change page to courses home">
+      <created>1604163428197</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1604163428197</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,7 +254,8 @@
     <MESSAGE value="Fixed background color of Scaffolds" />
     <MESSAGE value="Removed all icons and replaced with recolored icons" />
     <MESSAGE value="Update with master" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update with master" />
+    <MESSAGE value="Change page to courses home" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change page to courses home" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

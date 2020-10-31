@@ -1,11 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 
 // Add button UI element
-class AddButton extends StatelessWidget{
-
+class AddButton extends StatefulWidget {
   AddButton();
+  @override
+  State<StatefulWidget> createState() {
+    return _AddButtonState();
+  }
+}
+class _AddButtonState extends State<AddButton> {
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -22,7 +29,7 @@ class AddButton extends StatelessWidget{
                 ),
                 color: colorHoneydew,
                 onPressed: (){
-                  // Respond to button press
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorMelon)));
                 },
                 child: Column(
                   children: <Widget>[
