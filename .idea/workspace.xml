@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/AddButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/AddButton.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -230,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604164777144</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added onPressed capability to CourseButton to PlaceholderWidget">
+      <created>1604165601413</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1604165601413</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,7 +270,8 @@
     <MESSAGE value="Update with master" />
     <MESSAGE value="Change page to courses home" />
     <MESSAGE value="Added onPressed capability to AddButton to PlaceholderWidget" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added onPressed capability to AddButton to PlaceholderWidget" />
+    <MESSAGE value="Added onPressed capability to CourseButton to PlaceholderWidget" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added onPressed capability to CourseButton to PlaceholderWidget" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
