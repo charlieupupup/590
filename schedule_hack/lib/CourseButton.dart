@@ -2,14 +2,34 @@ import 'package:flutter/cupertino.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Course.dart';
+import 'package:schedule_hack/PlaceHolderWidget.dart';
+
 
 // Course button UI element
-class CourseButton extends StatelessWidget {
+class CourseButton extends StatefulWidget {
   String courseName;
   int colorCount;
+  Course course;
 
-  CourseButton(Course course, int count) {
-    this.courseName = course.getName;
+  CourseButton(Course c, int count) {
+    this.course = c;
+    this.courseName = c.getName;
+    this.colorCount = count;
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    return _CourseButtonState(course, colorCount);
+  }
+}
+
+  class _CourseButtonState extends State<CourseButton>{
+  int colorCount;
+  String courseName;
+  Course course;
+  _CourseButtonState(Course c, int count){
+    this.course = c;
+    this.courseName = c.getName;
     this.colorCount = count;
   }
 
@@ -36,7 +56,7 @@ class CourseButton extends StatelessWidget {
                 ),
               color: returnColor(colorCount),
               onPressed: (){
-                // Respond to button press
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorPowderBlue)));
               },
               child: Container(
                 margin: const EdgeInsets.all(24.0),
