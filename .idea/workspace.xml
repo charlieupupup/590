@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
-    </list>
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +227,49 @@
       <option name="project" value="LOCAL" />
       <updated>1604164777144</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added onPressed capability to CourseButton to PlaceholderWidget">
+      <created>1604165601413</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1604165601413</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added popup when hitting add button in Course List">
+      <created>1604169565197</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1604169565197</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Made checkmarkbutton and cancelbutton classes">
+      <created>1604171591434</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1604171591434</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added comments">
+      <created>1604171668241</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1604171668241</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Hit cancel button anywhere and taks back to last page">
+      <created>1604172655366</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1604172655366</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added Assignment class, updated Course class">
+      <created>1604173822642</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1604173822642</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,7 +302,13 @@
     <MESSAGE value="Update with master" />
     <MESSAGE value="Change page to courses home" />
     <MESSAGE value="Added onPressed capability to AddButton to PlaceholderWidget" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added onPressed capability to AddButton to PlaceholderWidget" />
+    <MESSAGE value="Added onPressed capability to CourseButton to PlaceholderWidget" />
+    <MESSAGE value="Added popup when hitting add button in Course List" />
+    <MESSAGE value="Made checkmarkbutton and cancelbutton classes" />
+    <MESSAGE value="Added comments" />
+    <MESSAGE value="Hit cancel button anywhere and taks back to last page" />
+    <MESSAGE value="Added Assignment class, updated Course class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Assignment class, updated Course class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

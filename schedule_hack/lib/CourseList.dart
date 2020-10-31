@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/AddButton.dart';
+import 'package:schedule_hack/CancelButton.dart';
+import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
 import 'package:schedule_hack/utilities.dart';
