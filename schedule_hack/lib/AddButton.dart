@@ -5,7 +5,7 @@ import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 
-// Add button UI element
+// Add button UI element & functionality (popups for approval)
 class AddButton extends StatefulWidget {
   AddButton();
   @override
