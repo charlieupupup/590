@@ -50,7 +50,6 @@ class SyllabusPopup {
             // Handle onPressed
             switch(index){
               case 1: {
-                //Navigator.of(context).pop();
                 // TODO: Change page to manual upload
                 break;
               }

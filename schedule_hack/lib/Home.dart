@@ -6,6 +6,8 @@ import 'PlaceHolderWidget.dart';
 import 'Schedule.dart';
 
 class Home extends StatefulWidget {
+  List courseList = new List();
+
   @override
   State<StatefulWidget> createState() {
     return _HomeState();
