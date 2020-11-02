@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/AddButton.dart';
-import 'package:schedule_hack/CancelButton.dart';
-import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
+import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/utilities.dart';
-import 'package:intl/intl.dart';
+
 //import 'package:schedule_hack/TabBar.dart' as T;
 
 class CourseList extends StatelessWidget {
@@ -23,7 +22,8 @@ class CourseList extends StatelessWidget {
         actions: [
           Row(
             children: [
-              Icon(Icons.settings, color: colorBlackCoral),
+              //Icon(Icons.settings, color: colorBlackCoral),
+              SettingsButton()
             ],
           ),
         ],
@@ -42,8 +42,8 @@ class CourseList extends StatelessWidget {
         child: ListView(
           children: [
             AddButton(),
-            CourseButton(createCourse('ECE 590: TDC'),0),
-            CourseButton(createCourse('ECE 651: Software Engineering'),1)
+            CourseButton(createCourse('ECE 590: TDC'), 0),
+            CourseButton(createCourse('ECE 651: Software Engineering'), 1)
           ],
         ),
       ),
@@ -51,10 +51,9 @@ class CourseList extends StatelessWidget {
   }
 
   // Create Course
-  Course createCourse(String name){
+  Course createCourse(String name) {
     Course c1 = new Course();
     c1.setName = name;
     return c1;
   }
-
 }
