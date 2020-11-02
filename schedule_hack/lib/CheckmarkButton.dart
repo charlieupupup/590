@@ -41,13 +41,14 @@ class _CheckmarkButtonState extends State<CheckmarkButton>{
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: (){
-        //Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorPowderBlue)));
         switch(index){
           case 0: {
+            // take user to syllabus popup (showing manual, photo, pdf)
             SyllabusPopup(context);
             break;
           }
           case 1: {
+            // take user back to CourseList.dart view
             Navigator.push(
                 context,
                 MaterialPageRoute(
