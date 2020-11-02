@@ -20,7 +20,6 @@ class CheckmarkButton extends StatefulWidget {
     this.index = i;
     this.data = d;
     createCourse(data);
-
   }
   @override
   State<StatefulWidget> createState() {

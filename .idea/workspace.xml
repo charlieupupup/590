@@ -26,12 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CheckmarkButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CheckmarkButton.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/SyllabusPopup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/SyllabusPopup.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +283,28 @@
       <option name="project" value="LOCAL" />
       <updated>1604349179519</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Update CheckmarkButton">
+      <created>1604355674527</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1604355674527</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added comments">
+      <created>1604355749114</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1604355749114</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Updated CheckmarkButton to take to Home instead of CourseList">
+      <created>1604355936752</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1604355936752</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -322,11 +340,13 @@
     <MESSAGE value="Added onPressed capability to CourseButton to PlaceholderWidget" />
     <MESSAGE value="Added popup when hitting add button in Course List" />
     <MESSAGE value="Made checkmarkbutton and cancelbutton classes" />
-    <MESSAGE value="Added comments" />
     <MESSAGE value="Hit cancel button anywhere and taks back to last page" />
     <MESSAGE value="Added Assignment class, updated Course class" />
     <MESSAGE value="Removed AddButton, refactor CourseList - FAB / stateful widget, popup classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed AddButton, refactor CourseList - FAB / stateful widget, popup classes" />
+    <MESSAGE value="Update CheckmarkButton" />
+    <MESSAGE value="Added comments" />
+    <MESSAGE value="Updated CheckmarkButton to take to Home instead of CourseList" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated CheckmarkButton to take to Home instead of CourseList" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
