@@ -1,4 +1,5 @@
 import 'package:schedule_hack/CourseList.dart';
+import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/SyllabusPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:schedule_hack/Course.dart';
@@ -52,7 +53,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton>{
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => CourseList()));
+                    builder: (context) => Home()));
             break;
           }
           default: {
