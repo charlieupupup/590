@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
@@ -22,18 +25,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Added behavior for answering one page of survey questions&#10;Changed settings icon to an actual button with behavior">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/IntakeSurvey.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/SettingsButton.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/SingleQuestionData.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/SurveyPage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/SurveyQuestionTile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/UserPreferences.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CheckmarkButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CheckmarkButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -281,7 +276,35 @@
       <option name="project" value="LOCAL" />
       <updated>1604173822642</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Removed AddButton, refactor CourseList - FAB / stateful widget, popup classes">
+      <created>1604349179519</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1604349179519</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Update CheckmarkButton">
+      <created>1604355674527</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1604355674527</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added comments">
+      <created>1604355749114</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1604355749114</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Updated CheckmarkButton to take to Home instead of CourseList">
+      <created>1604355936752</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1604355936752</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -317,12 +340,13 @@
     <MESSAGE value="Added onPressed capability to CourseButton to PlaceholderWidget" />
     <MESSAGE value="Added popup when hitting add button in Course List" />
     <MESSAGE value="Made checkmarkbutton and cancelbutton classes" />
-    <MESSAGE value="Added comments" />
     <MESSAGE value="Hit cancel button anywhere and taks back to last page" />
     <MESSAGE value="Added Assignment class, updated Course class" />
-    <MESSAGE value="Added behavior for viewing user preferences. &#10;Changed settings icon to an actual button with behavior" />
-    <MESSAGE value="Added behavior for answering one page of survey questions&#10;Changed settings icon to an actual button with behavior" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added behavior for answering one page of survey questions&#10;Changed settings icon to an actual button with behavior" />
+    <MESSAGE value="Removed AddButton, refactor CourseList - FAB / stateful widget, popup classes" />
+    <MESSAGE value="Update CheckmarkButton" />
+    <MESSAGE value="Added comments" />
+    <MESSAGE value="Updated CheckmarkButton to take to Home instead of CourseList" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated CheckmarkButton to take to Home instead of CourseList" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
