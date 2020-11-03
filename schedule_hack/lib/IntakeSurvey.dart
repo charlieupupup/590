@@ -3,6 +3,8 @@ import 'package:schedule_hack/SurveyQuestionTile.dart';
 import 'package:schedule_hack/UserPreferences.dart';
 import 'package:schedule_hack/utilities.dart';
 
+import 'SurveyCompletionProgressBar.dart';
+
 //class contains the actual UI visualization of the survey completion
 class IntakeSurvey extends StatelessWidget {
   int pageNumber = 0;
@@ -21,7 +23,6 @@ class IntakeSurvey extends StatelessWidget {
         //decoration: BoxDecoration(border: Border.all(color: colorBlackCoral)),
         child: ListView(
           children: <Widget>[
-            //createQuestions(userPreferences.getPrefs(1)),
             new Text(
                 userPreferences.getSurveyPage(pageNumber - 1).getPageTitle(),
                 textAlign: TextAlign.center,
@@ -33,6 +34,8 @@ class IntakeSurvey extends StatelessWidget {
             SurveyQuestionTile(userPreferences.getSurveyPage(0).getQuestion(1)),
             SurveyQuestionTile(userPreferences.getSurveyPage(0).getQuestion(2)),
             SurveyQuestionTile(userPreferences.getSurveyPage(0).getQuestion(3)),
+            SurveyCompletionProgressBar(
+                pageNumber, userPreferences.getTotalPages()),
           ],
         ),
       ),
