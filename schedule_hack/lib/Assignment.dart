@@ -12,6 +12,13 @@ class Assignment {
     this.dueDate = dueD;
     this.dueTime = t;
   }
+  Assignment.fromJson(Map<String, dynamic> json):description=json['name'],dueDate=json['date'],dueTime=json['time'];
+
+  Map toJson() => {
+    'name': description,
+    'date': dueDate,
+    'time': dueTime
+  };
 
   // Getters
   String get getDescription{

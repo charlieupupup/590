@@ -17,7 +17,15 @@ class Course {
     this.courseDays = dayofweek;
     this.assignments = a;
   }
+  Course.fromJson(Map<String, dynamic> json):courseName=json['name'],courseDate=json['date'],courseTime=json['time'],courseDays=json['days'],assignments=json['assignments'];
 
+  Map toJson() => {
+    'name': courseName,
+    'date': courseDate,
+    'time': courseTime,
+    'days': courseDays,
+    'assignments': assignments
+  };
   // Getters
   String get getName{
     return courseName;
