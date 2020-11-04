@@ -70,7 +70,6 @@ class _CourseListState extends State<CourseList> {
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
-        //child: T.TabBar().build(context),
       ),
       body: Container(
         child: ListView(

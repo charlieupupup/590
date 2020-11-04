@@ -15,8 +15,6 @@ class JsonDataStorage {
     return this.courseList;
   }
 
-
-
   // write asset json to local phone storage
   Future writeJsonLocal() async {
     final path = await _localPath;
@@ -49,13 +47,18 @@ class JsonDataStorage {
     return file.writeAsString(assetCourses);
   }
 
-
   // write new entry - temp
-  void newEntry(){
-    Course c = new Course();
-    c.setName = 'Test';
+  Future newEntry(Course c) async{
+    //parseLocalJson();
+    File jsonFile = await _localFile;
+    // Read the file.
+    String contents = await jsonFile.readAsString();
+    final jsonResponse = jsonDecode(contents);
+    this.courseList = jsonResponse;
+    //Course c = new Course();
+    //c.setName = 'Test';
     Map<String, dynamic> map = c.toJson();
-    String rawJson = jsonEncode(map);
+   // String rawJson = jsonEncode(map);
     this.courseList.add(map);
     print(courseList[0]);
     print(courseList[1]);

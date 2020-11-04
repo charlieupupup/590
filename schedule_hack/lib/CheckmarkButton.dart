@@ -1,5 +1,6 @@
 import 'package:schedule_hack/CourseList.dart';
 import 'package:schedule_hack/Home.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/SyllabusPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:schedule_hack/Course.dart';
@@ -13,13 +14,16 @@ import 'package:schedule_hack/PlaceHolderWidget.dart';
 class CheckmarkButton extends StatefulWidget {
   int index;
   String data;
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
+
   CheckmarkButton(int i){
     this.index = i;
   }
   CheckmarkButton.course(int i, String d){
     this.index = i;
     this.data = d;
-    createCourse(data);
+    Course c1 = createCourse(data);
+    jsonDataStorage.newEntry(c1);
   }
   @override
   State<StatefulWidget> createState() {
