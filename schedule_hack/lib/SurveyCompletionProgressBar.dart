@@ -12,7 +12,8 @@ class SurveyCompletionProgressBar extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return SurveyCompletionProgressBarState(this.currentPage, this.totalPages);
+    return new SurveyCompletionProgressBarState(
+        this.currentPage, this.totalPages);
   }
 }
 
@@ -29,12 +30,24 @@ class SurveyCompletionProgressBarState
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        child: LinearProgressIndicator(
-      backgroundColor: colorAlmond,
-      valueColor: new AlwaysStoppedAnimation<Color>(colorPowderBlue),
-      value: percentage,
-      minHeight: 30,
-    ));
+    this.pageNumber = widget.currentPage;
+    this.total = widget.totalPages;
+    this.percentage = this.pageNumber / this.total;
+    return new Container(
+      //decoration: BoxDecoration(border: Border.all(color: colorBlackCoral)),
+      child: new Column(children: <Widget>[
+        Container(
+            decoration:
+                BoxDecoration(border: Border.all(color: colorBlackCoral)),
+            child: LinearProgressIndicator(
+              backgroundColor: colorPale,
+              valueColor: new AlwaysStoppedAnimation<Color>(colorMelon),
+              value: percentage,
+              minHeight: 30,
+              semanticsValue: "",
+            )),
+        Text("Question " + pageNumber.toString() + " of " + total.toString())
+      ]),
+    );
   }
 }
