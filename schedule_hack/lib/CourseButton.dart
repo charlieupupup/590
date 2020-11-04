@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Course.dart';
@@ -36,10 +39,20 @@ class CourseButton extends StatefulWidget {
   Color returnColor(int count){
     List colorList = new List();
     colorList.add(colorPowderBlue);
+    colorList.add(colorHoneydew);
     colorList.add(colorMelon);
     colorList.add(colorAlmond);
-    colorList.add(colorHoneydew);
-    return colorList[count];
+    if (count == 0){
+      return colorList[0];
+    } else if (count%4 == 0){
+      return colorList[0];
+    } else if (count%2 == 0){
+      return colorList[1];
+    } else if ((count+1)%4 == 0){
+      return colorList[3];
+    } else {
+      return colorList[2];
+    }
   }
 
   // Designing CourseButton (generic to name and color)
