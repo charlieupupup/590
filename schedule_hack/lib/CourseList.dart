@@ -9,28 +9,30 @@ import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/NewCoursePopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class CourseList extends StatefulWidget {
   List<dynamic> courseList = new List();
-  String assetJsonString;
+  //String assetJsonString;
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   CourseList(){
-    //parseJson();
-    writeJsonLocal();
+    //writeJsonLocal();
+    jsonDataStorage.writeJsonLocal();
+    //this.courseList = jsonDataStorage.getCourseList;
   }
-  // parse JSON from local
+  /*// parse JSON from local
   Future parseLocalJson() async {
     File jsonFile = await _localFile;
     // Read the file.
     String contents = await jsonFile.readAsString();
     final jsonResponse = jsonDecode(contents);
     this.courseList = jsonResponse;
+    //writeCourse(contents);
     newEntry();
-    //print(courseList);
-    writeCourse(contents);
   }
   Future<String>_loadFromAsset() async {
     return await rootBundle.loadString("data/courses.json");
@@ -65,8 +67,9 @@ class CourseList extends StatefulWidget {
     print(courseList[0]);
     print(courseList[1]);
     print(courseList[2]);
-
-    writeCourse(rawJson);
+    String allJson = jsonEncode(courseList);
+    writeCourse(allJson);
+    //writeCourse(rawJson);
   }
   // Find document directory
   Future<String> get _localPath async {
@@ -84,17 +87,20 @@ class CourseList extends StatefulWidget {
     final file = await _localFile;
     // Write the file.
     return file.writeAsString(assetCourses);
-  }
+  }*/
   @override
   State<StatefulWidget> createState() {
-    return _CourseListState(courseList);
+    return _CourseListState(courseList, jsonDataStorage);
   }
 }
 class _CourseListState extends State<CourseList> {
   final myController = TextEditingController();
   List<dynamic> courseList = new List();
-  _CourseListState(List<dynamic> cl){
+  //JsonDataStorage jsonDataStorage = new JsonDataStorage();
+  _CourseListState(List<dynamic> cl, JsonDataStorage storage){
     this.courseList = cl;
+    //this.jsonDataStorage = storage;
+    this.courseList = storage.getCourseList;
   }
 
   @override
