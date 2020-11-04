@@ -67,11 +67,14 @@ class IntakeSurveyState extends State<IntakeSurvey> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FloatingActionButton(
+              FlatButton(
                 onPressed: () {
-                  //increase pageNumber and save user preferences
+                  //decrease pageNumber and save user preferences
                   setState(() {
-                    pageNumber--;
+                    if (pageNumber - 1 >= 0) {
+                      //only update if pages are available
+                      pageNumber--;
+                    }
                   });
                 },
                 child: new Text("Back",
@@ -79,13 +82,16 @@ class IntakeSurveyState extends State<IntakeSurvey> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 ),
-                backgroundColor: colorSoftMelon,
+                color: colorSoftMelon,
               ),
-              FloatingActionButton(
+              FlatButton(
                 onPressed: () {
                   //increase pageNumber and save user preferences
                   setState(() {
-                    pageNumber++;
+                    if (pageNumber + 1 < userPreferences.getTotalPages()) {
+                      //only update if pages are available
+                      pageNumber++;
+                    }
                   });
                 },
                 child: new Text("Next",
@@ -93,7 +99,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 ),
-                backgroundColor: colorAeroBlue,
+                color: colorAeroBlue,
               ),
             ],
           ),

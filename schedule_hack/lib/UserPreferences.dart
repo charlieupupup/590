@@ -36,7 +36,6 @@ class UserPreferences {
   }
 
   int getTotalPages() {
-    //return this.pages.length;
-    return 9;
+    return this.pages.length;
   }
 }
