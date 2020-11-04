@@ -6,7 +6,9 @@ import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
-import 'package:schedule_hack/Home.dart';
+
+import 'Home.dart';
+//import 'package:schedule_hack/_CourseListState.dart';
 
 
 

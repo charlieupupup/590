@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/CourseList.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'PlaceHolderWidget.dart';
@@ -29,7 +30,7 @@ class _HomeState extends State<Home> {
         ),
     PlaceholderWidget(
         colorMelon), //just placeholders until Self-Care and Courses widgets are made
-    CourseList()
+    CourseList(),
   ];
 
   @override

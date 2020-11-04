@@ -30,25 +30,13 @@ class CourseList extends StatefulWidget {
 class _CourseListState extends State<CourseList> {
   final myController = TextEditingController();
   List<dynamic> courseList = new List();
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   _CourseListState(List<dynamic> cl, JsonDataStorage storage){
     this.courseList = cl;
+    this.jsonDataStorage = storage;
     this.courseList = storage.getCourseList;
   }
- /* void fetchData() async{
-    JsonDataStorage js = new JsonDataStorage();
-    List<dynamic> tempList = new List();
-    await js.writeJsonLocal();
-    tempList = js.getJustCourseList;
-    setState(() {
-      this.courseList = tempList;
-    });
-  }
-  @override
-  void initState(){
-    super.initState();
-    fetchData();
-  }*/
 
   @override
   void dispose() {
@@ -104,9 +92,17 @@ class _CourseListState extends State<CourseList> {
     c1.setName = name;
     return c1;
   }
+  void updateUI(){
+    setState(() {
+      //You can also make changes to your state here.
+      this.courseList = jsonDataStorage.getCourseList;
+    });
+  }
   // Display course button based on json input
   Widget getCourseButtonWidgets(){
+    //updateUI();
     List<Widget> list = new List<Widget>();
+    //print('CourseList Length:  $courseList.length');
     for (int i = 0; i < courseList.length; i++) {
       Course course = Course.fromJson(courseList[i]);
         list.add(new CourseButton(course, i));
