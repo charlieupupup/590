@@ -25,14 +25,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="Added behavior for answering one page of survey questions&#10;Changed settings icon to an actual button with behavior">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/IntakeSurvey.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/IntakeSurvey.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/SurveyCompletionProgressBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/SurveyCompletionProgressBar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/SurveyPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/SurveyPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/UserPreferences.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/UserPreferences.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -315,7 +309,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604368637108</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Beginning code of progress bar">
+      <created>1604510106297</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1604510106297</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Beginning code of progress bar">
+      <created>1604510118548</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1604510118548</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -332,7 +340,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed counter from main.dart" />
     <MESSAGE value="Changed color of date banner and variable name to date" />
     <MESSAGE value="Renamed colors to match convention" />
     <MESSAGE value="Added google font dependencies" />
@@ -357,7 +364,8 @@
     <MESSAGE value="Added comments" />
     <MESSAGE value="Updated CheckmarkButton to take to Home instead of CourseList" />
     <MESSAGE value="Prelim work of adding progress bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prelim work of adding progress bar" />
+    <MESSAGE value="Beginning code of progress bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Beginning code of progress bar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
