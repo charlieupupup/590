@@ -86,7 +86,7 @@ class CourseButton extends StatefulWidget {
                       },
                         color: colorMelon,
                         child: Image.asset(
-                          'images/delete.png',
+                          'images/trashcan.png',
                           height: 50,
                           width: 50,
                         ),
