@@ -15,31 +15,35 @@ class CheckmarkButton extends StatefulWidget {
   int index;
   String data;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
+  TextEditingController myController;
 
   CheckmarkButton(int i){
     this.index = i;
   }
-  CheckmarkButton.course(int i, String d){
+  CheckmarkButton.course(int i, TextEditingController d){
     this.index = i;
-    this.data = d;
-    Course c1 = createCourse(data);
-    jsonDataStorage.newEntry(c1);
+    this.myController = d;
   }
   @override
   State<StatefulWidget> createState() {
-    return _CheckmarkButtonState(index);
+    return _CheckmarkButtonState(index, myController);
+  }
+}
+class _CheckmarkButtonState extends State<CheckmarkButton>{
+  int index;
+  String data;
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
+  TextEditingController myController;
+
+  _CheckmarkButtonState(int i, TextEditingController controller){
+    this.index = i;
+    this.myController = controller;
   }
   // Create Course
   Course createCourse(String name) {
     Course c1 = new Course();
     c1.setName = name;
     return c1;
-  }
-}
-class _CheckmarkButtonState extends State<CheckmarkButton>{
-  int index;
-  _CheckmarkButtonState(int i){
-    this.index = i;
   }
   @override
   Widget build(BuildContext context) {
@@ -48,6 +52,10 @@ class _CheckmarkButtonState extends State<CheckmarkButton>{
         switch(index){
           case 0: {
             // take user to syllabus popup (showing manual, photo, pdf)
+            this.data = myController.text;
+            print("Data: :${data}");
+            Course c1 = createCourse(data);
+            jsonDataStorage.newEntry(c1);
             SyllabusPopup(context);
             break;
           }

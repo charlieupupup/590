@@ -103,4 +103,6 @@ class _CourseListState extends State<CourseList> {
     }
     return new Column(children: list);
   }
+
+
 }

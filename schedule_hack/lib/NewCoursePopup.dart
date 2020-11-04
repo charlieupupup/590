@@ -15,7 +15,6 @@ class NewCoursePopup {
     _showMaterialDialog();
   }
 
-
   _showMaterialDialog(){
     showDialog(context: context,
         builder: (_) => new AlertDialog(
@@ -44,7 +43,8 @@ class NewCoursePopup {
                 children: <Widget>[
                   CancelButton(),
                   //CheckmarkButton.course(0,myController.text)
-                  checkMark(0,myController.text)
+                  //checkMark(0,myController.text)
+                  checkMark(0,myController)
                 ],
               ),
             )
@@ -52,8 +52,13 @@ class NewCoursePopup {
         )
     );
   }
-  Widget checkMark(int i, String s){
-    print(s);
+  Widget checkMark(int i, TextEditingController s){
+    print('test');
     return CheckmarkButton.course(i, s);
+  }
+
+  titleTextValue() {
+    print("title text field: ${myController.text}");
+    return myController.text;
   }
 }

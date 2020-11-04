@@ -47,7 +47,7 @@ class JsonDataStorage {
     return file.writeAsString(assetCourses);
   }
 
-  // write new entry - temp
+  // write new entry
   Future newEntry(Course c) async{
     //parseLocalJson();
     File jsonFile = await _localFile;

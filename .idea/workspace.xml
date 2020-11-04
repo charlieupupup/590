@@ -29,7 +29,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CheckmarkButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CheckmarkButton.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/JsonDataStorage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/JsonDataStorage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -334,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604453869962</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Update new entry to maintain old data">
+      <created>1604455853148</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1604455853148</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -351,7 +357,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added google font dependencies" />
     <MESSAGE value="adjusted colors to match prototype" />
     <MESSAGE value="Adjusted tab and nav bar colors" />
     <MESSAGE value="Changed dimensions on top banner" />
@@ -376,7 +381,8 @@
     <MESSAGE value="Write asset json to local storage on phone, add new course (not saving locally yet)" />
     <MESSAGE value="Refactor json in own class" />
     <MESSAGE value="Add json file reading error handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add json file reading error handling" />
+    <MESSAGE value="Update new entry to maintain old data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update new entry to maintain old data" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
