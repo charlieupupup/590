@@ -61,10 +61,13 @@ class _CheckmarkButtonState extends State<CheckmarkButton>{
           }
           case 1: {
             // take user back to CourseList.dart view
-            Navigator.push(
+            Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Home()));
+                    builder: (BuildContext context) => Home(0),
+                ),
+                (route) => false,
+            );
             break;
           }
           default: {

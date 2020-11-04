@@ -83,7 +83,9 @@ class CourseButton extends StatefulWidget {
                       )
                     ),
                     MaterialButton(onPressed: (){
-                      jsonDataStorage.deleteEntry(courseCount);
+                      setState(() {
+                        jsonDataStorage.deleteEntry(courseCount); // delete from json file
+                      });
                       },
                         color: colorMelon,
                         child: Image.asset(

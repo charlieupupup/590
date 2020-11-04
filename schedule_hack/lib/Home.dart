@@ -6,16 +6,22 @@ import 'PlaceHolderWidget.dart';
 import 'Schedule.dart';
 
 class Home extends StatefulWidget {
-  //List courseList = new List();
+  int index;
+  Home(int i){
+    this.index = i;
+  }
 
   @override
   State<StatefulWidget> createState() {
-    return _HomeState();
+    return _HomeState(this.index);
   }
 }
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+  _HomeState(int i){
+    this._currentIndex = i;
+  }
   final List<Widget> _children = [
     Schedule(
         title: 'ScheduleHack',
@@ -29,9 +35,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('scheduleHack'),
-      // ), //commented out this AppBar, this would serve as a universal nav bar
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: colorHoneydew,

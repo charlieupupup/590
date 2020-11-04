@@ -43,6 +43,11 @@ class _CourseListState extends State<CourseList> {
     myController.dispose();
     super.dispose();
   }
+ /* @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_){getCourseButtonWidgets();});
+  }*/
 
   @override
   Widget build(BuildContext context) {
