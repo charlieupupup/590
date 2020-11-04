@@ -68,9 +68,6 @@ class _CourseListState extends State<CourseList> {
                 color: colorBlackCoral)),
         backgroundColor: colorHoneydew,
       ),
-      bottomNavigationBar: SizedBox(
-        height: 58,
-      ),
       body: Container(
         child: ListView(
           children: [
