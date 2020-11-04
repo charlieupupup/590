@@ -1,12 +1,12 @@
 import 'SingleQuestionData.dart';
 
 class SurveyPage {
-  int pageNumber = 0;
+  int pageNumber;
   String title;
   List<SingleQuestionData> questions;
-  SurveyPage(String s) {
+  SurveyPage(String s, int n) {
     this.questions = new List<SingleQuestionData>();
-    this.pageNumber++;
+    this.pageNumber = n;
     this.title = s;
   }
   SingleQuestionData getQuestion(int num) {

@@ -31,8 +31,8 @@ class SurveyCompletionProgressBarState
   Widget build(BuildContext context) {
     return SizedBox(
         child: LinearProgressIndicator(
-      backgroundColor: colorHoneydew,
-      valueColor: new AlwaysStoppedAnimation<Color>(colorAlmond),
+      backgroundColor: colorAlmond,
+      valueColor: new AlwaysStoppedAnimation<Color>(colorPowderBlue),
       value: percentage,
       minHeight: 30,
     ));

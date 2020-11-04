@@ -6,12 +6,36 @@ import 'package:schedule_hack/utilities.dart';
 import 'SurveyCompletionProgressBar.dart';
 
 //class contains the actual UI visualization of the survey completion
-class IntakeSurvey extends StatelessWidget {
-  int pageNumber = 0;
+class IntakeSurvey extends StatefulWidget {
+  int pageNumber;
   UserPreferences userPreferences;
   IntakeSurvey(UserPreferences prefs, {Key key}) : super(key: key) {
     this.userPreferences = prefs;
-    this.pageNumber++;
+    this.pageNumber = 0;
+  }
+
+  void loadQuestions() {
+    for (int i = 0;
+        i < userPreferences.getSurveyPage(pageNumber).getNumberOfQuestions();
+        i++) {
+      SurveyQuestionTile(userPreferences.getSurveyPage(i).getQuestion(i));
+    }
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+
+    return IntakeSurveyState(userPreferences);
+  }
+}
+
+class IntakeSurveyState extends State<IntakeSurvey> {
+  int pageNumber;
+  UserPreferences userPreferences;
+
+  IntakeSurveyState(UserPreferences prefs) {
+    this.userPreferences = prefs;
+    this.pageNumber = 0;
   }
 
   @override
@@ -23,30 +47,39 @@ class IntakeSurvey extends StatelessWidget {
         //decoration: BoxDecoration(border: Border.all(color: colorBlackCoral)),
         child: ListView(
           children: <Widget>[
-            new Text(
-                userPreferences.getSurveyPage(pageNumber - 1).getPageTitle(),
+            new Text(userPreferences.getSurveyPage(pageNumber).getPageTitle(),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 26.0, color: colorBlackCoral)),
             new Text("(check all that apply)",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16.0, color: colorBlackCoral)),
-            SurveyQuestionTile(userPreferences.getSurveyPage(0).getQuestion(0)),
-            SurveyQuestionTile(userPreferences.getSurveyPage(0).getQuestion(1)),
-            SurveyQuestionTile(userPreferences.getSurveyPage(0).getQuestion(2)),
-            SurveyQuestionTile(userPreferences.getSurveyPage(0).getQuestion(3)),
+            SurveyQuestionTile(
+                userPreferences.getSurveyPage(pageNumber).getQuestion(0)),
+            SurveyQuestionTile(
+                userPreferences.getSurveyPage(pageNumber).getQuestion(1)),
+            SurveyQuestionTile(
+                userPreferences.getSurveyPage(pageNumber).getQuestion(2)),
+            SurveyQuestionTile(
+                userPreferences.getSurveyPage(pageNumber).getQuestion(3)),
             SurveyCompletionProgressBar(
-                pageNumber, userPreferences.getTotalPages()),
+                pageNumber + 1, userPreferences.getTotalPages()),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //increase pageNumber and save user preferences
+          setState(() {
+            pageNumber++;
+          });
+        },
+        child: new Text("Next",
+            style: TextStyle(fontSize: 20.0, color: colorBlackCoral)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+        ),
+        backgroundColor: colorHoneydew,
+      ),
     );
-  }
-
-  void loadQuestions() {
-    for (int i = 0;
-        i < userPreferences.getSurveyPage(pageNumber).getNumberOfQuestions();
-        i++) {
-      SurveyQuestionTile(userPreferences.getSurveyPage(i).getQuestion(i));
-    }
   }
 }
