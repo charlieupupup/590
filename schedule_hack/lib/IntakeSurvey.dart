@@ -14,14 +14,6 @@ class IntakeSurvey extends StatefulWidget {
     this.pageNumber = 0;
   }
 
-  void loadQuestions() {
-    for (int i = 0;
-        i < userPreferences.getSurveyPage(pageNumber).getNumberOfQuestions();
-        i++) {
-      SurveyQuestionTile(userPreferences.getSurveyPage(i).getQuestion(i));
-    }
-  }
-
   @override
   State<StatefulWidget> createState() {
     return IntakeSurveyState(userPreferences);
@@ -35,6 +27,17 @@ class IntakeSurveyState extends State<IntakeSurvey> {
   IntakeSurveyState(UserPreferences prefs) {
     this.userPreferences = prefs;
     this.pageNumber = 0;
+  }
+  Widget loadQuestions() {
+    List<Widget> questionsList = new List<Widget>();
+    for (int i = 0;
+        i < userPreferences.getSurveyPage(pageNumber).getNumberOfQuestions();
+        i++) {
+      SurveyQuestionTile q =
+          SurveyQuestionTile(userPreferences.getSurveyPage(i).getQuestion(i));
+      questionsList.add(q);
+    }
+    return new Column(children: questionsList);
   }
 
   @override
@@ -52,7 +55,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
             new Text("(check all that apply)",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16.0, color: colorBlackCoral)),
-            SurveyQuestionTile(
+            /*SurveyQuestionTile(
                 userPreferences.getSurveyPage(pageNumber).getQuestion(0)),
             SurveyQuestionTile(
                 userPreferences.getSurveyPage(pageNumber).getQuestion(1)),
@@ -60,6 +63,9 @@ class IntakeSurveyState extends State<IntakeSurvey> {
                 userPreferences.getSurveyPage(pageNumber).getQuestion(2)),
             SurveyQuestionTile(
                 userPreferences.getSurveyPage(pageNumber).getQuestion(3)),
+                */
+
+            loadQuestions(),
             SurveyCompletionProgressBar(
                 pageNumber + 1, userPreferences.getTotalPages()),
           ],
