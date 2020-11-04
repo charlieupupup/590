@@ -6,6 +6,8 @@ import 'package:schedule_hack/utilities.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
 
+import 'SettingsButton.dart';
+
 class Schedule extends StatelessWidget {
   Schedule({Key key, this.title, this.date}) : super(key: key);
   final String title;
@@ -32,7 +34,8 @@ class Schedule extends StatelessWidget {
         actions: [
           Row(
             children: [
-              Icon(Icons.settings, color: colorBlackCoral),
+              //Icon(Icons.settings, color: colorBlackCoral),
+              SettingsButton()
             ],
           ),
         ],

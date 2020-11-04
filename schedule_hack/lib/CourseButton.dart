@@ -66,7 +66,30 @@ class CourseButton extends StatefulWidget {
                       courseName,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontSize: 24, color: colorBlackCoral),
-                    ))
+                      )
+                    ),
+                    MaterialButton(onPressed: (){
+
+                      },
+                        color: colorMelon,
+                        child: Image.asset(
+                          'images/delete.png',
+                          height: 50,
+                          width: 50,
+                        ),
+                      shape: CircleBorder()
+                    ),
+                    MaterialButton(onPressed: (){
+
+                      },
+                        color: colorAlmond,
+                        child: Image.asset(
+                          'images/edit.png',
+                          height: 50,
+                          width: 50,
+                        ),
+                        shape: CircleBorder()
+                    )
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
