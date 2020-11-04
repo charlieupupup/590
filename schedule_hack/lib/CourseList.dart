@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
@@ -13,9 +15,22 @@ import 'package:schedule_hack/utilities.dart';
 
 class CourseList extends StatefulWidget {
   List<dynamic> courseList = new List();
+  String assetJsonString;
 
   CourseList(){
-    parseJson();
+    //parseJson();
+    writeJsonLocal();
+  }
+  // parse JSON from local
+  Future parseLocalJson() async {
+    File jsonFile = await _localFile;
+    // Read the file.
+    String contents = await jsonFile.readAsString();
+    final jsonResponse = jsonDecode(contents);
+    this.courseList = jsonResponse;
+    newEntry();
+    //print(courseList);
+    writeCourse(contents);
   }
   Future<String>_loadFromAsset() async {
     return await rootBundle.loadString("data/courses.json");
@@ -23,12 +38,52 @@ class CourseList extends StatefulWidget {
   // parse json (jsonDecode)
   Future parseJson() async {
     String jsonString = await _loadFromAsset();
+    this.assetJsonString = jsonString;
     final jsonResponse = jsonDecode(jsonString);
     print(jsonResponse[0]);
     print(jsonResponse[1]);
     Course person = Course.fromJson(jsonResponse[0]);
     print(person.getName);
     this.courseList = jsonResponse;
+    writeCourse(jsonString);
+  }
+  // write asset json to local
+  Future writeJsonLocal() async {
+    String jsonString = await _loadFromAsset();
+    this.assetJsonString = jsonString;
+    final jsonResponse = jsonDecode(jsonString);
+    writeCourse(jsonString);
+    parseLocalJson();
+  }
+  // write new entry
+  void newEntry(){
+    Course c = new Course();
+    c.setName = 'Test';
+    Map<String, dynamic> map = c.toJson();
+    String rawJson = jsonEncode(map);
+    this.courseList.add(map);
+    print(courseList[0]);
+    print(courseList[1]);
+    print(courseList[2]);
+
+    writeCourse(rawJson);
+  }
+  // Find document directory
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+    print(directory.path);
+    return directory.path;
+  }
+  // Reference to file location
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/courses.json');
+  }
+  // Write data to file
+  Future<File> writeCourse(String assetCourses) async {
+    final file = await _localFile;
+    // Write the file.
+    return file.writeAsString(assetCourses);
   }
   @override
   State<StatefulWidget> createState() {

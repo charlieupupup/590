@@ -14,7 +14,7 @@ class Assignment {
   }
   Assignment.fromJson(Map<String, dynamic> json):description=json['name'],dueDate=json['date'],dueTime=json['time'];
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
     'name': description,
     'date': dueDate,
     'time': dueTime

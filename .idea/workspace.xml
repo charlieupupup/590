@@ -26,10 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Assignment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Assignment.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Course.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -306,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604355936752</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Refactor CourseList to read json file and display buttons">
+      <created>1604446682630</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1604446682630</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -323,7 +332,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added method to convert hex to colors and final colors from color palette in utilities.dart" />
     <MESSAGE value="Removed counter from main.dart" />
     <MESSAGE value="Changed color of date banner and variable name to date" />
     <MESSAGE value="Renamed colors to match convention" />
@@ -348,7 +356,8 @@
     <MESSAGE value="Update CheckmarkButton" />
     <MESSAGE value="Added comments" />
     <MESSAGE value="Updated CheckmarkButton to take to Home instead of CourseList" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated CheckmarkButton to take to Home instead of CourseList" />
+    <MESSAGE value="Refactor CourseList to read json file and display buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor CourseList to read json file and display buttons" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

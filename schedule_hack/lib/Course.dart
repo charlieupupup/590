@@ -19,7 +19,7 @@ class Course {
   }
   Course.fromJson(Map<String, dynamic> json):courseName=json['name'],courseDate=json['date'],courseTime=json['time'],courseDays=json['days'],assignments=json['assignments'];
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
     'name': courseName,
     'date': courseDate,
     'time': courseTime,
