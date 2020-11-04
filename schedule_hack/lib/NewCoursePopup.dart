@@ -43,12 +43,17 @@ class NewCoursePopup {
                 alignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   CancelButton(),
-                  CheckmarkButton.course(0,myController.text)
+                  //CheckmarkButton.course(0,myController.text)
+                  checkMark(0,myController.text)
                 ],
               ),
             )
           ],
         )
     );
+  }
+  Widget checkMark(int i, String s){
+    print(s);
+    return CheckmarkButton.course(i, s);
   }
 }

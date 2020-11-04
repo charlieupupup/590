@@ -1,21 +1,41 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/NewCoursePopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class CourseList extends StatefulWidget {
-  CourseList();
+  List<dynamic> courseList = new List();
+  //String assetJsonString;
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
+
+  CourseList(){
+    jsonDataStorage.writeJsonLocal();
+  }
   @override
   State<StatefulWidget> createState() {
-    return _CourseListState();
+    return _CourseListState(courseList, jsonDataStorage);
   }
 }
 class _CourseListState extends State<CourseList> {
   final myController = TextEditingController();
+  List<dynamic> courseList = new List();
+  //JsonDataStorage jsonDataStorage = new JsonDataStorage();
+  _CourseListState(List<dynamic> cl, JsonDataStorage storage){
+    this.courseList = cl;
+    //this.jsonDataStorage = storage;
+    this.courseList = storage.getCourseList;
+  }
 
   @override
   void dispose() {
@@ -50,13 +70,11 @@ class _CourseListState extends State<CourseList> {
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
-        //child: T.TabBar().build(context),
       ),
       body: Container(
         child: ListView(
           children: [
-            CourseButton(createCourse('ECE 590: TDC'), 0),
-            CourseButton(createCourse('ECE 651: Software Engineering'), 1)
+            getCourseButtonWidgets()
           ],
         ),
       ),
@@ -75,5 +93,14 @@ class _CourseListState extends State<CourseList> {
     Course c1 = new Course();
     c1.setName = name;
     return c1;
+  }
+  // Display course button based on json input
+  Widget getCourseButtonWidgets(){
+    List<Widget> list = new List<Widget>();
+    for (int i = 0; i < courseList.length; i++) {
+      Course course = Course.fromJson(courseList[i]);
+        list.add(new CourseButton(course, i));
+    }
+    return new Column(children: list);
   }
 }
