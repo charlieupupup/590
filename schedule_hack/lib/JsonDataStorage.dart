@@ -15,6 +15,11 @@ class JsonDataStorage {
     return this.courseList;
   }
 
+  List<dynamic> get getJustCourseList{
+    return this.courseList;
+  }
+
+
   // write asset json to local phone storage
   Future writeJsonLocal() async {
     final path = await _localPath;

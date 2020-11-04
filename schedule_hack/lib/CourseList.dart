@@ -30,12 +30,25 @@ class CourseList extends StatefulWidget {
 class _CourseListState extends State<CourseList> {
   final myController = TextEditingController();
   List<dynamic> courseList = new List();
-  //JsonDataStorage jsonDataStorage = new JsonDataStorage();
+
   _CourseListState(List<dynamic> cl, JsonDataStorage storage){
     this.courseList = cl;
-    //this.jsonDataStorage = storage;
     this.courseList = storage.getCourseList;
   }
+ /* void fetchData() async{
+    JsonDataStorage js = new JsonDataStorage();
+    List<dynamic> tempList = new List();
+    await js.writeJsonLocal();
+    tempList = js.getJustCourseList;
+    setState(() {
+      this.courseList = tempList;
+    });
+  }
+  @override
+  void initState(){
+    super.initState();
+    fetchData();
+  }*/
 
   @override
   void dispose() {
@@ -43,11 +56,6 @@ class _CourseListState extends State<CourseList> {
     myController.dispose();
     super.dispose();
   }
- /* @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_){getCourseButtonWidgets();});
-  }*/
 
   @override
   Widget build(BuildContext context) {

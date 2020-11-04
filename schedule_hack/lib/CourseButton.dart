@@ -6,6 +6,8 @@ import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
+import 'package:schedule_hack/Home.dart';
+
 
 
 // Course button UI element
@@ -83,9 +85,15 @@ class CourseButton extends StatefulWidget {
                       )
                     ),
                     MaterialButton(onPressed: (){
-                      setState(() {
+                      //setState(() {
                         jsonDataStorage.deleteEntry(courseCount); // delete from json file
-                      });
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(0),
+                          ),
+                        );
+                     // });
                       },
                         color: colorMelon,
                         child: Image.asset(
