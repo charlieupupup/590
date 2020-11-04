@@ -24,7 +24,6 @@ class IntakeSurvey extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-
     return IntakeSurveyState(userPreferences);
   }
 }
