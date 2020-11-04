@@ -27,13 +27,14 @@ class CourseButton extends StatefulWidget {
 }
 
   class _CourseButtonState extends State<CourseButton>{
-  int colorCount;
+  int courseCount;
   String courseName;
   Course course;
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
   _CourseButtonState(Course c, int count){
     this.course = c;
     this.courseName = c.getName;
-    this.colorCount = count;
+    this.courseCount = count;
   }
 
   Color returnColor(int count){
@@ -67,7 +68,7 @@ class CourseButton extends StatefulWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-              color: returnColor(colorCount),
+              color: returnColor(courseCount),
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorPowderBlue)));
               },
@@ -82,7 +83,7 @@ class CourseButton extends StatefulWidget {
                       )
                     ),
                     MaterialButton(onPressed: (){
-
+                      jsonDataStorage.deleteEntry(courseCount);
                       },
                         color: colorMelon,
                         child: Image.asset(
