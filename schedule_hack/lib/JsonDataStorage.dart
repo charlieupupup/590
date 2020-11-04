@@ -14,26 +14,43 @@ class JsonDataStorage {
     writeJsonLocal();
     return this.courseList;
   }
-  // parse JSON from local
+
+
+
+  // write asset json to local phone storage
+  Future writeJsonLocal() async {
+    final path = await _localPath;
+    // exists
+    if (await File('$path/courses.json').exists()){
+      parseLocalJson();
+    } else {
+      String jsonString = await _loadFromAsset();
+      writeCourse(jsonString);
+      parseLocalJson();
+    }
+  }
+  // load course.json from asset folder in Project (only access once, can't access on phone / emulator)
+  Future<String>_loadFromAsset() async {
+    return await rootBundle.loadString("data/courses.json");
+  }
+  // parse JSON from local and apply to courseList to display
   Future parseLocalJson() async {
     File jsonFile = await _localFile;
     // Read the file.
     String contents = await jsonFile.readAsString();
     final jsonResponse = jsonDecode(contents);
     this.courseList = jsonResponse;
-    newEntry();
+    //newEntry();
   }
-  Future<String>_loadFromAsset() async {
-    return await rootBundle.loadString("data/courses.json");
+  // Write data to file
+  Future<File> writeCourse(String assetCourses) async {
+    final file = await _localFile;
+    // Write the file.
+    return file.writeAsString(assetCourses);
   }
 
-  // write asset json to local
-  Future writeJsonLocal() async {
-    String jsonString = await _loadFromAsset();
-    writeCourse(jsonString);
-    parseLocalJson();
-  }
-  // write new entry
+
+  // write new entry - temp
   void newEntry(){
     Course c = new Course();
     c.setName = 'Test';
@@ -57,10 +74,5 @@ class JsonDataStorage {
     final path = await _localPath;
     return File('$path/courses.json');
   }
-  // Write data to file
-  Future<File> writeCourse(String assetCourses) async {
-    final file = await _localFile;
-    // Write the file.
-    return file.writeAsString(assetCourses);
-  }
+
 }

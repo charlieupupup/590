@@ -26,9 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/JsonDataStorage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/JsonDataStorage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/JsonDataStorage.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -318,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604451621593</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Refactor json in own class">
+      <created>1604452637507</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1604452637507</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -335,7 +342,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed color of date banner and variable name to date" />
     <MESSAGE value="Renamed colors to match convention" />
     <MESSAGE value="Added google font dependencies" />
     <MESSAGE value="adjusted colors to match prototype" />
@@ -360,7 +366,8 @@
     <MESSAGE value="Updated CheckmarkButton to take to Home instead of CourseList" />
     <MESSAGE value="Refactor CourseList to read json file and display buttons" />
     <MESSAGE value="Write asset json to local storage on phone, add new course (not saving locally yet)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Write asset json to local storage on phone, add new course (not saving locally yet)" />
+    <MESSAGE value="Refactor json in own class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor json in own class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

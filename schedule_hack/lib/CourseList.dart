@@ -20,74 +20,8 @@ class CourseList extends StatefulWidget {
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   CourseList(){
-    //writeJsonLocal();
     jsonDataStorage.writeJsonLocal();
-    //this.courseList = jsonDataStorage.getCourseList;
   }
-  /*// parse JSON from local
-  Future parseLocalJson() async {
-    File jsonFile = await _localFile;
-    // Read the file.
-    String contents = await jsonFile.readAsString();
-    final jsonResponse = jsonDecode(contents);
-    this.courseList = jsonResponse;
-    //writeCourse(contents);
-    newEntry();
-  }
-  Future<String>_loadFromAsset() async {
-    return await rootBundle.loadString("data/courses.json");
-  }
-  // parse json (jsonDecode)
-  Future parseJson() async {
-    String jsonString = await _loadFromAsset();
-    this.assetJsonString = jsonString;
-    final jsonResponse = jsonDecode(jsonString);
-    print(jsonResponse[0]);
-    print(jsonResponse[1]);
-    Course person = Course.fromJson(jsonResponse[0]);
-    print(person.getName);
-    this.courseList = jsonResponse;
-    writeCourse(jsonString);
-  }
-  // write asset json to local
-  Future writeJsonLocal() async {
-    String jsonString = await _loadFromAsset();
-    this.assetJsonString = jsonString;
-    final jsonResponse = jsonDecode(jsonString);
-    writeCourse(jsonString);
-    parseLocalJson();
-  }
-  // write new entry
-  void newEntry(){
-    Course c = new Course();
-    c.setName = 'Test';
-    Map<String, dynamic> map = c.toJson();
-    String rawJson = jsonEncode(map);
-    this.courseList.add(map);
-    print(courseList[0]);
-    print(courseList[1]);
-    print(courseList[2]);
-    String allJson = jsonEncode(courseList);
-    writeCourse(allJson);
-    //writeCourse(rawJson);
-  }
-  // Find document directory
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-    print(directory.path);
-    return directory.path;
-  }
-  // Reference to file location
-  Future<File> get _localFile async {
-    final path = await _localPath;
-    return File('$path/courses.json');
-  }
-  // Write data to file
-  Future<File> writeCourse(String assetCourses) async {
-    final file = await _localFile;
-    // Write the file.
-    return file.writeAsString(assetCourses);
-  }*/
   @override
   State<StatefulWidget> createState() {
     return _CourseListState(courseList, jsonDataStorage);
