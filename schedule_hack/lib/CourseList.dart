@@ -92,10 +92,10 @@ class _CourseListState extends State<CourseList> {
     c1.setName = name;
     return c1;
   }
-  void updateUI(){
+  void updateUI(List<dynamic> cL){
     setState(() {
       //You can also make changes to your state here.
-      this.courseList = jsonDataStorage.getCourseList;
+      this.courseList = cL;
     });
   }
   // Display course button based on json input
