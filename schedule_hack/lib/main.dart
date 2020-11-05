@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:intl/intl.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schedule_hack/utilities.dart';
 
-import 'CourseList.dart';
+import 'notificationHelper.dart';
 
-void main() {
+final df = new DateFormat('dd-MM-yyyy hh:mm a');
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+NotificationAppLaunchDetails notificationAppLaunchDetails;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  notificationAppLaunchDetails =
+      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+  await initNotifications(flutterLocalNotificationsPlugin);
+  requestIOSPermissions(flutterLocalNotificationsPlugin);
+
   runApp(MyApp());
 }
 
