@@ -16,7 +16,6 @@ import 'package:schedule_hack/utilities.dart';
 
 class CourseList extends StatefulWidget {
   List<dynamic> courseList = new List();
-  //String assetJsonString;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   CourseList(){
@@ -24,7 +23,7 @@ class CourseList extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return _CourseListState(courseList, jsonDataStorage);
+    return new _CourseListState(courseList, jsonDataStorage);
   }
 }
 class _CourseListState extends State<CourseList> {
@@ -47,7 +46,9 @@ class _CourseListState extends State<CourseList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    //this.jsonDataStorage = widget.jsonDataStorage;
+    //this.courseList = jsonDataStorage.getCourseList;
+    return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
         leading: Icon(
@@ -70,11 +71,30 @@ class _CourseListState extends State<CourseList> {
         backgroundColor: colorHoneydew,
       ),
       body: Container(
-        child: ListView(
-          children: [
+        child: ListView.builder(
+            itemCount: courseList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Dismissible(
+                onDismissed: (DismissDirection direction) {
+                  setState(() {
+                    jsonDataStorage.deleteEntry(index);
+                    courseList.removeAt(index);
+                  });
+                },
+                //background: Container(),
+               // child: MovieCard(movie: movies[index]),
+                //child: getCourseButtonWidgets(),
+                child: tempCourseButton(index),
+                key: UniqueKey(),
+                direction: DismissDirection.endToStart,
+              );
+            }
+        ),
+        /*child: ListView(
+          children: <Widget>[
             getCourseButtonWidgets()
           ],
-        ),
+        ),*/
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
@@ -92,22 +112,25 @@ class _CourseListState extends State<CourseList> {
     c1.setName = name;
     return c1;
   }
-  void updateUI(List<dynamic> cL){
+  updateUI(List<dynamic> newStorage){
     setState(() {
-      //You can also make changes to your state here.
-      this.courseList = cL;
+      this.courseList = newStorage;
     });
   }
   // Display course button based on json input
   Widget getCourseButtonWidgets(){
-    //updateUI();
     List<Widget> list = new List<Widget>();
     //print('CourseList Length:  $courseList.length');
     for (int i = 0; i < courseList.length; i++) {
       Course course = Course.fromJson(courseList[i]);
-        list.add(new CourseButton(course, i));
+        list.add(new CourseButton(course, i, updateUI));
     }
     return new Column(children: list);
+  }
+
+  Widget tempCourseButton(int index){
+    Course course = Course.fromJson(courseList[index]);
+    return CourseButton(course, index, updateUI);
   }
 
 

@@ -9,24 +9,22 @@ import 'package:schedule_hack/PlaceHolderWidget.dart';
 
 import 'Home.dart';
 //import 'package:schedule_hack/_CourseListState.dart';
-
-
-
 // Course button UI element
 class CourseButton extends StatefulWidget {
   String courseName;
-  int colorCount;
+  int courseCount;
   Course course;
+  final ValueChanged<List<dynamic>> parentAction;
 
-  CourseButton(Course c, int count) {
+  CourseButton(Course c, int count, this.parentAction) {
     this.course = c;
     this.courseName = c.getName;
-    this.colorCount = count;
+    this.courseCount = count;
   }
 
   @override
   State<StatefulWidget> createState() {
-    return _CourseButtonState(course, colorCount);
+    return new _CourseButtonState(course, courseCount);
   }
 }
 
@@ -63,7 +61,10 @@ class CourseButton extends StatefulWidget {
   // Designing CourseButton (generic to name and color)
   @override
   Widget build(BuildContext context) {
-    return Center(
+    // reload constructor
+    this.courseName = widget.courseName;
+    this.courseCount = widget.courseCount;
+    return new Center(
       child: Column(
         children: <Widget>[
           Padding(
@@ -87,15 +88,17 @@ class CourseButton extends StatefulWidget {
                       )
                     ),
                     MaterialButton(onPressed: (){
-                      //setState(() {
-                        jsonDataStorage.deleteEntry(courseCount); // delete from json file
-                        Navigator.pushReplacement(
+                        //jsonDataStorage.deleteEntry(courseCount); // delete from json file
+                       // widget.parentAction(jsonDataStorage.getJustCourseList);
+                        setState(() {
+                          jsonDataStorage.deleteEntry(courseCount);
+                        });
+                        /*Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Home(0),
+                            builder: (context) => Home(2),
                           ),
-                        );
-                     // });
+                        );*/
                       },
                         color: colorMelon,
                         child: Image.asset(
