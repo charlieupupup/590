@@ -82,7 +82,6 @@ class _CourseListState extends State<CourseList> {
                   });
                 },
                 //background: Container(),
-               // child: MovieCard(movie: movies[index]),
                 //child: getCourseButtonWidgets(),
                 child: tempCourseButton(index),
                 key: UniqueKey(),
