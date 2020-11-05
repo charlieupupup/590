@@ -17,3 +17,5 @@ final Color colorAeroBlue = CustomColor('#B8F2E6');
 final Color colorPowderBlue = CustomColor('#AED9E0');
 final Color colorBlackCoral = CustomColor('#5E6472');
 final Color colorIvory = CustomColor('#F5F9F0');
+final Color colorSoftMelon = CustomColor('#FDC2BE');
+final Color colorPale = CustomColor('#FAF3DD');
