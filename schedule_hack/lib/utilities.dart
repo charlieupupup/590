@@ -1,6 +1,37 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
+extension DateFormatted on DateTime {
+  //returns String with date formatted e.g. Monday, January 1, 2020
+  String formattedDate() {
+    String dayOfWeek = new DateFormat('EEEE').format(this);
+    String monthDayYear = new DateFormat.yMMMMd('en_US').format(this);
+    String fullDate = dayOfWeek + ", " + monthDayYear;
+    return fullDate;
+  }
+
+  //returns String with date formatted e.g. Mon January 1, 2020
+  String abbreviatedDate() {
+    String dayOfWeek = new DateFormat('EEEE').format(this);
+    switch (dayOfWeek) {
+      case "Tuesday":
+        dayOfWeek = dayOfWeek.substring(0, 4); //first 4 letters i.e Tues
+        break;
+      case "Thursday":
+        dayOfWeek = dayOfWeek.substring(0, 5); //first 5 letters i.e Thurs
+        break;
+      default:
+        dayOfWeek = dayOfWeek.substring(0, 3); //first 3
+    }
+    String monthDayYear = new DateFormat.yMMMMd('en_US').format(this);
+    String fullDate = dayOfWeek + ", " + monthDayYear;
+    return fullDate;
+  }
+// ···
+}
+
+//generates custom colors
 class CustomColor extends Color {
   static hexToColor(String code) {
     return int.parse(code.substring(1, 7), radix: 16) + 0xFF000000;
