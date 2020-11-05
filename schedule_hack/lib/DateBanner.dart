@@ -5,7 +5,7 @@ import 'package:schedule_hack/utilities.dart';
 
 class DateBanner extends StatelessWidget {
   DateBanner({Key key, this.date}) : super(key: key);
-  final String date;
+  final DateTime date;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,17 @@ class DateBanner extends StatelessWidget {
         child: Align(
           alignment: Alignment.center,
           child: AutoSizeText(
-            date,
+            date.formattedDate(),
             style: TextStyle(fontSize: 24, color: colorIvory),
             maxLines: 1,
-            minFontSize: 20.0,
+            minFontSize: 20,
             textAlign: TextAlign.center,
+            overflowReplacement:
+                AutoSizeText(date.abbreviatedDate(), //abbreviate when overflow
+                    style: TextStyle(fontSize: 24, color: colorIvory),
+                    maxLines: 1,
+                    minFontSize: 20.0,
+                    textAlign: TextAlign.center),
           ),
         ),
       ),
