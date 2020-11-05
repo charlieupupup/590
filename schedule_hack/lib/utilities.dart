@@ -1,6 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+// extension DateFormatted on DateTime {
+//   int parseInt() {
+//     return int.parse(this);
+//   }
+// // ···
+// }
+
+//generates custom colors
 class CustomColor extends Color {
   static hexToColor(String code) {
     return int.parse(code.substring(1, 7), radix: 16) + 0xFF000000;
