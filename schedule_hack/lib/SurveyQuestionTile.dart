@@ -10,8 +10,8 @@ class SurveyQuestionTile extends StatefulWidget {
     this.q = d;
   }
   @override
-  State<StatefulWidget> createState() {
-    return _SurveyQuestionTileState(q);
+  State<SurveyQuestionTile> createState() {
+    return new _SurveyQuestionTileState(q);
   }
 }
 
@@ -22,7 +22,9 @@ class _SurveyQuestionTileState extends State<SurveyQuestionTile> {
   }
   @override
   Widget build(BuildContext context) {
-    return Card(
+    this.data = widget.q;
+    return new Card(
+      color: colorBeige,
       child: CheckboxListTile(
           title: Text(data.getQuestion()),
           value: data.getAnswer(),
@@ -32,7 +34,6 @@ class _SurveyQuestionTileState extends State<SurveyQuestionTile> {
           selected: data.getAnswer(),
           onChanged: (bool newValue) {
             setState(() {
-              //answer = newValue;
               data.setAnswer(newValue);
             });
           }),
