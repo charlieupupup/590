@@ -87,7 +87,7 @@ class CourseButton extends StatefulWidget {
                       style: TextStyle(fontSize: 24, color: colorBlackCoral),
                       )
                     ),
-                    MaterialButton(onPressed: (){
+                   /* MaterialButton(onPressed: (){
                         //jsonDataStorage.deleteEntry(courseCount); // delete from json file
                        // widget.parentAction(jsonDataStorage.getJustCourseList);
                         setState(() {
@@ -107,7 +107,7 @@ class CourseButton extends StatefulWidget {
                           width: 50,
                         ),
                       shape: CircleBorder()
-                    ),
+                    ),*/
                     MaterialButton(onPressed: (){
 
                       },
