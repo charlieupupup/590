@@ -1,51 +1,67 @@
 import 'package:flutter/cupertino.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 
-
+//import 'package:schedule_hack/_CourseListState.dart';
 // Course button UI element
 class CourseButton extends StatefulWidget {
   String courseName;
-  int colorCount;
+  int courseCount;
   Course course;
+  final ValueChanged<List<dynamic>> parentAction;
 
-  CourseButton(Course c, int count) {
+  CourseButton(Course c, int count, this.parentAction) {
     this.course = c;
     this.courseName = c.getName;
-    this.colorCount = count;
+    this.courseCount = count;
   }
 
   @override
   State<StatefulWidget> createState() {
-    return _CourseButtonState(course, colorCount);
+    return new _CourseButtonState(course, courseCount);
   }
 }
 
   class _CourseButtonState extends State<CourseButton>{
-  int colorCount;
+  int courseCount;
   String courseName;
   Course course;
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
   _CourseButtonState(Course c, int count){
     this.course = c;
     this.courseName = c.getName;
-    this.colorCount = count;
+    this.courseCount = count;
   }
 
   Color returnColor(int count){
     List colorList = new List();
     colorList.add(colorPowderBlue);
+    colorList.add(colorHoneydew);
     colorList.add(colorMelon);
     colorList.add(colorAlmond);
-    colorList.add(colorHoneydew);
-    return colorList[count];
+    if (count == 0){
+      return colorList[0];
+    } else if (count%4 == 0){
+      return colorList[0];
+    } else if (count%2 == 0){
+      return colorList[1];
+    } else if ((count+1)%4 == 0){
+      return colorList[3];
+    } else {
+      return colorList[2];
+    }
   }
 
   // Designing CourseButton (generic to name and color)
   @override
   Widget build(BuildContext context) {
-    return Center(
+    // reload constructor
+    this.courseName = widget.courseName;
+    this.courseCount = widget.courseCount;
+    return new Center(
       child: Column(
         children: <Widget>[
           Padding(
@@ -54,7 +70,7 @@ class CourseButton extends StatefulWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-              color: returnColor(colorCount),
+              color: returnColor(courseCount),
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorPowderBlue)));
               },
@@ -67,17 +83,6 @@ class CourseButton extends StatefulWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontSize: 24, color: colorBlackCoral),
                       )
-                    ),
-                    MaterialButton(onPressed: (){
-
-                      },
-                        color: colorMelon,
-                        child: Image.asset(
-                          'images/delete.png',
-                          height: 50,
-                          width: 50,
-                        ),
-                      shape: CircleBorder()
                     ),
                     MaterialButton(onPressed: (){
 
