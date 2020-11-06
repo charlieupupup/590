@@ -20,7 +20,7 @@ class UserPreferences {
     page1.addQuestion(four);
     pages.add(page1);
     SingleQuestionData one2 = new SingleQuestionData("Reading");
-    SingleQuestionData two2 = new SingleQuestionData("Baking");
+    SingleQuestionData two2 = new SingleQuestionData("watching star wars");
     SingleQuestionData three2 = new SingleQuestionData("Running");
     SingleQuestionData four2 = new SingleQuestionData("Yoga");
     SurveyPage page2 = new SurveyPage("In my freetime I enjoy...", 2);
