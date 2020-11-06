@@ -1,4 +1,3 @@
-import 'package:schedule_hack/CourseList.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/SyllabusPopup.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 
-
 // Class that builds checkmark green button
 // Takes in index to know where to pass user next depending on where used
 class CheckmarkButton extends StatefulWidget {
@@ -17,10 +15,10 @@ class CheckmarkButton extends StatefulWidget {
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   TextEditingController myController;
 
-  CheckmarkButton(int i){
+  CheckmarkButton(int i) {
     this.index = i;
   }
-  CheckmarkButton.course(int i, TextEditingController d){
+  CheckmarkButton.course(int i, TextEditingController d) {
     this.index = i;
     this.myController = d;
   }
@@ -29,13 +27,14 @@ class CheckmarkButton extends StatefulWidget {
     return _CheckmarkButtonState(index, myController);
   }
 }
-class _CheckmarkButtonState extends State<CheckmarkButton>{
+
+class _CheckmarkButtonState extends State<CheckmarkButton> {
   int index;
   String data;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   TextEditingController myController;
 
-  _CheckmarkButtonState(int i, TextEditingController controller){
+  _CheckmarkButtonState(int i, TextEditingController controller) {
     this.index = i;
     this.myController = controller;
   }
@@ -45,34 +44,42 @@ class _CheckmarkButtonState extends State<CheckmarkButton>{
     c1.setName = name;
     return c1;
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: (){
-        switch(index){
-          case 0: {
-            // take user to syllabus popup (showing manual, photo, pdf)
-            this.data = myController.text;
-            print("Data: :${data}");
-            Course c1 = createCourse(data);
-            jsonDataStorage.newEntry(c1);
-            SyllabusPopup(context);
-            break;
-          }
-          case 1: {
-            // take user back to CourseList.dart view
-            Navigator.pushAndRemoveUntil(
+      onPressed: () {
+        switch (index) {
+          case 0:
+            {
+              // take user to syllabus popup (showing manual, photo, pdf)
+              this.data = myController.text;
+              print("Data: :${data}");
+              Course c1 = createCourse(data);
+              jsonDataStorage.newEntry(c1);
+              SyllabusPopup(context);
+              break;
+            }
+          case 1:
+            {
+              // take user back to CourseList.dart view
+              Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                    builder: (BuildContext context) => Home(0),
+                  builder: (BuildContext context) => Home(0),
                 ),
                 (route) => false,
-            );
-            break;
-          }
-          default: {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorPowderBlue)));
-          }
+              );
+              break;
+            }
+          default:
+            {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          PlaceholderWidget(colorPowderBlue)));
+            }
         }
       },
       color: colorHoneydew,
