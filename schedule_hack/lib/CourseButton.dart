@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -7,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 
-import 'Home.dart';
 //import 'package:schedule_hack/_CourseListState.dart';
 // Course button UI element
 class CourseButton extends StatefulWidget {
@@ -87,27 +84,6 @@ class CourseButton extends StatefulWidget {
                       style: TextStyle(fontSize: 24, color: colorBlackCoral),
                       )
                     ),
-                   /* MaterialButton(onPressed: (){
-                        //jsonDataStorage.deleteEntry(courseCount); // delete from json file
-                       // widget.parentAction(jsonDataStorage.getJustCourseList);
-                        setState(() {
-                          jsonDataStorage.deleteEntry(courseCount);
-                        });
-                        /*Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Home(2),
-                          ),
-                        );*/
-                      },
-                        color: colorMelon,
-                        child: Image.asset(
-                          'images/trashcan.png',
-                          height: 50,
-                          width: 50,
-                        ),
-                      shape: CircleBorder()
-                    ),*/
                     MaterialButton(onPressed: (){
 
                       },

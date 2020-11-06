@@ -1,12 +1,4 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:schedule_hack/Assignment.dart';
-import 'package:schedule_hack/CancelButton.dart';
-import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
@@ -46,8 +38,6 @@ class _CourseListState extends State<CourseList> {
 
   @override
   Widget build(BuildContext context) {
-    //this.jsonDataStorage = widget.jsonDataStorage;
-    //this.courseList = jsonDataStorage.getCourseList;
     return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -58,7 +48,6 @@ class _CourseListState extends State<CourseList> {
         actions: [
           Row(
             children: [
-              //Icon(Icons.settings, color: colorBlackCoral),
               SettingsButton()
             ],
           ),
