@@ -15,6 +15,11 @@ class JsonDataStorage {
     return this.courseList;
   }
 
+  List<dynamic> get getJustCourseList{
+    return this.courseList;
+  }
+
+
   // write asset json to local phone storage
   Future writeJsonLocal() async {
     final path = await _localPath;
@@ -47,24 +52,40 @@ class JsonDataStorage {
     return file.writeAsString(assetCourses);
   }
 
-  // write new entry - temp
+  // write new entry
   Future newEntry(Course c) async{
-    //parseLocalJson();
     File jsonFile = await _localFile;
     // Read the file.
     String contents = await jsonFile.readAsString();
     final jsonResponse = jsonDecode(contents);
     this.courseList = jsonResponse;
-    //Course c = new Course();
-    //c.setName = 'Test';
     Map<String, dynamic> map = c.toJson();
-   // String rawJson = jsonEncode(map);
     this.courseList.add(map);
-    print(courseList[0]);
-    print(courseList[1]);
-    print(courseList[2]);
+    //print(courseList[0]);
+    //print(courseList[1]);
+    //print(courseList[2]);
     String allJson = jsonEncode(courseList);
     writeCourse(allJson);
+  }
+  // delete entry
+  Future deleteEntry(int index) async {
+    // Get file and set to courseList
+    File jsonFile = await _localFile;
+    String contents = await jsonFile.readAsString();
+    final jsonResponse = jsonDecode(contents);
+    this.courseList = jsonResponse;
+    // Make course json
+    Map<String, dynamic> map = this.courseList[index];
+    Course c = Course.fromJson(map);
+    String name = c.getName;
+    print('Course Name:  $name');
+    //Map<String, dynamic> map = c.toJson();
+    // Check if course exists in list and delete it
+    if (this.courseList.indexOf(map) != -1){
+      print('Index:  $index');
+      this.courseList.remove(map);
+    }
+    writeCourse(jsonEncode(this.courseList));
   }
   // Find document directory
   Future<String> get _localPath async {
