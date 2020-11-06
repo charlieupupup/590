@@ -1,3 +1,4 @@
+import 'package:schedule_hack/AssignmentList.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/SyllabusPopup.dart';
@@ -91,7 +92,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => Home(0),
+                  builder: (BuildContext context) => AssignmentList(),
                 ),
                     (route) => false,
               );
