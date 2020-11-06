@@ -59,7 +59,7 @@ class SyllabusPopup {
                 String message = 'Take a photo of your syllabus to automatically upload assignment due dates. You will have the '
                     'opportunity to manually add assignments';
                 //_showMaterialDialog2(message);
-                StandardPopup(context, message);
+                StandardPopup(context, message,1);
                 break;
               }
               case 3: {

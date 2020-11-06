@@ -9,9 +9,12 @@ import 'package:flutter/material.dart';
 class StandardPopup {
   BuildContext context;
   String message;
-  StandardPopup(BuildContext c, String m) {
+  int index;
+
+  StandardPopup(BuildContext c, String m, int i) {
     this.context = c;
     this.message = m;
+    this.index = i;
     _showMaterialDialog2(message);
   }
   // method for popup
@@ -32,7 +35,7 @@ class StandardPopup {
                 alignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   CancelButton(),
-                  CheckmarkButton(1)
+                  CheckmarkButton(index)
                 ],
               ),
             )

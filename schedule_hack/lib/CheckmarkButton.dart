@@ -6,6 +6,7 @@ import 'package:schedule_hack/Course.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
+import 'package:schedule_hack/MockPhoto.dart';
 
 // Class that builds checkmark green button
 // Takes in index to know where to pass user next depending on where used
@@ -62,13 +63,25 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
             }
           case 1:
             {
+              // take user back to MockPhoto.dart view
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => MockPhoto(),
+                ),
+                (route) => false,
+              );
+              break;
+            }
+          case 2:
+            {
               // take user back to CourseList.dart view
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) => Home(0),
                 ),
-                (route) => false,
+                    (route) => false,
               );
               break;
             }
