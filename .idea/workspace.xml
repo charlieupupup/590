@@ -25,10 +25,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="added looping to produce survey questions">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/IntakeSurvey.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/IntakeSurvey.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -332,7 +332,28 @@
       <option name="project" value="LOCAL" />
       <updated>1604512311633</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="added looping to produce survey questions">
+      <created>1604513290521</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1604513290521</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Working survey progress bar and navigation buttons">
+      <created>1604530753533</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1604530753533</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Added error checking on navigation buttons and removed hard coded page count">
+      <created>1604532193414</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1604532193414</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -349,9 +370,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed color of date banner and variable name to date" />
-    <MESSAGE value="Renamed colors to match convention" />
-    <MESSAGE value="Added google font dependencies" />
     <MESSAGE value="adjusted colors to match prototype" />
     <MESSAGE value="Adjusted tab and nav bar colors" />
     <MESSAGE value="Changed dimensions on top banner" />
@@ -374,7 +392,10 @@
     <MESSAGE value="Updated CheckmarkButton to take to Home instead of CourseList" />
     <MESSAGE value="Prelim work of adding progress bar" />
     <MESSAGE value="Beginning code of progress bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Beginning code of progress bar" />
+    <MESSAGE value="added looping to produce survey questions" />
+    <MESSAGE value="Working survey progress bar and navigation buttons" />
+    <MESSAGE value="Added error checking on navigation buttons and removed hard coded page count" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added error checking on navigation buttons and removed hard coded page count" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
