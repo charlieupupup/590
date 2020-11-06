@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/SurveyQuestionTile.dart';
 import 'package:schedule_hack/UserPreferences.dart';
 import 'package:schedule_hack/utilities.dart';
 
+import 'StandardPopup.dart';
 import 'SurveyCompletionProgressBar.dart';
 
 //class contains the actual UI visualization of the survey completion
@@ -40,6 +42,62 @@ class IntakeSurveyState extends State<IntakeSurvey> {
     return new Column(children: questionsList);
   }
 
+  Widget showButtons() {
+    String fwdButton;
+    MainAxisAlignment alignment = MainAxisAlignment.end;
+    List<Widget> navButtons = new List<Widget>();
+    if (pageNumber > 0) {
+      alignment = MainAxisAlignment.spaceBetween;
+      FlatButton backButton = FlatButton(
+        onPressed: () {
+          //decrease pageNumber and save user preferences
+          setState(() {
+            if (pageNumber - 1 >= 0) {
+              //only update if pages are available
+              pageNumber--;
+            }
+          });
+        },
+        child: new Text("Back",
+            style: TextStyle(fontSize: 20.0, color: colorBlackCoral)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+        ),
+        color: colorSoftMelon,
+      );
+      navButtons.add(backButton);
+    }
+    if (pageNumber + 1 < userPreferences.getTotalPages()) {
+      fwdButton = "Next";
+    } else {
+      fwdButton = "Finish";
+    }
+    FlatButton nextButton = FlatButton(
+      onPressed: () {
+        //increase pageNumber and save user preferences
+        setState(() {
+          if (pageNumber + 1 < userPreferences.getTotalPages()) {
+            //only update if pages are available
+            pageNumber++;
+          } else {
+            String message = 'Confirm and complete Survey?';
+            //_showMaterialDialog2(message);
+            StandardPopup(context, message);
+            //Navigator.push(context, MaterialPageRoute(builder: (context) => Home(0)));
+          }
+        });
+      },
+      child: new Text(fwdButton,
+          style: TextStyle(fontSize: 20.0, color: colorBlackCoral)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      color: colorAeroBlue,
+    );
+    navButtons.add(nextButton);
+    return new Row(mainAxisAlignment: alignment, children: navButtons);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -64,45 +122,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
         bottomNavigationBar: new Container(
           padding: const EdgeInsets.all(8.0),
           color: colorAlmond,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              FlatButton(
-                onPressed: () {
-                  //decrease pageNumber and save user preferences
-                  setState(() {
-                    if (pageNumber - 1 >= 0) {
-                      //only update if pages are available
-                      pageNumber--;
-                    }
-                  });
-                },
-                child: new Text("Back",
-                    style: TextStyle(fontSize: 20.0, color: colorBlackCoral)),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                color: colorSoftMelon,
-              ),
-              FlatButton(
-                onPressed: () {
-                  //increase pageNumber and save user preferences
-                  setState(() {
-                    if (pageNumber + 1 < userPreferences.getTotalPages()) {
-                      //only update if pages are available
-                      pageNumber++;
-                    }
-                  });
-                },
-                child: new Text("Next",
-                    style: TextStyle(fontSize: 20.0, color: colorBlackCoral)),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                color: colorAeroBlue,
-              ),
-            ],
-          ),
+          child: showButtons(),
         ));
   }
 }
