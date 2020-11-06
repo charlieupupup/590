@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/utilities.dart';
 
+import 'CancelButton.dart';
+import 'CheckmarkButton.dart';
+
 class MockPhotoAccept extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -28,9 +31,13 @@ class _MockPhotoAcceptState extends State<MockPhotoAccept> {
               padding: EdgeInsets.only(
                 top: 15.0,
               ),
-              child: Row(
-
-              ),
+              child: ButtonBar(
+                alignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  CancelButton(),
+                  CheckmarkButton(3)
+            ],
+          ),
           ),
         ],
       ),

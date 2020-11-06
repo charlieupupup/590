@@ -51,7 +51,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
     return MaterialButton(
       onPressed: () {
         switch (index) {
-          case 0:
+          case 0:  // Take users to SyllabusPopup.dart
             {
               // take user to syllabus popup (showing manual, photo, pdf)
               this.data = myController.text;
@@ -61,7 +61,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               SyllabusPopup(context);
               break;
             }
-          case 1:
+          case 1: // Take users to MockPhoto.dart
             {
               // take user back to MockPhoto.dart view
               Navigator.pushAndRemoveUntil(
@@ -73,7 +73,19 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               );
               break;
             }
-          case 2:
+          case 2: // take users to Schedule.dart from Home.dart
+            {
+              // take user back to CourseList.dart view
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => Home(0),
+                ),
+                    (route) => false,
+              );
+              break;
+            }
+          case 3: // take user to Assignments page for course
             {
               // take user back to CourseList.dart view
               Navigator.pushAndRemoveUntil(
