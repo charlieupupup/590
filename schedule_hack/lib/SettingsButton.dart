@@ -14,14 +14,14 @@ class SettingsButton extends StatefulWidget {
 class _SettingsButtonState extends State<SettingsButton> {
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return IconButton(
         onPressed: () {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => IntakeSurvey(new UserPreferences())));
         },
-        child: Icon(Icons.settings, color: colorBlackCoral),
+        icon: Icon(Icons.settings, color: colorBlackCoral),
         color: colorHoneydew);
   }
 }

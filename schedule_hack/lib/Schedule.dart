@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/CalendarButton.dart';
 import 'package:schedule_hack/DateBanner.dart';
+import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'SettingsButton.dart';
@@ -23,7 +25,8 @@ class Schedule extends StatelessWidget {
           Row(
             children: [
               //Icon(Icons.settings, color: colorBlackCoral),
-              SettingsButton()
+              CalendarButton(),
+              SettingsButton(),
             ],
           ),
         ],
@@ -36,7 +39,7 @@ class Schedule extends StatelessWidget {
       ),
       body: Container(
         child: ListView(
-          children: [DateBanner(date: date)],
+          children: [DateBanner(date: date), ScheduleView()],
         ),
       ),
     );
