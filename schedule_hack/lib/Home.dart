@@ -56,7 +56,6 @@ class _HomeState extends State<Home> {
               icon: ImageIcon(
                 AssetImage("images/classroom.png"),
                 color: colorBlackCoral,
-
               ),
               label: 'Courses')
         ],
