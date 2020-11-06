@@ -1,12 +1,4 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:schedule_hack/Assignment.dart';
-import 'package:schedule_hack/CancelButton.dart';
-import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseButton.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
@@ -16,7 +8,6 @@ import 'package:schedule_hack/utilities.dart';
 
 class CourseList extends StatefulWidget {
   List<dynamic> courseList = new List();
-  //String assetJsonString;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   CourseList(){
@@ -24,16 +15,17 @@ class CourseList extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return _CourseListState(courseList, jsonDataStorage);
+    return new _CourseListState(courseList, jsonDataStorage);
   }
 }
 class _CourseListState extends State<CourseList> {
   final myController = TextEditingController();
   List<dynamic> courseList = new List();
-  //JsonDataStorage jsonDataStorage = new JsonDataStorage();
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
+
   _CourseListState(List<dynamic> cl, JsonDataStorage storage){
     this.courseList = cl;
-    //this.jsonDataStorage = storage;
+    this.jsonDataStorage = storage;
     this.courseList = storage.getCourseList;
   }
 
@@ -46,7 +38,7 @@ class _CourseListState extends State<CourseList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
         leading: Icon(
@@ -56,7 +48,6 @@ class _CourseListState extends State<CourseList> {
         actions: [
           Row(
             children: [
-              //Icon(Icons.settings, color: colorBlackCoral),
               SettingsButton()
             ],
           ),
@@ -68,15 +59,30 @@ class _CourseListState extends State<CourseList> {
                 color: colorBlackCoral)),
         backgroundColor: colorHoneydew,
       ),
-      bottomNavigationBar: SizedBox(
-        height: 58,
-      ),
       body: Container(
-        child: ListView(
-          children: [
+        child: ListView.builder(
+            itemCount: courseList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Dismissible(
+                onDismissed: (DismissDirection direction) {
+                  setState(() {
+                    jsonDataStorage.deleteEntry(index);
+                    courseList.removeAt(index);
+                  });
+                },
+                //background: Container(),
+                //child: getCourseButtonWidgets(),
+                child: tempCourseButton(index),
+                key: UniqueKey(),
+                direction: DismissDirection.endToStart,
+              );
+            }
+        ),
+        /*child: ListView(
+          children: <Widget>[
             getCourseButtonWidgets()
           ],
-        ),
+        ),*/
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
@@ -94,13 +100,26 @@ class _CourseListState extends State<CourseList> {
     c1.setName = name;
     return c1;
   }
+  updateUI(List<dynamic> newStorage){
+    setState(() {
+      this.courseList = newStorage;
+    });
+  }
   // Display course button based on json input
   Widget getCourseButtonWidgets(){
     List<Widget> list = new List<Widget>();
+    //print('CourseList Length:  $courseList.length');
     for (int i = 0; i < courseList.length; i++) {
       Course course = Course.fromJson(courseList[i]);
-        list.add(new CourseButton(course, i));
+        list.add(new CourseButton(course, i, updateUI));
     }
     return new Column(children: list);
   }
+
+  Widget tempCourseButton(int index){
+    Course course = Course.fromJson(courseList[index]);
+    return CourseButton(course, index, updateUI);
+  }
+
+
 }
