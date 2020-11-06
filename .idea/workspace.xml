@@ -25,10 +25,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="added looping to produce survey questions">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="2613b993-9f6d-464b-8d06-297f74c8fc94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -353,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604532193414</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="cleaning for a pull from master">
+      <created>1604686374825</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1604686374825</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -370,7 +375,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjusted colors to match prototype" />
     <MESSAGE value="Adjusted tab and nav bar colors" />
     <MESSAGE value="Changed dimensions on top banner" />
     <MESSAGE value="Added EdgeInsets to move date banner down" />
@@ -395,7 +399,8 @@
     <MESSAGE value="added looping to produce survey questions" />
     <MESSAGE value="Working survey progress bar and navigation buttons" />
     <MESSAGE value="Added error checking on navigation buttons and removed hard coded page count" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added error checking on navigation buttons and removed hard coded page count" />
+    <MESSAGE value="cleaning for a pull from master" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaning for a pull from master" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
