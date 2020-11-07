@@ -16,15 +16,15 @@ class _MockPhotoState extends State<MockPhoto> {
     return Container(
       color: colorBlackCoral,
       padding: EdgeInsets.only(
-        top: 20.0,
+        top: 30.0,
       ),
       child: Column(
         children: [
-          Image.asset(
-            'images/syllabus.png',
-            height: 580,
-            width: 600,
-            fit: BoxFit.contain,
+          AspectRatio(
+            aspectRatio: 2.2/3,
+            child: Image.asset(
+              'images/syllabus.png',
+            ),
           ),
           Padding(
               padding: EdgeInsets.only(

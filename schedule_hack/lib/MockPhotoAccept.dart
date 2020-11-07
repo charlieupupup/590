@@ -21,11 +21,11 @@ class _MockPhotoAcceptState extends State<MockPhotoAccept> {
       ),
       child: Column(
         children: [
-          Image.asset(
-            'images/syllabus.png',
-            height: 580,
-            width: 600,
-            fit: BoxFit.contain,
+          AspectRatio(
+            aspectRatio: 2.2/3,
+            child: Image.asset(
+              'images/syllabus.png',
+            ),
           ),
           Padding(
               padding: EdgeInsets.only(
