@@ -35,11 +35,11 @@ class Day extends DateTime {
 
   //adds an activity to this day
   void addActivity(Activity activity) {
-    if (activity.startTime.day == this.day) {
+    if (activity.date.day == this.day) {
       //if activity takes place on this day
       //for each hour in which activity takes place
-      for (int i = activity.startTime.hour;
-          i < (activity.startTime.add(activity.duration)).hour;
+      for (int i = activity.date.hour;
+          i < (activity.date.add(activity.duration)).hour;
           i++) {
         this.activityTimeslots[i] = activity; //map timeslot to activity
       }
@@ -62,12 +62,10 @@ class Day extends DateTime {
   }
 
   static void dayTest() {
-    Activity yoga = new Activity(
-        Task.attendClass, DateTime(2020), Duration(hours: 2), "Yoga");
-    Activity hw = new Activity.assignment(
-        yoga.startTime.add(Duration(hours: 5)),
-        Duration(hours: 3),
-        "ECE590 HW");
+    Activity yoga = new Activity(Task.attendClass, DateTime(2020),
+        Duration(hours: 2), "Yoga", "2 hour long hatha flow");
+    Activity hw = new Activity.assignment(yoga.date.add(Duration(hours: 5)),
+        Duration(hours: 3), "ECE590 HW", "finish coding project");
     List<Activity> activities = new List<Activity>();
     activities.add(yoga);
     activities.add(hw);

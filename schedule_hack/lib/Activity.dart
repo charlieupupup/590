@@ -37,7 +37,7 @@ class Activity extends Event {
       String description)
       : super(
             date: dueDate.subtract(
-                timeToComplete), //start time = time to complete assignment - dueDate
+                timeToComplete), //start time = dueDate - time to completeAssignment
             title: title,
             icon: Icon(
               Icons.assignment,
