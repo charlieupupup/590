@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+enum Task { attendClass, doAssignment, sleep, takeBreak, workout }
+
 extension DateFormatted on DateTime {
   //returns String with date formatted e.g. Monday, January 1, 2020
   String formattedDate() {
