@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/NewAssignmentPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'SettingsButton.dart';
@@ -13,6 +14,14 @@ class AssignmentList extends StatefulWidget{
 }
 
 class _AssignmentListState extends State<AssignmentList> {
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -40,6 +49,7 @@ class _AssignmentListState extends State<AssignmentList> {
         onPressed: (){
           //NewCoursePopup(context, myController);
           // New assignment popup
+          NewAssignmentPopup(context, myController);
         },
         backgroundColor: colorHoneydew,
         child: Image.asset('images/add.png'),
