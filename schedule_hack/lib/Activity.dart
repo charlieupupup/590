@@ -1,4 +1,5 @@
 import 'package:schedule_hack/Day.dart';
+import 'package:schedule_hack/utilities.dart';
 
 enum Task { attendClass, doAssignment, sleep, takeBreak, workout }
 
@@ -8,6 +9,18 @@ class Activity {
   DateTime
       startTime; //this way, due date for Assignment - duration = start time?
   String description;
+
+  String getInfo() {
+    return description +
+        "(" +
+        task.toString() +
+        ") on " +
+        startTime.abbreviatedDate() +
+        "for " +
+        duration.inHours.toString() +
+        " hours starting " +
+        startTime.toUtc().toString().substring(10, 16);
+  }
 
   //default constructor
   Activity(Task task, DateTime start, Duration duration, String description) {
@@ -25,4 +38,7 @@ class Activity {
     this.duration = timeToComplete;
     this.description = description;
   }
+
+  //TODO: course constructor that will add in repeat? or maybe ClassAttendance subclass of Activity with some kind of list of DaysOfWeek
+
 }
