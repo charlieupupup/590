@@ -100,6 +100,19 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               );
               break;
             }
+          case 4: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
+          // Home(0) for now (back to schedule view
+            {
+              // take user back to CourseList.dart view
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => Home(0)//AssignmentList(),
+                ),
+                    (route) => false,
+              );
+              break;
+            }
           default:
             {
               Navigator.push(
