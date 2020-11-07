@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 extension DateFormatted on DateTime {
+  String get militaryTime => this.toUtc().toString().substring(10, 16);
   //returns String with date formatted e.g. Monday, January 1, 2020
   String formattedDate() {
     String dayOfWeek = new DateFormat('EEEE').format(this);
