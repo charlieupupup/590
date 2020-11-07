@@ -114,7 +114,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               // add data to json
               jsonDataStorage.newEntry(this.course);
               ConfirmPopup(context,'Great, your assignments are saved. We are working in the '
-                  'background to build your schedule. You can always edit a course later.',6);
+                  'background to build your schedule. You can always edit a course later.',5);
               break;
             }
           case 5: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
