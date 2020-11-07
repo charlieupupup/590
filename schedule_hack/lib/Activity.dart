@@ -10,7 +10,7 @@ class Activity {
   String description;
 
   //default constructor
-  Activity(Task t, DateTime start, Duration duration, String description) {
+  Activity(Task task, DateTime start, Duration duration, String description) {
     this.task = task;
     this.startTime = start;
     this.duration = duration;
@@ -19,10 +19,10 @@ class Activity {
   //constructor for an assignment
   Activity.assignment(
       DateTime dueDate, Duration timeToComplete, String description) {
-    this.task = task;
+    this.task = Task.doAssignment;
     this.startTime = dueDate.subtract(
         timeToComplete); //start time = time to complete assignment - dueDate
-    this.duration = duration;
+    this.duration = timeToComplete;
     this.description = description;
   }
 }
