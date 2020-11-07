@@ -7,7 +7,6 @@ enum Task { attendClass, doAssignment, sleep, takeBreak, workout }
 class Activity extends Event {
   Task task;
   Duration duration;
-  // DateTime date; //this way, due date for Assignment - duration = start time?
   String description;
 
   //default constructor
