@@ -4,6 +4,7 @@ import 'package:schedule_hack/NewAssignmentPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'CancelButton.dart';
 import 'CheckmarkButton.dart';
+import 'Course.dart';
 import 'CourseList.dart';
 import 'PlaceHolderWidget.dart';
 import 'Schedule.dart';
@@ -12,15 +13,23 @@ import 'SettingsButton.dart';
 
 // Class to display and interact with list of assignments
 class AssignmentList extends StatefulWidget{
+  Course course;
+  AssignmentList(Course c){
+    this.course = c;
+  }
   @override
   State<StatefulWidget> createState() {
-    return new _AssignmentListState();
+    return new _AssignmentListState(this.course);
   }
 }
 
 class _AssignmentListState extends State<AssignmentList> {
   final myController = TextEditingController();
+  Course course;
   int _currentIndex = 2;
+  _AssignmentListState(Course c){
+    this.course = c;
+  }
 
   @override
   void dispose() {
@@ -56,8 +65,9 @@ class _AssignmentListState extends State<AssignmentList> {
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            CancelButton(),
-            CheckmarkButton.course(4,myController)
+            CancelButton.assignment(5),
+           // CheckmarkButton.course(4,myController)
+            CheckmarkButton(4, this.course)
           ],
         ),
     ),

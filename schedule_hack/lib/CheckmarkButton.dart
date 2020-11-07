@@ -1,6 +1,7 @@
 import 'package:schedule_hack/AssignmentList.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
+import 'package:schedule_hack/StandardPopup.dart';
 import 'package:schedule_hack/SyllabusPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:schedule_hack/Course.dart';
@@ -18,9 +19,11 @@ class CheckmarkButton extends StatefulWidget {
   String data;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   TextEditingController myController;
+  Course course = new Course();
 
-  CheckmarkButton(int i) {
+  CheckmarkButton(int i, Course c) {
     this.index = i;
+    this.course = c;
   }
   CheckmarkButton.course(int i, TextEditingController d) {
     this.index = i;
@@ -28,7 +31,7 @@ class CheckmarkButton extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return _CheckmarkButtonState(index, myController);
+    return _CheckmarkButtonState(index, myController,course);
   }
 }
 
@@ -37,10 +40,12 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
   String data;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   TextEditingController myController;
+  Course course = new Course();
 
-  _CheckmarkButtonState(int i, TextEditingController controller) {
+  _CheckmarkButtonState(int i, TextEditingController controller, Course c) {
     this.index = i;
     this.myController = controller;
+    this.course = c;
   }
   // Create Course
   Course createCourse(String name) {
@@ -60,8 +65,9 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               this.data = myController.text;
               print("Data: :${data}");
               Course c1 = createCourse(data);
-              jsonDataStorage.newEntry(c1);
-              SyllabusPopup(context);
+              // add new entry later
+              //jsonDataStorage.newEntry(c1);
+              SyllabusPopup(context,c1);
               break;
             }
           case 1: // Take users to MockPhoto.dart
@@ -70,7 +76,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => MockPhoto(),
+                  builder: (BuildContext context) => MockPhoto(this.course),
                 ),
                 (route) => false,
               );
@@ -91,10 +97,11 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
           case 3: // take user to Assignments page for course
             {
               // take user back to CourseList.dart view
+              //jsonDataStorage.newEntry(this.course);
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => AssignmentListHome(2)//AssignmentList(),
+                  builder: (BuildContext context) => AssignmentListHome(2, this.course)//AssignmentList(),
                 ),
                     (route) => false,
               );
@@ -103,11 +110,34 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
           case 4: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
           // Home(0) for now (back to schedule view
             {
+              // add data to json
+              jsonDataStorage.newEntry(this.course);
+              StandardPopup(context,'Done adding assignments for now? You can always edit a course later.',5);
+              break;
+            }
+          case 5: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
+          // Home(0) for now (back to schedule view
+            {
+              // add data to json
               // take user back to CourseList.dart view
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                    builder: (BuildContext context) => Home(0)//AssignmentList(),
+                    builder: (BuildContext context) => Home(0)
+                ),
+                    (route) => false,
+              );
+              break;
+            }
+          case 6: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
+          // Home(0) for now (back to schedule view
+            {
+              // add data to json
+              // take user back to CourseList.dart view
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => Home(2)
                 ),
                     (route) => false,
               );

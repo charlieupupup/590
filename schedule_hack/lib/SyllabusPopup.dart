@@ -5,10 +5,15 @@ import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 
+import 'Course.dart';
+
 class SyllabusPopup {
   BuildContext context;
-  SyllabusPopup(BuildContext c) {
-    this.context = c;
+  Course course;
+
+  SyllabusPopup(BuildContext bc, Course c) {
+    this.context = bc;
+    this.course = c;
     _showMaterialDialog();
   }
 
@@ -54,12 +59,11 @@ class SyllabusPopup {
                 break;
               }
               case 2: {
-                //Navigator.push(context, MaterialPageRoute(builder: (context) =>PlaceholderWidget(colorPowderBlue)));
-                // TODO: Change page to photo upload
                 String message = 'Take a photo of your syllabus to automatically upload assignment due dates. You will have the '
                     'opportunity to manually add assignments';
                 //_showMaterialDialog2(message);
-                StandardPopup(context, message,1);
+                //StandardPopup(context, message,1);
+                StandardPopup.course(context, message,1,course);
                 break;
               }
               case 3: {

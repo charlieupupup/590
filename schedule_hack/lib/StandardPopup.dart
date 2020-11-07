@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
+import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,15 @@ class StandardPopup {
   BuildContext context;
   String message;
   int index;
+  Course course = new Course();
+
+  StandardPopup.course(BuildContext bc, String m, int i, Course c){
+    this.course = c;
+    this.context = bc;
+    this.message = m;
+    this.index = i;
+    _showMaterialDialog2(message);
+  }
 
   StandardPopup(BuildContext c, String m, int i) {
     this.context = c;
@@ -35,7 +45,7 @@ class StandardPopup {
                 alignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   CancelButton(),
-                  CheckmarkButton(index)
+                  CheckmarkButton(index,course)
                 ],
               ),
             )
