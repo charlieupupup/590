@@ -11,6 +11,7 @@ import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/MockPhoto.dart';
 
 import 'AssignmentListHome.dart';
+import 'ConfirmPopup.dart';
 
 // Class that builds checkmark green button
 // Takes in index to know where to pass user next depending on where used
@@ -112,7 +113,8 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
             {
               // add data to json
               jsonDataStorage.newEntry(this.course);
-              StandardPopup(context,'Done adding assignments for now? You can always edit a course later.',5);
+              ConfirmPopup(context,'Great, your assignments are saved. We are working in the '
+                  'background to build your schedule. You can always edit a course later.',5);
               break;
             }
           case 5: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
