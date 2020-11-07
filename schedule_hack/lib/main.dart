@@ -4,7 +4,6 @@ import 'package:schedule_hack/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schedule_hack/utilities.dart';
 
-
 void main() {
   runApp(MyApp());
   Day.dayTest(); //for testing

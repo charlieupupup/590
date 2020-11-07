@@ -10,10 +10,12 @@ class Day extends DateTime {
 
 //original default constructor from parent class
   Day.year(int year) : super(year);
+
   //constructor that initializes new Day object @ dateTime
   Day.day(DateTime dateTime)
       : super(dateTime.year, dateTime.month, dateTime.day, dateTime.hour,
             dateTime.minute);
+
   //constructor that initializes new Day with 'activities' planned
   factory Day.planned(DateTime dateTime, List<Activity> activities) {
     Day date = Day.day(dateTime);
@@ -34,7 +36,7 @@ class Day extends DateTime {
   //adds an activity to this day
   void addActivity(Activity activity) {
     if (activity.startTime.day == this.day) {
-      //if actitivity takes place on this day
+      //if activity takes place on this day
       //for each hour in which activity takes place
       for (int i = activity.startTime.hour;
           i < (activity.startTime.add(activity.duration)).hour;
@@ -42,6 +44,10 @@ class Day extends DateTime {
         this.activityTimeslots[i] = activity; //map timeslot to activity
       }
     }
+  }
+
+  void removeActivity(Activity activity) {
+    //TODO: start at start time, making timeslots from start to end of duration == null. probably need to error check that is in fact correct activity
   }
 
   //for testing
