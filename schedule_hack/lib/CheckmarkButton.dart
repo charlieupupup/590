@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/MockPhoto.dart';
 
+import 'AssignmentListHome.dart';
+
 // Class that builds checkmark green button
 // Takes in index to know where to pass user next depending on where used
 class CheckmarkButton extends StatefulWidget {
@@ -92,7 +94,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => AssignmentList(),
+                  builder: (BuildContext context) => AssignmentListHome(2)//AssignmentList(),
                 ),
                     (route) => false,
               );
