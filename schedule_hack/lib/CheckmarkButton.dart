@@ -1,11 +1,17 @@
+import 'package:schedule_hack/AssignmentList.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
+import 'package:schedule_hack/StandardPopup.dart';
 import 'package:schedule_hack/SyllabusPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
+import 'package:schedule_hack/MockPhoto.dart';
+
+import 'AssignmentListHome.dart';
+import 'ConfirmPopup.dart';
 
 // Class that builds checkmark green button
 // Takes in index to know where to pass user next depending on where used
@@ -14,9 +20,11 @@ class CheckmarkButton extends StatefulWidget {
   String data;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   TextEditingController myController;
+  Course course = new Course();
 
-  CheckmarkButton(int i) {
+  CheckmarkButton(int i, Course c) {
     this.index = i;
+    this.course = c;
   }
   CheckmarkButton.course(int i, TextEditingController d) {
     this.index = i;
@@ -24,7 +32,7 @@ class CheckmarkButton extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return _CheckmarkButtonState(index, myController);
+    return _CheckmarkButtonState(index, myController,course);
   }
 }
 
@@ -33,10 +41,12 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
   String data;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   TextEditingController myController;
+  Course course = new Course();
 
-  _CheckmarkButtonState(int i, TextEditingController controller) {
+  _CheckmarkButtonState(int i, TextEditingController controller, Course c) {
     this.index = i;
     this.myController = controller;
+    this.course = c;
   }
   // Create Course
   Course createCourse(String name) {
@@ -50,17 +60,30 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
     return MaterialButton(
       onPressed: () {
         switch (index) {
-          case 0:
+          case 0:  // Take users to SyllabusPopup.dart
             {
               // take user to syllabus popup (showing manual, photo, pdf)
               this.data = myController.text;
               print("Data: :${data}");
               Course c1 = createCourse(data);
-              jsonDataStorage.newEntry(c1);
-              SyllabusPopup(context);
+              // add new entry later
+              //jsonDataStorage.newEntry(c1);
+              SyllabusPopup(context,c1);
               break;
             }
-          case 1:
+          case 1: // Take users to MockPhoto.dart
+            {
+              // take user back to MockPhoto.dart view
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => MockPhoto(this.course),
+                ),
+                (route) => false,
+              );
+              break;
+            }
+          case 2: // take users to Schedule.dart from Home.dart
             {
               // take user back to CourseList.dart view
               Navigator.pushAndRemoveUntil(
@@ -68,7 +91,57 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
                 MaterialPageRoute(
                   builder: (BuildContext context) => Home(0),
                 ),
-                (route) => false,
+                    (route) => false,
+              );
+              break;
+            }
+          case 3: // take user to Assignments page for course
+            {
+              // take user back to CourseList.dart view
+              //jsonDataStorage.newEntry(this.course);
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => AssignmentListHome(2, this.course)//AssignmentList(),
+                ),
+                    (route) => false,
+              );
+              break;
+            }
+          case 4: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
+          // Home(0) for now (back to schedule view
+            {
+              // add data to json
+              jsonDataStorage.newEntry(this.course);
+              ConfirmPopup(context,'Great, your assignments are saved. We are working in the '
+                  'background to build your schedule. You can always edit a course later.',5);
+              break;
+            }
+          case 5: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
+          // Home(0) for now (back to schedule view
+            {
+              // add data to json
+              // take user back to CourseList.dart view
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => Home(0)
+                ),
+                    (route) => false,
+              );
+              break;
+            }
+          case 6: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
+          // Home(0) for now (back to schedule view
+            {
+              // add data to json
+              // take user back to CourseList.dart view
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => Home(2)
+                ),
+                    (route) => false,
               );
               break;
             }

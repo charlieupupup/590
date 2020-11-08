@@ -85,7 +85,6 @@ class CourseButton extends StatefulWidget {
                       )
                     ),
                     MaterialButton(onPressed: (){
-
                       },
                         color: colorAlmond,
                         child: Image.asset(
@@ -96,7 +95,7 @@ class CourseButton extends StatefulWidget {
                         shape: CircleBorder()
                     )
                   ],
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
                 width: 250,
                 height: 50,
