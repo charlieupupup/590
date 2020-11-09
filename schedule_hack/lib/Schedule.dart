@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/CalendarButton.dart';
 import 'package:schedule_hack/DateBanner.dart';
+import 'package:schedule_hack/Day.dart';
 import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
 

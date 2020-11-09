@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 
 // Class to display 'standard' popup
 // text description, cancel (CancelButton.dart), and accept (CheckmarkButton.dart)
-class StandardPopup {
+class ConfirmPopup {
   BuildContext context;
   String message;
   int index;
   Course course = new Course();
 
-  StandardPopup.course(BuildContext bc, String m, int i, Course c){
+  ConfirmPopup.course(BuildContext bc, String m, int i, Course c){
     this.course = c;
     this.context = bc;
     this.message = m;
@@ -21,7 +21,7 @@ class StandardPopup {
     _showMaterialDialog2(message);
   }
 
-  StandardPopup(BuildContext c, String m, int i) {
+  ConfirmPopup(BuildContext c, String m, int i) {
     this.context = c;
     this.message = m;
     this.index = i;
@@ -44,7 +44,6 @@ class StandardPopup {
               child: ButtonBar(
                 alignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  CancelButton(),
                   CheckmarkButton(index,course)
                 ],
               ),

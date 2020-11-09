@@ -82,7 +82,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
           } else {
             String message = 'Confirm and complete Survey?';
             //_showMaterialDialog2(message);
-            StandardPopup(context, message);
+            StandardPopup(context, message,2); // 2 takes user home
             //Navigator.push(context, MaterialPageRoute(builder: (context) => Home(0)));
           }
         });
