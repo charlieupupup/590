@@ -59,7 +59,7 @@ class NewAssignmentPopup {
                   alignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     CancelButton(),
-                    CheckmarkButton.course(0,myController)
+                    //CheckmarkButton.course(0,myController)
                   ],
                 ),
               ),

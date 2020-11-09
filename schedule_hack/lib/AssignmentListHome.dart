@@ -40,15 +40,6 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
       AssignmentList(this.course),
     ];
   }
-  /*final List<Widget> _children = [
-    Schedule(
-        title: 'ScheduleHack',
-        date: DateTime.now() //initialize with today's date
-    ),
-    PlaceholderWidget(
-        colorMelon), //just placeholders until Self-Care and Courses widgets are made
-    AssignmentList(this.course),
-  ];*/
 
   @override
   Widget build(BuildContext context) {
