@@ -25,9 +25,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
+    <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="Starter code for SelfCare Tab">
+      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/SelfCare.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -352,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604691269038</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="adding workspace files">
+      <created>1604945167252</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1604945167252</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,8 +377,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed dimensions on top banner" />
-    <MESSAGE value="Added EdgeInsets to move date banner down" />
     <MESSAGE value="Added intl/intl.dart dependency for date formatter" />
     <MESSAGE value="Added method to format date and placed that in banner" />
     <MESSAGE value="Fixed background color of Scaffolds" />
@@ -394,7 +400,9 @@
     <MESSAGE value="Update new entry to maintain old data" />
     <MESSAGE value="Course name on button error fixed" />
     <MESSAGE value="Added functionality to complete intake survey and proceed to home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functionality to complete intake survey and proceed to home page" />
+    <MESSAGE value="adding workspace files" />
+    <MESSAGE value="Starter code for SelfCare Tab" />
+    <option name="LAST_COMMIT_MESSAGE" value="Starter code for SelfCare Tab" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
