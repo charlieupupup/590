@@ -4,6 +4,8 @@ import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
+
 
 // Class to display 'standard' popup
 // text description, cancel (CancelButton.dart), and accept (CheckmarkButton.dart)
@@ -12,6 +14,7 @@ class ConfirmPopup {
   String message;
   int index;
   Course course = new Course();
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   ConfirmPopup.course(BuildContext bc, String m, int i, Course c){
     this.course = c;

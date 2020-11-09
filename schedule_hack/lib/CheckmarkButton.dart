@@ -112,15 +112,17 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
           // Home(0) for now (back to schedule view
             {
               // add data to json
-              jsonDataStorage.newEntry(this.course);
-              ConfirmPopup(context,'Great, your assignments are saved. We are working in the '
-                  'background to build your schedule. You can always edit a course later.',5);
+              //jsonDataStorage.newEntry(this.course);
+              ConfirmPopup.course(context,'Great, your assignments will be saved. We are working in the '
+                  'background to build your schedule. You can always edit a course later.',5,this.course);
               break;
             }
           case 5: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
           // Home(0) for now (back to schedule view
             {
               // add data to json
+              jsonDataStorage.newEntry(this.course);
+
               // take user back to CourseList.dart view
               Navigator.pushAndRemoveUntil(
                 context,
@@ -143,6 +145,11 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
                 ),
                     (route) => false,
               );
+              break;
+            }
+          case 7:
+            {
+
               break;
             }
           default:

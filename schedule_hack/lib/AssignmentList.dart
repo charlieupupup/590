@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schedule_hack/NewAssignmentPopup.dart';
+import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'CancelButton.dart';
 import 'CheckmarkButton.dart';
 import 'Course.dart';
-import 'CourseList.dart';
-import 'PlaceHolderWidget.dart';
-import 'Schedule.dart';
 
 import 'SettingsButton.dart';
 
@@ -70,15 +67,12 @@ class _AssignmentListState extends State<AssignmentList> {
           alignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             CancelButton.assignment(5),
-           // CheckmarkButton.course(4,myController)
             CheckmarkButton(4, this.course)
           ],
         ),
     ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          // New assignment popup
-          //NewAssignmentPopup(context, myController);
           _showMaterialDialog();
         },
         backgroundColor: colorHoneydew,
@@ -87,6 +81,7 @@ class _AssignmentListState extends State<AssignmentList> {
     );
   }
 
+  // Add new assignment popup
   _showMaterialDialog(){
     MainAxisAlignment alignment = MainAxisAlignment.end;
     showDialog(context: context,
@@ -134,6 +129,7 @@ class _AssignmentListState extends State<AssignmentList> {
                       alignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         CancelButton(),
+                        saveAssignment(),
                         //CheckmarkButton.course(0,myController)
                       ],
                     ),
@@ -145,9 +141,30 @@ class _AssignmentListState extends State<AssignmentList> {
         )
     );
   }
+  Widget saveAssignment(){
+    return MaterialButton(
+      onPressed: (){
+        Assignment a = new Assignment.long(myControllerDescription.text, myControllerDate.text, myControllerTime.text);
+        this.course.setAssignments = a;
+        printText();
+        Navigator.of(context).pop();
+      },
+      color: colorHoneydew,
+      child: Image.asset(
+        'images/checkmark.png',
+        height: 50,
+        width: 50,
+      ),
+      shape: CircleBorder(),
+    );
+  }
   void printText(){
     String data;
     data = myControllerDescription.text;
+    String date = myControllerDate.text;
+    String time = myControllerTime.text;
     print('Description: $data');
+    print('Date: $date');
+    print('Time: $time');
   }
 }
