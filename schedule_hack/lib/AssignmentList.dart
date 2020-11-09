@@ -6,6 +6,7 @@ import 'CancelButton.dart';
 import 'CheckmarkButton.dart';
 import 'Course.dart';
 
+import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
 
 // Class to display and interact with list of assignments
@@ -60,6 +61,9 @@ class _AssignmentListState extends State<AssignmentList> {
                 fontWeight: FontWeight.w400,
                 color: colorBlackCoral)),
         backgroundColor: colorHoneydew,
+      ),
+      body: Container(
+        child: returnAssignmentButton(),
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
@@ -167,4 +171,77 @@ class _AssignmentListState extends State<AssignmentList> {
     print('Date: $date');
     print('Time: $time');
   }
+
+  Widget returnAssignmentButton(){
+    List<Widget> widgetList = new List<Widget>();
+    List list = new List();
+    list = this.course.getAssignments;
+    for (int k = 0; k < list.length; k++) {
+      Assignment a = list[k];
+      print('$k: ');
+    }
+   int len = list.length;
+   print('List length $len');
+   if (list.length == 0){
+     return new Column();
+   } else {
+     for (int i = 0; i < list.length; i++){
+       String description = list[i].getDescription;
+       widgetList.add(assignmentButton(description));
+     }
+     return new Column(children: widgetList);
+   }
+    //return new Column(children: widgetList);
+  }
+  // Assignment button UI
+Widget assignmentButton(String des){
+  return new Center(
+    child: Column(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            color: colorMelon,
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          PlaceholderWidget(colorPowderBlue)));
+            },
+            child: Container(
+              margin: const EdgeInsets.all(24.0),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Text(
+                        des,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 24, color: colorBlackCoral),
+                      )),
+                  MaterialButton(
+                      onPressed: () {
+                      },
+                      color: colorAlmond,
+                      child: Image.asset(
+                        'images/edit.png',
+                        height: 50,
+                        width: 50,
+                      ),
+                      shape: CircleBorder())
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ),
+              width: 250,
+              height: 50,
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+}
 }
