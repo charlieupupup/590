@@ -67,6 +67,30 @@ class JsonDataStorage {
     String allJson = jsonEncode(courseList);
     writeCourse(allJson);
   }
+  // edit entry
+  Future editEntry(int index, Course course) async {
+    // get file and set to courseList
+    File jsonFile = await _localFile;
+    String contents = await jsonFile.readAsString();
+    final jsonResponse = jsonDecode(contents);
+    this.courseList = jsonResponse;
+    // Make course json
+    Map<String, dynamic> map = this.courseList[index];
+    Map<String, dynamic> courseMap = course.toJson();
+    Course c = Course.fromJson(map);
+    String name = c.getName;
+    print('Course Name:  $name');
+    this.courseList.add(courseMap);
+    int indexMap = this.courseList.indexOf(map);
+    if (indexMap != -1){
+      print('Index Edit Entry:  $indexMap');
+      this.courseList.remove(map);
+      //this.courseList.insert(indexMap, courseMap);
+    }
+
+    // rewrite courseList as json and save locally
+    writeCourse(jsonEncode(this.courseList));
+  }
   // delete entry
   Future deleteEntry(int index) async {
     // Get file and set to courseList
@@ -79,12 +103,12 @@ class JsonDataStorage {
     Course c = Course.fromJson(map);
     String name = c.getName;
     print('Course Name:  $name');
-    //Map<String, dynamic> map = c.toJson();
     // Check if course exists in list and delete it
     if (this.courseList.indexOf(map) != -1){
       print('Index:  $index');
       this.courseList.remove(map);
     }
+    // rewrite courseList as json and save locally
     writeCourse(jsonEncode(this.courseList));
   }
   // Find document directory

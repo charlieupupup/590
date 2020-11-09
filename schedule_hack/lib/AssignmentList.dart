@@ -12,12 +12,16 @@ import 'SettingsButton.dart';
 // Class to display and interact with list of assignments
 class AssignmentList extends StatefulWidget{
   Course course;
-  AssignmentList(Course c){
+  int edit;
+  int courseCount;
+  AssignmentList(Course c,int e,int cCount){
     this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
   }
   @override
   State<StatefulWidget> createState() {
-    return new _AssignmentListState(this.course);
+    return new _AssignmentListState(this.course,this.edit,this.courseCount);
   }
 }
 
@@ -25,10 +29,14 @@ class _AssignmentListState extends State<AssignmentList> {
   final myControllerDescription = TextEditingController();
   final myControllerTime = TextEditingController();
   final myControllerDate = TextEditingController();
+  int edit;
   Course course;
+  int courseCount;
   int _currentIndex = 2;
-  _AssignmentListState(Course c){
+  _AssignmentListState(Course c, int e,int cCount){
     this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
   }
 
   @override
@@ -71,7 +79,7 @@ class _AssignmentListState extends State<AssignmentList> {
           alignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             CancelButton.assignment(5),
-            CheckmarkButton(4, this.course)
+            CheckmarkButton.assignment(4, this.course,this.edit,this.courseCount)
           ],
         ),
     ),
@@ -177,7 +185,12 @@ class _AssignmentListState extends State<AssignmentList> {
     List list = new List();
     list = this.course.getAssignments;
     for (int k = 0; k < list.length; k++) {
-      Assignment a = list[k];
+      // if json
+      if (this.edit == 1){
+        Assignment a = Assignment.fromJson(list[k]);
+      } else {
+        Assignment a = list[k];
+      }
       print('$k: ');
     }
    int len = list.length;
@@ -186,7 +199,13 @@ class _AssignmentListState extends State<AssignmentList> {
      return new Column();
    } else {
      for (int i = 0; i < list.length; i++){
-       String description = list[i].getDescription;
+       Assignment a;
+       if (this.edit == 1){
+         a = Assignment.fromJson(list[i]);
+       } else {
+         a = list[i];
+       }
+       String description = a.getDescription;
        widgetList.add(assignmentButton(description));
      }
      return new Column(children: widgetList);

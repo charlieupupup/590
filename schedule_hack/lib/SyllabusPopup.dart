@@ -61,12 +61,13 @@ class SyllabusPopup {
             switch (index) {
               case 1:
                 {
+                  int courseCount = 0; // does not matter
                   // Take user right to adding assignments manually
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                         builder: (BuildContext context) => AssignmentListHome(
-                            2, this.course)
+                            2, this.course,0,courseCount)
                         ),
                     (route) => false,
                   );

@@ -13,14 +13,16 @@ class ConfirmPopup {
   BuildContext context;
   String message;
   int index;
+  int edit;
   Course course = new Course();
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
-  ConfirmPopup.course(BuildContext bc, String m, int i, Course c){
+  ConfirmPopup.course(BuildContext bc, String m, int i, Course c,int e){
     this.course = c;
     this.context = bc;
     this.message = m;
     this.index = i;
+    this.edit = e;
     _showMaterialDialog2(message);
   }
 
@@ -47,7 +49,7 @@ class ConfirmPopup {
               child: ButtonBar(
                 alignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  CheckmarkButton(index,course)
+                  CheckmarkButton.assignment(index,course,edit,0)//0 because doesn't matter
                 ],
               ),
             )

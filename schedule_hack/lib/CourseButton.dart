@@ -74,11 +74,15 @@ class _CourseButtonState extends State<CourseButton> {
               ),
               color: returnColor(courseCount),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            PlaceholderWidget(colorPowderBlue)));
+                // delete entry because going to add updated entry later
+                jsonDataStorage.deleteEntry(this.courseCount);
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => AssignmentListHome(2, this.course,1,this.courseCount),
+                  ),
+                      (route) => false,
+                );
               },
               child: Container(
                 margin: const EdgeInsets.all(24.0),

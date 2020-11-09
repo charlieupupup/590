@@ -65,10 +65,12 @@ class _MockPhotoAcceptState extends State<MockPhotoAccept> {
                 //CheckmarkButton(3,this.course)
                 MaterialButton(
                   onPressed: () {
+                    int courseCount = 0; // irrelevant because new entry
+                    int edit = 0; // new entry
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) => AssignmentListHome(2, this.course)//AssignmentList(),
+                          builder: (BuildContext context) => AssignmentListHome(2, this.course,edit,courseCount)//AssignmentList(),
                       ),
                           (route) => false,
                     );
