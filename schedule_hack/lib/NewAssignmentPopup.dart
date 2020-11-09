@@ -68,32 +68,6 @@ class NewAssignmentPopup {
         ),
       ),
     )
-   /* builder: (_) => new AlertDialog(
-      elevation: 16,
-      actions: <Widget> [
-        Container(
-          child: new Padding(
-              padding: EdgeInsets.only(
-
-              ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                CancelButton(),
-                CheckmarkButton(0)
-              ],
-            ),
-          ),
-          /*child: ButtonBar(
-            alignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              CancelButton(),
-              CheckmarkButton(0)
-            ],
-          ),*/
-        )
-      ],
-    )*/
     );
   }
 }

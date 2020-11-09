@@ -24,7 +24,9 @@ class AssignmentList extends StatefulWidget{
 }
 
 class _AssignmentListState extends State<AssignmentList> {
-  final myController = TextEditingController();
+  final myControllerDescription = TextEditingController();
+  final myControllerTime = TextEditingController();
+  final myControllerDate = TextEditingController();
   Course course;
   int _currentIndex = 2;
   _AssignmentListState(Course c){
@@ -34,7 +36,9 @@ class _AssignmentListState extends State<AssignmentList> {
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    myControllerDescription.dispose();
+    myControllerTime.dispose();
+    myControllerDate.dispose();
     super.dispose();
   }
   @override
@@ -73,13 +77,77 @@ class _AssignmentListState extends State<AssignmentList> {
     ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          //NewCoursePopup(context, myController);
           // New assignment popup
-          NewAssignmentPopup(context, myController);
+          //NewAssignmentPopup(context, myController);
+          _showMaterialDialog();
         },
         backgroundColor: colorHoneydew,
         child: Image.asset('images/add.png'),
       ),
     );
+  }
+
+  _showMaterialDialog(){
+    MainAxisAlignment alignment = MainAxisAlignment.end;
+    showDialog(context: context,
+        builder: (_) => new AlertDialog(
+          elevation: 16,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0)
+          ),
+          content: Container(
+            height: 280,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                      'ADD ASSIGNMENT',
+                      style: TextStyle(fontSize: 24, color: colorBlackCoral, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center
+                  ),
+                  TextFormField(
+                    controller: myControllerDescription,
+                    decoration: InputDecoration(
+                        hintText: 'Name'
+                    ),
+                  ),
+                  TextFormField(
+                    controller: myControllerDate,
+                    decoration: InputDecoration(
+                        hintText: 'Due Date'
+                    ),
+                  ),
+                  TextFormField(
+                    controller: myControllerTime,
+                    decoration: InputDecoration(
+                        hintText: 'Due Time'
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 12.0
+                    ),
+                    child: ButtonBar(
+                      alignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        CancelButton(),
+                        //CheckmarkButton.course(0,myController)
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        )
+    );
+  }
+  void printText(){
+    String data;
+    data = myControllerDescription.text;
+    print('Description: $data');
   }
 }

@@ -70,19 +70,12 @@ class _CourseListState extends State<CourseList> {
                     courseList.removeAt(index);
                   });
                 },
-                //background: Container(),
-                //child: getCourseButtonWidgets(),
                 child: tempCourseButton(index),
                 key: UniqueKey(),
                 direction: DismissDirection.endToStart,
               );
             }
         ),
-        /*child: ListView(
-          children: <Widget>[
-            getCourseButtonWidgets()
-          ],
-        ),*/
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
