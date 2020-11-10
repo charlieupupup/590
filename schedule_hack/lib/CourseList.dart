@@ -93,25 +93,29 @@ class _CourseListState extends State<CourseList> {
     c1.setName = name;
     return c1;
   }
-  updateUI(List<dynamic> newStorage){
+  /*updateUI(List<dynamic> newStorage){
     setState(() {
       this.courseList = newStorage;
     });
-  }
+  }*/
   // Display course button based on json input
   Widget getCourseButtonWidgets(){
     List<Widget> list = new List<Widget>();
     //print('CourseList Length:  $courseList.length');
     for (int i = 0; i < courseList.length; i++) {
       Course course = Course.fromJson(courseList[i]);
-        list.add(new CourseButton(course, i, updateUI));
+        list.add(new CourseButton(course, i));
     }
     return new Column(children: list);
   }
 
   Widget tempCourseButton(int index){
     Course course = Course.fromJson(courseList[index]);
-    return CourseButton(course, index, updateUI);
+    String courseName = course.getName;
+    print('Course Button Troubleshoot: $courseName');
+    int len = courseList.length;
+    print('Length: $len');
+    return CourseButton(course, index);
   }
 
 

@@ -40,8 +40,9 @@ class JsonDataStorage {
   Future parseLocalJson() async {
     File jsonFile = await _localFile;
     // Read the file.
-    String contents = await jsonFile.readAsString();
-    final jsonResponse = jsonDecode(contents);
+    //String contents = await jsonFile.readAsString();
+    //final jsonResponse = jsonDecode(contents);
+    final jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
     //newEntry();
   }

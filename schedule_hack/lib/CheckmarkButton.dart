@@ -169,7 +169,13 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
             }
           case 7:
             {
-
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => Home(0)
+                ),
+                    (route) => false,
+              );
               break;
             }
           default:

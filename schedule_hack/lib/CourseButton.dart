@@ -13,9 +13,9 @@ class CourseButton extends StatefulWidget {
   String courseName;
   int courseCount;
   Course course;
-  final ValueChanged<List<dynamic>> parentAction;
+  //final ValueChanged<List<dynamic>> parentAction;
 
-  CourseButton(Course c, int count, this.parentAction) {
+  CourseButton(Course c, int count) {
     this.course = c;
     this.courseName = c.getName;
     this.courseCount = count;

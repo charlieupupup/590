@@ -78,7 +78,7 @@ class _AssignmentListState extends State<AssignmentList> {
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            CancelButton.assignment(5),
+            CancelButton.assignment(7),
             CheckmarkButton.assignment(4, this.course,this.edit,this.courseCount)
           ],
         ),
