@@ -19,7 +19,7 @@ class CourseList extends StatefulWidget {
   }
 }
 class _CourseListState extends State<CourseList> {
-  final myController = TextEditingController();
+  TextEditingController myController = TextEditingController();
   List<dynamic> courseList = new List();
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 

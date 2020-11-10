@@ -26,9 +26,9 @@ class AssignmentList extends StatefulWidget{
 }
 
 class _AssignmentListState extends State<AssignmentList> {
-  final myControllerDescription = TextEditingController();
-  final myControllerTime = TextEditingController();
-  final myControllerDate = TextEditingController();
+  TextEditingController myControllerDescription = TextEditingController();
+  TextEditingController myControllerTime = TextEditingController();
+  TextEditingController myControllerDate = TextEditingController();
   int edit;
   Course course;
   int courseCount;
