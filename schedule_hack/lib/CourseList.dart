@@ -6,6 +6,8 @@ import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/NewCoursePopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
+import 'CancelButton.dart';
+
 class CourseList extends StatefulWidget {
   List<dynamic> courseList = new List();
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
@@ -13,9 +15,11 @@ class CourseList extends StatefulWidget {
   CourseList(){
     jsonDataStorage.writeJsonLocal();
   }
+
   @override
   State<StatefulWidget> createState() {
     return new _CourseListState(courseList, jsonDataStorage);
+    //return new _CourseListState(jsonDataStorage.getCourseList, jsonDataStorage);
   }
 }
 class _CourseListState extends State<CourseList> {
@@ -24,9 +28,10 @@ class _CourseListState extends State<CourseList> {
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   _CourseListState(List<dynamic> cl, JsonDataStorage storage){
-    this.courseList = cl;
+    //this.courseList = cl;
     this.jsonDataStorage = storage;
-    this.courseList = storage.getCourseList;
+    this.courseList = storage.getJustCourseList;
+    //this.courseList = cl;
   }
 
   @override
@@ -93,11 +98,6 @@ class _CourseListState extends State<CourseList> {
     c1.setName = name;
     return c1;
   }
-  /*updateUI(List<dynamic> newStorage){
-    setState(() {
-      this.courseList = newStorage;
-    });
-  }*/
   // Display course button based on json input
   Widget getCourseButtonWidgets(){
     List<Widget> list = new List<Widget>();
@@ -117,6 +117,5 @@ class _CourseListState extends State<CourseList> {
     print('Length: $len');
     return CourseButton(course, index);
   }
-
 
 }

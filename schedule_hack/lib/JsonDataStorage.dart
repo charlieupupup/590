@@ -39,12 +39,9 @@ class JsonDataStorage {
   // parse JSON from local and apply to courseList to display
   Future parseLocalJson() async {
     File jsonFile = await _localFile;
-    // Read the file.
-    //String contents = await jsonFile.readAsString();
-    //final jsonResponse = jsonDecode(contents);
+    // Read the file
     final jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
-    //newEntry();
   }
   // Write data to file
   Future<File> writeCourse(String assetCourses) async {

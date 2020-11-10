@@ -82,7 +82,7 @@ class _AssignmentListState extends State<AssignmentList> {
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            CancelButton.assignment(7),
+            CancelButton.assignment(5,this.course),
             CheckmarkButton.assignment(4, this.course,this.edit,this.courseCount)
           ],
         ),
@@ -177,8 +177,6 @@ class _AssignmentListState extends State<AssignmentList> {
           Assignment a = new Assignment.long(myControllerDescription.text, myControllerDate.text, myControllerTime.text);
           this.course.setAssignments = a;
         });
-        //Assignment a = new Assignment.long(myControllerDescription.text, myControllerDate.text, myControllerTime.text);
-        //this.course.setAssignments = a;
         printText();
         Navigator.of(context).pop();
       },

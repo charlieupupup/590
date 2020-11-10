@@ -169,6 +169,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
             }
           case 7:
             {
+              //jsonDataStorage.newEntry(this.course);
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(

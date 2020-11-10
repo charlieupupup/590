@@ -42,8 +42,6 @@ class NewCoursePopup {
                 alignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   CancelButton(),
-                  //CheckmarkButton.course(0,myController.text)
-                  //checkMark(0,myController.text)
                   checkMark(0,myController)
                 ],
               ),
@@ -53,12 +51,6 @@ class NewCoursePopup {
     );
   }
   Widget checkMark(int i, TextEditingController s){
-    print('test');
     return CheckmarkButton.course(i, s);
-  }
-
-  titleTextValue() {
-    print("title text field: ${myController.text}");
-    return myController.text;
   }
 }
