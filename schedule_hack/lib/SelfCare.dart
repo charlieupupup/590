@@ -71,15 +71,33 @@ class SelfCareState extends State<SelfCare> {
                         borderRadius: BorderRadius.circular(18.0),
                       ),
                       child: RaisedButton(
-                        color: colorAeroBlue,
-                        onPressed: () {
-                          String message =
-                              'Showing recommendations for things to do to center yourself';
-                          //_showMaterialDialog2(message);
-                          StandardPopup(context, message, 2);
-                        },
-                        child: Text('Check-In'),
-                      ),
+                          color: colorAeroBlue,
+                          onPressed: () {
+                            String message =
+                                'Showing recommendations for things to do to center yourself';
+                            //_showMaterialDialog2(message);
+                            StandardPopup(context, message, 2);
+                          },
+                          child: Container(
+                            margin:
+                                EdgeInsets.only(left: 10, top: 50, right: 10),
+                            child: ListView(children: [
+                              new Text("Check-In",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 20.0, color: colorBlackCoral)),
+                              ImageIcon(
+                                AssetImage("images/relax.png"),
+                                color: colorBlackCoral,
+                                size: 75.0,
+                              ),
+                              new Text(
+                                  "Click for methods to recenter yourself and tune into your mental health",
+                                  //textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 14.0, color: colorBlackCoral)),
+                            ]),
+                          )),
                     ),
                   ),
                   Container(
@@ -93,15 +111,33 @@ class SelfCareState extends State<SelfCare> {
                         borderRadius: BorderRadius.circular(18.0),
                       ),
                       child: RaisedButton(
-                        color: colorPowderBlue,
-                        onPressed: () {
-                          String message =
-                              'Showing recommendations for things to do to escape';
-                          //_showMaterialDialog2(message);
-                          StandardPopup(context, message, 2);
-                        },
-                        child: Text('Check-Out'),
-                      ),
+                          color: colorPowderBlue,
+                          onPressed: () {
+                            String message =
+                                'Showing recommendations for things to do to escape';
+                            //_showMaterialDialog2(message);
+                            StandardPopup(context, message, 2);
+                          },
+                          child: Container(
+                            margin:
+                                EdgeInsets.only(left: 10, top: 50, right: 10),
+                            child: ListView(children: [
+                              new Text("Check-Out",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 20.0, color: colorBlackCoral)),
+                              ImageIcon(
+                                AssetImage("images/checkout.png"),
+                                color: colorBlackCoral,
+                                size: 75.0,
+                              ),
+                              new Text(
+                                  "Click for methods to decompress and relax",
+                                  //textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 14.0, color: colorBlackCoral)),
+                            ]),
+                          )),
                     ),
                   )
                 ],
