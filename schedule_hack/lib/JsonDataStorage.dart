@@ -40,7 +40,7 @@ class JsonDataStorage {
   Future parseLocalJson() async {
     File jsonFile = await _localFile;
     // Read the file
-    final jsonResponse = jsonDecode(await jsonFile.readAsString());
+    List<dynamic> jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
   }
   // Write data to file
@@ -55,22 +55,26 @@ class JsonDataStorage {
     File jsonFile = await _localFile;
     // Read the file.
     //String contents = await jsonFile.readAsString();
-    final jsonResponse = jsonDecode(await jsonFile.readAsString());
-    this.courseList = jsonResponse;
-    Map<String, dynamic> map = c.toJson();
-    this.courseList.add(map);
-    //print(courseList[0]);
-    //print(courseList[1]);
-    //print(courseList[2]);
-    String allJson = jsonEncode(courseList);
-    writeCourse(allJson);
+    try{
+      String stringResponse = await jsonFile.readAsString();
+      List<dynamic> jsonResponse = jsonDecode(stringResponse); // why decode?
+      //final jsonResponse = jsonDecode(stringResponse);
+      this.courseList = jsonResponse;
+      Map<String, dynamic> map = c.toJson();
+      this.courseList.add(map);
+      String allJson = jsonEncode(courseList);
+      writeCourse(allJson);
+    } on FormatException catch(e){
+      print('error caught: $e');
+      //newEntry(c);
+    }
   }
   // edit entry
   Future editEntry(int index, Course course) async {
     // get file and set to courseList
     File jsonFile = await _localFile;
     //String contents = await jsonFile.readAsString();
-    final jsonResponse = jsonDecode(await jsonFile.readAsString());
+    List<dynamic> jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
     // Make course json
     Map<String, dynamic> map = this.courseList[index];
@@ -94,7 +98,7 @@ class JsonDataStorage {
     // Get file and set to courseList
     File jsonFile = await _localFile;
     //String contents = await jsonFile.readAsString();
-    final jsonResponse = jsonDecode(await jsonFile.readAsString());
+    List<dynamic> jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
     // Make course json
     Map<String, dynamic> map = this.courseList[index];

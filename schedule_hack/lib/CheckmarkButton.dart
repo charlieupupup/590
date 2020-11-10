@@ -1,4 +1,3 @@
-import 'package:schedule_hack/AssignmentList.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/StandardPopup.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/MockPhoto.dart';
 
+import 'Assignment.dart';
 import 'AssignmentListHome.dart';
 import 'ConfirmPopup.dart';
 

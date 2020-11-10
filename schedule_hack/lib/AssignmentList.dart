@@ -82,7 +82,7 @@ class _AssignmentListState extends State<AssignmentList> {
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            CancelButton.assignment(5,this.course),
+            cancelA(),
             CheckmarkButton.assignment(4, this.course,this.edit,this.courseCount)
           ],
         ),
@@ -95,6 +95,14 @@ class _AssignmentListState extends State<AssignmentList> {
         child: Image.asset('images/add.png'),
       ),
     );
+  }
+  Widget cancelA(){
+    if (this.edit == 1){
+      return Column();
+    } else {
+      //return CancelButton.assignment(5,this.course);
+      return CancelButton.assignment(2,this.course);
+    }
   }
 
   // popup if no assignments listed yet
