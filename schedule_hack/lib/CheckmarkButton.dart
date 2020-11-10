@@ -178,6 +178,12 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               );
               break;
             }
+          case 8:
+            {
+              // do nothing, just indicate saw message
+              Navigator.of(context).pop();
+              break;
+            }
           default:
             {
               Navigator.push(

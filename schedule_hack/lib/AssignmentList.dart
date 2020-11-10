@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Assignment.dart';
+import 'package:schedule_hack/ConfirmPopup.dart';
+import 'package:schedule_hack/StandardPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'CancelButton.dart';
 import 'CheckmarkButton.dart';
@@ -33,6 +35,7 @@ class _AssignmentListState extends State<AssignmentList> {
   Course course;
   int courseCount;
   int _currentIndex = 2;
+
   _AssignmentListState(Course c, int e,int cCount){
     this.course = c;
     this.edit = e;
@@ -49,6 +52,7 @@ class _AssignmentListState extends State<AssignmentList> {
   }
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration.zero, () => _emptyDialog(context));
     return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -93,6 +97,19 @@ class _AssignmentListState extends State<AssignmentList> {
     );
   }
 
+  // popup if no assignments listed yet
+  _emptyDialog(BuildContext context){
+    List list = new List();
+    list = this.course.getAssignments;
+    if (list.length == 0){
+      // no assignments yet
+      String message = "Hit the add '+' icon in the top right to add assignments to your "
+          "course & calendar";
+      ConfirmPopup(context,message,8);
+    } else {
+      // do nothing
+    }
+  }
   // Add new assignment popup
   _showMaterialDialog(){
     MainAxisAlignment alignment = MainAxisAlignment.end;
@@ -184,18 +201,9 @@ class _AssignmentListState extends State<AssignmentList> {
     List<Widget> widgetList = new List<Widget>();
     List list = new List();
     list = this.course.getAssignments;
-    for (int k = 0; k < list.length; k++) {
-      // if json
-      if (this.edit == 1){
-        Assignment a = Assignment.fromJson(list[k]);
-      } else {
-        Assignment a = list[k];
-      }
-      print('$k: ');
-    }
-   int len = list.length;
-   print('List length $len');
    if (list.length == 0){
+     //_emptyDialog();
+     //return new Column(children: [_emptyDialog()],);
      return new Column();
    } else {
      for (int i = 0; i < list.length; i++){
