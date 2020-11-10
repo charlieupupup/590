@@ -57,8 +57,8 @@ class JsonDataStorage {
   Future newEntry(Course c) async{
     File jsonFile = await _localFile;
     // Read the file.
-    String contents = await jsonFile.readAsString();
-    final jsonResponse = jsonDecode(contents);
+    //String contents = await jsonFile.readAsString();
+    final jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
     Map<String, dynamic> map = c.toJson();
     this.courseList.add(map);
@@ -72,8 +72,8 @@ class JsonDataStorage {
   Future editEntry(int index, Course course) async {
     // get file and set to courseList
     File jsonFile = await _localFile;
-    String contents = await jsonFile.readAsString();
-    final jsonResponse = jsonDecode(contents);
+    //String contents = await jsonFile.readAsString();
+    final jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
     // Make course json
     Map<String, dynamic> map = this.courseList[index];
@@ -96,8 +96,8 @@ class JsonDataStorage {
   Future deleteEntry(int index) async {
     // Get file and set to courseList
     File jsonFile = await _localFile;
-    String contents = await jsonFile.readAsString();
-    final jsonResponse = jsonDecode(contents);
+    //String contents = await jsonFile.readAsString();
+    final jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
     // Make course json
     Map<String, dynamic> map = this.courseList[index];
