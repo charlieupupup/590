@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'SettingsButton.dart';
+import 'StandardPopup.dart';
 
 class SelfCare extends StatefulWidget {
   @override
@@ -71,7 +72,12 @@ class SelfCareState extends State<SelfCare> {
                       ),
                       child: RaisedButton(
                         color: colorAeroBlue,
-                        onPressed: () {},
+                        onPressed: () {
+                          String message =
+                              'Showing recommendations for things to do to center yourself';
+                          //_showMaterialDialog2(message);
+                          StandardPopup(context, message, 2);
+                        },
                         child: Text('Check-In'),
                       ),
                     ),
@@ -88,7 +94,12 @@ class SelfCareState extends State<SelfCare> {
                       ),
                       child: RaisedButton(
                         color: colorPowderBlue,
-                        onPressed: () {},
+                        onPressed: () {
+                          String message =
+                              'Showing recommendations for things to do to escape';
+                          //_showMaterialDialog2(message);
+                          StandardPopup(context, message, 2);
+                        },
                         child: Text('Check-Out'),
                       ),
                     ),
