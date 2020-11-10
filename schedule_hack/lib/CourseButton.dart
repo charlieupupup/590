@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
@@ -76,10 +77,19 @@ class _CourseButtonState extends State<CourseButton> {
               onPressed: () {
                 // delete entry because going to add updated entry later
                 jsonDataStorage.deleteEntry(this.courseCount);
+                List list = new List();
+                list = this.course.getAssignments;
+                List newList = new List();
+                Assignment a = new Assignment();
+                for (int i = 0; i < list.length; i++){
+                  a = Assignment.fromJson(list[i]);
+                  newList.add(a);
+                }
+                Course newCourse = Course.long(this.course.getName, this.course.getTime, this.course.getDate, this.course.getCourseDays, newList);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => AssignmentListHome(2, this.course,1,this.courseCount),
+                      builder: (BuildContext context) => AssignmentListHome(2, newCourse,1,this.courseCount),
                   ),
                       (route) => false,
                 );

@@ -173,8 +173,12 @@ class _AssignmentListState extends State<AssignmentList> {
   Widget saveAssignment(){
     return MaterialButton(
       onPressed: (){
-        Assignment a = new Assignment.long(myControllerDescription.text, myControllerDate.text, myControllerTime.text);
-        this.course.setAssignments = a;
+        setState(() {
+          Assignment a = new Assignment.long(myControllerDescription.text, myControllerDate.text, myControllerTime.text);
+          this.course.setAssignments = a;
+        });
+        //Assignment a = new Assignment.long(myControllerDescription.text, myControllerDate.text, myControllerTime.text);
+        //this.course.setAssignments = a;
         printText();
         Navigator.of(context).pop();
       },
@@ -202,20 +206,18 @@ class _AssignmentListState extends State<AssignmentList> {
     List list = new List();
     list = this.course.getAssignments;
    if (list.length == 0){
-     //_emptyDialog();
-     //return new Column(children: [_emptyDialog()],);
      return new Column();
    } else {
-     for (int i = 0; i < list.length; i++){
-       Assignment a;
-       if (this.edit == 1){
-         a = Assignment.fromJson(list[i]);
-       } else {
-         a = list[i];
+       for (int i = 0; i < list.length; i++){
+         Assignment a;
+      //   if (this.edit == 1){
+      //     a = Assignment.fromJson(list[i]);
+        // } else {
+           a = list[i];
+        // }
+         String description = a.getDescription;
+         widgetList.add(assignmentButton(description));
        }
-       String description = a.getDescription;
-       widgetList.add(assignmentButton(description));
-     }
      return new Column(children: widgetList);
    }
     //return new Column(children: widgetList);
