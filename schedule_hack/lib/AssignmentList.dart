@@ -84,7 +84,7 @@ class _AssignmentListState extends State<AssignmentList> {
           children: <Widget>[
             cancelA(),
             //CheckmarkButton.assignment(4, this.course,this.edit,this.courseCount)
-            saveAssignments()
+            saveChanges()
           ],
         ),
     ),
@@ -98,7 +98,7 @@ class _AssignmentListState extends State<AssignmentList> {
     );
   }
 
-  Widget saveAssignments(){
+  Widget saveChanges(){
     return MaterialButton(
       onPressed: () {
         ConfirmPopup.course(context,'Great, your assignments will be saved. We are working in the '
