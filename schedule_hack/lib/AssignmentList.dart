@@ -159,13 +159,23 @@ class _AssignmentListState extends State<AssignmentList> {
   _emptyDialog(BuildContext context){
     List list = new List();
     list = this.course.getAssignments;
-    if (list.length == 0){
-      // no assignments yet
-      String message = "Hit the add '+' icon in the top right to add assignments to your "
-          "course & calendar";
-      ConfirmPopup(context,message,8);
+    if (this.viewingAssignments == 1){
+      if (list.length == 0){
+        // no assignments yet
+        String message = "Hit the add 'edit' icon in the bottom right to edit your assignment list";
+        ConfirmPopup(context,message,8);
+      } else {
+        // do nothing
+      }
     } else {
-      // do nothing
+      if (list.length == 0){
+        // no assignments yet
+        String message = "Hit the add '+' icon in the bottom right to add assignments to your "
+            "course & calendar";
+        ConfirmPopup(context,message,8);
+      } else {
+        // do nothing
+      }
     }
   }
   // Add new assignment popup
