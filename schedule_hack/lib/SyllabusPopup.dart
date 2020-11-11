@@ -67,7 +67,7 @@ class SyllabusPopup {
                     context,
                     MaterialPageRoute(
                         builder: (BuildContext context) => AssignmentListHome(
-                            2, this.course,0,courseCount)
+                            2, this.course,0,courseCount,0)
                         ),
                     (route) => false,
                   );

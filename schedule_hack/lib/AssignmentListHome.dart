@@ -13,16 +13,19 @@ class AssignmentListHome extends StatefulWidget {
   Course course;
   int edit;
   int courseCount;
-  AssignmentListHome(int i,Course c,int e, int cCount){
+  int viewingAssignment;
+
+  AssignmentListHome(int i,Course c,int e, int cCount, int vA){
     this.index = i;
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
+    this.viewingAssignment = vA;
   }
 
   @override
   State<StatefulWidget> createState() {
-    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount);
+    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount, this.viewingAssignment);
   }
 }
 
@@ -32,12 +35,14 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
   int edit;
   int courseCount;
   List<Widget> _children = new List<Widget>();
+  int viewingAssignment;
 
-  _AssignmentListHomeState(int i,Course c, int e, int cCount){
+  _AssignmentListHomeState(int i,Course c, int e, int cCount,int vA){
     this._currentIndex = i;
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
+    this.viewingAssignment = vA;
     this._children = [
       Schedule(
           title: 'ScheduleHack',
@@ -45,13 +50,8 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
       ),
       PlaceholderWidget(
           colorMelon),
-      AssignmentList(this.course,this.edit,this.courseCount)//just placeholders until Self-Care and Courses widgets are made
+      AssignmentList(this.course,this.edit,this.courseCount,this.viewingAssignment)//just placeholders until Self-Care and Courses widgets are made
     ];
-    if (this.edit == 0){
-      _children.add(AssignmentList(this.course,this.edit,this.courseCount));
-    } else if (this.edit == 1) {
-      _children.add(AssignmentList.viewing(this.course,this.edit,this.courseCount,1));
-    }
   }
 
   @override

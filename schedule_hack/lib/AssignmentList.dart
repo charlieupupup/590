@@ -2,10 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
-import 'package:schedule_hack/StandardPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'CancelButton.dart';
-import 'CheckmarkButton.dart';
 import 'Course.dart';
 
 import 'PlaceHolderWidget.dart';
@@ -16,18 +14,20 @@ class AssignmentList extends StatefulWidget{
   Course course;
   int edit;
   int courseCount;
-  int viewingAssignments = 0; // default is that we're editing (0)
+  int viewingAssignments; // default is that we're editing (0)
 
-  AssignmentList(Course c,int e,int cCount){
+  AssignmentList(Course c,int e,int cCount, int vA){
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
+    this.viewingAssignments = vA;
   }
   AssignmentList.viewing(Course c,int e,int cCount,int vA){
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
     this.viewingAssignments = vA;
+    print('Viewing Assignments: $viewingAssignments');
   }
   @override
   State<StatefulWidget> createState() {
@@ -50,6 +50,7 @@ class _AssignmentListState extends State<AssignmentList> {
     this.edit = e;
     this.courseCount = cCount;
     this.viewingAssignments = vA;
+    print('_viewingAssignments = $viewingAssignments');
   }
 
   @override
@@ -98,14 +99,33 @@ class _AssignmentListState extends State<AssignmentList> {
           ],
         ),
     ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: _fabDisplay(),
+    );
+  }
+  // pick between displaying edit or plus icon
+  Widget _fabDisplay(){
+    // viewingAssignments == 1 then coming from previously created course
+    if (this.viewingAssignments == 1) {
+      print('I am in viewingAssignments = 1');
+      return FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            this.viewingAssignments = 0;
+          });
+        },
+        backgroundColor: colorAlmond,
+        child: Image.asset('images/edit.png'),
+      );
+    } else {
+      print('I am in viewingAssignments = 0');
+      return FloatingActionButton(
         onPressed: (){
           _showMaterialDialog();
         },
         backgroundColor: colorHoneydew,
         child: Image.asset('images/add.png'),
-      ),
-    );
+      );
+    }
   }
 
   Widget saveChanges(){

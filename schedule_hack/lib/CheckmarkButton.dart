@@ -111,13 +111,14 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
             {
               // take user back to CourseList.dart view
               //jsonDataStorage.newEntry(this.course);
-              Navigator.pushAndRemoveUntil(
+             /* Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) => AssignmentListHome(2, this.course,edit,0)//AssignmentList(),
                 ),
                     (route) => false,
-              );
+              );*/
+             print('Case 3 in Checkmark button is in fact being used, fix me!!!');
               break;
             }
           case 4: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
