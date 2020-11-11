@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/CourseList.dart';
-import 'package:schedule_hack/JsonDataStorage.dart';
+
+import 'package:schedule_hack/SelfCare.dart';
 import 'package:schedule_hack/utilities.dart';
 
-import 'PlaceHolderWidget.dart';
 import 'Schedule.dart';
 
 class Home extends StatefulWidget {
   int index;
-  Home(int i){
+  Home(int i) {
     this.index = i;
   }
 
@@ -20,7 +20,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  _HomeState(int i){
+  _HomeState(int i) {
     this._currentIndex = i;
   }
   final List<Widget> _children = [
@@ -28,8 +28,7 @@ class _HomeState extends State<Home> {
         title: 'ScheduleHack',
         date: DateTime.now() //initialize with today's date
         ),
-    PlaceholderWidget(
-        colorMelon), //just placeholders until Self-Care and Courses widgets are made
+    SelfCare(),
     CourseList(),
   ];
 
