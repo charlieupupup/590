@@ -51,19 +51,20 @@ class _NotificationState extends State<Notify> {
     var generalNotificationDetails =
         new NotificationDetails(android: androidDetails, iOS: iSODetails);
 
-    // await fltrNotification.show(
-    //     0, "Task", "You created a Task", generalNotificationDetails, payload: "Task");
-    var scheduledTime;
-    if (_selectedParam == "Hour") {
-      scheduledTime = DateTime.now().add(Duration(hours: val));
-    } else if (_selectedParam == "Minute") {
-      scheduledTime = DateTime.now().add(Duration(minutes: val));
-    } else {
-      scheduledTime = DateTime.now().add(Duration(seconds: val));
-    }
-
-    fltrNotification.schedule(
-        1, "Times Uppp", task, scheduledTime, generalNotificationDetails);
+    await fltrNotification.show(0, "ScheduleHack",
+        "Midterm completed! How do you feel?", generalNotificationDetails,
+        payload: "ScheduleHack");
+    //   var scheduledTime;
+    //   if (_selectedParam == "Hour") {
+    //     scheduledTime = DateTime.now().add(Duration(hours: val));
+    //   } else if (_selectedParam == "Minute") {
+    //     scheduledTime = DateTime.now().add(Duration(minutes: val));
+    //   } else {
+    //     scheduledTime = DateTime.now().add(Duration(seconds: val));
+    //   }
+    //
+    //   fltrNotification.schedule(
+    //       1, "Times Uppp", task, scheduledTime, generalNotificationDetails);
   }
 
   @override
