@@ -26,8 +26,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/schedule_hack/images/checkout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schedule_hack/images/relax.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/SelfCare.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/SelfCare.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,11 +54,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jW8ORa1Za8sGimyu3pD49kCZtT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -345,7 +351,42 @@
       <option name="project" value="LOCAL" />
       <updated>1604458725381</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added functionality to complete intake survey and proceed to home page">
+      <created>1604691269038</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1604691269038</updated>
+    </task>
+    <task id="LOCAL-00036" summary="adding workspace files">
+      <created>1604945167252</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1604945167252</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Starter code for SelfCare Tab">
+      <created>1604952111397</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1604952111397</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Added new survey questions">
+      <created>1605029539813</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1605029539813</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Basic setup of self care tab with check in/out buttons">
+      <created>1605029761594</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1605029761594</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -362,11 +403,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Adjusted tab and nav bar colors" />
-    <MESSAGE value="Changed dimensions on top banner" />
-    <MESSAGE value="Added EdgeInsets to move date banner down" />
-    <MESSAGE value="Added intl/intl.dart dependency for date formatter" />
-    <MESSAGE value="Added method to format date and placed that in banner" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Fixed background color of Scaffolds" />
     <MESSAGE value="Removed all icons and replaced with recolored icons" />
     <MESSAGE value="Update with master" />
@@ -387,7 +424,12 @@
     <MESSAGE value="Add json file reading error handling" />
     <MESSAGE value="Update new entry to maintain old data" />
     <MESSAGE value="Course name on button error fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Course name on button error fixed" />
+    <MESSAGE value="Added functionality to complete intake survey and proceed to home page" />
+    <MESSAGE value="adding workspace files" />
+    <MESSAGE value="Starter code for SelfCare Tab" />
+    <MESSAGE value="Added new survey questions" />
+    <MESSAGE value="Basic setup of self care tab with check in/out buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic setup of self care tab with check in/out buttons" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Day.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schedule_hack/utilities.dart';
-import 'package:schedule_hack/Notify.dart';
-import 'CourseList.dart';
 
 void main() {
   runApp(MyApp());
+  Day.dayTest(); //for testing
 }
 
 class MyApp extends StatelessWidget {
