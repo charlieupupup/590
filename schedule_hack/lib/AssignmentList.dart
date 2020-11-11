@@ -83,7 +83,8 @@ class _AssignmentListState extends State<AssignmentList> {
           alignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             cancelA(),
-            CheckmarkButton.assignment(4, this.course,this.edit,this.courseCount)
+            //CheckmarkButton.assignment(4, this.course,this.edit,this.courseCount)
+            saveAssignments()
           ],
         ),
     ),
@@ -93,6 +94,25 @@ class _AssignmentListState extends State<AssignmentList> {
         },
         backgroundColor: colorHoneydew,
         child: Image.asset('images/add.png'),
+      ),
+    );
+  }
+
+  Widget saveAssignments(){
+    return MaterialButton(
+      onPressed: () {
+        ConfirmPopup.course(context,'Great, your assignments will be saved. We are working in the '
+            'background to build your schedule. You can always edit a course later.',5,this.course,this.edit);
+      },
+      color: colorHoneydew,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      child: new Text('Save Changes',
+          style: TextStyle(
+              fontSize: 20.0,
+              color: colorBlackCoral,
+              fontWeight: FontWeight.bold)
       ),
     );
   }
