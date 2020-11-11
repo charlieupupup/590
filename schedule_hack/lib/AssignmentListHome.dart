@@ -7,6 +7,7 @@ import 'package:schedule_hack/utilities.dart';
 
 import 'PlaceHolderWidget.dart';
 import 'Schedule.dart';
+import 'SelfCare.dart';
 
 class AssignmentListHome extends StatefulWidget {
   int index;
@@ -48,8 +49,7 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
           title: 'ScheduleHack',
           date: DateTime.now() //initialize with today's date
       ),
-      PlaceholderWidget(
-          colorMelon),
+      SelfCare(),
       AssignmentList(this.course,this.edit,this.courseCount,this.viewingAssignment)//just placeholders until Self-Care and Courses widgets are made
     ];
   }
