@@ -44,9 +44,14 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
           date: DateTime.now() //initialize with today's date
       ),
       PlaceholderWidget(
-          colorMelon), //just placeholders until Self-Care and Courses widgets are made
-      AssignmentList(this.course,this.edit,this.courseCount),
+          colorMelon),
+      AssignmentList(this.course,this.edit,this.courseCount)//just placeholders until Self-Care and Courses widgets are made
     ];
+    if (this.edit == 0){
+      _children.add(AssignmentList(this.course,this.edit,this.courseCount));
+    } else if (this.edit == 1) {
+      _children.add(AssignmentList.viewing(this.course,this.edit,this.courseCount,1));
+    }
   }
 
   @override

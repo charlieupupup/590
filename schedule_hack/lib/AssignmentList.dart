@@ -16,14 +16,22 @@ class AssignmentList extends StatefulWidget{
   Course course;
   int edit;
   int courseCount;
+  int viewingAssignments = 0; // default is that we're editing (0)
+
   AssignmentList(Course c,int e,int cCount){
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
   }
+  AssignmentList.viewing(Course c,int e,int cCount,int vA){
+    this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
+    this.viewingAssignments = vA;
+  }
   @override
   State<StatefulWidget> createState() {
-    return new _AssignmentListState(this.course,this.edit,this.courseCount);
+    return new _AssignmentListState(this.course,this.edit,this.courseCount,this.viewingAssignments);
   }
 }
 
@@ -35,11 +43,13 @@ class _AssignmentListState extends State<AssignmentList> {
   Course course;
   int courseCount;
   int _currentIndex = 2;
+  int viewingAssignments; // default is that we're editing (0)
 
-  _AssignmentListState(Course c, int e,int cCount){
+  _AssignmentListState(Course c, int e,int cCount, int vA){
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
+    this.viewingAssignments = vA;
   }
 
   @override
