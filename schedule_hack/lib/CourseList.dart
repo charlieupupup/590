@@ -14,6 +14,7 @@ class CourseList extends StatefulWidget {
 
   CourseList(){
     jsonDataStorage.writeJsonLocal();
+    print('CONSTRUCTOR CALLLLLLLLINIIINNNNGNGNGNG');
   }
 
   CourseList.course(JsonDataStorage js){
@@ -36,7 +37,6 @@ class _CourseListState extends State<CourseList> {
     //this.courseList = cl;
     this.jsonDataStorage = storage;
     this.courseList = storage.getJustCourseList;
-    //this.courseList = cl;
   }
 
   @override
