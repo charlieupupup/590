@@ -18,7 +18,7 @@ class Activity extends Event {
             icon: Icon(
               Icons.access_time,
               color: colorBlackCoral,
-              size: 30.0, //i have no idea if this size is too big / small
+              size: 30.0,
             ),
             dot: Container(
               margin: EdgeInsets.symmetric(horizontal: 1.0),
