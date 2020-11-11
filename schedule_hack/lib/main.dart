@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/Day.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:schedule_hack/PopUp.dart';
 import 'package:schedule_hack/utilities.dart';
 
 void main() {
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(0),
+      // home: Home(0),
+      home: PopUp(),
     );
   }
 }
