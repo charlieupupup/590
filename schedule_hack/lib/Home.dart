@@ -2,25 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/CourseList.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/utilities.dart';
-
+import 'Notify.dart';
 import 'PlaceHolderWidget.dart';
 import 'Schedule.dart';
 
 class Home extends StatefulWidget {
   int index;
-  Home(int i){
+  Home(int i) {
     this.index = i;
   }
 
   @override
   State<StatefulWidget> createState() {
+    Notify n = new Notify();
+    n.notify();
     return _HomeState(this.index);
   }
 }
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  _HomeState(int i){
+  _HomeState(int i) {
     this._currentIndex = i;
   }
   final List<Widget> _children = [
