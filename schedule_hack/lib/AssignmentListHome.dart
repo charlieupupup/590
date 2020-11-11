@@ -11,25 +11,33 @@ import 'Schedule.dart';
 class AssignmentListHome extends StatefulWidget {
   int index;
   Course course;
-  AssignmentListHome(int i,Course c){
+  int edit;
+  int courseCount;
+  AssignmentListHome(int i,Course c,int e, int cCount){
     this.index = i;
     this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
   }
 
   @override
   State<StatefulWidget> createState() {
-    return _AssignmentListHomeState(this.index,this.course);
+    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount);
   }
 }
 
 class _AssignmentListHomeState extends State<AssignmentListHome> {
   int _currentIndex = 2;
   Course course;
+  int edit;
+  int courseCount;
   List<Widget> _children = new List<Widget>();
 
-  _AssignmentListHomeState(int i,Course c){
+  _AssignmentListHomeState(int i,Course c, int e, int cCount){
     this._currentIndex = i;
     this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
     this._children = [
       Schedule(
           title: 'ScheduleHack',
@@ -37,18 +45,9 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
       ),
       PlaceholderWidget(
           colorMelon), //just placeholders until Self-Care and Courses widgets are made
-      AssignmentList(this.course),
+      AssignmentList(this.course,this.edit,this.courseCount),
     ];
   }
-  /*final List<Widget> _children = [
-    Schedule(
-        title: 'ScheduleHack',
-        date: DateTime.now() //initialize with today's date
-    ),
-    PlaceholderWidget(
-        colorMelon), //just placeholders until Self-Care and Courses widgets are made
-    AssignmentList(this.course),
-  ];*/
 
   @override
   Widget build(BuildContext context) {

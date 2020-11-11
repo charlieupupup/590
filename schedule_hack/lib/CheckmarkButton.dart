@@ -1,4 +1,3 @@
-import 'package:schedule_hack/AssignmentList.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/StandardPopup.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/MockPhoto.dart';
 
+import 'Assignment.dart';
 import 'AssignmentListHome.dart';
 import 'ConfirmPopup.dart';
 
@@ -18,6 +18,8 @@ import 'ConfirmPopup.dart';
 class CheckmarkButton extends StatefulWidget {
   int index;
   String data;
+  int edit;
+  int courseCount;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   TextEditingController myController;
   Course course = new Course();
@@ -30,23 +32,33 @@ class CheckmarkButton extends StatefulWidget {
     this.index = i;
     this.myController = d;
   }
+  CheckmarkButton.assignment(int i, Course c, int e, int cCount){
+    this.index = i;
+    this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
+  }
   @override
   State<StatefulWidget> createState() {
-    return _CheckmarkButtonState(index, myController,course);
+    return _CheckmarkButtonState(index, myController,course,edit,courseCount);
   }
 }
 
 class _CheckmarkButtonState extends State<CheckmarkButton> {
   int index;
   String data;
+  int edit;
+  int courseCount;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   TextEditingController myController;
   Course course = new Course();
 
-  _CheckmarkButtonState(int i, TextEditingController controller, Course c) {
+  _CheckmarkButtonState(int i, TextEditingController controller, Course c,int e,int cCount) {
     this.index = i;
     this.myController = controller;
     this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
   }
   // Create Course
   Course createCourse(String name) {
@@ -58,7 +70,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {
+      onPressed: () async {
         switch (index) {
           case 0:  // Take users to SyllabusPopup.dart
             {
@@ -102,7 +114,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => AssignmentListHome(2, this.course)//AssignmentList(),
+                  builder: (BuildContext context) => AssignmentListHome(2, this.course,edit,0)//AssignmentList(),
                 ),
                     (route) => false,
               );
@@ -112,15 +124,25 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
           // Home(0) for now (back to schedule view
             {
               // add data to json
-              jsonDataStorage.newEntry(this.course);
-              ConfirmPopup(context,'Great, your assignments are saved. We are working in the '
-                  'background to build your schedule. You can always edit a course later.',5);
+              //jsonDataStorage.newEntry(this.course);
+              ConfirmPopup.course(context,'Great, your assignments will be saved. We are working in the '
+                  'background to build your schedule. You can always edit a course later.',5,this.course,this.edit);
               break;
             }
           case 5: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
           // Home(0) for now (back to schedule view
             {
               // add data to json
+              if (this.edit == 1){
+                // edit not new
+               // jsonDataStorage.deleteEntry(this.courseCount);
+                jsonDataStorage.newEntry(this.course);
+               // jsonDataStorage.editEntry(this.courseCount, this.course);
+              } else {
+                // new entry
+                jsonDataStorage.newEntry(this.course);
+              }
+
               // take user back to CourseList.dart view
               Navigator.pushAndRemoveUntil(
                 context,
@@ -143,6 +165,24 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
                 ),
                     (route) => false,
               );
+              break;
+            }
+          case 7:
+            {
+              //jsonDataStorage.newEntry(this.course);
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => Home(0)
+                ),
+                    (route) => false,
+              );
+              break;
+            }
+          case 8:
+            {
+              // do nothing, just indicate saw message
+              Navigator.of(context).pop();
               break;
             }
           default:
