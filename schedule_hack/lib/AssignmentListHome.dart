@@ -1,40 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/AssignmentList.dart';
+import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseList.dart';
-
-import 'package:schedule_hack/SelfCare.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/utilities.dart';
 
-import 'Notify.dart';
-
+import 'PlaceHolderWidget.dart';
 import 'Schedule.dart';
 
-class Home extends StatefulWidget {
+class AssignmentListHome extends StatefulWidget {
   int index;
-  Home(int i) {
+  Course course;
+  int edit;
+  int courseCount;
+  AssignmentListHome(int i,Course c,int e, int cCount){
     this.index = i;
+    this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
   }
 
   @override
   State<StatefulWidget> createState() {
-    Notify n = new Notify();
-    n.notify();
-    return _HomeState(this.index);
+    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount);
   }
 }
 
-class _HomeState extends State<Home> {
-  int _currentIndex = 0;
-  _HomeState(int i) {
+class _AssignmentListHomeState extends State<AssignmentListHome> {
+  int _currentIndex = 2;
+  Course course;
+  int edit;
+  int courseCount;
+  List<Widget> _children = new List<Widget>();
+
+  _AssignmentListHomeState(int i,Course c, int e, int cCount){
     this._currentIndex = i;
+    this.course = c;
+    this.edit = e;
+    this.courseCount = cCount;
+    this._children = [
+      Schedule(
+          title: 'ScheduleHack',
+          date: DateTime.now() //initialize with today's date
+      ),
+      PlaceholderWidget(
+          colorMelon), //just placeholders until Self-Care and Courses widgets are made
+      AssignmentList(this.course,this.edit,this.courseCount),
+    ];
   }
-  final List<Widget> _children = [
-    Schedule(
-        title: 'ScheduleHack',
-        date: DateTime.now() //initialize with today's date
-        ),
-    SelfCare(),
-    CourseList(),
-  ];
 
   @override
   Widget build(BuildContext context) {
