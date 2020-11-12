@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/CourseList.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 
 import 'package:schedule_hack/SelfCare.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -24,20 +25,47 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
+  List<Widget> _children = new List<Widget>();
   _HomeState(int i) {
     this._currentIndex = i;
   }
-  final List<Widget> _children = [
+  /*final List<Widget> _children = [
     Schedule(
         title: 'ScheduleHack',
         date: DateTime.now() //initialize with today's date
         ),
     SelfCare(),
-    CourseList(),
-  ];
+    CourseList(jsonDataStorage),
+  ];*/
+
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => FutureBuilder( //{
+      future: jsonDataStorage.writeJsonLocal(),//fetchData(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done){//snapshot.hasData) {
+          print('Has data');
+          this._children = [
+            Schedule(
+                title: 'ScheduleHack',
+                date: DateTime.now() //initialize with today's date
+            ),
+            SelfCare(),
+            CourseList(jsonDataStorage),
+          ];
+          return rest();
+        } else {
+          // show loading until data comes back
+          print('getting data');
+          return CircularProgressIndicator();
+        }
+      }
+  );
+  Future<bool> fetchData() => Future.delayed(Duration(seconds:3),(){
+    return true;
+  });
+  Widget rest(){
     return Scaffold(
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
@@ -69,6 +97,37 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+    /*return Scaffold(
+      body: _children[_currentIndex], // new
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: colorHoneydew,
+        onTap: onTabTapped, // new
+        currentIndex: _currentIndex, // new
+        items: [
+          new BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("images/schedule.png"),
+              color: colorBlackCoral,
+            ),
+            label: 'Schedule',
+          ),
+          new BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("images/self_care.png"),
+              color: colorBlackCoral,
+            ),
+            label: 'Self-Care',
+          ),
+          new BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage("images/classroom.png"),
+                color: colorBlackCoral,
+              ),
+              label: 'Courses')
+        ],
+      ),
+    );*/
+  //}
 
   void onTabTapped(int index) {
     setState(() {
