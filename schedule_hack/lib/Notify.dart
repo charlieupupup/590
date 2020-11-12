@@ -1,8 +1,7 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/subjects.dart';
-import 'package:schedule_hack/SelfCare.dart';
-import 'main.dart';
+import 'package:schedule_hack/Home.dart';
 
 class Notify {
   final BehaviorSubject<String> selectNotificationSubject =
@@ -21,7 +20,7 @@ class Notify {
       }
       selectNotificationSubject.add(payload);
       await navigatorKey.currentState
-          .push(MaterialPageRoute(builder: (context) => SelfCare()));
+          .push(MaterialPageRoute(builder: (context) => Home(0)));
     });
   }
 
@@ -112,7 +111,7 @@ class Notify {
         new FlutterLocalNotificationsPlugin();
     init(fltrNotification);
     // _show(fltrNotification);
-    _showFuture(fltrNotification, 'Minute', 5);
+    _showFuture(fltrNotification, '', 5);
     // _showPeriodically(fltrNotification, RepeatInterval.hourly);
   }
 }

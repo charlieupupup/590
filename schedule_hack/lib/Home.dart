@@ -74,10 +74,25 @@ class _HomeState extends State<Home> {
   }
 }
 
-class HomeNoti extends StatefulWidget {
+class HomeNoti extends Home {
+  HomeNoti(int i) : super(i);
+
   @override
   State<StatefulWidget> createState() {
-    MidPopUp();
-    return _HomeState(0);
+    return _HomeNotiState(0);
+  }
+}
+
+class _HomeNotiState extends _HomeState {
+  _HomeNotiState(int i) : super(i);
+
+  @override
+  void initState() {
+    super.initState();
+    // showDialog(context: context, builder: (BuildContext context) => MidPopUp());
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await showDialog<String>(
+          context: context, builder: (BuildContext context) => MidPopUp());
+    });
   }
 }
