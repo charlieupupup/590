@@ -89,10 +89,15 @@ class _HomeNotiState extends _HomeState {
   @override
   void initState() {
     super.initState();
-    // showDialog(context: context, builder: (BuildContext context) => MidPopUp());
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await showDialog<String>(
-          context: context, builder: (BuildContext context) => MidPopUp());
-    });
+    showDialog(context: context, builder: (BuildContext context) => MidPopUp());
+    // WidgetsBinding.instance.addPostFrameCallback((_) async {
+    //   await showDialog<String>(
+    //       context: context, builder: (BuildContext context) => MidPopUp());
+    // });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return super.build(context);
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:schedule_hack/Home.dart';
+import 'package:schedule_hack/PopUp.dart';
 import 'main.dart';
 
 class Notify extends StatelessWidget {
@@ -23,13 +24,14 @@ class Notify extends StatelessWidget {
       if (payload != null) {
         debugPrint('notification payload: ' + payload);
       }
-      selectNotificationSubject.add(payload);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomeNoti(0)),
-      );
-      // MyApp.navigatorKey.currentState
-      //     .push(MaterialPageRoute(builder: (context) => HomeNoti(0)));
+      // selectNotificationSubject.add(payload);
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => HomeNoti(0)),
+      // );
+      // showDialog(context: context, builder: (_) => MidPopUp());
+      MyApp.navigatorKey.currentState
+          .push(MaterialPageRoute(builder: (context) => HomeNoti(0)));
     });
   }
 

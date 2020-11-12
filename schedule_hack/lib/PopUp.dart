@@ -78,20 +78,14 @@ class MidPopUp extends PopUp {
               child: Text(op1),
               color: colorAeroBlue,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GladPopUp()),
-                );
+                showDialog(context: context, builder: (_) => GladPopUp());
               },
             ),
             FlatButton(
               child: Text(op2),
               color: colorMelon,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SadPopUp()),
-                );
+                showDialog(context: context, builder: (_) => SadPopUp());
               },
             ),
           ],
@@ -126,11 +120,11 @@ class GladPopUp extends PopUp {
               child: Text(op1),
               color: colorAeroBlue,
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => SelfCare()),
-                // );
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => new SelfCare()),
+                );
+                // Navigator.pop(context);
               },
             ),
             FlatButton(
@@ -175,8 +169,10 @@ class SadPopUp extends PopUp {
               child: Text(op1),
               color: colorAeroBlue,
               onPressed: () {
-                MyApp.navigatorKey.currentState
-                    .push(MaterialPageRoute(builder: (context) => Home(0)));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Home(0)),
+                );
               },
             ),
             FlatButton(

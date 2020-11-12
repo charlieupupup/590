@@ -5,7 +5,7 @@ import 'package:schedule_hack/utilities.dart';
 
 import 'SettingsButton.dart';
 import 'StandardPopup.dart';
-import 'Notify.dart';
+import 'PopUp.dart';
 
 class SelfCare extends StatefulWidget {
   @override
@@ -15,16 +15,13 @@ class SelfCare extends StatefulWidget {
 }
 
 class SelfCareState extends State<SelfCare> {
-  Notify n = Notify();
   @override
   void initState() {
     super.initState();
-    n.notify();
   }
 
   @override
   Widget build(BuildContext context) {
-    n.ini(context);
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -34,7 +31,21 @@ class SelfCareState extends State<SelfCare> {
           ),
           actions: [
             Row(
-              children: [SettingsButton()],
+              children: [
+                SettingsButton(),
+                IconButton(
+                  icon: Icon(
+                    Icons.alarm,
+                    color: colorBlackCoral,
+                  ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      child: MidPopUp(),
+                    );
+                  },
+                )
+              ],
             ),
           ],
           title: Text('Self Care',
