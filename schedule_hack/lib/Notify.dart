@@ -112,7 +112,7 @@ class Notify {
         new FlutterLocalNotificationsPlugin();
     init(fltrNotification);
     // _show(fltrNotification);
-    _showFuture(fltrNotification, '', 5);
+    _showFuture(fltrNotification, 'Minute', 5);
     // _showPeriodically(fltrNotification, RepeatInterval.hourly);
   }
 }
