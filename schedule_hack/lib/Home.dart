@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
             SelfCare(),
             CourseList(jsonDataStorage),
           ];
-          return rest();
+          return showDisplay();
         } else {
           // show loading until data comes back
           print('getting data');
@@ -62,10 +62,8 @@ class _HomeState extends State<Home> {
         }
       }
   );
-  Future<bool> fetchData() => Future.delayed(Duration(seconds:3),(){
-    return true;
-  });
-  Widget rest(){
+
+  Widget showDisplay(){
     return Scaffold(
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
