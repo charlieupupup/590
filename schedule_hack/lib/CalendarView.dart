@@ -75,7 +75,7 @@ class _CalendarState extends State<CalendarView> {
 
       /// null for not rendering any border, true for circular border, false for rectangular border
       customGridViewPhysics: NeverScrollableScrollPhysics(),
-      markedDateShowIcon: true,
+      markedDateShowIcon: false,
       markedDateIconMaxShown: 2,
       todayTextStyle: TextStyle(
         color: colorBlackCoral,
@@ -90,7 +90,7 @@ class _CalendarState extends State<CalendarView> {
       todayButtonColor: colorMelon,
       todayBorderColor: colorAeroBlue,
       markedDateMoreShowTotal:
-          true, // null for not showing hidden events indicator
+          false, // null for not showing hidden events indicator
 //          markedDateIconMargin: 9,
 //          markedDateIconOffset: 3,
     );
