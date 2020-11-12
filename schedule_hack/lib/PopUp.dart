@@ -41,3 +41,10 @@ class PopUp extends AlertDialog {
     );
   }
 }
+
+class MidPopUp extends PopUp {
+  final String msg1 = 'Midterm Complete!';
+  final String msg2 = 'How do you feel?';
+  final String op1 = 'Good!';
+  final String op2 = 'Not Great...';
+}
