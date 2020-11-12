@@ -25,14 +25,20 @@ class PopUp extends AlertDialog {
               child: Text(op1),
               color: colorAeroBlue,
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GladPopUp()),
+                );
               },
             ),
             FlatButton(
               child: Text(op2),
               color: colorMelon,
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SadPopUp()),
+                );
               },
             ),
           ],
