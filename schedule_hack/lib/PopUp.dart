@@ -3,6 +3,8 @@ import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/SelfCare.dart';
 import 'package:schedule_hack/utilities.dart';
 
+import 'main.dart';
+
 class PopUp extends AlertDialog {
   final String msg1 = 'Great to hear!';
   final String msg2 = 'Head to the self care tab to destress';
@@ -172,10 +174,8 @@ class SadPopUp extends PopUp {
               child: Text(op1),
               color: colorAeroBlue,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SelfCare()),
-                );
+                MyApp.navigatorKey.currentState
+                    .push(MaterialPageRoute(builder: (context) => Home(0)));
               },
             ),
             FlatButton(

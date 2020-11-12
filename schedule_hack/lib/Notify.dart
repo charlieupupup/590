@@ -7,7 +7,9 @@ import 'main.dart';
 class Notify {
   final BehaviorSubject<String> selectNotificationSubject =
       BehaviorSubject<String>();
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  FlutterLocalNotificationsPlugin fltrNotification =
+      new FlutterLocalNotificationsPlugin();
+
   void init(FlutterLocalNotificationsPlugin fltrNotification) {
     var androidInitilize = new AndroidInitializationSettings('app_icon');
     var iOSinitilize = new IOSInitializationSettings();
@@ -20,7 +22,7 @@ class Notify {
         debugPrint('notification payload: ' + payload);
       }
       selectNotificationSubject.add(payload);
-      await MyApp.navigatorKey.currentState
+      MyApp.navigatorKey.currentState
           .push(MaterialPageRoute(builder: (context) => HomeNoti(0)));
     });
   }
@@ -107,12 +109,17 @@ class Notify {
         generalNotificationDetails);
   }
 
-  Future<void> notify() async {
-    FlutterLocalNotificationsPlugin fltrNotification =
-        new FlutterLocalNotificationsPlugin();
+  void ini() {
     init(fltrNotification);
+  }
+
+  Notify() {
+    this.ini();
+  }
+
+  Future<void> notify() async {
     // _show(fltrNotification);
-    _showFuture(fltrNotification, 'Minute', 5);
+    _showFuture(fltrNotification, 's', 5);
     // _showPeriodically(fltrNotification, RepeatInterval.hourly);
   }
 }
