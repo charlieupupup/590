@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: Home(0),
-      home: MidPopUp(),
+      home: GladPopUp(),
     );
   }
 }

@@ -48,3 +48,10 @@ class MidPopUp extends PopUp {
   final String op1 = 'Good!';
   final String op2 = 'Not Great...';
 }
+
+class GladPopUp extends PopUp {
+  final String msg1 = 'Great to hear!';
+  final String msg2 = 'Head to the self care tab to destress';
+  final String op1 = 'Take me there!';
+  final String op2 = 'No thanks';
+}
