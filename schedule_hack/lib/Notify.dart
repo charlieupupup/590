@@ -4,11 +4,13 @@ import 'package:rxdart/subjects.dart';
 import 'package:schedule_hack/Home.dart';
 import 'main.dart';
 
-class Notify {
+class Notify extends StatelessWidget {
   final BehaviorSubject<String> selectNotificationSubject =
       BehaviorSubject<String>();
   FlutterLocalNotificationsPlugin fltrNotification =
       new FlutterLocalNotificationsPlugin();
+
+  BuildContext context;
 
   void init(FlutterLocalNotificationsPlugin fltrNotification) {
     var androidInitilize = new AndroidInitializationSettings('app_icon');
@@ -22,8 +24,12 @@ class Notify {
         debugPrint('notification payload: ' + payload);
       }
       selectNotificationSubject.add(payload);
-      MyApp.navigatorKey.currentState
-          .push(MaterialPageRoute(builder: (context) => HomeNoti(0)));
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeNoti(0)),
+      );
+      // MyApp.navigatorKey.currentState
+      //     .push(MaterialPageRoute(builder: (context) => HomeNoti(0)));
     });
   }
 
@@ -109,17 +115,20 @@ class Notify {
         generalNotificationDetails);
   }
 
-  void ini() {
+  void ini(BuildContext context) {
     init(fltrNotification);
-  }
-
-  Notify() {
-    this.ini();
+    this.context = context;
   }
 
   Future<void> notify() async {
     // _show(fltrNotification);
     _showFuture(fltrNotification, 's', 5);
     // _showPeriodically(fltrNotification, RepeatInterval.hourly);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    this.ini(context);
+    // throw UnimplementedError();
   }
 }

@@ -15,15 +15,16 @@ class SelfCare extends StatefulWidget {
 }
 
 class SelfCareState extends State<SelfCare> {
-  // Notify n = Notify();
+  Notify n = Notify();
   @override
   void initState() {
     super.initState();
-    // n.notify();
+    n.notify();
   }
 
   @override
   Widget build(BuildContext context) {
+    n.ini(context);
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,

@@ -126,10 +126,11 @@ class GladPopUp extends PopUp {
               child: Text(op1),
               color: colorAeroBlue,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SelfCare()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => SelfCare()),
+                // );
+                Navigator.pop(context);
               },
             ),
             FlatButton(
