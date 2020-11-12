@@ -2,6 +2,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:schedule_hack/Home.dart';
+import 'main.dart';
 
 class Notify {
   final BehaviorSubject<String> selectNotificationSubject =
@@ -19,8 +20,8 @@ class Notify {
         debugPrint('notification payload: ' + payload);
       }
       selectNotificationSubject.add(payload);
-      await navigatorKey.currentState
-          .push(MaterialPageRoute(builder: (context) => Home(0)));
+      await MyApp.navigatorKey.currentState
+          .push(MaterialPageRoute(builder: (context) => HomeNoti(0)));
     });
   }
 
