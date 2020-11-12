@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/CourseList.dart';
+import 'package:schedule_hack/PopUp.dart';
 
 import 'package:schedule_hack/SelfCare.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -70,5 +71,13 @@ class _HomeState extends State<Home> {
     setState(() {
       _currentIndex = index;
     });
+  }
+}
+
+class HomeNoti extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    MidPopUp();
+    return _HomeState(0);
   }
 }
