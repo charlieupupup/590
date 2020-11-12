@@ -4,8 +4,6 @@ import 'package:schedule_hack/CourseList.dart';
 import 'package:schedule_hack/SelfCare.dart';
 import 'package:schedule_hack/utilities.dart';
 
-import 'Notify.dart';
-
 import 'Schedule.dart';
 
 class Home extends StatefulWidget {
@@ -16,8 +14,6 @@ class Home extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    Notify n = new Notify();
-    n.notify();
     return _HomeState(this.index);
   }
 }

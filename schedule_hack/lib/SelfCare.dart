@@ -5,10 +5,13 @@ import 'package:schedule_hack/utilities.dart';
 
 import 'SettingsButton.dart';
 import 'StandardPopup.dart';
+import 'Notify.dart';
 
 class SelfCare extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
+    Notify n = new Notify();
+    n.notify();
     return new SelfCareState();
   }
 }
