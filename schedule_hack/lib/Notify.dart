@@ -1,13 +1,28 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter/material.dart';
+import 'package:rxdart/subjects.dart';
+import 'package:schedule_hack/SelfCare.dart';
+import 'main.dart';
 
 class Notify {
+  final BehaviorSubject<String> selectNotificationSubject =
+      BehaviorSubject<String>();
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
   void init(FlutterLocalNotificationsPlugin fltrNotification) {
     var androidInitilize = new AndroidInitializationSettings('app_icon');
     var iOSinitilize = new IOSInitializationSettings();
     var initilizationsSettings = new InitializationSettings(
         android: androidInitilize, iOS: iOSinitilize);
     fltrNotification = new FlutterLocalNotificationsPlugin();
-    fltrNotification.initialize(initilizationsSettings);
+    fltrNotification.initialize(initilizationsSettings,
+        onSelectNotification: (String payload) async {
+      if (payload != null) {
+        debugPrint('notification payload: ' + payload);
+      }
+      selectNotificationSubject.add(payload);
+      await navigatorKey.currentState
+          .push(MaterialPageRoute(builder: (context) => SelfCare()));
+    });
   }
 
   Future<void> _show(
@@ -96,7 +111,7 @@ class Notify {
     FlutterLocalNotificationsPlugin fltrNotification =
         new FlutterLocalNotificationsPlugin();
     init(fltrNotification);
-    _show(fltrNotification);
+    // _show(fltrNotification);
     _showFuture(fltrNotification, 'Minute', 5);
     // _showPeriodically(fltrNotification, RepeatInterval.hourly);
   }
