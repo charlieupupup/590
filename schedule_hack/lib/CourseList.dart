@@ -18,8 +18,7 @@ class CourseList extends StatefulWidget {
     print('CONSTRUCTOR CALLLLLLLLINIIINNNNGNGNGNG');
   }
 
-
-  CourseList.course(JsonDataStorage js){
+  CourseList.course(JsonDataStorage js) {
     this.jsonDataStorage = js;
     this.jsonDataStorage.writeJsonLocal();
   }
@@ -30,12 +29,13 @@ class CourseList extends StatefulWidget {
     //return new _CourseListState(jsonDataStorage.getCourseList, jsonDataStorage);
   }
 }
+
 class _CourseListState extends State<CourseList> {
   TextEditingController myController = TextEditingController();
   List<dynamic> courseList = new List();
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
-  _CourseListState(List<dynamic> cl, JsonDataStorage storage){
+  _CourseListState(List<dynamic> cl, JsonDataStorage storage) {
     this.jsonDataStorage = storage;
     this.courseList = storage.getJustCourseList;
   }
@@ -46,7 +46,6 @@ class _CourseListState extends State<CourseList> {
     myController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +58,7 @@ class _CourseListState extends State<CourseList> {
         ),
         actions: [
           Row(
-            children: [
-              SettingsButton()
-            ],
+            children: [SettingsButton()],
           ),
         ],
         title: Text('Courses',
@@ -76,7 +73,10 @@ class _CourseListState extends State<CourseList> {
             itemCount: courseList.length,
             itemBuilder: (BuildContext context, int index) {
               return Dismissible(
+                background: deleteBackground(), //Container(color: Colors.red),
                 onDismissed: (DismissDirection direction) {
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text("Course deleted")));
                   setState(() {
                     jsonDataStorage.deleteEntry(index);
                     courseList.removeAt(index);
@@ -86,15 +86,44 @@ class _CourseListState extends State<CourseList> {
                 key: UniqueKey(),
                 direction: DismissDirection.endToStart,
               );
-            }
-        ),
+            }),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           NewCoursePopup(context, myController);
         },
         backgroundColor: colorHoneydew,
         child: Image.asset('images/add.png'),
+      ),
+    );
+  }
+
+  // Delete Dismissible background
+  Widget deleteBackground(){
+    return Container(
+      color: Colors.red,
+      child: Align(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Icon(
+              Icons.delete,
+              color: Colors.white,
+            ),
+            Text(
+              " Delete",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.right,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+          ],
+        ),
+        alignment: Alignment.centerRight,
       ),
     );
   }
@@ -105,18 +134,19 @@ class _CourseListState extends State<CourseList> {
     c1.setName = name;
     return c1;
   }
+
   // Display course button based on json input
-  Widget getCourseButtonWidgets(){
+  Widget getCourseButtonWidgets() {
     List<Widget> list = new List<Widget>();
     //print('CourseList Length:  $courseList.length');
     for (int i = 0; i < courseList.length; i++) {
       Course course = Course.fromJson(courseList[i]);
-        list.add(new CourseButton(course, i));
+      list.add(new CourseButton(course, i));
     }
     return new Column(children: list);
   }
 
-  Widget tempCourseButton(int index){
+  Widget tempCourseButton(int index) {
     Course course = Course.fromJson(courseList[index]);
     String courseName = course.getName;
     print('Course Button Troubleshoot: $courseName');
@@ -124,5 +154,4 @@ class _CourseListState extends State<CourseList> {
     print('Length: $len');
     return CourseButton(course, index);
   }
-
 }
