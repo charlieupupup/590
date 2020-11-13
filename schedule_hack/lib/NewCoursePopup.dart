@@ -9,15 +9,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class NewCoursePopup extends StatefulWidget {
+  BuildContext context;
+  TextEditingController myController;
+  NewCoursePopup(TextEditingController controller) {
+    this.myController = controller;
+  }
   @override
   State<StatefulWidget> createState() {
-    return new _NewCoursePopupState();
+    return new _NewCoursePopupState(myController);
   }
 }
 
 class _NewCoursePopupState extends State<NewCoursePopup> {
   BuildContext context;
   TextEditingController myController;
+
+  _NewCoursePopupState(TextEditingController controller) {
+    this.myController = controller;
+  }
 
   Widget checkMark(int i, TextEditingController s) {
     return CheckmarkButton.course(i, s);
@@ -44,7 +53,8 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
               ),
             ),
             DaySelector(),
-            new Expanded(child: TimeSelector()),
+            new Expanded(child: TimeSelector(hintText: 'Start Time')),
+            new Expanded(child: TimeSelector(hintText: 'End Time')),
           ],
         ),
       ),
