@@ -124,7 +124,7 @@ class Notify extends StatelessWidget {
 
   Future<void> notify() async {
     // _show(fltrNotification);
-    _showFuture(fltrNotification, 's', 5);
+    _showFuture(fltrNotification, 'Minute', 5);
     // _showPeriodically(fltrNotification, RepeatInterval.hourly);
   }
 
