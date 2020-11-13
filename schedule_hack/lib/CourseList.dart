@@ -12,8 +12,10 @@ class CourseList extends StatefulWidget {
   List<dynamic> courseList = new List();
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
-  CourseList() {
-    jsonDataStorage.writeJsonLocal();
+  CourseList(JsonDataStorage js) {
+    //jsonDataStorage.writeJsonLocal();
+    this.jsonDataStorage = js;
+    print('CONSTRUCTOR CALLLLLLLLINIIINNNNGNGNGNG');
   }
 
   CourseList.course(JsonDataStorage js) {
@@ -34,10 +36,8 @@ class _CourseListState extends State<CourseList> {
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   _CourseListState(List<dynamic> cl, JsonDataStorage storage) {
-    //this.courseList = cl;
     this.jsonDataStorage = storage;
     this.courseList = storage.getJustCourseList;
-    //this.courseList = cl;
   }
 
   @override
@@ -73,7 +73,10 @@ class _CourseListState extends State<CourseList> {
             itemCount: courseList.length,
             itemBuilder: (BuildContext context, int index) {
               return Dismissible(
+                background: deleteBackground(), //Container(color: Colors.red),
                 onDismissed: (DismissDirection direction) {
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text("Course deleted")));
                   setState(() {
                     jsonDataStorage.deleteEntry(index);
                     courseList.removeAt(index);
@@ -87,14 +90,40 @@ class _CourseListState extends State<CourseList> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showDialog(
-              context: context,
-              builder: (_) {
-                return NewCoursePopup();
-              });
+          NewCoursePopup(context, myController);
         },
         backgroundColor: colorHoneydew,
         child: Image.asset('images/add.png'),
+      ),
+    );
+  }
+
+  // Delete Dismissible background
+  Widget deleteBackground(){
+    return Container(
+      color: Colors.red,
+      child: Align(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Icon(
+              Icons.delete,
+              color: Colors.white,
+            ),
+            Text(
+              " Delete",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.right,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+          ],
+        ),
+        alignment: Alignment.centerRight,
       ),
     );
   }
