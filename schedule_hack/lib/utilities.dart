@@ -4,6 +4,15 @@ import 'package:intl/intl.dart';
 
 extension DateFormatted on DateTime {
   String get militaryTime => this.toUtc().toString().substring(10, 16);
+
+  // String weekOf() {
+  //   print(this.toUtc().toString());
+  //   String dayOfWeek = new DateFormat('EEEE').format(this);
+  //   String monthDayYear = new DateFormat.yMMMMd('en_US').format(this);
+  //   String fullDate = dayOfWeek + ", " + monthDayYear;
+  //   return fullDate;
+  // }
+
   //returns String with date formatted e.g. Monday, January 1, 2020
   String formattedDate() {
     String dayOfWeek = new DateFormat('EEEE').format(this);

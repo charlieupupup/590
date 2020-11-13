@@ -4,6 +4,7 @@ import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/SettingsButton.dart';
+import 'package:schedule_hack/StandardPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class CalendarView extends StatefulWidget {
@@ -18,7 +19,6 @@ class _CalendarState extends State<CalendarView> {
   DateTime _currentDate2 = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format(DateTime.now());
   DateTime _targetDateTime = DateTime.now();
-//  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
 
   EventList<Event> _markedDateMap = new EventList<Event>(
     events: {
@@ -55,7 +55,6 @@ class _CalendarState extends State<CalendarView> {
 
   @override
   Widget build(BuildContext context) {
-    /// Example with custom icon
     _calendarCarousel = CalendarCarousel<Event>(
       onDayPressed: (DateTime date, List<Event> events) {
         this.setState(() => _currentDate = date);
@@ -64,7 +63,6 @@ class _CalendarState extends State<CalendarView> {
       weekendTextStyle: TextStyle(fontSize: 14, color: colorSoftMelon),
       thisMonthDayBorderColor: colorAlmond,
 
-      /// for pass null when you do not want to render weekDays
       headerText: "Week of ", //TODO: make method to return first day of week
       weekFormat: true,
       markedDatesMap: _markedDateMap,
@@ -75,8 +73,7 @@ class _CalendarState extends State<CalendarView> {
 
       /// null for not rendering any border, true for circular border, false for rectangular border
       customGridViewPhysics: NeverScrollableScrollPhysics(),
-      markedDateShowIcon: false,
-      markedDateIconMaxShown: 2,
+
       todayTextStyle: TextStyle(
         color: colorBlackCoral,
       ),
@@ -91,11 +88,13 @@ class _CalendarState extends State<CalendarView> {
       todayBorderColor: colorAeroBlue,
       markedDateMoreShowTotal:
           false, // null for not showing hidden events indicator
+      // markedDateShowIcon: false,
+      // markedDateIconMaxShown: 2,
 //          markedDateIconMargin: 9,
 //          markedDateIconOffset: 3,
     );
 
-    /// Example Calendar Carousel without header and custom prev & next button
+    /// Bottom Calendar Carousel without header and with prev & next button
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
       todayBorderColor: colorPowderBlue,
       onDayPressed: (DateTime date, List<Event> events) {
@@ -148,7 +147,7 @@ class _CalendarState extends State<CalendarView> {
       },
       onDayLongPressed: (DateTime date) {
         print('long pressed date $date');
-      },
+      }, //no idea what this does
     );
 
     return new Scaffold(
@@ -245,74 +244,3 @@ class _CalendarState extends State<CalendarView> {
         ));
   }
 }
-
-//   DateTime _currentDate = DateTime.now();
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     EventList<Activity> _markedDateMap = new EventList<Activity>(
-//       //map of Days w Acivities on them to the Activity
-//       events: {
-//         _currentDate: [
-//           new Activity(Task.sleep, _currentDate, Duration(hours: 8), "Sleep",
-//               "Get 8 hours"),
-//         ],
-//       },
-//     );
-//     CalendarCarousel _calendarCarousel, _calendarCarouselNoHeader;
-//     @override
-//     void initState() {
-//       /// Add more events to _markedDateMap EventList
-//       _markedDateMap.add(
-//           new DateTime(2020, 11, 2),
-//           new Activity(Task.takeBreak, DateTime(2020, 11, 2),
-//               Duration(hours: 2), "Break", "Take a stretch Break"));
-//       _markedDateMap.add(
-//           new DateTime(2020, 11, 3),
-//           new Activity.assignment(DateTime(2020, 11, 3, 10), Duration(hours: 5),
-//               "ECE590", "Final Project"));
-//       _markedDateMap.addAll(new DateTime(2020, 11, 4), [
-//         new Activity.assignment(DateTime(2020, 11, 4, 2), Duration(hours: 1),
-//             "ECE564", "Final Presentation"),
-//         new Activity.assignment(DateTime(2020, 11, 4, 4), Duration(hours: 2),
-//             "ECE590", "Final Project"),
-//         new Activity.assignment(DateTime(2020, 11, 4, 9), Duration(hours: 3),
-//             "MENG570", "Final Exam")
-//       ]);
-//       super.initState();
-//     }
-//
-//     return new Scaffold(
-//       body: Container(
-//         margin: EdgeInsets.symmetric(horizontal: 16.0),
-//         child: _calendarCarousel = CalendarCarousel<Event>(
-//           onDayPressed: (DateTime date, List<Event> events) {
-//             this.setState(() => _currentDate = date);
-//             events.forEach((event) => print(event.title));
-//           },
-//           weekendTextStyle: TextStyle(
-//             color: colorMelon,
-//           ),
-//           thisMonthDayBorderColor: colorSoftMelon,
-//           customDayBuilder: (
-//             bool isSelectable,
-//             int index,
-//             bool isSelectedDay,
-//             bool isToday,
-//             bool isPrevMonthDay,
-//             TextStyle textStyle,
-//             bool isNextMonthDay,
-//             bool isThisMonthDay,
-//             DateTime day,
-//           ) {
-//             return null;
-//           },
-//           markedDatesMap: _markedDateMap,
-//           weekFormat: false,
-//           height: 420.0,
-//           daysHaveCircularBorder: false,
-//         ),
-//       ),
-//     );
-//   }
-// }
