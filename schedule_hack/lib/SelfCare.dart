@@ -68,9 +68,12 @@ class SelfCareState extends State<SelfCare> {
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: colorAeroBlue,
-                        borderRadius: BorderRadius.circular(18.0),
+                        borderRadius: BorderRadius.circular(22.0),
                       ),
                       child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           color: colorAeroBlue,
                           onPressed: () {
                             String message =
@@ -108,9 +111,12 @@ class SelfCareState extends State<SelfCare> {
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: colorPowderBlue,
-                        borderRadius: BorderRadius.circular(18.0),
+                        borderRadius: BorderRadius.circular(22.0),
                       ),
                       child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           color: colorPowderBlue,
                           onPressed: () {
                             String message =
