@@ -86,16 +86,19 @@ class SelfCareState extends State<SelfCare> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 160.0,
+                    width: 180.0,
                     height: 300.0,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: colorAeroBlue,
-                        borderRadius: BorderRadius.circular(18.0),
+                        borderRadius: BorderRadius.circular(22.0),
                       ),
                       child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           color: colorAeroBlue,
                           onPressed: () {
                             String message =
@@ -126,16 +129,19 @@ class SelfCareState extends State<SelfCare> {
                     ),
                   ),
                   Container(
-                    width: 160.0,
+                    width: 180.0,
                     height: 300.0,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: colorPowderBlue,
-                        borderRadius: BorderRadius.circular(18.0),
+                        borderRadius: BorderRadius.circular(22.0),
                       ),
                       child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           color: colorPowderBlue,
                           onPressed: () {
                             String message =
