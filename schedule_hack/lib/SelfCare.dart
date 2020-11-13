@@ -86,7 +86,7 @@ class SelfCareState extends State<SelfCare> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 160.0,
+                    width: 180.0,
                     height: 300.0,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
@@ -129,7 +129,7 @@ class SelfCareState extends State<SelfCare> {
                     ),
                   ),
                   Container(
-                    width: 160.0,
+                    width: 180.0,
                     height: 300.0,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
