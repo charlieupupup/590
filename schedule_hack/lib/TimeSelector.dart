@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class TimeSelector extends StatefulWidget {
-  TimeSelector({Key key}) : super(key: key);
-
+  TimeSelector({Key key, this.hintText}) : super(key: key);
+  String hintText;
   @override
-  _TimeSelectorState createState() => _TimeSelectorState();
+  _TimeSelectorState createState() => _TimeSelectorState(hintText);
 }
 
 class _TimeSelectorState extends State<TimeSelector> {
   final timeController = TextEditingController();
-
+  String hintText;
+  _TimeSelectorState(String hint) {
+    this.hintText = hint;
+  }
   @override
   void dispose() {
     // Clean up the controller when the widget is removed
@@ -27,7 +30,7 @@ class _TimeSelectorState extends State<TimeSelector> {
           child: TextField(
         readOnly: true,
         controller: timeController,
-        decoration: InputDecoration(hintText: 'Class Time'),
+        decoration: InputDecoration(hintText: hintText),
         onTap: () async {
           var time = await showTimePicker(
             initialTime: TimeOfDay.now(),

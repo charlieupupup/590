@@ -93,7 +93,7 @@ class _CourseListState extends State<CourseList> {
           showDialog(
               context: context,
               builder: (_) {
-                return NewCoursePopup();
+                return NewCoursePopup(myController);
               });
         },
         backgroundColor: colorHoneydew,
