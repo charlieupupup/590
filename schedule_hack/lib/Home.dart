@@ -34,6 +34,12 @@ class _HomeState extends State<Home> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    // showDialog(context: context, builder: (BuildContext context) => MidPopUp());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _children[_currentIndex], // new
@@ -89,11 +95,11 @@ class _HomeNotiState extends _HomeState {
   @override
   void initState() {
     super.initState();
-    showDialog(context: context, builder: (BuildContext context) => MidPopUp());
-    // WidgetsBinding.instance.addPostFrameCallback((_) async {
-    //   await showDialog<String>(
-    //       context: context, builder: (BuildContext context) => MidPopUp());
-    // });
+    // showDialog(context: context, builder: (BuildContext context) => MidPopUp());
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await showDialog<String>(
+          context: context, builder: (BuildContext context) => MidPopUp());
+    });
   }
 
   @override

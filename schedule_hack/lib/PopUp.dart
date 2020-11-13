@@ -171,7 +171,7 @@ class SadPopUp extends PopUp {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Home(0)),
+                  MaterialPageRoute(builder: (context) => SelfCare()),
                 );
               },
             ),

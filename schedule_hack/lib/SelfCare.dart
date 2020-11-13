@@ -1,8 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Notify.dart';
 import 'package:schedule_hack/utilities.dart';
-
+import 'Home.dart';
 import 'SettingsButton.dart';
 import 'StandardPopup.dart';
 import 'PopUp.dart';
@@ -39,10 +40,14 @@ class SelfCareState extends State<SelfCare> {
                     color: colorBlackCoral,
                   ),
                   onPressed: () {
-                    showDialog(
-                      context: context,
-                      child: MidPopUp(),
-                    );
+                    Notify n = Notify();
+                    n.ini(context);
+                    n.notify();
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => Home(0)),
+                    // );
+                    // showDialog(context: context, child: MidPopUp());
                   },
                 )
               ],
