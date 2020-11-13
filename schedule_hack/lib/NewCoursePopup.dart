@@ -3,6 +3,7 @@ import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
 
 import 'package:schedule_hack/DaySelector.dart';
+import 'package:schedule_hack/TimeSelector.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -17,15 +18,6 @@ class NewCoursePopup extends StatefulWidget {
 class _NewCoursePopupState extends State<NewCoursePopup> {
   BuildContext context;
   TextEditingController myController;
-  Map<String, bool> dayValues = {
-    'Sunday': false,
-    'Monday': false,
-    'Tuesday': false,
-    'Wednesday': false,
-    'Thursday': false,
-    'Friday': false,
-    'Saturday': false,
-  };
 
   Widget checkMark(int i, TextEditingController s) {
     return CheckmarkButton.course(i, s);
@@ -34,6 +26,7 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
   @override
   Widget build(BuildContext context) {
     return new AlertDialog(
+      backgroundColor: colorBeige,
       elevation: 16,
       title: new Text('Course Name',
           style: TextStyle(
@@ -51,6 +44,7 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
               ),
             ),
             DaySelector(),
+            new Expanded(child: TimeSelector()),
           ],
         ),
       ),
