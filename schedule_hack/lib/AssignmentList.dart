@@ -4,25 +4,28 @@ import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'CancelButton.dart';
+import 'CheckmarkButton.dart';
 import 'Course.dart';
 
+import 'JsonDataStorage.dart';
 import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
 
 // Class to display and interact with list of assignments
-class AssignmentList extends StatefulWidget{
+class AssignmentList extends StatefulWidget {
   Course course;
   int edit;
   int courseCount;
   int viewingAssignments; // default is that we're editing (0)
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
-  AssignmentList(Course c,int e,int cCount, int vA){
+  AssignmentList(Course c, int e, int cCount, int vA) {
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
     this.viewingAssignments = vA;
   }
-  AssignmentList.viewing(Course c,int e,int cCount,int vA){
+  AssignmentList.viewing(Course c, int e, int cCount, int vA) {
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
@@ -31,7 +34,8 @@ class AssignmentList extends StatefulWidget{
   }
   @override
   State<StatefulWidget> createState() {
-    return new _AssignmentListState(this.course,this.edit,this.courseCount,this.viewingAssignments);
+    return new _AssignmentListState(
+        this.course, this.edit, this.courseCount, this.viewingAssignments);
   }
 }
 
@@ -44,8 +48,10 @@ class _AssignmentListState extends State<AssignmentList> {
   int courseCount;
   int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
+  JsonDataStorage jsonDataStorage = new JsonDataStorage();
+  bool visibility = false;
 
-  _AssignmentListState(Course c, int e,int cCount, int vA){
+  _AssignmentListState(Course c, int e, int cCount, int vA) {
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
@@ -61,6 +67,7 @@ class _AssignmentListState extends State<AssignmentList> {
     myControllerDate.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration.zero, () => _emptyDialog(context));
@@ -73,9 +80,7 @@ class _AssignmentListState extends State<AssignmentList> {
         ),
         actions: [
           Row(
-            children: [
-              SettingsButton()
-            ],
+            children: [SettingsButton()],
           ),
         ],
         title: Text('Assignments',
@@ -98,17 +103,18 @@ class _AssignmentListState extends State<AssignmentList> {
             saveChanges()
           ],
         ),
-    ),
+      ),
       floatingActionButton: _fabDisplay(),
     );
   }
+
   // pick between displaying edit or plus icon
-  Widget _fabDisplay(){
+  Widget _fabDisplay() {
     // viewingAssignments == 1 then coming from previously created course
     if (this.viewingAssignments == 1) {
       print('I am in viewingAssignments = 1');
       return FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           setState(() {
             this.viewingAssignments = 0;
           });
@@ -119,7 +125,7 @@ class _AssignmentListState extends State<AssignmentList> {
     } else {
       print('I am in viewingAssignments = 0');
       return FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           _showMaterialDialog();
         },
         backgroundColor: colorHoneydew,
@@ -128,7 +134,7 @@ class _AssignmentListState extends State<AssignmentList> {
     }
   }
 
-  Widget saveChanges(){
+  Widget saveChanges() {
     return MaterialButton(
       onPressed: () {
         ConfirmPopup.course(context,'Great, your assignments will be saved. We are working in the '
@@ -142,107 +148,104 @@ class _AssignmentListState extends State<AssignmentList> {
           style: TextStyle(
               fontSize: 20.0,
               color: colorBlackCoral,
-              fontWeight: FontWeight.bold)
-      ),
+              fontWeight: FontWeight.bold)),
     );
   }
-  Widget cancelA(){
-    if (this.edit == 1){
+
+  Widget cancelA() {
+    if (this.edit == 1) {
       return Column();
     } else {
       //return CancelButton.assignment(5,this.course);
-      return CancelButton.assignment(2,this.course);
+      return CancelButton.assignment(2, this.course);
     }
   }
 
   // popup if no assignments listed yet
-  _emptyDialog(BuildContext context){
+  _emptyDialog(BuildContext context) {
     List list = new List();
     list = this.course.getAssignments;
-    if (this.viewingAssignments == 1){
-      if (list.length == 0){
+    if (this.viewingAssignments == 1) {
+      if (list.length == 0) {
         // no assignments yet
-        String message = "Hit the add 'edit' icon in the bottom right to edit your assignment list";
-        ConfirmPopup(context,message,8);
+        String message =
+            "Hit the add 'edit' icon in the bottom right to edit your assignment list";
+        ConfirmPopup(context, message, 8);
       } else {
         // do nothing
       }
     } else {
-      if (list.length == 0){
+      if (list.length == 0) {
         // no assignments yet
-        String message = "Hit the add '+' icon in the bottom right to add assignments to your "
+        String message =
+            "Hit the add '+' icon in the bottom right to add assignments to your "
             "course & calendar";
-        ConfirmPopup(context,message,8);
+        ConfirmPopup(context, message, 8);
       } else {
         // do nothing
       }
     }
   }
+
   // Add new assignment popup
-  _showMaterialDialog(){
+  _showMaterialDialog() {
     MainAxisAlignment alignment = MainAxisAlignment.end;
-    showDialog(context: context,
+    showDialog(
+        context: context,
         builder: (_) => new AlertDialog(
-          elevation: 16,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0)
-          ),
-          content: Container(
-            height: 280,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                      'ADD ASSIGNMENT',
-                      style: TextStyle(fontSize: 24, color: colorBlackCoral, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center
+              elevation: 16,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              content: Container(
+                height: 280,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('ADD ASSIGNMENT',
+                          style: TextStyle(
+                              fontSize: 24,
+                              color: colorBlackCoral,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center),
+                      TextFormField(
+                        controller: myControllerDescription,
+                        decoration: InputDecoration(hintText: 'Name'),
+                      ),
+                      TextFormField(
+                        controller: myControllerDate,
+                        decoration: InputDecoration(hintText: 'Due Date'),
+                      ),
+                      TextFormField(
+                        controller: myControllerTime,
+                        decoration: InputDecoration(hintText: 'Due Time'),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12.0),
+                        child: ButtonBar(
+                          alignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            CancelButton(),
+                            saveAssignment(),
+                            //CheckmarkButton.course(0,myController)
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  TextFormField(
-                    controller: myControllerDescription,
-                    decoration: InputDecoration(
-                        hintText: 'Name'
-                    ),
-                  ),
-                  TextFormField(
-                    controller: myControllerDate,
-                    decoration: InputDecoration(
-                        hintText: 'Due Date'
-                    ),
-                  ),
-                  TextFormField(
-                    controller: myControllerTime,
-                    decoration: InputDecoration(
-                        hintText: 'Due Time'
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 12.0
-                    ),
-                    child: ButtonBar(
-                      alignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        CancelButton(),
-                        saveAssignment(),
-                        //CheckmarkButton.course(0,myController)
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ),
-        )
-    );
+            ));
   }
-  Widget saveAssignment(){
+
+  Widget saveAssignment() {
     return MaterialButton(
-      onPressed: (){
+      onPressed: () {
         setState(() {
-          Assignment a = new Assignment.long(myControllerDescription.text, myControllerDate.text, myControllerTime.text);
+          Assignment a = new Assignment.long(myControllerDescription.text,
+              myControllerDate.text, myControllerTime.text);
           this.course.setAssignments = a;
         });
         printText();
@@ -257,7 +260,8 @@ class _AssignmentListState extends State<AssignmentList> {
       shape: CircleBorder(),
     );
   }
-  void printText(){
+
+  void printText() {
     String data;
     data = myControllerDescription.text;
     String date = myControllerDate.text;
@@ -267,24 +271,25 @@ class _AssignmentListState extends State<AssignmentList> {
     print('Time: $time');
   }
 
-  Widget returnAssignmentButton(){
+  Widget returnAssignmentButton() {
     List<Widget> widgetList = new List<Widget>();
     List list = new List();
     list = this.course.getAssignments;
-   if (list.length == 0){
-     return new Column();
-   } else {
-       for (int i = 0; i < list.length; i++){
-         Assignment a;
-           a = list[i];
-         String description = a.getDescription;
-         widgetList.add(assignmentButton(description));
-       }
-     return new Column(children: widgetList);
-   }
+    if (list.length == 0) {
+      return new Column();
+    } else {
+      for (int i = 0; i < list.length; i++) {
+        Assignment a;
+        a = list[i];
+        String description = a.getDescription;
+        widgetList.add(assignmentButton(description));
+      }
+      return new Column(children: widgetList);
+    }
   }
+
   // Assignment button UI
-Widget assignmentButton(String des){
+  Widget assignmentButton(String des) {
     if (this.viewingAssignments == 1) {
       // no edit button
       return new Center(
@@ -310,10 +315,10 @@ Widget assignmentButton(String des){
                     children: [
                       Expanded(
                           child: Text(
-                            des,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 24, color: colorBlackCoral),
-                          )),
+                        des,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 24, color: colorBlackCoral),
+                      )),
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
@@ -349,13 +354,12 @@ Widget assignmentButton(String des){
                     children: [
                       Expanded(
                           child: Text(
-                            des,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 24, color: colorBlackCoral),
-                          )),
+                        des,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 24, color: colorBlackCoral),
+                      )),
                       MaterialButton(
-                          onPressed: () {
-                          },
+                          onPressed: () {},
                           color: colorAlmond,
                           child: Image.asset(
                             'images/edit.png',
@@ -375,5 +379,5 @@ Widget assignmentButton(String des){
         ),
       );
     }
-}
+  }
 }
