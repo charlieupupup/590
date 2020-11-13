@@ -89,7 +89,7 @@ class _CourseButtonState extends State<CourseButton> {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => AssignmentListHome(2, newCourse,1,this.courseCount),
+                     builder: (BuildContext context) => AssignmentListHome(2, newCourse,1,this.courseCount,1),
                   ),
                       (route) => false,
                 );
@@ -104,16 +104,6 @@ class _CourseButtonState extends State<CourseButton> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontSize: 24, color: colorBlackCoral),
                     )),
-                    MaterialButton(
-                        onPressed: () {
-                        },
-                        color: colorAlmond,
-                        child: Image.asset(
-                          'images/edit.png',
-                          height: 50,
-                          width: 50,
-                        ),
-                        shape: CircleBorder())
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),

@@ -7,22 +7,26 @@ import 'package:schedule_hack/utilities.dart';
 
 import 'PlaceHolderWidget.dart';
 import 'Schedule.dart';
+import 'SelfCare.dart';
 
 class AssignmentListHome extends StatefulWidget {
   int index;
   Course course;
   int edit;
   int courseCount;
-  AssignmentListHome(int i,Course c,int e, int cCount){
+  int viewingAssignment;
+
+  AssignmentListHome(int i,Course c,int e, int cCount, int vA){
     this.index = i;
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
+    this.viewingAssignment = vA;
   }
 
   @override
   State<StatefulWidget> createState() {
-    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount);
+    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount, this.viewingAssignment);
   }
 }
 
@@ -32,20 +36,21 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
   int edit;
   int courseCount;
   List<Widget> _children = new List<Widget>();
+  int viewingAssignment;
 
-  _AssignmentListHomeState(int i,Course c, int e, int cCount){
+  _AssignmentListHomeState(int i,Course c, int e, int cCount,int vA){
     this._currentIndex = i;
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
+    this.viewingAssignment = vA;
     this._children = [
       Schedule(
           title: 'ScheduleHack',
           date: DateTime.now() //initialize with today's date
       ),
-      PlaceholderWidget(
-          colorMelon), //just placeholders until Self-Care and Courses widgets are made
-      AssignmentList(this.course,this.edit,this.courseCount),
+      SelfCare(),
+      AssignmentList(this.course,this.edit,this.courseCount,this.viewingAssignment)//just placeholders until Self-Care and Courses widgets are made
     ];
   }
 
