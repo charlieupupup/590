@@ -70,7 +70,7 @@ class _MockPhotoAcceptState extends State<MockPhotoAccept> {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) => AssignmentListHome(2, this.course,edit,courseCount)//AssignmentList(),
+                          builder: (BuildContext context) => AssignmentListHome(2, this.course,edit,courseCount,0)//AssignmentList(),
                       ),
                           (route) => false,
                     );

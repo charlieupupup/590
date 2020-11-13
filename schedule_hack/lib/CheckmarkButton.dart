@@ -67,6 +67,17 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
     return c1;
   }
 
+  _testMethod(){
+    // take user back to CourseList.dart view
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => Home(0)
+      ),
+          (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -111,13 +122,14 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
             {
               // take user back to CourseList.dart view
               //jsonDataStorage.newEntry(this.course);
-              Navigator.pushAndRemoveUntil(
+             /* Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) => AssignmentListHome(2, this.course,edit,0)//AssignmentList(),
                 ),
                     (route) => false,
-              );
+              );*/
+             print('Case 3 in Checkmark button is in fact being used, fix me!!!');
               break;
             }
           case 4: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
@@ -132,8 +144,22 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
           case 5: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
           // Home(0) for now (back to schedule view
             {
+              /*FutureBuilder(
+                future: jsonDataStorage.newEntry(this.course),
+                builder: (context, snapshot){
+                  if (snapshot.hasData) {
+                      print('Got that data');
+                      return _testMethod();
+                  } else {
+                    print('Getting that data');
+                    return CircularProgressIndicator();
+                  }
+                },
+              );
+
+              print('Yeah nah');*/
               // add data to json
-              if (this.edit == 1){
+             if (this.edit == 1){
                 // edit not new
                // jsonDataStorage.deleteEntry(this.courseCount);
                 jsonDataStorage.newEntry(this.course);
