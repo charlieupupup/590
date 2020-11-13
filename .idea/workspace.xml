@@ -25,11 +25,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/images/checkout.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_hack/images/relax.png" afterDir="false" />
+    <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="Finally working day selector using check boxes for course popup">
+      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/DaySelector.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/SelfCare.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/SelfCare.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +51,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="weekly_design" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -404,7 +407,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed background color of Scaffolds" />
     <MESSAGE value="Removed all icons and replaced with recolored icons" />
     <MESSAGE value="Update with master" />
     <MESSAGE value="Change page to courses home" />
@@ -429,7 +431,8 @@
     <MESSAGE value="Starter code for SelfCare Tab" />
     <MESSAGE value="Added new survey questions" />
     <MESSAGE value="Basic setup of self care tab with check in/out buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic setup of self care tab with check in/out buttons" />
+    <MESSAGE value="Finally working day selector using check boxes for course popup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally working day selector using check boxes for course popup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
