@@ -18,10 +18,18 @@ class Schedule extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: colorBlackCoral,
-        ),
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: colorBlackCoral,
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            }),
+        // Icon(
+        //   Icons.arrow_back_ios,
+        //   color: colorBlackCoral,
+        // ),
         actions: [
           Row(
             children: [
