@@ -60,6 +60,10 @@ class _CourseListState extends State<CourseList> {
             onPressed: () {
               Navigator.of(context).pop();
             }),
+        // Icon(
+        //   Icons.arrow_back_ios,
+        //   color: colorBlackCoral,
+        // ),
         actions: [
           Row(
             children: [SettingsButton()],
