@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CalendarView.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -53,7 +54,8 @@ class Day extends DateTime {
 
   //for testing
   void printDescription() {
-    String today = "Activities on " + this.formattedDate() + ":";
+    String today =
+        "Activities on " + DateFormat.yMMMMEEEEd('en_US').format(this) + ":";
     print(today);
     for (int i = 0; i < this.activityTimeslots.length; i++) {
       if (this.activityTimeslots[i] != null) {

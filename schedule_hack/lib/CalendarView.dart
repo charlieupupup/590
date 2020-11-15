@@ -15,8 +15,8 @@ class CalendarView extends StatefulWidget {
 }
 
 class _CalendarState extends State<CalendarView> {
-  DateTime _currentDate = DateTime.now();
-  DateTime _currentDate2 = DateTime.now();
+  DateTime _currentDateWeekView = DateTime.now();
+  DateTime _currentDateMonthView = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format(DateTime.now());
   DateTime _targetDateTime = DateTime.now();
 
@@ -55,10 +55,26 @@ class _CalendarState extends State<CalendarView> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime _firstDayOfCurrentWeek =
+        CalendarDateTime.firstDayOfWeek(DateTime.now());
     _calendarCarousel = CalendarCarousel<Event>(
       onDayPressed: (DateTime date, List<Event> events) {
-        this.setState(() => _currentDate = date);
+        this.setState(() => _currentDateWeekView = date);
         events.forEach((event) => print(event.title));
+      },
+      onCalendarChanged: (DateTime date) {
+        this.setState(() {
+          _targetDateTime = date;
+          _currentMonth = DateFormat.yMMM().format(_targetDateTime);
+          _firstDayOfCurrentWeek =
+              CalendarDateTime.firstDayOfWeek(_targetDateTime);
+          print("Target : " +
+              _targetDateTime.toString() +
+              "\ncurrent month : " +
+              _currentMonth.toString() +
+              "\nfirst day of week : " +
+              _firstDayOfCurrentWeek.toString());
+        });
       },
       weekendTextStyle: TextStyle(fontSize: 14, color: colorSoftMelon),
       thisMonthDayBorderColor: colorAlmond,
@@ -67,13 +83,12 @@ class _CalendarState extends State<CalendarView> {
       weekFormat: true,
       markedDatesMap: _markedDateMap,
       height: 200.0,
-      selectedDateTime: _currentDate2,
+      selectedDateTime: _currentDateMonthView,
       showIconBehindDayText: true,
       daysHaveCircularBorder: true,
 
       /// null for not rendering any border, true for circular border, false for rectangular border
       customGridViewPhysics: NeverScrollableScrollPhysics(),
-
       todayTextStyle: TextStyle(
         color: colorBlackCoral,
       ),
@@ -82,8 +97,8 @@ class _CalendarState extends State<CalendarView> {
       selectedDayTextStyle: TextStyle(
         color: colorBlackCoral,
       ),
-      minSelectedDate: _currentDate.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDate.add(Duration(days: 360)),
+      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
+      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
       todayButtonColor: colorMelon,
       todayBorderColor: colorAeroBlue,
       markedDateMoreShowTotal:
@@ -98,7 +113,7 @@ class _CalendarState extends State<CalendarView> {
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
       todayBorderColor: colorPowderBlue,
       onDayPressed: (DateTime date, List<Event> events) {
-        this.setState(() => _currentDate2 = date);
+        this.setState(() => _currentDateMonthView = date);
         events.forEach((event) => print(event.title));
       },
       daysHaveCircularBorder: false,
@@ -111,7 +126,7 @@ class _CalendarState extends State<CalendarView> {
       // firstDayOfWeek: 4,
       markedDatesMap: _markedDateMap,
       height: 420.0,
-      selectedDateTime: _currentDate2,
+      selectedDateTime: _currentDateMonthView,
       targetDateTime: _targetDateTime,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
       markedDateCustomShapeBorder: Border.all(width: 2.0, color: colorMelon),
@@ -129,8 +144,8 @@ class _CalendarState extends State<CalendarView> {
       selectedDayTextStyle: TextStyle(
         color: colorBlackCoral,
       ),
-      minSelectedDate: _currentDate.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDate.add(Duration(days: 360)),
+      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
+      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
       prevDaysTextStyle: TextStyle(
         fontSize: 16,
         color: colorAlmond,
