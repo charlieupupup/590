@@ -66,30 +66,4 @@ class _LoadingScreenState extends State<LoadingScreen> {
       ),
     );
   }
-  /*@override
-  Widget build(BuildContext context) => FutureBuilder(
-        future: Future.delayed(Duration(seconds: 5), () => print('Wait done')),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return savedScreen();
-          } else {
-            print('Still loading');
-            return loadingScreen();
-          }
-        },
-      );
-  Widget loadingScreen(){
-    return Container(
-      child: Text(
-        'Loading'
-      ),
-    );
-  }
-  Widget savedScreen(){
-    return Container(
-      child: Text(
-          'Saved'
-      ),
-    );
-  }*/
 }
