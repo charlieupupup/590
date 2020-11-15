@@ -1,10 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Notify.dart';
 import 'package:schedule_hack/utilities.dart';
-
+import 'Home.dart';
 import 'SettingsButton.dart';
 import 'StandardPopup.dart';
+import 'PopUp.dart';
 
 class SelfCare extends StatefulWidget {
   @override
@@ -14,6 +16,11 @@ class SelfCare extends StatefulWidget {
 }
 
 class SelfCareState extends State<SelfCare> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +32,25 @@ class SelfCareState extends State<SelfCare> {
           ),
           actions: [
             Row(
-              children: [SettingsButton()],
+              children: [
+                SettingsButton(),
+                IconButton(
+                  icon: Icon(
+                    Icons.alarm,
+                    color: colorBlackCoral,
+                  ),
+                  onPressed: () {
+                    Notify n = Notify();
+                    n.ini(context);
+                    n.notify();
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => Home(0)),
+                    // );
+                    // showDialog(context: context, child: MidPopUp());
+                  },
+                )
+              ],
             ),
           ],
           title: Text('Self Care',
@@ -61,16 +86,19 @@ class SelfCareState extends State<SelfCare> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 160.0,
+                    width: 180.0,
                     height: 300.0,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: colorAeroBlue,
-                        borderRadius: BorderRadius.circular(18.0),
+                        borderRadius: BorderRadius.circular(22.0),
                       ),
                       child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           color: colorAeroBlue,
                           onPressed: () {
                             String message =
@@ -101,16 +129,19 @@ class SelfCareState extends State<SelfCare> {
                     ),
                   ),
                   Container(
-                    width: 160.0,
+                    width: 180.0,
                     height: 300.0,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: colorPowderBlue,
-                        borderRadius: BorderRadius.circular(18.0),
+                        borderRadius: BorderRadius.circular(22.0),
                       ),
                       child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           color: colorPowderBlue,
                           onPressed: () {
                             String message =

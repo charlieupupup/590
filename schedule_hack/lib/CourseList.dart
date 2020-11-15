@@ -90,7 +90,11 @@ class _CourseListState extends State<CourseList> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          NewCoursePopup(context, myController);
+          showDialog(
+              context: context,
+              builder: (_) {
+                return NewCoursePopup(myController);
+              });
         },
         backgroundColor: colorHoneydew,
         child: Image.asset('images/add.png'),
@@ -99,7 +103,7 @@ class _CourseListState extends State<CourseList> {
   }
 
   // Delete Dismissible background
-  Widget deleteBackground(){
+  Widget deleteBackground() {
     return Container(
       color: Colors.red,
       child: Align(

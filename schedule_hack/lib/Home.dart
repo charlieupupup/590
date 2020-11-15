@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/CourseList.dart';
+import 'package:schedule_hack/PopUp.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 
 import 'package:schedule_hack/SelfCare.dart';
 import 'package:schedule_hack/utilities.dart';
-
-import 'Notify.dart';
 
 import 'Schedule.dart';
 
@@ -17,8 +16,6 @@ class Home extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    Notify n = new Notify();
-    n.notify();
     return _HomeState(this.index);
   }
 }
@@ -39,18 +36,25 @@ class _HomeState extends State<Home> {
     CourseList(jsonDataStorage),
   ];*/
 
+  @override
+  void initState() {
+    super.initState();
+    // showDialog(context: context, builder: (BuildContext context) => MidPopUp());
+  }
 
   @override
-  Widget build(BuildContext context) => FutureBuilder( //{
-      future: jsonDataStorage.writeJsonLocal(),//fetchData(),
+  Widget build(BuildContext context) => FutureBuilder(
+      //{
+      future: jsonDataStorage.writeJsonLocal(), //fetchData(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done){//snapshot.hasData) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          //snapshot.hasData) {
           print('Has data');
           this._children = [
             Schedule(
                 title: 'ScheduleHack',
                 date: DateTime.now() //initialize with today's date
-            ),
+                ),
             SelfCare(),
             CourseList(jsonDataStorage),
           ];
@@ -60,10 +64,9 @@ class _HomeState extends State<Home> {
           print('getting data');
           return CircularProgressIndicator();
         }
-      }
-  );
+      });
 
-  Widget showDisplay(){
+  Widget showDisplay() {
     return Scaffold(
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
@@ -95,7 +98,7 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-    /*return Scaffold(
+  /*return Scaffold(
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: colorHoneydew,
@@ -131,5 +134,33 @@ class _HomeState extends State<Home> {
     setState(() {
       _currentIndex = index;
     });
+  }
+}
+
+class HomeNoti extends Home {
+  HomeNoti(int i) : super(i);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _HomeNotiState(0);
+  }
+}
+
+class _HomeNotiState extends _HomeState {
+  _HomeNotiState(int i) : super(i);
+
+  @override
+  void initState() {
+    super.initState();
+    // showDialog(context: context, builder: (BuildContext context) => MidPopUp());
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await showDialog<String>(
+          context: context, builder: (BuildContext context) => MidPopUp());
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return super.build(context);
   }
 }
