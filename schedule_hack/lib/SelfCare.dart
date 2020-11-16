@@ -32,7 +32,7 @@ class SelfCareState extends State<SelfCare> {
                 color: colorBlackCoral,
               ),
               onPressed: () {
-                Navigator.of(context).pop();
+                // Navigator.of(context).pop();
               }),
           // Icon(
           //   Icons.arrow_back_ios,
