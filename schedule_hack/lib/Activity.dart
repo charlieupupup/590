@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:intl/intl.dart';
 import 'package:schedule_hack/utilities.dart';
 
 enum Task { attendClass, doAssignment, sleep, takeBreak, workout }
@@ -18,7 +19,7 @@ class Activity extends Event {
             icon: Icon(
               Icons.access_time,
               color: colorBlackCoral,
-              size: 30.0, //i have no idea if this size is too big / small
+              size: 30.0,
             ),
             dot: Container(
               margin: EdgeInsets.symmetric(horizontal: 1.0),
@@ -62,10 +63,10 @@ class Activity extends Event {
         "(" +
         task.toString() +
         ") on " +
-        date.abbreviatedDate() +
+        DateFormat.yMMMMEEEEd('en_US').format(date) +
         "for " +
         duration.inHours.toString() +
         " hours starting " +
-        date.militaryTime;
+        DateFormat.jm().format(date);
   }
 }
