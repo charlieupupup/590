@@ -42,3 +42,4 @@ DateFormat.yMEd('en_US').format(date) // Sun, 11/15/2020
 DateFormat.yMd('en_US').format(date) // 11/15/2020
 DateFormat.jm().format(date) // 12:48 PM
  */
+bool surveyDone = false;
