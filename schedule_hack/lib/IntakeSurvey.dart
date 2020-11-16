@@ -72,7 +72,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
       fwdButton = "Next";
     } else {
       fwdButton = "Finish";
-      surveyDone = true;
+
     }
     FlatButton nextButton = FlatButton(
       onPressed: () {
@@ -82,6 +82,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
             //only update if pages are available
             pageNumber++;
           } else {
+            surveyDone = true;
             String message = 'Confirm and complete Survey?';
             //_showMaterialDialog2(message);
             StandardPopup(context, message, 2); // 2 takes user home
