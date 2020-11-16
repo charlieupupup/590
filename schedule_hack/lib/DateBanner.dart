@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class DateBanner extends StatelessWidget {
@@ -19,17 +20,18 @@ class DateBanner extends StatelessWidget {
         child: Align(
           alignment: Alignment.center,
           child: AutoSizeText(
-            date.formattedDate(),
+            DateFormat.yMMMMEEEEd('en_US')
+                .format(date), //Sunday, November 15, 2020
             style: TextStyle(fontSize: 24, color: colorIvory),
             maxLines: 1,
             minFontSize: 20,
             textAlign: TextAlign.center,
-            overflowReplacement:
-                AutoSizeText(date.abbreviatedDate(), //abbreviate when overflow
-                    style: TextStyle(fontSize: 24, color: colorIvory),
-                    maxLines: 1,
-                    minFontSize: 20.0,
-                    textAlign: TextAlign.center),
+            overflowReplacement: AutoSizeText(
+                DateFormat.yMMMEd('en_US').format(date), //Sun, Nov 15, 2020
+                style: TextStyle(fontSize: 24, color: colorIvory),
+                maxLines: 1,
+                minFontSize: 20.0,
+                textAlign: TextAlign.center),
           ),
         ),
       ),
