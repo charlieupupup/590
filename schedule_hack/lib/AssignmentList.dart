@@ -220,7 +220,8 @@ class _AssignmentListState extends State<AssignmentList> {
                       new Expanded(
                           child: DateSelector(
                               //dateController: myControllerDate,
-                              hintText: 'Due Date')),
+                              hintText: 'Due Date',
+                              dateController: myControllerDate)),
                       new Expanded(
                           child: TimeSelector(
                               //dateController: myControllerDate,
