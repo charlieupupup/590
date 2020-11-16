@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Notify.dart';
+import 'package:schedule_hack/Schedule.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'Home.dart';
 import 'SettingsButton.dart';
@@ -26,10 +27,24 @@ class SelfCareState extends State<SelfCare> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          leading: Icon(
-            Icons.arrow_back_ios,
-            color: colorBlackCoral,
-          ),
+          leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: colorBlackCoral,
+              ),
+              onPressed: () {
+                // Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(0),
+                  ),
+                );
+              }),
+          // Icon(
+          //   Icons.arrow_back_ios,
+          //   color: colorBlackCoral,
+          // ),
           actions: [
             Row(
               children: [
