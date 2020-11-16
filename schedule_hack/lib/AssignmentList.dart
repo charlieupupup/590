@@ -88,7 +88,27 @@ class _AssignmentListState extends State<AssignmentList> {
         backgroundColor: colorHoneydew,
       ),
       body: Container(
-        child: returnAssignmentButton(),
+        child: ListView.builder(
+            itemCount: this.course.getAssignments.length, // might need to split this up
+            itemBuilder: (BuildContext context, int index) {
+              return Dismissible(
+                background: deleteBackground(),
+                onDismissed: (DismissDirection direction) {
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text("Assignment deleted")));
+                  setState(() {
+                    List assignmentList = new List();
+                    assignmentList = this.course.getAssignments;
+                    assignmentList.removeAt(index);
+                    Course newCourse = new Course.long(this.course.getName,this.course.getTime,this.course.getDate,this.course.getCourseDays,assignmentList);
+                    this.course = newCourse;
+                  });
+                },
+                child: returnAssignmentButtonIndex(index),
+                key: UniqueKey(),
+                direction: DismissDirection.endToStart,
+              );
+            })//returnAssignmentButton(),
       ),
       bottomNavigationBar: SizedBox(
         height: 58,
@@ -96,12 +116,41 @@ class _AssignmentListState extends State<AssignmentList> {
           alignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             cancelA(),
-            //CheckmarkButton.assignment(4, this.course,this.edit,this.courseCount)
             saveChanges()
           ],
         ),
       ),
       floatingActionButton: _fabDisplay(),
+    );
+  }
+
+  // Delete Dismissible background
+  Widget deleteBackground() {
+    return Container(
+      color: Colors.red,
+      child: Align(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Icon(
+              Icons.delete,
+              color: Colors.white,
+            ),
+            Text(
+              " Delete",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.right,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+          ],
+        ),
+        alignment: Alignment.centerRight,
+      ),
     );
   }
 
@@ -232,7 +281,6 @@ class _AssignmentListState extends State<AssignmentList> {
                           children: <Widget>[
                             CancelButton(),
                             saveAssignment(),
-                            //CheckmarkButton.course(0,myController)
                           ],
                         ),
                       ),
@@ -290,6 +338,18 @@ class _AssignmentListState extends State<AssignmentList> {
       return new Column(children: widgetList);
     }
   }
+  Widget returnAssignmentButtonIndex(int index){
+    List list = new List();
+    list = this.course.getAssignments;
+    if (list.length == 0){
+      return new Column();
+    } else {
+      Assignment a;
+      a = list[index];
+      String description = a.getDescription;
+      return assignmentButton(description);
+    }
+  }
 
   // Assignment button UI
   Widget assignmentButton(String des) {
@@ -299,18 +359,15 @@ class _AssignmentListState extends State<AssignmentList> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
+              padding: const EdgeInsets.only(
+                  top: 3.0
+              ),
+              child: FlatButton(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.circular(2.0),
                 ),
                 color: colorMelon,
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              PlaceholderWidget(colorPowderBlue)));
                 },
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -325,8 +382,8 @@ class _AssignmentListState extends State<AssignmentList> {
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
-                  width: 250,
-                  height: 50,
+                  //width: 250,
+                  //height: 50,
                 ),
               ),
             )
@@ -338,18 +395,15 @@ class _AssignmentListState extends State<AssignmentList> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
+              padding: const EdgeInsets.only(
+                  top: 3.0
+              ),
+              child: FlatButton(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.circular(2.0),
                 ),
                 color: colorMelon,
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              PlaceholderWidget(colorPowderBlue)));
                 },
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -362,7 +416,8 @@ class _AssignmentListState extends State<AssignmentList> {
                         style: TextStyle(fontSize: 24, color: colorBlackCoral),
                       )),
                       MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                          },
                           color: colorAlmond,
                           child: Image.asset(
                             'images/edit.png',
@@ -373,8 +428,8 @@ class _AssignmentListState extends State<AssignmentList> {
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
-                  width: 250,
-                  height: 50,
+                  //width: 250,
+                 // height: 50,
                 ),
               ),
             )
