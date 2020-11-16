@@ -26,14 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/AssignmentList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/AssignmentList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/CourseList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DaySelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DaySelector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -453,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605503153393</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="added controller to save values to be used for activity creation">
+      <created>1605557754412</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1605557754412</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +471,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Hit cancel button anywhere and taks back to last page" />
     <MESSAGE value="Added Assignment class, updated Course class" />
     <MESSAGE value="Removed AddButton, refactor CourseList - FAB / stateful widget, popup classes" />
     <MESSAGE value="Update CheckmarkButton" />
@@ -496,7 +495,8 @@
     <MESSAGE value="fixed sizing of self care page" />
     <MESSAGE value="added option to intake survey for user to leave after survey has been completed once" />
     <MESSAGE value="changed location of completion flag being set" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed location of completion flag being set" />
+    <MESSAGE value="added controller to save values to be used for activity creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added controller to save values to be used for activity creation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
