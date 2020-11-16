@@ -1,19 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class TimeSelector extends StatefulWidget {
-  TimeSelector({Key key, this.hintText}) : super(key: key);
+  TimeSelector({Key key, this.hintText, this.timeController}) : super(key: key);
   String hintText;
+  TextEditingController timeController;
   @override
-  _TimeSelectorState createState() => _TimeSelectorState(hintText);
+  _TimeSelectorState createState() =>
+      _TimeSelectorState(hintText, timeController);
 }
 
 class _TimeSelectorState extends State<TimeSelector> {
-  final timeController = TextEditingController();
+  //final timeController = TextEditingController();
+  TextEditingController timeController;
   String hintText;
-  _TimeSelectorState(String hint) {
+  _TimeSelectorState(String hint, TextEditingController c) {
     this.hintText = hint;
+    this.timeController = c;
   }
   @override
   void dispose() {

@@ -33,7 +33,9 @@ class CourseList extends StatefulWidget {
 }
 
 class _CourseListState extends State<CourseList> {
-  TextEditingController myController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController startTimeController = TextEditingController();
+  TextEditingController endTimeController = TextEditingController();
   List<dynamic> courseList = new List();
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
@@ -45,7 +47,7 @@ class _CourseListState extends State<CourseList> {
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    nameController.dispose();
     super.dispose();
   }
 
@@ -109,7 +111,8 @@ class _CourseListState extends State<CourseList> {
           showDialog(
               context: context,
               builder: (_) {
-                return NewCoursePopup(myController);
+                return NewCoursePopup(
+                    nameController, startTimeController, endTimeController);
               });
         },
         backgroundColor: colorHoneydew,

@@ -219,12 +219,13 @@ class _AssignmentListState extends State<AssignmentList> {
                       ),
                       new Expanded(
                           child: DateSelector(
-                            //dateController: myControllerDate,
+                              //dateController: myControllerDate,
                               hintText: 'Due Date')),
                       new Expanded(
                           child: TimeSelector(
-                            //dateController: myControllerDate,
-                              hintText: 'Due Time')),
+                              //dateController: myControllerDate,
+                              hintText: 'Due Time',
+                              timeController: myControllerTime)),
                       Padding(
                         padding: const EdgeInsets.only(top: 12.0),
                         child: ButtonBar(
