@@ -368,11 +368,6 @@ class _AssignmentListState extends State<AssignmentList> {
                 ),
                 color: colorMelon,
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              PlaceholderWidget(colorPowderBlue)));
                 },
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -409,11 +404,6 @@ class _AssignmentListState extends State<AssignmentList> {
                 ),
                 color: colorMelon,
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              PlaceholderWidget(colorPowderBlue)));
                 },
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -426,7 +416,8 @@ class _AssignmentListState extends State<AssignmentList> {
                         style: TextStyle(fontSize: 24, color: colorBlackCoral),
                       )),
                       MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                          },
                           color: colorAlmond,
                           child: Image.asset(
                             'images/edit.png',
