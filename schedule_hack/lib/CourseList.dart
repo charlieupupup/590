@@ -7,6 +7,7 @@ import 'package:schedule_hack/NewCoursePopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'CancelButton.dart';
+import 'Schedule.dart';
 
 class CourseList extends StatefulWidget {
   List<dynamic> courseList = new List();
@@ -59,6 +60,10 @@ class _CourseListState extends State<CourseList> {
             ),
             onPressed: () {
               // Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Schedule()),
+              );
             }),
         // Icon(
         //   Icons.arrow_back_ios,
