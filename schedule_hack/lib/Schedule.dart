@@ -5,6 +5,7 @@ import 'package:schedule_hack/Day.dart';
 import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
 
+import 'Home.dart';
 import 'SettingsButton.dart';
 
 class Schedule extends StatelessWidget {
@@ -28,10 +29,7 @@ class Schedule extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Schedule(
-                      title: 'ScheduleHack',
-                      date: DateTime.now() //initialize with today's date
-                      ),
+                  builder: (context) => Home(0),
                 ),
               );
             }),

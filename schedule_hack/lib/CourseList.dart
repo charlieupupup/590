@@ -7,6 +7,7 @@ import 'package:schedule_hack/NewCoursePopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'CancelButton.dart';
+import 'Home.dart';
 import 'Schedule.dart';
 
 class CourseList extends StatefulWidget {
@@ -63,10 +64,7 @@ class _CourseListState extends State<CourseList> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Schedule(
-                      title: 'ScheduleHack',
-                      date: DateTime.now() //initialize with today's date
-                      ),
+                  builder: (context) => Home(0),
                 ),
               );
             }),

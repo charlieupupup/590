@@ -37,10 +37,7 @@ class SelfCareState extends State<SelfCare> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Schedule(
-                        title: 'ScheduleHack',
-                        date: DateTime.now() //initialize with today's date
-                        ),
+                    builder: (context) => Home(0),
                   ),
                 );
               }),
