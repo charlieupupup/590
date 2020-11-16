@@ -7,8 +7,10 @@ import 'package:schedule_hack/utilities.dart';
 import 'CancelButton.dart';
 import 'Course.dart';
 
+import 'Home.dart';
 import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
+import 'StandardPopup.dart';
 import 'TimeSelector.dart';
 
 // Class to display and interact with list of assignments
@@ -47,6 +49,7 @@ class _AssignmentListState extends State<AssignmentList> {
   int courseCount;
   int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
+  Course originalCourse;
 
   _AssignmentListState(Course c, int e, int cCount, int vA) {
     this.course = c;
@@ -54,6 +57,7 @@ class _AssignmentListState extends State<AssignmentList> {
     this.courseCount = cCount;
     this.viewingAssignments = vA;
     print('_viewingAssignments = $viewingAssignments');
+    this.originalCourse = this.course;
   }
 
   @override
@@ -71,10 +75,15 @@ class _AssignmentListState extends State<AssignmentList> {
     return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: colorBlackCoral,
-        ),
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: colorBlackCoral,
+            ),
+            onPressed: () {
+              // popup - saying going back will delete data
+              _backButton();
+            }),
         actions: [
           Row(
             children: [SettingsButton()],
@@ -203,12 +212,26 @@ class _AssignmentListState extends State<AssignmentList> {
     );
   }
 
+  // cancel assignment add
   Widget cancelA() {
     if (this.edit == 1) {
       return Column();
     } else {
       //return CancelButton.assignment(5,this.course);
       return CancelButton.assignment(2, this.course);
+    }
+  }
+   _backButton(){
+    if (this.edit == 1) {
+      // popup, on check mark add back original course
+      print('edit cancel');
+      //CancelButton.assignment(5,this.originalCourse);
+      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',5,this.originalCourse);
+    } else {
+      //return CancelButton.assignment(2, this.course);
+      print('cancel should be working');
+      //return CancelButton.assignment(6,this.course);
+      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',6,this.originalCourse);
     }
   }
 
