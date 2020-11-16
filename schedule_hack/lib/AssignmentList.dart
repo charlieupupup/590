@@ -4,6 +4,7 @@ import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
 import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/utilities.dart';
+import 'Activity.dart';
 import 'CancelButton.dart';
 import 'Course.dart';
 
@@ -47,6 +48,7 @@ class _AssignmentListState extends State<AssignmentList> {
   int courseCount;
   int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
+  List<Activity> activityList = new List<Activity>();
 
   _AssignmentListState(Course c, int e, int cCount, int vA) {
     this.course = c;
@@ -134,6 +136,8 @@ class _AssignmentListState extends State<AssignmentList> {
   Widget saveChanges() {
     return MaterialButton(
       onPressed: () {
+        // TODO: Add activityList to singleton
+        // TODO: Add course activity to singleton
         ConfirmPopup.course(
             context,
             'Great, your assignments will be saved. We are working in the '
@@ -252,6 +256,17 @@ class _AssignmentListState extends State<AssignmentList> {
           Assignment a = new Assignment.long(myControllerDescription.text,
               myControllerDate.text, myControllerTime.text);
           this.course.setAssignments = a;
+
+          // Making Activity.assignment
+          if (myControllerDate.text.isEmpty || myControllerTime.text.isEmpty){
+              // if no date or time do nothing
+          } else {
+            DateTime dueDate = DateTime.parse(myControllerDate.text);
+            final currentDate = DateTime.now();
+            Duration duration = Duration(hours: currentDate.difference(dueDate).inDays);
+            Activity activity = new Activity.assignment(dueDate,duration, a.getDescription,'Description');
+            activityList.add(activity);
+          }
         });
         printText();
         Navigator.of(context).pop();

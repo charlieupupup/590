@@ -41,6 +41,9 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
   TextEditingController startTimeController = TextEditingController();
   TextEditingController endTimeController = TextEditingController();
   Map<String, bool> dayValues;
+  TimeOfDay startTime;
+  TimeOfDay endTime;
+
   _NewCoursePopupState(
       TextEditingController controller,
       Map<String, bool> dayVs,
@@ -52,8 +55,8 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
     this.endTimeController = end;
   }
 
-  Widget checkMark(int i, TextEditingController s) {
-    return CheckmarkButton.course(i, s);
+  Widget checkMark(int i, TextEditingController name, TextEditingController start, TextEditingController end) {
+    return CheckmarkButton.course(i, name, start, end);
   }
 
   @override
@@ -91,10 +94,53 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
         Container(
           child: ButtonBar(
             alignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[CancelButton(), checkMark(0, nameController)],
+            children: <Widget>[CancelButton(), checkMark(0, nameController,startTimeController,endTimeController)],
           ),
         )
       ],
+    );
+  }
+
+  Widget _startTimeSelector(TextEditingController timeController, String hintText, BuildContext context, var time){
+    return Center(
+      child: Expanded(
+          child: TextField(
+            readOnly: true,
+            controller: timeController,
+            decoration: InputDecoration(hintText: hintText),
+            onTap: () async {
+              this.startTime = await showTimePicker(
+                initialTime: TimeOfDay.now(),
+                context: context,
+              );
+              if (startTime.format(context) == null){
+                // do nothing
+              } else {
+                timeController.text = startTime.format(context);
+              }
+            },
+          )),
+    );
+  }
+  Widget _endTimeSelector(TextEditingController timeController, String hintText, BuildContext context, var time){
+    return Center(
+      child: Expanded(
+          child: TextField(
+            readOnly: true,
+            controller: timeController,
+            decoration: InputDecoration(hintText: hintText),
+            onTap: () async {
+              this.endTime = await showTimePicker(
+                initialTime: TimeOfDay.now(),
+                context: context,
+              );
+              if (endTime.format(context) == null){
+                // do nothing
+              } else {
+                timeController.text = endTime.format(context);
+              }
+            },
+          )),
     );
   }
 }
