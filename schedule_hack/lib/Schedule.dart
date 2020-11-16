@@ -25,6 +25,10 @@ class Schedule extends StatelessWidget {
             ),
             onPressed: () {
               // Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Schedule()),
+              );
             }),
         // Icon(
         //   Icons.arrow_back_ios,
