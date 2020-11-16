@@ -26,9 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/IntakeSurvey.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/IntakeSurvey.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -427,7 +425,28 @@
       <option name="project" value="LOCAL" />
       <updated>1605293658791</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="added option to intake survey for user to leave after survey has been completed once">
+      <created>1605503003829</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1605503003829</updated>
+    </task>
+    <task id="LOCAL-00047" summary="added option to intake survey for user to leave after survey has been completed once">
+      <created>1605503101407</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1605503101407</updated>
+    </task>
+    <task id="LOCAL-00048" summary="changed location of completion flag being set">
+      <created>1605503153393</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1605503153393</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -445,8 +464,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added popup when hitting add button in Course List" />
-    <MESSAGE value="Made checkmarkbutton and cancelbutton classes" />
     <MESSAGE value="Hit cancel button anywhere and taks back to last page" />
     <MESSAGE value="Added Assignment class, updated Course class" />
     <MESSAGE value="Removed AddButton, refactor CourseList - FAB / stateful widget, popup classes" />
@@ -470,7 +487,9 @@
     <MESSAGE value="Resolve merge conflicts" />
     <MESSAGE value="Added functionality to continue moving forward with creating a new course&#10;&#10;No behavior changes, mainly UI update" />
     <MESSAGE value="fixed sizing of self care page" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed sizing of self care page" />
+    <MESSAGE value="added option to intake survey for user to leave after survey has been completed once" />
+    <MESSAGE value="changed location of completion flag being set" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed location of completion flag being set" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

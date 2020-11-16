@@ -72,7 +72,6 @@ class IntakeSurveyState extends State<IntakeSurvey> {
       fwdButton = "Next";
     } else {
       fwdButton = "Finish";
-
     }
     FlatButton nextButton = FlatButton(
       onPressed: () {
