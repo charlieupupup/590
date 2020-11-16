@@ -12,6 +12,7 @@ import 'package:schedule_hack/MockPhoto.dart';
 import 'Assignment.dart';
 import 'AssignmentListHome.dart';
 import 'ConfirmPopup.dart';
+import 'LoadingScreen.dart';
 
 // Class that builds checkmark green button
 // Takes in index to know where to pass user next depending on where used
@@ -144,20 +145,6 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
           case 5: // take user to Home(2) - CourseList (save data) **doesn't work b/c previous issues, go
           // Home(0) for now (back to schedule view
             {
-              /*FutureBuilder(
-                future: jsonDataStorage.newEntry(this.course),
-                builder: (context, snapshot){
-                  if (snapshot.hasData) {
-                      print('Got that data');
-                      return _testMethod();
-                  } else {
-                    print('Getting that data');
-                    return CircularProgressIndicator();
-                  }
-                },
-              );
-
-              print('Yeah nah');*/
               // add data to json
              if (this.edit == 1){
                 // edit not new
@@ -173,7 +160,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                    builder: (BuildContext context) => Home(0)
+                    builder: (BuildContext context) => LoadingScreen()//Home(0)
                 ),
                     (route) => false,
               );

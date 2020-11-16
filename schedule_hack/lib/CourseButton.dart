@@ -68,10 +68,12 @@ class _CourseButtonState extends State<CourseButton> {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: RaisedButton(
+            padding: const EdgeInsets.only(
+              top: 3.0
+            ),
+            child: FlatButton(//RaisedButton(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(2.0),
               ),
               color: returnColor(courseCount),
               onPressed: () {
@@ -107,8 +109,8 @@ class _CourseButtonState extends State<CourseButton> {
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
-                width: 250,
-                height: 50,
+                //width: 250,
+               // height: 50,
               ),
             ),
           )
