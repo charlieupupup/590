@@ -20,7 +20,7 @@ class _DateSelectorState extends State<DateSelector> {
   //_DateSelectorState(String hint) {
   _DateSelectorState(String hint, TextEditingController controller) {
     this.hintText = hint;
-    //this.dateController = controller;
+    this.dateController = controller;
   }
   @override
   void dispose() {
