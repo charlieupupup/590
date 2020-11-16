@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 
 class DateSelector extends StatefulWidget {
   String hintText;
-  //TextEditingController dateController;
+  TextEditingController dateController;
   //DateSelector({Key key, this.hintText, this.dateController}) : super(key: key);
-  DateSelector({Key key, this.hintText}) : super(key: key);
+  DateSelector({Key key, this.hintText, this.dateController}) : super(key: key);
 
   @override
   _DateSelectorState createState() =>
       //_DateSelectorState(hintText, dateController);
-      _DateSelectorState(hintText);
+      _DateSelectorState(hintText, dateController);
 }
 
 class _DateSelectorState extends State<DateSelector> {
-  final dateController = TextEditingController();
-  //TextEditingController dateController;
+  //final dateController = TextEditingController();
+  TextEditingController dateController;
   String hintText;
-  _DateSelectorState(String hint) {
-    //_DateSelectorState(String hint, TextEditingController controller) {
+  //_DateSelectorState(String hint) {
+  _DateSelectorState(String hint, TextEditingController controller) {
     this.hintText = hint;
     //this.dateController = controller;
   }
@@ -43,7 +43,8 @@ class _DateSelectorState extends State<DateSelector> {
               initialDate: DateTime.now(),
               firstDate: DateTime(1900),
               lastDate: DateTime(2100));
-          dateController.text = date.toString().substring(0, 10);
+          dateController.text =
+              date.toString().substring(0, 10); //save to json to send back out
         },
       )),
     );

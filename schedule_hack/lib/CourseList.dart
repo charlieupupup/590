@@ -7,6 +7,8 @@ import 'package:schedule_hack/NewCoursePopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'CancelButton.dart';
+import 'Home.dart';
+import 'Schedule.dart';
 
 class CourseList extends StatefulWidget {
   List<dynamic> courseList = new List();
@@ -31,7 +33,9 @@ class CourseList extends StatefulWidget {
 }
 
 class _CourseListState extends State<CourseList> {
-  TextEditingController myController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController startTimeController = TextEditingController();
+  TextEditingController endTimeController = TextEditingController();
   List<dynamic> courseList = new List();
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
@@ -43,7 +47,7 @@ class _CourseListState extends State<CourseList> {
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    nameController.dispose();
     super.dispose();
   }
 
@@ -52,10 +56,24 @@ class _CourseListState extends State<CourseList> {
     return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: colorBlackCoral,
-        ),
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: colorBlackCoral,
+            ),
+            onPressed: () {
+              // Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Home(0),
+                ),
+              );
+            }),
+        // Icon(
+        //   Icons.arrow_back_ios,
+        //   color: colorBlackCoral,
+        // ),
         actions: [
           Row(
             children: [SettingsButton()],
@@ -93,7 +111,8 @@ class _CourseListState extends State<CourseList> {
           showDialog(
               context: context,
               builder: (_) {
-                return NewCoursePopup(myController);
+                return NewCoursePopup(
+                    nameController, startTimeController, endTimeController);
               });
         },
         backgroundColor: colorHoneydew,

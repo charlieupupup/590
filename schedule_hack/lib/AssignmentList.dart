@@ -217,24 +217,15 @@ class _AssignmentListState extends State<AssignmentList> {
                         controller: myControllerDescription,
                         decoration: InputDecoration(hintText: 'Name'),
                       ),
-                      /*TextFormField(
-                    controller: myControllerDate,
-                    decoration: InputDecoration(
-                        hintText: 'Due Date'
-                    ),
-                  ),*/
                       new Expanded(
                           child: DateSelector(
                               //dateController: myControllerDate,
                               hintText: 'Due Date')),
-                      /*TextFormField(
-                        controller: myControllerTime,
-                        decoration: InputDecoration(hintText: 'Due Time'),
-                      ),*/
                       new Expanded(
                           child: TimeSelector(
                               //dateController: myControllerDate,
-                              hintText: 'Due Time')),
+                              hintText: 'Due Time',
+                              timeController: myControllerTime)),
                       Padding(
                         padding: const EdgeInsets.only(top: 12.0),
                         child: ButtonBar(

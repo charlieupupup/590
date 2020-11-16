@@ -97,7 +97,6 @@ class JsonDataStorage {
   Future deleteEntry(int index) async {
     // Get file and set to courseList
     File jsonFile = await _localFile;
-    //String contents = await jsonFile.readAsString();
     List<dynamic> jsonResponse = jsonDecode(await jsonFile.readAsString());
     this.courseList = jsonResponse;
     // Make course json
