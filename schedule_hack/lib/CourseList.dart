@@ -58,7 +58,7 @@ class _CourseListState extends State<CourseList> {
               color: colorBlackCoral,
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              // Navigator.of(context).pop();
             }),
         // Icon(
         //   Icons.arrow_back_ios,
