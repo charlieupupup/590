@@ -62,7 +62,6 @@ class _CourseListState extends State<CourseList> {
               color: colorBlackCoral,
             ),
             onPressed: () {
-              // Navigator.of(context).pop();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -70,10 +69,6 @@ class _CourseListState extends State<CourseList> {
                 ),
               );
             }),
-        // Icon(
-        //   Icons.arrow_back_ios,
-        //   color: colorBlackCoral,
-        // ),
         actions: [
           Row(
             children: [SettingsButton()],
