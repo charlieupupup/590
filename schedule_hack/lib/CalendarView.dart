@@ -58,6 +58,11 @@ class _CalendarState extends State<CalendarView> {
 
   @override
   Widget build(BuildContext context) {
+    var padding = MediaQuery.of(context).padding;
+    // double width = MediaQuery.of(context).size.width - padding.left - padding.right;
+    double height =
+        MediaQuery.of(context).size.height - padding.top - padding.bottom;
+
     _calendarCarousel = CalendarCarousel<Event>(
       onDayPressed: (DateTime date, List<Event> events) {
         this.setState(() => _currentDateWeekView = date);
@@ -73,7 +78,7 @@ class _CalendarState extends State<CalendarView> {
         }); //changes the _firstDayOfCurrentWeek when top is changed (for the header)
       },
       customGridViewPhysics: NeverScrollableScrollPhysics(),
-      height: 175.0,
+      height: height * (1 / 3),
       weekFormat: true,
       minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
       maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
@@ -107,7 +112,8 @@ class _CalendarState extends State<CalendarView> {
       /// null for not rendering any border, true for circular border, false for rectangular border
       selectedDayButtonColor: colorAeroBlue,
       selectedDayBorderColor: colorDarkSkyBlue,
-      selectedDayTextStyle: TextStyle(fontSize: 22, color: colorBlackCoral),
+      selectedDayTextStyle: TextStyle(
+          fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
     );
 
     /// Bottom Calendar Carousel without header and with prev & next button
@@ -120,7 +126,7 @@ class _CalendarState extends State<CalendarView> {
       daysHaveCircularBorder: false,
       showOnlyCurrentMonthDate: false,
       thisMonthDayBorderColor: colorAlmond,
-      height: 400.0,
+      height: height * (2 / 3),
       showHeader: false,
       weekFormat: false,
       // firstDayOfWeek: 4,
@@ -153,7 +159,8 @@ class _CalendarState extends State<CalendarView> {
       /// null for not rendering any border, true for circular border, false for rectangular border
       selectedDayButtonColor: colorAeroBlue,
       selectedDayBorderColor: colorDarkSkyBlue,
-      selectedDayTextStyle: TextStyle(fontSize: 22, color: colorBlackCoral),
+      selectedDayTextStyle: TextStyle(
+          fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
       inactiveDaysTextStyle: TextStyle(
         color: colorPowderBlue,
         fontSize: 16,
