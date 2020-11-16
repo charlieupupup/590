@@ -72,37 +72,36 @@ class _CalendarState extends State<CalendarView> {
               DateFormat.yMMMd('en_US').format(_targetDateTime);
         }); //changes the _firstDayOfCurrentWeek when top is changed (for the header)
       },
-      weekendTextStyle: TextStyle(fontSize: 14, color: colorSoftMelon),
-      thisMonthDayBorderColor: colorAlmond,
-
-      headerText: "Week of $_firstDayOfCurrentWeek", //
-      weekFormat: true,
-      markedDatesMap: _markedDateMap,
+      customGridViewPhysics: NeverScrollableScrollPhysics(),
       height: 200.0,
+      weekFormat: true,
+      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
+      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
+      markedDatesMap: _markedDateMap,
       selectedDateTime: _currentDateMonthView,
       showIconBehindDayText: true,
       daysHaveCircularBorder: true,
+      iconColor: colorDarkSkyBlue,
+      thisMonthDayBorderColor: colorDarkSkyBlue,
+
+      headerText: "Week of $_firstDayOfCurrentWeek",
+      headerTextStyle: TextStyle(
+          fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
+      weekdayTextStyle: TextStyle(
+          fontSize: 16,
+          color: colorPewterBlue,
+          fontWeight: FontWeight.bold), //Sun Mon Tue
+      weekendTextStyle: TextStyle(
+          fontSize: 16, color: colorBlackCoral, fontWeight: FontWeight.bold),
+      daysTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral), //14 15 16
+      todayButtonColor: colorAeroBlue,
+      todayBorderColor: colorDarkSkyBlue,
+      todayTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral),
 
       /// null for not rendering any border, true for circular border, false for rectangular border
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
-      todayTextStyle: TextStyle(
-        color: colorBlackCoral,
-      ),
-      selectedDayButtonColor: colorAeroBlue,
-      selectedDayBorderColor: colorAeroBlue,
-      selectedDayTextStyle: TextStyle(
-        color: colorBlackCoral,
-      ),
-      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
-      todayButtonColor: colorMelon,
-      todayBorderColor: colorAeroBlue,
-      markedDateMoreShowTotal:
-          false, // null for not showing hidden events indicator
-      // markedDateShowIcon: false,
-      // markedDateIconMaxShown: 2,
-//          markedDateIconMargin: 9,
-//          markedDateIconOffset: 3,
+      selectedDayButtonColor: colorPowderBlue,
+      selectedDayBorderColor: colorDarkSkyBlue,
+      selectedDayTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral),
     );
 
     /// Bottom Calendar Carousel without header and with prev & next button
