@@ -27,7 +27,12 @@ class Schedule extends StatelessWidget {
               // Navigator.of(context).pop();
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Schedule()),
+                MaterialPageRoute(
+                  builder: (context) => Schedule(
+                      title: 'ScheduleHack',
+                      date: DateTime.now() //initialize with today's date
+                      ),
+                ),
               );
             }),
         // Icon(
