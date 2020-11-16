@@ -44,3 +44,5 @@ DateFormat.jm().format(date) // 12:48 PM
  */
 //global variable for whether or not survey has been completed by the user
 bool surveyDone = false;
+
+//set global user preferences

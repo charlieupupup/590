@@ -102,11 +102,30 @@ class IntakeSurveyState extends State<IntakeSurvey> {
 
   Widget exitOption() {
     if (surveyDone) {
-      return CancelButton();
+      return new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [exitButton()],
+      );
     }
     return new Text("Please answer survey to completion",
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 12.0, color: colorBlackCoral));
+  }
+
+  Widget exitButton() {
+    return MaterialButton(
+      onPressed: () {
+        // cancel just go back to last page (pop)
+        Navigator.of(context).pop();
+      },
+      color: colorMelon,
+      child: Image.asset(
+        'images/delete.png',
+        height: 20,
+        width: 20,
+      ),
+      shape: CircleBorder(),
+    );
   }
 
   @override
