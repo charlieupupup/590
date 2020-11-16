@@ -6,9 +6,11 @@ import 'package:schedule_hack/SurveyPage.dart';
 //USAGE: will be loaded with question data from a csv file
 class UserPreferences {
   List<SurveyPage> pages;
+  bool alreadySet = false;
 
   UserPreferences() {
     pages = new List<SurveyPage>();
+    alreadySet = true;
     SurveyPage page1 = new SurveyPage("I usually have the most energy...", 1);
     SingleQuestionData one = new SingleQuestionData("In the morning");
     SingleQuestionData two = new SingleQuestionData("In the afternoon");
