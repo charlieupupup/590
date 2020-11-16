@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
+import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'CancelButton.dart';
-import 'CheckmarkButton.dart';
 import 'Course.dart';
 
-import 'JsonDataStorage.dart';
 import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
+import 'TimeSelector.dart';
 
 // Class to display and interact with list of assignments
 class AssignmentList extends StatefulWidget {
@@ -17,7 +17,6 @@ class AssignmentList extends StatefulWidget {
   int edit;
   int courseCount;
   int viewingAssignments; // default is that we're editing (0)
-  JsonDataStorage jsonDataStorage = new JsonDataStorage();
 
   AssignmentList(Course c, int e, int cCount, int vA) {
     this.course = c;
@@ -48,8 +47,6 @@ class _AssignmentListState extends State<AssignmentList> {
   int courseCount;
   int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
-  JsonDataStorage jsonDataStorage = new JsonDataStorage();
-  bool visibility = false;
 
   _AssignmentListState(Course c, int e, int cCount, int vA) {
     this.course = c;
@@ -137,8 +134,13 @@ class _AssignmentListState extends State<AssignmentList> {
   Widget saveChanges() {
     return MaterialButton(
       onPressed: () {
-        ConfirmPopup.course(context,'Great, your assignments will be saved. We are working in the '
-            'background to build your schedule. You can always edit a course later.',5,this.course,this.edit);
+        ConfirmPopup.course(
+            context,
+            'Great, your assignments will be saved. We are working in the '
+            'background to build your schedule. You can always edit a course later.',
+            5,
+            this.course,
+            this.edit);
       },
       color: colorHoneydew,
       shape: RoundedRectangleBorder(
@@ -193,6 +195,7 @@ class _AssignmentListState extends State<AssignmentList> {
     showDialog(
         context: context,
         builder: (_) => new AlertDialog(
+              backgroundColor: colorBeige,
               elevation: 16,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
@@ -214,14 +217,14 @@ class _AssignmentListState extends State<AssignmentList> {
                         controller: myControllerDescription,
                         decoration: InputDecoration(hintText: 'Name'),
                       ),
-                      TextFormField(
-                        controller: myControllerDate,
-                        decoration: InputDecoration(hintText: 'Due Date'),
-                      ),
-                      TextFormField(
-                        controller: myControllerTime,
-                        decoration: InputDecoration(hintText: 'Due Time'),
-                      ),
+                      new Expanded(
+                          child: DateSelector(
+                            //dateController: myControllerDate,
+                              hintText: 'Due Date')),
+                      new Expanded(
+                          child: TimeSelector(
+                            //dateController: myControllerDate,
+                              hintText: 'Due Time')),
                       Padding(
                         padding: const EdgeInsets.only(top: 12.0),
                         child: ButtonBar(
