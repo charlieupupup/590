@@ -8,6 +8,7 @@ class SchduleElement extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: Row(
           children: [
+            Image(image: AssetImage('images/running.png')),
             Text('Soccer 3-530'),
             Icon(Icons.arrow_right),
           ],
