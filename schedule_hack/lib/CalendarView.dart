@@ -18,6 +18,9 @@ class _CalendarState extends State<CalendarView> {
   DateTime _currentDateWeekView = DateTime.now();
   DateTime _currentDateMonthView = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format(DateTime.now());
+  String _firstDayOfCurrentWeek =
+      DateFormat.yMMMd('en_US').format(DateTime.now());
+
   DateTime _targetDateTime = DateTime.now();
 
   EventList<Event> _markedDateMap = new EventList<Event>(
@@ -55,8 +58,6 @@ class _CalendarState extends State<CalendarView> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime _firstDayOfCurrentWeek =
-        CalendarDateTime.firstDayOfWeek(DateTime.now());
     _calendarCarousel = CalendarCarousel<Event>(
       onDayPressed: (DateTime date, List<Event> events) {
         this.setState(() => _currentDateWeekView = date);
@@ -64,22 +65,17 @@ class _CalendarState extends State<CalendarView> {
       },
       onCalendarChanged: (DateTime date) {
         this.setState(() {
-          _targetDateTime = date;
-          _currentMonth = DateFormat.yMMM().format(_targetDateTime);
+          _currentDateWeekView = date;
+          _targetDateTime =
+              CalendarDateTime.firstDayOfWeek(_currentDateWeekView);
           _firstDayOfCurrentWeek =
-              CalendarDateTime.firstDayOfWeek(_targetDateTime);
-          print("Target : " +
-              _targetDateTime.toString() +
-              "\ncurrent month : " +
-              _currentMonth.toString() +
-              "\nfirst day of week : " +
-              _firstDayOfCurrentWeek.toString());
-        });
+              DateFormat.yMMMd('en_US').format(_targetDateTime);
+        }); //changes the _firstDayOfCurrentWeek when top is changed (for the header)
       },
       weekendTextStyle: TextStyle(fontSize: 14, color: colorSoftMelon),
       thisMonthDayBorderColor: colorAlmond,
 
-      headerText: "Week of ", //TODO: make method to return first day of week
+      headerText: "Week of $_firstDayOfCurrentWeek", //
       weekFormat: true,
       markedDatesMap: _markedDateMap,
       height: 200.0,
