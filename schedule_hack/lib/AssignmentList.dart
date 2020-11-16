@@ -299,10 +299,12 @@ class _AssignmentListState extends State<AssignmentList> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
+              padding: const EdgeInsets.only(
+                  top: 3.0
+              ),
+              child: FlatButton(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.circular(2.0),
                 ),
                 color: colorMelon,
                 onPressed: () {
@@ -325,8 +327,8 @@ class _AssignmentListState extends State<AssignmentList> {
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
-                  width: 250,
-                  height: 50,
+                  //width: 250,
+                  //height: 50,
                 ),
               ),
             )
