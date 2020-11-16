@@ -2,34 +2,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-extension DateFormatted on DateTime {
-  String get militaryTime => this.toUtc().toString().substring(10, 16);
-  //returns String with date formatted e.g. Monday, January 1, 2020
-  String formattedDate() {
-    String dayOfWeek = new DateFormat('EEEE').format(this);
-    String monthDayYear = new DateFormat.yMMMMd('en_US').format(this);
-    String fullDate = dayOfWeek + ", " + monthDayYear;
-    return fullDate;
+extension CalendarDateTime on DateTime {
+  static firstDayOfWeek(DateTime date) {
+    return date.subtract(new Duration(days: date.weekday % 7));
   }
-
-  //returns String with date formatted e.g. Mon January 1, 2020
-  String abbreviatedDate() {
-    String dayOfWeek = new DateFormat('EEEE').format(this);
-    switch (dayOfWeek) {
-      case "Tuesday":
-        dayOfWeek = dayOfWeek.substring(0, 4); //first 4 letters i.e Tues
-        break;
-      case "Thursday":
-        dayOfWeek = dayOfWeek.substring(0, 5); //first 5 letters i.e Thurs
-        break;
-      default:
-        dayOfWeek = dayOfWeek.substring(0, 3); //first 3
-    }
-    String monthDayYear = new DateFormat.yMMMMd('en_US').format(this);
-    String fullDate = dayOfWeek + ", " + monthDayYear;
-    return fullDate;
-  }
-// ···
 }
 
 //generates custom colors
@@ -51,3 +27,18 @@ final Color colorBlackCoral = CustomColor('#5E6472');
 final Color colorIvory = CustomColor('#F5F9F0');
 final Color colorSoftMelon = CustomColor('#FDC2BE');
 final Color colorPale = CustomColor('#FAF3DD');
+
+/*
+These are impossible to remember so I'm leaving them here in utilities as an easy resource
+date is a DateTime
+
+DateFormat.yMMMMEEEEd('en_US').format(date) //Sunday, November 15, 2020
+DateFormat.yMMMMd('en_US').format(date) //November 15, 2020
+DateFormat.yMMMM('en_US').format(date) //November 2020
+DateFormat.yMMMEd('en_US').format(date) //Sun, Nov 15, 2020
+DateFormat.yMMMd('en_US').format(date) //Nov 15, 2020
+DateFormat.yMMMM('en_US').format(date) // November 2020
+DateFormat.yMEd('en_US').format(date) // Sun, 11/15/2020
+DateFormat.yMd('en_US').format(date) // 11/15/2020
+DateFormat.jm().format(date) // 12:48 PM
+ */
