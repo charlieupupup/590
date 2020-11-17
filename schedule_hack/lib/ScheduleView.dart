@@ -16,15 +16,18 @@ class ScheduleView extends StatelessWidget {
           margin: const EdgeInsets.only(top: 20),
           child: Row(
             children: [
+              Container(),
               // Expanded(child: SchduleElement()),
               Text(
                 'My day',
                 style: TextStyle(color: Colors.white),
               ),
-
-              Icon(Icons.add),
+              Container(
+                child: Icon(Icons.add),
+              ),
+              // Icon(Icons.add),
             ],
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           ),
           width: 300,
           height: 75,
