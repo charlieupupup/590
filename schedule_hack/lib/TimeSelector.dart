@@ -20,12 +20,12 @@ class _TimeSelectorState extends State<TimeSelector> {
     this.hintText = hint;
     this.timeController = c;
   }
-  @override
+  /*@override
   void dispose() {
     // Clean up the controller when the widget is removed
     timeController.dispose();
     super.dispose();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {

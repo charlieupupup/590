@@ -353,6 +353,9 @@ class _AssignmentListState extends State<AssignmentList> {
             Activity activity = new Activity.assignment(
                 dueDate, duration, a.getDescription, 'Description');
             activityList.add(activity);
+            myControllerDate.clear();
+            myControllerTime.clear();
+            myControllerDescription.clear();
           }
         });
         printText();
