@@ -7,7 +7,7 @@ import 'main.dart';
 
 class PopUp extends AlertDialog {
   final String msg1 = 'Great to hear!';
-  final String msg2 = 'Head to the self care tab to destress';
+  final String msg2 = 'Head to the self care tab to de-stress';
   final String op1 = 'Good!';
   final String op2 = 'Not Great...';
 
@@ -97,7 +97,7 @@ class MidPopUp extends PopUp {
 
 class GladPopUp extends PopUp {
   final String msg1 = 'Great to hear!';
-  final String msg2 = 'Head to the self care tab to destress';
+  final String msg2 = 'Head to the self care tab to de-stress';
   final String op1 = 'Take me there!';
   final String op2 = 'No thanks';
 
@@ -122,7 +122,7 @@ class GladPopUp extends PopUp {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => new SelfCare()),
+                  MaterialPageRoute(builder: (context) => new Home(1)),
                 );
                 // Navigator.pop(context);
               },
@@ -146,7 +146,7 @@ class GladPopUp extends PopUp {
 
 class SadPopUp extends PopUp {
   final String msg1 = 'Sorry to hear that';
-  final String msg2 = 'Head to the self care tab to destress';
+  final String msg2 = 'Head to the self care tab to de-stress';
   final String op1 = 'Take me there!';
   final String op2 = 'No thanks';
 
@@ -171,7 +171,7 @@ class SadPopUp extends PopUp {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SelfCare()),
+                  MaterialPageRoute(builder: (context) => Home(1)),
                 );
               },
             ),

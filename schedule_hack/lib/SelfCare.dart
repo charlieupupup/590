@@ -41,10 +41,6 @@ class SelfCareState extends State<SelfCare> {
                   ),
                 );
               }),
-          // Icon(
-          //   Icons.arrow_back_ios,
-          //   color: colorBlackCoral,
-          // ),
           actions: [
             Row(
               children: [
