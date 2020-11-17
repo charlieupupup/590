@@ -1,10 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
-import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/CalendarView.dart';
 import 'package:schedule_hack/Notify.dart';
 import 'package:schedule_hack/Schedule.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -21,37 +17,6 @@ class SelfCare extends StatefulWidget {
 }
 
 class SelfCareState extends State<SelfCare> {
-  CalendarView calendar = CalendarView();
-  EventList<Event> _markedDateMap = new EventList<Event>();
-  // Add more events to _markedDateMap EventList
-
-  void add() {
-    String before =
-        _markedDateMap.getEvents(new DateTime(2020, 11, 4)).toString();
-    print("adding actitivites $before");
-
-    /// Add more events to _markedDateMap EventList
-    _markedDateMap.add(
-        new DateTime(2020, 11, 2),
-        new Activity(Task.takeBreak, DateTime(2020, 11, 2), Duration(hours: 2),
-            "Break", "Take a stretch Break"));
-    _markedDateMap.add(
-        new DateTime(2020, 11, 3),
-        new Activity.assignment(DateTime(2020, 11, 3, 10), Duration(hours: 5),
-            "ECE590", "Final Project"));
-    _markedDateMap.addAll(new DateTime(2020, 11, 4), [
-      new Activity(Task.attendClass, DateTime(2020, 11, 4, 2),
-          Duration(hours: 1), "ECE564", "Attend ECE564"),
-      new Activity.assignment(DateTime(2020, 11, 4, 4), Duration(hours: 2),
-          "ECE590", "Final Project"),
-      new Activity.assignment(
-          DateTime(2020, 11, 4, 9), Duration(hours: 3), "MENG570", "Final Exam")
-    ]);
-    String after =
-        _markedDateMap.getEvents(new DateTime(2020, 11, 4)).toString();
-    print("added after $after");
-  }
-
   @override
   void initState() {
     super.initState();
@@ -198,7 +163,6 @@ class SelfCareState extends State<SelfCare> {
                                 'Showing recommendations for things to do to escape';
                             //_showMaterialDialog2(message);
                             StandardPopup(context, message, 2);
-                            add();
                           },
                           child: Container(
                             margin:
