@@ -235,12 +235,14 @@ class _AssignmentListState extends State<AssignmentList> {
     if (this.edit == 1) {
       print('edit cancel');
       // TODO: bug where hitting back still saves data
-      for (int i = 0; i < this.originalCourse.getAssignments.length; i++){
-        Assignment a = this.originalCourse.getAssignments[i];
+      List list = new List();
+      list = globalCourse.getAssignments;
+      for (int i = 0; i < list.length; i++){
+        Assignment a = list[i];
         String assignmentName = a.getDescription;
         print('Assignment: $assignmentName');
       }
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',5,this.originalCourse);
+      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',5,globalCourse);
     } else {
       //return CancelButton.assignment(2, this.course);
       print('cancel should be working');
