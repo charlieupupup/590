@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/utilities.dart';
+import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
   ScheduleView({Key key}) : super(key: key);
@@ -11,7 +12,7 @@ class ScheduleView extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(24.0),
         child: Row(
-          children: [],
+          children: [SchduleElement()],
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         width: 300,

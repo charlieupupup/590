@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SchduleElement extends StatelessWidget {
+  final String img = 'images/running.png';
+  final String event = 'Soccer';
+  final String time = '';
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
