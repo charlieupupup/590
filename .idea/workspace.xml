@@ -26,10 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/AssignmentList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/AssignmentList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/UserPreferences.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/UserPreferences.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/SettingsButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/SettingsButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +47,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="weekly_design" />
+        <entry key="$PROJECT_DIR$" value="courtney-dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -112,27 +111,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Added method to convert hex to colors and final colors from color palette in utilities.dart">
-      <created>1604021921138</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1604021921138</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Removed counter from main.dart">
-      <created>1604021942673</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1604021942673</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Changed color of date banner and variable name to date">
-      <created>1604021987020</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1604021987020</updated>
     </task>
     <task id="LOCAL-00004" summary="Changed color of date banner and variable name to date">
       <created>1604021997644</created>
@@ -428,7 +406,56 @@
       <option name="project" value="LOCAL" />
       <updated>1605293658791</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="added option to intake survey for user to leave after survey has been completed once">
+      <created>1605503003829</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1605503003829</updated>
+    </task>
+    <task id="LOCAL-00047" summary="added option to intake survey for user to leave after survey has been completed once">
+      <created>1605503101407</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1605503101407</updated>
+    </task>
+    <task id="LOCAL-00048" summary="changed location of completion flag being set">
+      <created>1605503153393</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1605503153393</updated>
+    </task>
+    <task id="LOCAL-00049" summary="added controller to save values to be used for activity creation">
+      <created>1605557754412</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1605557754412</updated>
+    </task>
+    <task id="LOCAL-00050" summary="added controller to save values to be used for activity creation">
+      <created>1605557953784</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1605557953788</updated>
+    </task>
+    <task id="LOCAL-00051" summary="added controller to save values to be used for activity creation">
+      <created>1605558017405</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1605558017405</updated>
+    </task>
+    <task id="LOCAL-00052" summary="moved exit button on intake survey">
+      <created>1605571056392</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1605571056392</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -446,10 +473,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added popup when hitting add button in Course List" />
-    <MESSAGE value="Made checkmarkbutton and cancelbutton classes" />
-    <MESSAGE value="Hit cancel button anywhere and taks back to last page" />
-    <MESSAGE value="Added Assignment class, updated Course class" />
     <MESSAGE value="Removed AddButton, refactor CourseList - FAB / stateful widget, popup classes" />
     <MESSAGE value="Update CheckmarkButton" />
     <MESSAGE value="Added comments" />
@@ -471,7 +494,11 @@
     <MESSAGE value="Resolve merge conflicts" />
     <MESSAGE value="Added functionality to continue moving forward with creating a new course&#10;&#10;No behavior changes, mainly UI update" />
     <MESSAGE value="fixed sizing of self care page" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed sizing of self care page" />
+    <MESSAGE value="added option to intake survey for user to leave after survey has been completed once" />
+    <MESSAGE value="changed location of completion flag being set" />
+    <MESSAGE value="added controller to save values to be used for activity creation" />
+    <MESSAGE value="moved exit button on intake survey" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved exit button on intake survey" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
