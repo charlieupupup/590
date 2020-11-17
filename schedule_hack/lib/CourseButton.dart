@@ -91,7 +91,7 @@ class _CourseButtonState extends State<CourseButton> {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                     builder: (BuildContext context) => AssignmentListHome(2, newCourse,1,this.courseCount,1),
+                     builder: (BuildContext context) => AssignmentListHome(2, newCourse,1,this.courseCount,1,newCourse),
                   ),
                       (route) => false,
                 );

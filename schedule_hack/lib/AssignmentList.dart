@@ -10,6 +10,7 @@ import 'Course.dart';
 
 import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
+import 'StandardPopup.dart';
 import 'TimeSelector.dart';
 
 // Class to display and interact with list of assignments
@@ -18,12 +19,14 @@ class AssignmentList extends StatefulWidget {
   int edit;
   int courseCount;
   int viewingAssignments; // default is that we're editing (0)
+  Course originalCourse;
 
-  AssignmentList(Course c, int e, int cCount, int vA) {
+  AssignmentList(Course c, int e, int cCount, int vA, Course oC) {
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
     this.viewingAssignments = vA;
+    this.originalCourse = oC;
   }
   AssignmentList.viewing(Course c, int e, int cCount, int vA) {
     this.course = c;
@@ -35,7 +38,7 @@ class AssignmentList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return new _AssignmentListState(
-        this.course, this.edit, this.courseCount, this.viewingAssignments);
+        this.course, this.edit, this.courseCount, this.viewingAssignments, this.originalCourse);
   }
 }
 
@@ -49,13 +52,15 @@ class _AssignmentListState extends State<AssignmentList> {
   int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
   List<Activity> activityList = new List<Activity>();
+  Course originalCourse;
 
-  _AssignmentListState(Course c, int e, int cCount, int vA) {
+  _AssignmentListState(Course c, int e, int cCount, int vA, Course oC) {
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
     this.viewingAssignments = vA;
     print('_viewingAssignments = $viewingAssignments');
+    this.originalCourse = oC;
   }
 
   @override
@@ -73,10 +78,16 @@ class _AssignmentListState extends State<AssignmentList> {
     return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: colorBlackCoral,
-        ),
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: colorBlackCoral,
+            ),
+            onPressed: () {
+              // popup - saying going back will delete data
+              _backButton();
+            })
+        ,
         actions: [
           Row(
             children: [SettingsButton()],
@@ -220,7 +231,23 @@ class _AssignmentListState extends State<AssignmentList> {
       return CancelButton.assignment(2, this.course);
     }
   }
-
+  _backButton(){
+    if (this.edit == 1) {
+      print('edit cancel');
+      // TODO: bug where hitting back still saves data
+      for (int i = 0; i < this.originalCourse.getAssignments.length; i++){
+        Assignment a = this.originalCourse.getAssignments[i];
+        String assignmentName = a.getDescription;
+        print('Assignment: $assignmentName');
+      }
+      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',5,this.originalCourse);
+    } else {
+      //return CancelButton.assignment(2, this.course);
+      print('cancel should be working');
+      //return CancelButton.assignment(6,this.course);
+      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',2,this.originalCourse);
+    }
+  }
   // popup if no assignments listed yet
   _emptyDialog(BuildContext context) {
     List list = new List();
@@ -277,12 +304,10 @@ class _AssignmentListState extends State<AssignmentList> {
                       ),
                       new Expanded(
                           child: DateSelector(
-                              //dateController: myControllerDate,
                               hintText: 'Due Date',
                               dateController: myControllerDate)),
                       new Expanded(
                           child: TimeSelector(
-                              //dateController: myControllerDate,
                               hintText: 'Due Time',
                               timeController: myControllerTime)),
                       Padding(

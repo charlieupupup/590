@@ -15,18 +15,20 @@ class AssignmentListHome extends StatefulWidget {
   int edit;
   int courseCount;
   int viewingAssignment;
+  Course originalCourse;
 
-  AssignmentListHome(int i,Course c,int e, int cCount, int vA){
+  AssignmentListHome(int i,Course c,int e, int cCount, int vA, Course oC){
     this.index = i;
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
     this.viewingAssignment = vA;
+    this.originalCourse = oC;
   }
 
   @override
   State<StatefulWidget> createState() {
-    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount, this.viewingAssignment);
+    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount, this.viewingAssignment,this.originalCourse);
   }
 }
 
@@ -37,20 +39,22 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
   int courseCount;
   List<Widget> _children = new List<Widget>();
   int viewingAssignment;
+  Course originalCourse;
 
-  _AssignmentListHomeState(int i,Course c, int e, int cCount,int vA){
+  _AssignmentListHomeState(int i,Course c, int e, int cCount,int vA, Course oC){
     this._currentIndex = i;
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
     this.viewingAssignment = vA;
+    this.originalCourse = oC;
     this._children = [
       Schedule(
           title: 'ScheduleHack',
           date: DateTime.now() //initialize with today's date
       ),
       SelfCare(),
-      AssignmentList(this.course,this.edit,this.courseCount,this.viewingAssignment)//just placeholders until Self-Care and Courses widgets are made
+      AssignmentList(this.course,this.edit,this.courseCount,this.viewingAssignment,this.originalCourse)//just placeholders until Self-Care and Courses widgets are made
     ];
   }
 
