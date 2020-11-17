@@ -11,24 +11,34 @@ extension CalendarDateTime on DateTime {
 
 extension TimeOfDayConverter on TimeOfDay {
   //takes in string form '12:34PM' returns TimeOfDay
-    static TimeOfDay fromString(String time) {
-      int hourOffset = 0;
-      if (time.endsWith('PM')) {
-        hourOffset = 12;
-      }
-      int hour = int.parse(time.split(':')[0]) + hourOffset;
-      int minute = int.parse(time.split(':')[1].substring(0, 2));
-      return TimeOfDay(hour: hour, minute: minute);
+  static TimeOfDay fromString(String time) {
+    int hourOffset = 0;
+    if (time.endsWith('PM')) {
+      hourOffset = 12;
     }
-    //returns Duration from two TimeOfDay on same Day
-    static Duration fromTimesOfDay(DateTime day, TimeOfDay startTime, TimeOfDay endTime) {
-      DateTime start = DateTimeConverter.fromTimeOfDay(day, startTime);
-      DateTime end = DateTimeConverter.fromTimeOfDay(day, endTime);
-      int hours = end.hour - start.hour;
-      int minutes = end.minute - start.minute;
-      return Duration(days: 0, hours: hours, minutes: minutes);
+    int hour = int.parse(time.split(':')[0]) + hourOffset;
+    int minute = int.parse(time.split(':')[1].substring(0, 2));
+    return TimeOfDay(hour: hour, minute: minute);
+  }
 
+  //returns Duration from two TimeOfDay on same Day
+  static Duration fromTimesOfDay(
+      DateTime day, TimeOfDay startTime, TimeOfDay endTime) {
+    //return 0 if start is after end
+    if (startTime.hour >= endTime.hour) {
+      if (startTime.hour > endTime.hour) {
+        return Duration(days: 0);
+      } else if ((startTime.hour == endTime.hour) &&
+          (startTime.minute >= endTime.minute)) {
+        return Duration(days: 0);
+      }
     }
+    DateTime start = DateTimeConverter.fromTimeOfDay(day, startTime);
+    DateTime end = DateTimeConverter.fromTimeOfDay(day, endTime);
+    int hours = end.hour - start.hour;
+    int minutes = end.minute - start.minute;
+    return Duration(days: 0, hours: hours, minutes: minutes);
+  }
 }
 
 extension DateTimeConverter on DateTime {
