@@ -26,9 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,13 +109,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00007" summary="adjusted colors to match prototype">
-      <created>1604024301435</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1604024301435</updated>
     </task>
     <task id="LOCAL-00008" summary="Adjusted tab and nav bar colors">
       <created>1604025234943</created>
@@ -455,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605585415847</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="added time image to popup">
+      <created>1605586953150</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1605586953150</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -473,7 +471,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added comments" />
     <MESSAGE value="Updated CheckmarkButton to take to Home instead of CourseList" />
     <MESSAGE value="Refactor CourseList to read json file and display buttons" />
     <MESSAGE value="Write asset json to local storage on phone, add new course (not saving locally yet)" />
@@ -498,7 +495,8 @@
     <MESSAGE value="moved exit button on intake survey" />
     <MESSAGE value="Added ability to save previous user preferences and change them after initial setting" />
     <MESSAGE value="fixed exception issue on view course popup and new assignment" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed exception issue on view course popup and new assignment" />
+    <MESSAGE value="added time image to popup" />
+    <option name="LAST_COMMIT_MESSAGE" value="added time image to popup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

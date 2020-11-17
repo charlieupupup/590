@@ -74,12 +74,12 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
       content: Container(
         child: new Column(
           children: <Widget>[
-             new Expanded(
-                child: new TextField(
-                  controller: nameController,
-                  decoration: new InputDecoration(hintText: 'Course Name'),
-                ),
+            new Expanded(
+              child: new TextField(
+                controller: nameController,
+                decoration: new InputDecoration(hintText: 'Course Name'),
               ),
+            ),
             new Expanded(
               child: TimeSelector(
                   hintText: 'Start Time', timeController: startTimeController),
