@@ -4,13 +4,12 @@ import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
 import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/utilities.dart';
+import 'Activity.dart';
 import 'CancelButton.dart';
 import 'Course.dart';
 
-import 'Home.dart';
 import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
-import 'StandardPopup.dart';
 import 'TimeSelector.dart';
 
 // Class to display and interact with list of assignments
@@ -49,7 +48,7 @@ class _AssignmentListState extends State<AssignmentList> {
   int courseCount;
   int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
-  Course originalCourse;
+  List<Activity> activityList = new List<Activity>();
 
   _AssignmentListState(Course c, int e, int cCount, int vA) {
     this.course = c;
@@ -57,7 +56,6 @@ class _AssignmentListState extends State<AssignmentList> {
     this.courseCount = cCount;
     this.viewingAssignments = vA;
     print('_viewingAssignments = $viewingAssignments');
-    this.originalCourse = this.course;
   }
 
   @override
@@ -75,15 +73,10 @@ class _AssignmentListState extends State<AssignmentList> {
     return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: colorBlackCoral,
-            ),
-            onPressed: () {
-              // popup - saying going back will delete data
-              _backButton();
-            }),
+        leading: Icon(
+          Icons.arrow_back_ios,
+          color: colorBlackCoral,
+        ),
         actions: [
           Row(
             children: [SettingsButton()],
@@ -97,36 +90,41 @@ class _AssignmentListState extends State<AssignmentList> {
         backgroundColor: colorHoneydew,
       ),
       body: Container(
-        child: ListView.builder(
-            itemCount: this.course.getAssignments.length, // might need to split this up
-            itemBuilder: (BuildContext context, int index) {
-              return Dismissible(
-                background: deleteBackground(),
-                onDismissed: (DismissDirection direction) {
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text("Assignment deleted")));
-                  setState(() {
-                    List assignmentList = new List();
-                    assignmentList = this.course.getAssignments;
-                    assignmentList.removeAt(index);
-                    Course newCourse = new Course.long(this.course.getName,this.course.getTime,this.course.getDate,this.course.getCourseDays,assignmentList);
-                    this.course = newCourse;
-                  });
-                },
-                child: returnAssignmentButtonIndex(index),
-                key: UniqueKey(),
-                direction: DismissDirection.endToStart,
-              );
-            })//returnAssignmentButton(),
-      ),
+          child: ListView.builder(
+              itemCount: this
+                  .course
+                  .getAssignments
+                  .length, // might need to split this up
+              itemBuilder: (BuildContext context, int index) {
+                return Dismissible(
+                  background: deleteBackground(),
+                  onDismissed: (DismissDirection direction) {
+                    Scaffold.of(context).showSnackBar(
+                        SnackBar(content: Text("Assignment deleted")));
+                    setState(() {
+                      List assignmentList = new List();
+                      assignmentList = this.course.getAssignments;
+                      assignmentList.removeAt(index);
+                      Course newCourse = new Course.long(
+                          this.course.getName,
+                          this.course.getTime,
+                          this.course.getDate,
+                          this.course.getCourseDays,
+                          assignmentList);
+                      this.course = newCourse;
+                    });
+                  },
+                  child: returnAssignmentButtonIndex(index),
+                  key: UniqueKey(),
+                  direction: DismissDirection.endToStart,
+                );
+              }) //returnAssignmentButton(),
+          ),
       bottomNavigationBar: SizedBox(
         height: 58,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            cancelA(),
-            saveChanges()
-          ],
+          children: <Widget>[cancelA(), saveChanges()],
         ),
       ),
       floatingActionButton: _fabDisplay(),
@@ -192,6 +190,8 @@ class _AssignmentListState extends State<AssignmentList> {
   Widget saveChanges() {
     return MaterialButton(
       onPressed: () {
+        // TODO: Add activityList to singleton
+        // TODO: Add course activity to singleton
         ConfirmPopup.course(
             context,
             'Great, your assignments will be saved. We are working in the '
@@ -212,26 +212,12 @@ class _AssignmentListState extends State<AssignmentList> {
     );
   }
 
-  // cancel assignment add
   Widget cancelA() {
     if (this.edit == 1) {
       return Column();
     } else {
       //return CancelButton.assignment(5,this.course);
       return CancelButton.assignment(2, this.course);
-    }
-  }
-   _backButton(){
-    if (this.edit == 1) {
-      // popup, on check mark add back original course
-      print('edit cancel');
-      //CancelButton.assignment(5,this.originalCourse);
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',5,this.originalCourse);
-    } else {
-      //return CancelButton.assignment(2, this.course);
-      print('cancel should be working');
-      //return CancelButton.assignment(6,this.course);
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',6,this.originalCourse);
     }
   }
 
@@ -291,12 +277,14 @@ class _AssignmentListState extends State<AssignmentList> {
                       ),
                       new Expanded(
                           child: DateSelector(
-                            //dateController: myControllerDate,
-                              hintText: 'Due Date')),
+                              //dateController: myControllerDate,
+                              hintText: 'Due Date',
+                              dateController: myControllerDate)),
                       new Expanded(
                           child: TimeSelector(
-                            //dateController: myControllerDate,
-                              hintText: 'Due Time')),
+                              //dateController: myControllerDate,
+                              hintText: 'Due Time',
+                              timeController: myControllerTime)),
                       Padding(
                         padding: const EdgeInsets.only(top: 12.0),
                         child: ButtonBar(
@@ -321,6 +309,20 @@ class _AssignmentListState extends State<AssignmentList> {
           Assignment a = new Assignment.long(myControllerDescription.text,
               myControllerDate.text, myControllerTime.text);
           this.course.setAssignments = a;
+
+          // Making Activity.assignment
+          if (myControllerDate.text.isEmpty || myControllerTime.text.isEmpty) {
+            // if no date or time do nothing
+          } else {
+            DateTime dueDate = DateTime.parse(myControllerDate.text);
+            final currentDate = DateTime.now();
+            Duration duration =
+                Duration(days: currentDate.difference(dueDate).inDays);
+            //for each day in difference create act and add to list
+            Activity activity = new Activity.assignment(
+                dueDate, duration, a.getDescription, 'Description');
+            activityList.add(activity);
+          }
         });
         printText();
         Navigator.of(context).pop();
@@ -361,10 +363,11 @@ class _AssignmentListState extends State<AssignmentList> {
       return new Column(children: widgetList);
     }
   }
-  Widget returnAssignmentButtonIndex(int index){
+
+  Widget returnAssignmentButtonIndex(int index) {
     List list = new List();
     list = this.course.getAssignments;
-    if (list.length == 0){
+    if (list.length == 0) {
       return new Column();
     } else {
       Assignment a;
@@ -382,16 +385,13 @@ class _AssignmentListState extends State<AssignmentList> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 3.0
-              ),
+              padding: const EdgeInsets.only(top: 3.0),
               child: FlatButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
                 color: colorMelon,
-                onPressed: () {
-                },
+                onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
                   child: Row(
@@ -418,16 +418,13 @@ class _AssignmentListState extends State<AssignmentList> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 3.0
-              ),
+              padding: const EdgeInsets.only(top: 3.0),
               child: FlatButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
                 color: colorMelon,
-                onPressed: () {
-                },
+                onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
                   child: Row(
@@ -439,8 +436,7 @@ class _AssignmentListState extends State<AssignmentList> {
                         style: TextStyle(fontSize: 24, color: colorBlackCoral),
                       )),
                       MaterialButton(
-                          onPressed: () {
-                          },
+                          onPressed: () {},
                           color: colorAlmond,
                           child: Image.asset(
                             'images/edit.png',
@@ -452,7 +448,7 @@ class _AssignmentListState extends State<AssignmentList> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
                   //width: 250,
-                 // height: 50,
+                  // height: 50,
                 ),
               ),
             )

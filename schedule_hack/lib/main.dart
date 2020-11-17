@@ -6,9 +6,12 @@ import 'package:schedule_hack/Notify.dart';
 import 'package:schedule_hack/PopUp.dart';
 import 'package:schedule_hack/utilities.dart';
 
+import 'UserPreferences.dart';
+
 void main() {
   runApp(MyApp());
   Day.dayTest(); //for testing
+  userSettings = new UserPreferences();
 }
 
 class MyApp extends StatelessWidget {
