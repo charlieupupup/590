@@ -339,17 +339,7 @@ class _AssignmentListState extends State<AssignmentList> {
         setState(() {
           Assignment a = new Assignment.long(myControllerDescription.text,
               myControllerDate.text, myControllerTime.text);
-          for (int j = 0; j< globalCourse.getAssignments.length; j++){
-            Assignment a = globalCourse.getAssignments[j];
-            String name = a.getDescription;
-            print('Global B/4 Add new assignment: $name');
-          }
           this.course.setAssignments = a;
-          for (int j = 0; j< globalCourse.getAssignments.length; j++){
-            Assignment a = globalCourse.getAssignments[j];
-            String name = a.getDescription;
-            print('Global after new assignment: $name');
-          }
 
           // Making Activity.assignment
           if (myControllerDate.text.isEmpty || myControllerTime.text.isEmpty) {
