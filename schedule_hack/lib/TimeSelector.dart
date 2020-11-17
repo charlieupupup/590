@@ -31,7 +31,6 @@ class _TimeSelectorState extends State<TimeSelector> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: Center(
-
         child: TextField(
           readOnly: true,
           controller: timeController,
@@ -44,7 +43,6 @@ class _TimeSelectorState extends State<TimeSelector> {
             timeController.text = time.format(context);
           },
         ),
-       
       ),
     );
   }
