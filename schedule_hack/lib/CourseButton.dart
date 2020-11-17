@@ -88,7 +88,7 @@ class _CourseButtonState extends State<CourseButton> {
                   newList.add(a);
                 }
                 Course newCourse = Course.long(this.course.getName, this.course.getTime, this.course.getDate, this.course.getCourseDays, newList);
-                globalCourse = newCourse;
+                globalCourse = Course.long(this.course.getName, this.course.getTime, this.course.getDate, this.course.getCourseDays, newList);
                 for (int j = 0; j< globalCourse.getAssignments.length; j++){
                   Assignment a = globalCourse.getAssignments[j];
                   String name = a.getDescription;

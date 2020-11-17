@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
 import 'package:schedule_hack/DateSelector.dart';
+import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'Activity.dart';
 import 'CancelButton.dart';
 import 'Course.dart';
 
+import 'LoadingScreen.dart';
 import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
 import 'StandardPopup.dart';
@@ -203,13 +205,15 @@ class _AssignmentListState extends State<AssignmentList> {
       onPressed: () {
         // TODO: Add activityList to singleton
         // TODO: Add course activity to singleton
-        ConfirmPopup.course(
-            context,
-            'Great, your assignments will be saved. We are working in the '
-            'background to build your schedule. You can always edit a course later.',
-            5,
-            this.course,
-            this.edit);
+        JsonDataStorage jsonDataStorage = new JsonDataStorage();
+        jsonDataStorage.newEntry(this.course);
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => LoadingScreen()
+          ),
+              (route) => false,
+        );
       },
       color: colorHoneydew,
       shape: RoundedRectangleBorder(
@@ -335,7 +339,17 @@ class _AssignmentListState extends State<AssignmentList> {
         setState(() {
           Assignment a = new Assignment.long(myControllerDescription.text,
               myControllerDate.text, myControllerTime.text);
+          for (int j = 0; j< globalCourse.getAssignments.length; j++){
+            Assignment a = globalCourse.getAssignments[j];
+            String name = a.getDescription;
+            print('Global B/4 Add new assignment: $name');
+          }
           this.course.setAssignments = a;
+          for (int j = 0; j< globalCourse.getAssignments.length; j++){
+            Assignment a = globalCourse.getAssignments[j];
+            String name = a.getDescription;
+            print('Global after new assignment: $name');
+          }
 
           // Making Activity.assignment
           if (myControllerDate.text.isEmpty || myControllerTime.text.isEmpty) {
