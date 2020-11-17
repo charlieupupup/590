@@ -21,6 +21,8 @@ class ScheduleView extends StatelessWidget {
                 'My day',
                 style: TextStyle(color: Colors.white),
               ),
+
+              Icon(Icons.add),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
