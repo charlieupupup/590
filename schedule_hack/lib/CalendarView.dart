@@ -84,23 +84,23 @@ class _CalendarState extends State<CalendarView> {
 
   @override
   void initState() {
-    /// Add more events to _markedDateMap EventList
-    _markedDateMap.add(
-        new DateTime(2020, 11, 2),
-        new Activity(Task.takeBreak, DateTime(2020, 11, 2), Duration(hours: 2),
-            "Break", "Take a stretch Break"));
-    _markedDateMap.add(
-        new DateTime(2020, 11, 3),
-        new Activity.assignment(DateTime(2020, 11, 3, 10), Duration(hours: 5),
-            "ECE590", "Final Project"));
-    _markedDateMap.addAll(new DateTime(2020, 11, 4), [
-      new Activity(Task.attendClass, DateTime(2020, 11, 4, 2),
-          Duration(hours: 1), "ECE564", "Attend ECE564"),
-      new Activity.assignment(DateTime(2020, 11, 4, 4), Duration(hours: 2),
-          "ECE590", "Final Project"),
-      new Activity.assignment(
-          DateTime(2020, 11, 4, 9), Duration(hours: 3), "MENG570", "Final Exam")
-    ]);
+    // /// Add more events to _markedDateMap EventList
+    // _markedDateMap.add(
+    //     new DateTime(2020, 11, 2),
+    //     new Activity(Task.takeBreak, DateTime(2020, 11, 2), Duration(hours: 2),
+    //         "Break", "Take a stretch Break"));
+    // _markedDateMap.add(
+    //     new DateTime(2020, 11, 3),
+    //     new Activity.assignment(DateTime(2020, 11, 3, 10), Duration(hours: 5),
+    //         "ECE590", "Final Project"));
+    // _markedDateMap.addAll(new DateTime(2020, 11, 4), [
+    //   new Activity(Task.attendClass, DateTime(2020, 11, 4, 2),
+    //       Duration(hours: 1), "ECE564", "Attend ECE564"),
+    //   new Activity.assignment(DateTime(2020, 11, 4, 4), Duration(hours: 2),
+    //       "ECE590", "Final Project"),
+    //   new Activity.assignment(
+    //       DateTime(2020, 11, 4, 9), Duration(hours: 3), "MENG570", "Final Exam")
+    // ]);
     super.initState();
   }
 
