@@ -18,7 +18,7 @@ class SchduleElement extends StatelessWidget {
             children: [
               Image(image: AssetImage(img)),
               Text(event + ' ' + time),
-              Icon(Icons.arrow_right),
+              Icon(Icons.arrow_forward_ios),
             ],
           ),
         ));
