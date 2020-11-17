@@ -30,20 +30,21 @@ class _TimeSelectorState extends State<TimeSelector> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        body: Center(
-      child: Expanded(
-          child: TextField(
-        readOnly: true,
-        controller: timeController,
-        decoration: InputDecoration(hintText: hintText),
-        onTap: () async {
-          var time = await showTimePicker(
-            initialTime: TimeOfDay.now(),
-            context: context,
-          );
-          timeController.text = time.format(context);
-        },
-      )),
-    ));
+      body: Center(
+        child: TextField(
+          readOnly: true,
+          controller: timeController,
+          decoration: InputDecoration(
+              hintText: hintText, suffixIcon: Icon(Icons.access_alarm)),
+          onTap: () async {
+            var time = await showTimePicker(
+              initialTime: TimeOfDay.now(),
+              context: context,
+            );
+            timeController.text = time.format(context);
+          },
+        ),
+      ),
+    );
   }
 }
