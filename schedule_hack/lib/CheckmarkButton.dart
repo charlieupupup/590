@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/MockPhoto.dart';
 
+import 'Activity.dart';
 import 'Assignment.dart';
 import 'AssignmentListHome.dart';
 import 'ConfirmPopup.dart';
@@ -22,16 +23,21 @@ class CheckmarkButton extends StatefulWidget {
   int edit;
   int courseCount;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
-  TextEditingController myController;
+  TextEditingController nameController;
   Course course = new Course();
+  TextEditingController startTimeController;
+  TextEditingController endTimeController;
+  TextEditingController dateController;
 
   CheckmarkButton(int i, Course c) {
     this.index = i;
     this.course = c;
   }
-  CheckmarkButton.course(int i, TextEditingController d) {
+  CheckmarkButton.course(int i, TextEditingController name,TextEditingController sT,TextEditingController eT) {
     this.index = i;
-    this.myController = d;
+    this.nameController = name;
+    this.startTimeController = sT;
+    this.endTimeController = eT;
   }
   CheckmarkButton.assignment(int i, Course c, int e, int cCount){
     this.index = i;
@@ -41,25 +47,33 @@ class CheckmarkButton extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return _CheckmarkButtonState(index, myController,course,edit,courseCount);
+    return _CheckmarkButtonState(index, nameController,course,edit,courseCount,startTimeController,endTimeController,dateController);
   }
 }
 
 class _CheckmarkButtonState extends State<CheckmarkButton> {
   int index;
-  String data;
+  String courseName;
   int edit;
   int courseCount;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
-  TextEditingController myController;
+  TextEditingController nameController;
   Course course = new Course();
+  TextEditingController startTimeController;
+  TextEditingController endTimeController;
+  TextEditingController dateController;
 
-  _CheckmarkButtonState(int i, TextEditingController controller, Course c,int e,int cCount) {
+  _CheckmarkButtonState(int i, TextEditingController controller, Course c,int e,int cCount,TextEditingController sT,TextEditingController eT,TextEditingController date) {
     this.index = i;
-    this.myController = controller;
+    this.nameController = controller;
     this.course = c;
     this.edit = e;
     this.courseCount = cCount;
+    this.startTimeController = sT;
+    this.endTimeController = eT;
+    this.dateController = date;
+    print('Start Time Controller: $startTimeController');
+    //print();
   }
   // Create Course
   Course createCourse(String name) {
@@ -87,11 +101,20 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
           case 0:  // Take users to SyllabusPopup.dart
             {
               // take user to syllabus popup (showing manual, photo, pdf)
-              this.data = myController.text;
-              print("Data: :${data}");
-              Course c1 = createCourse(data);
-              // add new entry later
-              //jsonDataStorage.newEntry(c1);
+              this.courseName = nameController.text;
+              print("Data: :${courseName}");
+              Course c1 = createCourse(courseName);
+
+              // Create Activity and pass throughout New Course Creation
+              final now = new DateTime.now();
+              //DateTime startTime = new DateTime(now.year, now.month, now.day, startTimeController.hour, startTimeController.minute);
+              //DateTime endTime = new DateTime(now.year, now.month, now.day, endTimeController.hour, endTimeController.minute);
+              //int hours = endTimeController.hour - startTimeController.hour;
+              //int minutes = endTimeController.minute - startTimeController.minute;
+              // new activity
+              Activity activity = new Activity(Task.attendClass, now, Duration(hours: 2),
+                  "Break", "Take a stretch Break");
+              // TODO: add activity syllabus
               SyllabusPopup(context,c1);
               break;
             }

@@ -3,15 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class DaySelector extends StatefulWidget {
+  Map<String, bool> dayValues;
+  DaySelector(Map<String, bool> dayVs) {
+    this.dayValues = dayVs;
+  }
   @override
   State<StatefulWidget> createState() {
-    return new _DaySelectorState();
+    return new _DaySelectorState(dayValues);
   }
 }
 
 class _DaySelectorState extends State<DaySelector> {
   var dayArray = [];
-  Map<String, bool> dayValues = {
+  Map<String, bool> dayValues;
+  _DaySelectorState(Map<String, bool> dayVs) {
+    this.dayValues = dayVs;
+  }
+  /*Map<String, bool> dayValues = {
     //'Sunday': false,
     'M': false,
     'T': false,
@@ -19,7 +27,7 @@ class _DaySelectorState extends State<DaySelector> {
     'Th': false,
     'F': false,
     //'Saturday': false,
-  };
+  };*/
 
   Widget showCaptions() {
     List<Widget> tiles = new List<Widget>();
@@ -39,8 +47,6 @@ class _DaySelectorState extends State<DaySelector> {
       Expanded box = new Expanded(
           child: Checkbox(
               value: dayValues[day],
-              //subtitle: Text(day),
-              //controlAffinity: ListTileControlAffinity.leading,
               checkColor: colorBlackCoral,
               activeColor: colorPowderBlue,
               onChanged: (bool newValue) {
