@@ -23,10 +23,14 @@ final Color colorBeige = CustomColor('#EAF3E0');
 final Color colorHoneydew = CustomColor('#D9F3E2');
 final Color colorAeroBlue = CustomColor('#B8F2E6');
 final Color colorPowderBlue = CustomColor('#AED9E0');
+final Color colorDarkSkyBlue = CustomColor('#9ABCC5');
+final Color colorPewterBlue = CustomColor('#869FA9');
 final Color colorBlackCoral = CustomColor('#5E6472');
 final Color colorIvory = CustomColor('#F5F9F0');
 final Color colorSoftMelon = CustomColor('#FDC2BE');
 final Color colorPale = CustomColor('#FAF3DD');
+
+enum Tab { schedule, selfCare, courses }
 
 /*
 These are impossible to remember so I'm leaving them here in utilities as an easy resource
