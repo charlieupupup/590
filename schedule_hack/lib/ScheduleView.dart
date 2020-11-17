@@ -40,6 +40,30 @@ class ScheduleView extends StatelessWidget {
           height: 75,
           decoration: BoxDecoration(color: colorAeroBlue),
         ),
+        Container(
+          // margin: const EdgeInsets.all(24.0),
+          child: Column(
+            children: [
+              Expanded(child: SchduleElement()),
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          width: 300,
+          height: 75,
+          decoration: BoxDecoration(color: colorAeroBlue),
+        ),
+        Container(
+          // margin: const EdgeInsets.all(24.0),
+          child: Column(
+            children: [
+              Expanded(child: SchduleElement()),
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          width: 300,
+          height: 75,
+          decoration: BoxDecoration(color: colorAeroBlue),
+        ),
         //
       ],
     );
