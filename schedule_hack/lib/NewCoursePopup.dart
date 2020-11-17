@@ -10,26 +10,53 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class NewCoursePopup extends StatefulWidget {
   BuildContext context;
-  TextEditingController myController;
-  NewCoursePopup(TextEditingController controller) {
-    this.myController = controller;
+  TextEditingController nameController;
+  TextEditingController startTimeController = TextEditingController();
+  TextEditingController endTimeController = TextEditingController();
+  Map<String, bool> dayValues = {
+    //'Sunday': false,
+    'M': false,
+    'T': false,
+    'W': false,
+    'Th': false,
+    'F': false,
+    //'Saturday': false,
+  };
+  NewCoursePopup(TextEditingController controller, TextEditingController start,
+      TextEditingController end) {
+    this.nameController = controller;
+    this.startTimeController = start;
+    this.endTimeController = end;
   }
   @override
   State<StatefulWidget> createState() {
-    return new _NewCoursePopupState(myController);
+    return new _NewCoursePopupState(
+        nameController, dayValues, startTimeController, endTimeController);
   }
 }
 
 class _NewCoursePopupState extends State<NewCoursePopup> {
   BuildContext context;
-  TextEditingController myController;
+  TextEditingController nameController;
+  TextEditingController startTimeController = TextEditingController();
+  TextEditingController endTimeController = TextEditingController();
+  Map<String, bool> dayValues;
+  TimeOfDay startTime;
+  TimeOfDay endTime;
 
-  _NewCoursePopupState(TextEditingController controller) {
-    this.myController = controller;
+  _NewCoursePopupState(
+      TextEditingController controller,
+      Map<String, bool> dayVs,
+      TextEditingController start,
+      TextEditingController end) {
+    this.nameController = controller;
+    this.dayValues = dayVs;
+    this.startTimeController = start;
+    this.endTimeController = end;
   }
 
-  Widget checkMark(int i, TextEditingController s) {
-    return CheckmarkButton.course(i, s);
+  Widget checkMark(int i, TextEditingController name, TextEditingController start, TextEditingController end) {
+    return CheckmarkButton.course(i, name, start, end);
   }
 
   @override
@@ -48,13 +75,18 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
           children: <Widget>[
             new Expanded(
               child: new TextField(
-                controller: myController,
+                controller: nameController,
                 decoration: new InputDecoration(hintText: 'Course Name'),
               ),
             ),
-            DaySelector(),
-            new Expanded(child: TimeSelector(hintText: 'Start Time')),
-            new Expanded(child: TimeSelector(hintText: 'End Time')),
+            DaySelector(dayValues),
+            new Expanded(
+              child: TimeSelector(
+                  hintText: 'Start Time', timeController: startTimeController),
+            ),
+            new Expanded(
+                child: TimeSelector(
+                    hintText: 'End Time', timeController: endTimeController)),
           ],
         ),
       ),
@@ -62,10 +94,53 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
         Container(
           child: ButtonBar(
             alignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[CancelButton(), checkMark(0, myController)],
+            children: <Widget>[CancelButton(), checkMark(0, nameController,startTimeController,endTimeController)],
           ),
         )
       ],
+    );
+  }
+
+  Widget _startTimeSelector(TextEditingController timeController, String hintText, BuildContext context, var time){
+    return Center(
+      child: Expanded(
+          child: TextField(
+            readOnly: true,
+            controller: timeController,
+            decoration: InputDecoration(hintText: hintText),
+            onTap: () async {
+              this.startTime = await showTimePicker(
+                initialTime: TimeOfDay.now(),
+                context: context,
+              );
+              if (startTime.format(context) == null){
+                // do nothing
+              } else {
+                timeController.text = startTime.format(context);
+              }
+            },
+          )),
+    );
+  }
+  Widget _endTimeSelector(TextEditingController timeController, String hintText, BuildContext context, var time){
+    return Center(
+      child: Expanded(
+          child: TextField(
+            readOnly: true,
+            controller: timeController,
+            decoration: InputDecoration(hintText: hintText),
+            onTap: () async {
+              this.endTime = await showTimePicker(
+                initialTime: TimeOfDay.now(),
+                context: context,
+              );
+              if (endTime.format(context) == null){
+                // do nothing
+              } else {
+                timeController.text = endTime.format(context);
+              }
+            },
+          )),
     );
   }
 }

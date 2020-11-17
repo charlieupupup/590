@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/SurveyQuestionTile.dart';
 import 'package:schedule_hack/UserPreferences.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -80,9 +81,10 @@ class IntakeSurveyState extends State<IntakeSurvey> {
             //only update if pages are available
             pageNumber++;
           } else {
+            surveyDone = true;
             String message = 'Confirm and complete Survey?';
             //_showMaterialDialog2(message);
-            StandardPopup(context, message,2); // 2 takes user home
+            StandardPopup(context, message, 2); // 2 takes user home
             //Navigator.push(context, MaterialPageRoute(builder: (context) => Home(0)));
           }
         });
@@ -98,6 +100,34 @@ class IntakeSurveyState extends State<IntakeSurvey> {
     return new Row(mainAxisAlignment: alignment, children: navButtons);
   }
 
+  Widget exitOption() {
+    if (surveyDone) {
+      return new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [exitButton()],
+      );
+    }
+    return new Text("Please answer survey to completion",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 12.0, color: colorBlackCoral));
+  }
+
+  Widget exitButton() {
+    return MaterialButton(
+      onPressed: () {
+        // cancel just go back to last page (pop)
+        Navigator.of(context).pop();
+      },
+      color: colorMelon,
+      child: Image.asset(
+        'images/delete.png',
+        height: 20,
+        width: 20,
+      ),
+      shape: CircleBorder(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -107,6 +137,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
           //decoration: BoxDecoration(border: Border.all(color: colorBlackCoral)),
           child: ListView(
             children: <Widget>[
+              exitOption(),
               new Text(userPreferences.getSurveyPage(pageNumber).getPageTitle(),
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 26.0, color: colorBlackCoral)),
