@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:schedule_hack/UserPreferences.dart';
 
 extension CalendarDateTime on DateTime {
   static firstDayOfWeek(DateTime date) {
@@ -46,3 +47,4 @@ DateFormat.jm().format(date) // 12:48 PM
 bool surveyDone = false;
 
 //set global user preferences
+UserPreferences userSettings;

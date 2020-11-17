@@ -19,7 +19,7 @@ class _SettingsButtonState extends State<SettingsButton> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => IntakeSurvey(new UserPreferences())));
+                  builder: (context) => IntakeSurvey(userSettings)));
         },
         icon: Icon(Icons.settings, color: colorBlackCoral),
         color: colorHoneydew);
