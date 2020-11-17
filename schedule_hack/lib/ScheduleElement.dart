@@ -14,6 +14,7 @@ class SchduleElement extends StatelessWidget {
         child: Container(
           color: colorPale,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image(image: AssetImage(img)),
               Text(event + ' ' + time),

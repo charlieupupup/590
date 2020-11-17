@@ -12,7 +12,7 @@ class ScheduleView extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(24.0),
         child: Row(
-          children: [SchduleElement()],
+          children: [Expanded(child: SchduleElement())],
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         width: 300,
