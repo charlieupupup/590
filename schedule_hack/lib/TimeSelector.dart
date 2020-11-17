@@ -34,7 +34,8 @@ class _TimeSelectorState extends State<TimeSelector> {
         child: TextField(
           readOnly: true,
           controller: timeController,
-          decoration: InputDecoration(hintText: hintText),
+          decoration: InputDecoration(
+              hintText: hintText, suffixIcon: Icon(Icons.access_alarm)),
           onTap: () async {
             var time = await showTimePicker(
               initialTime: TimeOfDay.now(),
