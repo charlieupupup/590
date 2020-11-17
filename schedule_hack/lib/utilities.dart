@@ -9,6 +9,26 @@ extension CalendarDateTime on DateTime {
   }
 }
 
+extension TimeOfDayConverter on TimeOfDay {
+  //takes in string form '12:34PM' returns TimeOfDay
+  static TimeOfDay fromString(String time) {
+    int hourOffset = 0;
+    if (time.endsWith('PM')) {
+      hourOffset = 12;
+    }
+    int hour = int.parse(time.split(':')[0]) + hourOffset;
+    int minute = int.parse(time.split(':')[1].substring(0, 2));
+    return TimeOfDay(hour: hour, minute: minute);
+  }
+}
+
+extension DateTimeConverter on DateTime {
+  //takes a DateTime and a time of day and creates a DateTime on that day at that time
+  static DateTime fromTimeOfDay(DateTime day, TimeOfDay time) {
+    return DateTime(day.year, day.month, day.day, time.hour, time.minute);
+  }
+}
+
 //generates custom colors
 class CustomColor extends Color {
   static hexToColor(String code) {
