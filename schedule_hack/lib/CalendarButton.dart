@@ -23,6 +23,8 @@ class _CalendarButtonState extends State<CalendarButton> {
       onPressed: () {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => CalendarView()));
+        // Navigator.push(context,
+        //     MaterialPageRoute(builder: (context) => CalendarSingleton()));
       },
     );
   }
