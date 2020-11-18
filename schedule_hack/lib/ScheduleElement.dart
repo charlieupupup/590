@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class SchduleElement extends StatelessWidget {
-  final String img = 'images/running.png';
-  final String event = 'Soccer';
-  final String time = '3-530';
+  String img = 'images/running.png';
+  String event = 'Soccer';
+  String time = '3-530';
+
+  SchduleElement(Activity activity) {
+    this.time = activity.duration.toString();
+    this.event = activity.title;
+    // this.img = activity.title;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +44,8 @@ class SchduleElement extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image(image: AssetImage(img)),
-              Text(event + ' ' + time),
+              Text(event),
+              Text(time),
               Icon(Icons.arrow_forward_ios),
             ],
           ),

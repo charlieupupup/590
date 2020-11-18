@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
   ScheduleView({Key key}) : super(key: key);
+  Activity activity = Activity(Task.takeBreak, DateTime(2020, 11, 2),
+      Duration(hours: 2), "Break", "Take a stretch Break");
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,7 @@ class ScheduleView extends StatelessWidget {
           // margin: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              Expanded(child: SchduleElement()),
+              Expanded(child: SchduleElement(activity)),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
@@ -55,30 +58,7 @@ class ScheduleView extends StatelessWidget {
           height: 75,
           decoration: BoxDecoration(color: colorAeroBlue),
         ),
-        Container(
-          // margin: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              Expanded(child: SchduleElement()),
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
-          ),
-          width: 300,
-          height: 200,
-          decoration: BoxDecoration(color: colorAeroBlue),
-        ),
-        Container(
-          // margin: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              Expanded(child: SchduleElement()),
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
-          ),
-          width: 300,
-          height: 75,
-          decoration: BoxDecoration(color: colorAeroBlue),
-        ),
+
         //
       ],
     );
