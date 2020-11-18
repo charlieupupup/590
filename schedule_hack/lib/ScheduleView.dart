@@ -6,16 +6,10 @@ import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
-  ScheduleEvent s0 = ScheduleEvent(
-      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
-  ScheduleEvent s1 = ScheduleEvent(
-      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
-  ScheduleEvent s2 = ScheduleEvent(
-      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
   List<ScheduleEvent> _list;
 
-  ScheduleView({Key key}) : super(key: key) {
-    _list = [s0, s1, s2];
+  ScheduleView(List<ScheduleEvent> list) {
+    _list = list;
   }
 
   @override
