@@ -22,12 +22,12 @@ class _DateSelectorState extends State<DateSelector> {
     this.hintText = hint;
     this.dateController = controller;
   }
-  @override
+  /*@override
   void dispose() {
     // Clean up the controller when the widget is removed
     dateController.dispose();
     super.dispose();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
