@@ -1,18 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:intl/intl.dart';
+import 'package:schedule_hack/Assignment.dart';
+import 'package:schedule_hack/ScheduleList.dart';
 import 'package:schedule_hack/utilities.dart';
 
-enum Task { attendClass, doAssignment, sleep, takeBreak, workout }
-
 class Activity extends Event {
-  Task task;
   Duration duration;
   String description;
 
-  //default constructor
-  Activity(Task task, DateTime start, Duration duration, String title,
-      String description)
+  Activity.fromScheduleItem(ScheduleItem scheduleItem)
+      : super(
+            date: DateTime.parse(scheduleItem.date),
+            title: scheduleItem.title,
+            icon: Icon(
+              Icons.access_time,
+              color: colorBlackCoral,
+              size: 30.0,
+            ),
+            dot: Container(
+              margin: EdgeInsets.symmetric(horizontal: 1.0),
+              color: colorMelon,
+              height: 5.0,
+              width: 5.0,
+            )) {
+    this.duration = Duration(hours: scheduleItem.duration);
+    this.description = scheduleItem.description;
+  }
+
+  //default constructor string must be in iso
+  Activity(String start, int duration, String title, String description)
+      : super(
+            date: DateTime.parse(start),
+            title: title,
+            icon: Icon(
+              Icons.access_time,
+              color: colorBlackCoral,
+              size: 30.0,
+            ),
+            dot: Container(
+              margin: EdgeInsets.symmetric(horizontal: 1.0),
+              color: colorMelon,
+              height: 5.0,
+              width: 5.0,
+            )) {
+    this.duration = Duration(hours: duration);
+    this.description = description;
+  }
+
+  Assignment getAssignment() {
+    return new Assignment.long(description, date.toIso8601String(),
+        date.subtract(duration).toIso8601String());
+  }
+
+  Activity.standard(
+      DateTime start, Duration duration, String title, String description)
       : super(
             date: start,
             title: title,
@@ -27,7 +68,6 @@ class Activity extends Event {
               height: 5.0,
               width: 5.0,
             )) {
-    this.task = task;
     this.duration = duration;
     this.description = description;
   }
@@ -50,23 +90,10 @@ class Activity extends Event {
               height: 5.0,
               width: 5.0,
             )) {
-    this.task = Task.doAssignment;
     this.duration = timeToComplete;
     this.description = description;
   }
 
   //TODO: course constructor that will add in repeat? or maybe ClassAttendance subclass of Activity with some kind of list of DaysOfWeek
 
-//string to return currently just for testing
-  String getInfo() {
-    return description +
-        "(" +
-        task.toString() +
-        ") on " +
-        DateFormat.yMMMMEEEEd('en_US').format(date) +
-        "for " +
-        duration.inHours.toString() +
-        " hours starting " +
-        DateFormat.jm().format(date);
-  }
 }

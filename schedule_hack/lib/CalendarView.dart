@@ -2,75 +2,74 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:intl/intl.dart';
-import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/NewCoursePopup.dart';
+import 'package:localstorage/localstorage.dart';
+import 'package:schedule_hack/ScheduleList.dart';
 import 'package:schedule_hack/SettingsButton.dart';
-import 'package:schedule_hack/StandardPopup.dart';
 import 'package:schedule_hack/utilities.dart';
 
 enum Tab { schedule, selfCare, courses }
-//
-// class CalendarSingleton extends CalendarView {
-//   static CalendarSingleton _instance;
-//   CalendarSingleton._internal();
-//
-//   factory CalendarSingleton() {
-//     if (_instance == null) {
-//       _instance = CalendarSingleton._internal();
-//     }
-//     return _instance;
-//   }
-// }
+
+class CalendarSingleton extends CalendarView {
+  static CalendarSingleton shared;
+  CalendarSingleton._internal();
+
+  factory CalendarSingleton() {
+    if (shared == null) {
+      shared = CalendarSingleton._internal();
+    }
+    return shared;
+  }
+}
 
 class CalendarView extends StatefulWidget {
   EventList<Event> markedDateMap;
   int _currentIndex = 0;
   DateTime date = DateTime.now();
 
-  static final CalendarView _singleton = CalendarView._internal();
-  factory CalendarView() => _singleton;
-  CalendarView._internal() {
-    markedDateMap = new EventList<Event>();
-    markedDateMap.add(
-        DateTime.now(),
-        new Activity(DateTime.now().toIso8601String(), 2, "Break",
-            "Take a stretch Break"));
-  }
-  static CalendarView get shared => _singleton;
-
   @override
   State<StatefulWidget> createState() {
     return _CalendarState(date, markedDateMap);
   }
 
-  void addActivities(DateTime date, List<Event> activities) {
-    List<Event> events = CalendarView.shared.markedDateMap.getEvents(date);
-    print("num of events: " + events.length.toString());
-    for (int i = 0; i < events.length; i++) {
-      String s = events[i].title;
-      print("map contains $s on $date");
-    }
-    CalendarView.shared.markedDateMap.addAll(date, activities);
-    events = CalendarView.shared.markedDateMap.getEvents(date);
-    print("num of events: " + events.length.toString());
-    for (int i = 0; i < events.length; i++) {
-      String s = events[i].title;
-      print("map contains $s on $date");
-    }
-  }
-
-  List<Event> getActivities(DateTime date) {
-    List<Event> events = CalendarView.shared.markedDateMap.getEvents(date);
-    print("num of events: " + events.length.toString());
-    for (int i = 0; i < events.length; i++) {
-      String s = events[i].title;
-      print("map contains $s on $date");
-    }
-    return CalendarView.shared.markedDateMap.getEvents(date);
-  }
+  // void addActivities(DateTime date, List<Event> activities) {
+  //   List<Event> events = CalendarView.shared.markedDateMap.getEvents(date);
+  //   print("num of events: " + events.length.toString());
+  //   for (int i = 0; i < events.length; i++) {
+  //     String s = events[i].title;
+  //     print("map contains $s on $date");
+  //   }
+  //   CalendarView.shared.markedDateMap.addAll(date, activities);
+  //   events = CalendarView.shared.markedDateMap.getEvents(date);
+  //   print("num of events: " + events.length.toString());
+  //   for (int i = 0; i < events.length; i++) {
+  //     String s = events[i].title;
+  //     print("map contains $s on $date");
+  //   }
 }
 
+//
+
 class _CalendarState extends State<CalendarView> {
+  final LocalStorage storage = new LocalStorage('activity.json');
+  ScheduleList get list {
+    final ScheduleList list = new ScheduleList();
+    var items = storage.getItem('items');
+    if (items != null) {
+      list.items = List<ScheduleItem>.from(
+        (items as List).map(
+          (item) => ScheduleItem(
+            title: item['title'],
+            type: item['type'],
+            description: item['description'],
+            duration: item['duration'],
+            date: item['date'],
+          ),
+        ),
+      );
+    }
+    return list;
+  }
+
   int _currentIndex = 0;
   DateTime _currentDateWeekView;
   DateTime _currentDateMonthView;
@@ -88,6 +87,24 @@ class _CalendarState extends State<CalendarView> {
     _firstDayOfCurrentWeek = DateFormat.yMMMd('en_US').format(date);
     _targetDateTime = date;
     _markedDateMap = events;
+  }
+
+  _addItem(ScheduleItem event) {
+    setState(() {
+      list.items.add(event);
+      _saveToStorage();
+    });
+  }
+
+  _saveToStorage() {
+    storage.setItem('items', list.toJSONEncodable());
+  }
+
+  _clearStorage() async {
+    await storage.clear();
+    setState(() {
+      list.items = storage.getItem('items') ?? [];
+    });
   }
 
   @override
@@ -345,3 +362,152 @@ class _CalendarState extends State<CalendarView> {
     });
   }
 }
+
+// class _MyHomePageState extends State<HomePage> {
+//   final List<Activity> activities = new List<Activity>();
+//   final ScheduleList list = new ScheduleList();
+//   final LocalStorage storage = new LocalStorage('activity.json');
+//   bool initialized = false;
+//   TextEditingController controller = new TextEditingController();
+//
+//
+//   _addItem(String description) {
+//     setState(() {
+//       final item = new ScheduleItem(
+//           title: "TEST",
+//           date: DateTime.now().toIso8601String(),
+//           duration: 2,
+//           description: description,
+//           done: false);
+//       list.items.add(item);
+//       _saveToStorage();
+//     });
+//   }
+//
+//   _saveToStorage() {
+//     storage.setItem('items', list.toJSONEncodable());
+//   }
+//
+//   _clearStorage() async {
+//     await storage.clear();
+//
+//     setState(() {
+//       list.items = storage.getItem('items') ?? [];
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Scaffold(
+//       appBar: new AppBar(
+//         title: new Text('Localstorage demo'),
+//       ),
+//       body: Container(
+//           padding: EdgeInsets.all(10.0),
+//           constraints: BoxConstraints.expand(),
+//           child: FutureBuilder(
+//             future: storage.ready,
+//             builder: (BuildContext context, AsyncSnapshot snapshot) {
+//               if (snapshot.data == null) {
+//                 return Center(
+//                   child: CircularProgressIndicator(),
+//                 );
+//               }
+//               if (!initialized) {
+//                 var items = storage.getItem('items');
+//                 if (items != null) {
+//                   list.items = List<ScheduleItem>.from(
+//                     (items as List).map(
+//                       (item) => ScheduleItem(
+//                         title: item['title'],
+//                         done: item['done'],
+//                         description: item['description'],
+//                         duration: item['duration'],
+//                         date: item['date'],
+//                       ),
+//                     ),
+//                   );
+//                 }
+//                 initialized = true;
+//               }
+//
+//               List<Widget> widgets = list.items.map((item) {
+//                 return CheckboxListTile(
+//                   value: item.done,
+//                   title: Text(item.title),
+//                   selected: item.done,
+//                   onChanged: (bool selected) {
+//                     _toggleItem(item);
+//                   },
+//                 );
+//               }).toList();
+//
+//               return Column(
+//                 children: <Widget>[
+//                   Expanded(
+//                     flex: 1,
+//                     child: ListView(
+//                       children: widgets,
+//                       itemExtent: 50.0,
+//                     ),
+//                   ),
+//                   ListTile(
+//                     title: TextField(
+//                       controller: controller,
+//                       decoration: InputDecoration(
+//                         labelText: 'Description',
+//                       ),
+//                       onEditingComplete: _save,
+//                     ),
+//                     trailing: Row(
+//                       mainAxisSize: MainAxisSize.min,
+//                       children: <Widget>[
+//                         IconButton(
+//                           icon: Icon(Icons.save),
+//                           onPressed: _save,
+//                           tooltip: 'Save',
+//                         ),
+//                         IconButton(
+//                           icon: Icon(Icons.delete),
+//                           onPressed: _clearStorage,
+//                           tooltip: 'Clear storage',
+//                         ),
+//                         IconButton(
+//                           icon: Icon(Icons.arrow_upward),
+//                           onPressed: _print,
+//                           tooltip: 'Print events',
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               );
+//             },
+//           )),
+//     );
+//   }
+//
+//   void _save() {
+//     _addItem(controller.value.text);
+//     controller.clear();
+//   }
+//
+//   void _print() {
+//     var items = storage.getItem('items');
+//     if (items != null) {
+//       List<ScheduleItem> list =
+//           List<ScheduleItem>.from((items as List).map((item) => ScheduleItem(
+//                 title: item['title'],
+//                 done: item['done'],
+//                 description: item['description'],
+//                 duration: item['duration'],
+//                 date: item['date'],
+//               )));
+//       List<Activity> events = getActivityList(list);
+//       for (int i = 0; i < events.length; i++) {
+//         String e = events[i].description;
+//         print("event $e");
+//       }
+//     }
+//   }
+// }
