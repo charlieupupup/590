@@ -13,49 +13,27 @@ class DateBanner extends StatelessWidget {
     return SizedBox(
       width: 300,
       height: 75,
-      // child: Card(
-      //   margin: EdgeInsets.all(6.0),
-      //   elevation: 4.0,
-      //   color: colorMelon,
-      //   child: Align(
-      //     alignment: Alignment.center,
-      //     child: AutoSizeText(
-      //       DateFormat.yMMMMEEEEd('en_US')
-      //           .format(date), //Sunday, November 15, 2020
-      //       style: TextStyle(fontSize: 24, color: colorIvory),
-      //       maxLines: 1,
-      //       minFontSize: 20,
-      //       textAlign: TextAlign.center,
-      //       overflowReplacement: AutoSizeText(
-      //           DateFormat.yMMMEd('en_US').format(date), //Sun, Nov 15, 2020
-      //           style: TextStyle(fontSize: 24, color: colorIvory),
-      //           maxLines: 1,
-      //           minFontSize: 20.0,
-      //           textAlign: TextAlign.center),
-      //     ),
-      //   ),
-      // ),
-
       child: Padding(
-        // color: colorMelon,
-        // width: 300,
-        // height: 100,
-        // margin: const EdgeInsets.only(
-        //   top: 20,
-        // ),
         padding: EdgeInsets.all(1),
-        child: Row(
-          children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: null,
-              color: Colors.white,
-            ),
-            Card(
-              // margin: EdgeInsets.all(6.0),
-              // elevation: 4.0,
-              color: colorMelon,
-              child: Align(
+        //child: Row(
+        //children: [
+        //FloatingActionButton(
+        //child: Image.asset('images/double_left.png'), onPressed: null),
+        child: Card(
+          // margin: EdgeInsets.all(6.0),
+          // elevation: 4.0,
+          color: colorMelon,
+
+          child: Row(
+            children: [
+              MaterialButton(
+                  child: Image.asset(
+                    'images/double_left.png',
+                    height: 20,
+                    width: 20,
+                  ),
+                  onPressed: null),
+              Align(
                 alignment: Alignment.center,
                 child: AutoSizeText(
                   DateFormat.yMMMMEEEEd('en_US')
@@ -73,13 +51,15 @@ class DateBanner extends StatelessWidget {
                       textAlign: TextAlign.center),
                 ),
               ),
-            ),
-            IconButton(
-              icon: Icon(Icons.arrow_forward_ios),
-              onPressed: null,
-              color: Colors.white,
-            ),
-          ],
+              MaterialButton(
+                  child: Image.asset(
+                    'images/double_right.png',
+                    height: 20,
+                    width: 20,
+                  ),
+                  onPressed: null),
+            ],
+          ),
         ),
       ),
     );

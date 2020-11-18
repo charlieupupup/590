@@ -1,28 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CalendarButton.dart';
 import 'package:schedule_hack/DateBanner.dart';
 import 'package:schedule_hack/Day.dart';
 import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 
 import 'Home.dart';
-import 'ScheduleEvent.dart';
+
 import 'SettingsButton.dart';
 
 class Schedule extends StatelessWidget {
-  List<ScheduleEvent> _list;
+  //EventList<Event> _scheduleToday;
+  List<Activity> _scheduleToday;
   final String title;
   DateTime date;
 
-  ScheduleEvent s0 = ScheduleEvent(
-      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
-  ScheduleEvent s1 = ScheduleEvent(
-      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
-  ScheduleEvent s2 = ScheduleEvent(
-      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
+  Activity a0 = new Activity(Task.attendClass, DateTime(2020, 11, 4, 2),
+      Duration(hours: 1), "ECE564", "Attend ECE564");
+  Activity a1 = new Activity.assignment(
+      DateTime(2020, 11, 4, 4), Duration(hours: 2), "ECE590", "Final Project");
+  Activity a2 = new Activity.assignment(
+      DateTime(2020, 11, 4, 9), Duration(hours: 3), "MENG570", "Final Exam");
 
   Schedule({Key key, this.title, this.date}) : super(key: key) {
-    _list = [s0, s1, s2];
+    _scheduleToday = [a0, a1, a2];
   }
   @override
   Widget build(BuildContext context) {
@@ -44,14 +48,9 @@ class Schedule extends StatelessWidget {
                 ),
               );
             }),
-        // Icon(
-        //   Icons.arrow_back_ios,
-        //   color: colorBlackCoral,
-        // ),
         actions: [
           Row(
             children: [
-              //Icon(Icons.settings, color: colorBlackCoral),
               CalendarButton(),
               SettingsButton(),
             ],
@@ -66,7 +65,8 @@ class Schedule extends StatelessWidget {
       ),
       body: Container(
         child: ListView(
-          children: [DateBanner(date: date), ScheduleView(_list)],
+          //children: [DateBanner(date: date), ScheduleView(_list)],
+          children: [DateBanner(date: date), ScheduleView(_scheduleToday)],
         ),
       ),
     );
