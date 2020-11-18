@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/utilities.dart';
 
 class DateSelector extends StatefulWidget {
   String hintText;
@@ -39,14 +40,38 @@ class _DateSelectorState extends State<DateSelector> {
         decoration: InputDecoration(hintText: hintText),
         onTap: () async {
           var date = await showDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime(1900),
-              lastDate: DateTime(2100));
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime(2100),
+            builder: (context, child) {
+              return Theme(
+                data: ThemeData.from(colorScheme: setColors()),
+                child: child,
+              );
+            },
+          );
           dateController.text =
               date.toString().substring(0, 10); //save to json to send back out
         },
       )),
     );
+  }
+
+  ColorScheme setColors() {
+    return new ColorScheme(
+        primary: colorMelon,
+        primaryVariant: colorMelon,
+        secondary: colorHoneydew,
+        secondaryVariant: colorHoneydew,
+        error: colorBlackCoral,
+        surface: colorAlmond,
+        onPrimary: colorBeige,
+        onError: colorBlackCoral,
+        onSecondary: colorPowderBlue,
+        onSurface: colorBlackCoral,
+        onBackground: colorAlmond,
+        brightness: Brightness.dark,
+        background: colorBeige);
   }
 }

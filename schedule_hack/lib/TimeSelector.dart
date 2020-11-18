@@ -40,11 +40,34 @@ class _TimeSelectorState extends State<TimeSelector> {
             var time = await showTimePicker(
               initialTime: TimeOfDay.now(),
               context: context,
+              builder: (context, child) {
+                return Theme(
+                  data: ThemeData.from(colorScheme: setColors()),
+                  child: child,
+                );
+              },
             );
             timeController.text = time.format(context);
           },
         ),
       ),
     );
+  }
+
+  ColorScheme setColors() {
+    return new ColorScheme(
+        primary: colorHoneydew,
+        primaryVariant: colorMelon,
+        secondary: colorHoneydew,
+        secondaryVariant: colorHoneydew,
+        error: colorBlackCoral,
+        surface: colorAlmond,
+        onPrimary: colorBeige,
+        onError: colorBlackCoral,
+        onSecondary: colorMelon,
+        onSurface: colorBlackCoral,
+        onBackground: colorAlmond,
+        brightness: Brightness.dark,
+        background: colorAlmond);
   }
 }
