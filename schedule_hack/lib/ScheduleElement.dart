@@ -22,6 +22,27 @@ class SchduleElement extends StatelessWidget {
       //     ],
       //   ),
       // ),
+      child: FlatButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        onPressed: null,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            color: colorPale,
+          ),
+          // color: colorPale,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image(image: AssetImage(img)),
+              Text(event + ' ' + time),
+              Icon(Icons.arrow_forward_ios),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
