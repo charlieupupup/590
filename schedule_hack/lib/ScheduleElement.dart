@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class SchduleElement extends StatelessWidget {
-  String img = 'images/running.png';
-  String event = 'Soccer';
-  String time = '3-530';
-  Icon icon;
+  ScheduleEvent scheduleEvent;
 
-  SchduleElement(Activity activity) {
-    this.time = activity.date.hour.toString();
-    this.event = activity.title;
-    // this.img = activity.title;
-    icon = activity.icon;
+  SchduleElement(ScheduleEvent scheduleEvent) {
+    this.scheduleEvent = scheduleEvent;
   }
 
   @override
@@ -45,10 +41,9 @@ class SchduleElement extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Image(image: AssetImage(img)),
-              icon,
-              Text(event),
-              Text(time),
+              Image(image: AssetImage(scheduleEvent.img)),
+              Text(scheduleEvent.title),
+              Text(scheduleEvent.interval),
               Icon(Icons.arrow_forward_ios),
             ],
           ),
