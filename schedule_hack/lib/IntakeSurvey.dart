@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/CancelButton.dart';
+import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/SurveyQuestionTile.dart';
 import 'package:schedule_hack/UserPreferences.dart';
+import 'package:schedule_hack/WelcomeScreen.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'StandardPopup.dart';
@@ -119,7 +121,9 @@ class IntakeSurveyState extends State<IntakeSurvey> {
     return MaterialButton(
       onPressed: () {
         // cancel just go back to last page (pop)
-        Navigator.of(context).pop();
+        //Navigator.of(context).pop();
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
       },
       color: colorMelon,
       child: Image.asset(
