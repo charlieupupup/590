@@ -39,6 +39,7 @@ class DateBanner extends StatelessWidget {
       child: Row(
         children: [
           IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: null),
+          IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: null),
         ],
       ),
     );
