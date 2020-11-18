@@ -21,10 +21,11 @@ class ScheduleView extends StatelessWidget {
               Text(
                 'My day',
                 style: TextStyle(color: Colors.white),
+                textScaleFactor: 2,
               ),
               Container(
-                child: Icon(Icons.add),
-              ),
+                  // child: Icon(Icons.add),
+                  ),
               // Icon(Icons.add),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
