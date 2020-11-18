@@ -6,9 +6,18 @@ import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
-  ScheduleView({Key key}) : super(key: key);
-  ScheduleEvent scheduleEvent = ScheduleEvent(
+  ScheduleEvent s0 = ScheduleEvent(
       'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
+  ScheduleEvent s1 = ScheduleEvent(
+      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
+  ScheduleEvent s2 = ScheduleEvent(
+      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
+  List<ScheduleEvent> _list;
+
+  ScheduleView({Key key}) : super(key: key) {
+    _list = [s0, s1, s2];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -46,6 +55,7 @@ class ScheduleView extends StatelessWidget {
             // borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
+
         Container(
           // margin: const EdgeInsets.all(24.0),
           child: Column(
