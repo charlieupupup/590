@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
   ScheduleView({Key key}) : super(key: key);
-  Activity activity = Activity(Task.takeBreak, DateTime(2020, 11, 2),
-      Duration(hours: 2), "Break", "Take a stretch Break");
-
+  ScheduleEvent scheduleEvent = ScheduleEvent(
+      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,7 +50,7 @@ class ScheduleView extends StatelessWidget {
           // margin: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              Expanded(child: SchduleElement(activity)),
+              Expanded(child: SchduleElement(scheduleEvent)),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
