@@ -55,19 +55,19 @@ class ScheduleView extends StatelessWidget {
             // borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
-
-        Container(
-          // margin: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              Expanded(child: SchduleElement(scheduleEvent)),
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
+        for (var scheduleEvent in _list)
+          Container(
+            // margin: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Expanded(child: SchduleElement(scheduleEvent)),
+              ],
+              mainAxisAlignment: MainAxisAlignment.center,
+            ),
+            width: 300,
+            height: 75,
+            decoration: BoxDecoration(color: colorAeroBlue),
           ),
-          width: 300,
-          height: 75,
-          decoration: BoxDecoration(color: colorAeroBlue),
-        ),
 
         //
       ],
