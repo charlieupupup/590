@@ -25,7 +25,7 @@ class ScheduleView extends StatelessWidget {
               Container(),
               // Expanded(child: SchduleElement()),
               Text(
-                'My day',
+                'My Day',
                 style: TextStyle(color: Colors.white),
                 textScaleFactor: 2,
               ),
