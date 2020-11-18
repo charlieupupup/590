@@ -54,7 +54,7 @@ class ScheduleView extends StatelessWidget {
             // margin: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                Expanded(child: SchduleElement(scheduleEvent)),
+                Expanded(child: ScheduleElement(scheduleEvent)),
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),
