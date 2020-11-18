@@ -24,8 +24,14 @@ class ScheduleView extends StatelessWidget {
                 textScaleFactor: 2,
               ),
               Container(
-                  // child: Icon(Icons.add),
+                // child: Icon(Icons.add),
+                child: IconButton(
+                  icon: ImageIcon(
+                    AssetImage('images/add.png'),
                   ),
+                  onPressed: null,
+                ),
+              ),
               // Icon(Icons.add),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
