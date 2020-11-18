@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
+
 import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
-  List<ScheduleEvent> _list;
+  //List<ScheduleEvent> _list;
+  List<Activity> _list;
 
-  ScheduleView(List<ScheduleEvent> list) {
+  ScheduleView(List<Activity> list) {
     _list = list;
   }
 
@@ -23,19 +24,23 @@ class ScheduleView extends StatelessWidget {
           child: Row(
             children: [
               Container(),
-              // Expanded(child: SchduleElement()),
               Text(
                 'My Day',
                 style: TextStyle(color: Colors.white),
                 textScaleFactor: 2,
               ),
               Container(
-                // child: Icon(Icons.add),
-                child: IconButton(
-                  icon: ImageIcon(
-                    AssetImage('images/add.png'),
-                  ),
-                  onPressed: null,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (_) {
+                          //return NewCoursePopup(nameController, startTimeController, endTimeController);
+                          return;
+                        });
+                  },
+                  backgroundColor: colorHoneydew,
+                  child: Image.asset('images/add.png'),
                 ),
               ),
               // Icon(Icons.add),

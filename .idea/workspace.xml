@@ -27,7 +27,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleElement.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleElement.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleEvent.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +50,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="courtney-dev" />
+        <entry key="$PROJECT_DIR$" value="w_d" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -111,27 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Adjusted tab and nav bar colors">
-      <created>1604025234943</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1604025234943</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Changed dimensions on top banner">
-      <created>1604027834556</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1604027834556</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Added EdgeInsets to move date banner down">
-      <created>1604030098985</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1604030098985</updated>
     </task>
     <task id="LOCAL-00011" summary="Added intl/intl.dart dependency for date formatter">
       <created>1604032381389</created>
@@ -455,7 +437,28 @@
       <option name="project" value="LOCAL" />
       <updated>1605586953150</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="corrected typos in ScheduleElement">
+      <created>1605712075849</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1605712075854</updated>
+    </task>
+    <task id="LOCAL-00058" summary="corrected typos in ScheduleElement">
+      <created>1605712136880</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1605712136880</updated>
+    </task>
+    <task id="LOCAL-00059" summary="preparing for merge">
+      <created>1605712256068</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1605712256068</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -473,8 +476,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updated CheckmarkButton to take to Home instead of CourseList" />
-    <MESSAGE value="Refactor CourseList to read json file and display buttons" />
     <MESSAGE value="Write asset json to local storage on phone, add new course (not saving locally yet)" />
     <MESSAGE value="Refactor json in own class" />
     <MESSAGE value="Add json file reading error handling" />
@@ -498,7 +499,9 @@
     <MESSAGE value="Added ability to save previous user preferences and change them after initial setting" />
     <MESSAGE value="fixed exception issue on view course popup and new assignment" />
     <MESSAGE value="added time image to popup" />
-    <option name="LAST_COMMIT_MESSAGE" value="added time image to popup" />
+    <MESSAGE value="corrected typos in ScheduleElement" />
+    <MESSAGE value="preparing for merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="preparing for merge" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
