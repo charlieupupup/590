@@ -19,7 +19,7 @@ class ScheduleElement extends StatelessWidget {
     // TODO: implement build
     return Padding(
       padding: EdgeInsets.all(10),
-      child: FlatButton(
+      child: MaterialButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
