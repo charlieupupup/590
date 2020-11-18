@@ -36,13 +36,14 @@ class DateBanner extends StatelessWidget {
       //   ),
       // ),
 
-      child: Container(
-        color: colorMelon,
-        width: 300,
-        height: 100,
-        margin: const EdgeInsets.only(
-          top: 20,
-        ),
+      child: Padding(
+        // color: colorMelon,
+        // width: 300,
+        // height: 100,
+        // margin: const EdgeInsets.only(
+        //   top: 20,
+        // ),
+        padding: EdgeInsets.all(1),
         child: Row(
           children: [
             IconButton(
@@ -52,7 +53,7 @@ class DateBanner extends StatelessWidget {
             ),
             Card(
               // margin: EdgeInsets.all(6.0),
-              elevation: 4.0,
+              // elevation: 4.0,
               color: colorMelon,
               child: Align(
                 alignment: Alignment.center,

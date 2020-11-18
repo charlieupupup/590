@@ -9,7 +9,7 @@ class ScheduleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
@@ -34,7 +34,7 @@ class ScheduleView extends StatelessWidget {
               ),
               // Icon(Icons.add),
             ],
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
           ),
           width: 300,
           height: 75,
