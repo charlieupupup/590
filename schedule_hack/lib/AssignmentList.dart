@@ -39,8 +39,8 @@ class AssignmentList extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return new _AssignmentListState(
-        this.course, this.edit, this.courseCount, this.viewingAssignments, this.originalCourse);
+    return new _AssignmentListState(this.course, this.edit, this.courseCount,
+        this.viewingAssignments, this.originalCourse);
   }
 }
 
@@ -88,8 +88,7 @@ class _AssignmentListState extends State<AssignmentList> {
             onPressed: () {
               // popup - saying going back will delete data
               _backButton();
-            })
-        ,
+            }),
         actions: [
           Row(
             children: [SettingsButton()],
@@ -137,7 +136,7 @@ class _AssignmentListState extends State<AssignmentList> {
         height: 58,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[cancelA(), saveChanges()],
+          children: <Widget>[saveChanges()],
         ),
       ),
       floatingActionButton: _fabDisplay(),
@@ -185,7 +184,7 @@ class _AssignmentListState extends State<AssignmentList> {
             this.viewingAssignments = 0;
           });
         },
-        backgroundColor: colorSoftMelon,//colorAlmond,
+        backgroundColor: colorSoftMelon, //colorAlmond,
         child: Image.asset('images/edit.png'),
       );
     } else {
@@ -194,7 +193,7 @@ class _AssignmentListState extends State<AssignmentList> {
         onPressed: () {
           _showMaterialDialog();
         },
-        backgroundColor: colorAeroBlue,//colorHoneydew,
+        backgroundColor: colorAeroBlue, //colorHoneydew,
         child: Image.asset('images/add.png'),
       );
     }
@@ -209,10 +208,8 @@ class _AssignmentListState extends State<AssignmentList> {
         jsonDataStorage.newEntry(this.course);
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => LoadingScreen()
-          ),
-              (route) => false,
+          MaterialPageRoute(builder: (BuildContext context) => LoadingScreen()),
+          (route) => false,
         );
       },
       color: colorHoneydew,
@@ -235,25 +232,35 @@ class _AssignmentListState extends State<AssignmentList> {
       return CancelButton.assignment(2, this.course);
     }
   }
-  _backButton(){
+
+  _backButton() {
     if (this.edit == 1) {
       print('edit cancel');
       // TODO: bug where hitting back still saves data
       List list = new List();
       list = globalCourse.getAssignments;
-      for (int i = 0; i < list.length; i++){
+      for (int i = 0; i < list.length; i++) {
         Assignment a = list[i];
         String assignmentName = a.getDescription;
         print('Assignment: $assignmentName');
       }
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',5,globalCourse);
+      StandardPopup.course(
+          context,
+          'Going back now will not save all progress. Are you sure?',
+          5,
+          globalCourse);
     } else {
       //return CancelButton.assignment(2, this.course);
       print('cancel should be working');
       //return CancelButton.assignment(6,this.course);
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',2,this.originalCourse);
+      StandardPopup.course(
+          context,
+          'Going back now will not save all progress. Are you sure?',
+          2,
+          this.originalCourse);
     }
   }
+
   // popup if no assignments listed yet
   _emptyDialog(BuildContext context) {
     List list = new List();
@@ -424,7 +431,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorPowderBlue,//colorMelon,
+                color: colorPowderBlue, //colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -457,7 +464,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorPowderBlue,//colorMelon,
+                color: colorPowderBlue, //colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -471,7 +478,7 @@ class _AssignmentListState extends State<AssignmentList> {
                       )),
                       MaterialButton(
                           onPressed: () {},
-                          color: colorSoftMelon,//colorAlmond,
+                          color: colorSoftMelon, //colorAlmond,
                           child: Image.asset(
                             'images/edit.png',
                             height: 50,
