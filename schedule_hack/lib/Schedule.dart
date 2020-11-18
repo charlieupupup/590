@@ -6,13 +6,24 @@ import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'Home.dart';
+import 'ScheduleEvent.dart';
 import 'SettingsButton.dart';
 
 class Schedule extends StatelessWidget {
-  Schedule({Key key, this.title, this.date}) : super(key: key);
+  List<ScheduleEvent> _list;
   final String title;
   DateTime date;
 
+  ScheduleEvent s0 = ScheduleEvent(
+      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
+  ScheduleEvent s1 = ScheduleEvent(
+      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
+  ScheduleEvent s2 = ScheduleEvent(
+      'images/running.png', 'soccer', '3 - 5 pm', DateTime(2020, 11, 1));
+
+  Schedule({Key key, this.title, this.date}) : super(key: key) {
+    _list = [s0, s1, s2];
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -55,7 +66,7 @@ class Schedule extends StatelessWidget {
       ),
       body: Container(
         child: ListView(
-          children: [DateBanner(date: date), ScheduleView()],
+          children: [DateBanner(date: date), ScheduleView(_list)],
         ),
       ),
     );

@@ -93,6 +93,7 @@ class Notify extends StatelessWidget {
 
   Future _showFuture(FlutterLocalNotificationsPlugin fltrNotification,
       String _selectedParam, int val) async {
+    print('Waiting for notification');
     var androidDetails = new AndroidNotificationDetails(
         "ScheduleHack", "ScheduleHack", "ScheduleHack",
         importance: Importance.max);
@@ -124,7 +125,7 @@ class Notify extends StatelessWidget {
 
   Future<void> notify() async {
     // _show(fltrNotification);
-    _showFuture(fltrNotification, 'Minute', 5);
+    _showFuture(fltrNotification, 'Minute', 1);
     // _showPeriodically(fltrNotification, RepeatInterval.hourly);
   }
 
