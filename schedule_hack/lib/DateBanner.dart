@@ -38,6 +38,11 @@ class DateBanner extends StatelessWidget {
 
       child: Container(
         color: colorMelon,
+        width: 300,
+        height: 100,
+        margin: const EdgeInsets.only(
+          top: 20,
+        ),
         child: Row(
           children: [
             IconButton(
