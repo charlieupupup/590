@@ -113,6 +113,9 @@ class IntakeSurveyState extends State<IntakeSurvey> {
   }
 
   Widget exitButton() {
+    //if(!surveyDone){
+    //userSettings=new UserPreferences();
+    //}
     return MaterialButton(
       onPressed: () {
         // cancel just go back to last page (pop)

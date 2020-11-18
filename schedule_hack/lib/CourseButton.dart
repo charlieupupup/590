@@ -88,10 +88,16 @@ class _CourseButtonState extends State<CourseButton> {
                   newList.add(a);
                 }
                 Course newCourse = Course.long(this.course.getName, this.course.getTime, this.course.getDate, this.course.getCourseDays, newList);
+                globalCourse = Course.long(this.course.getName, this.course.getTime, this.course.getDate, this.course.getCourseDays, newList);
+                for (int j = 0; j< globalCourse.getAssignments.length; j++){
+                  Assignment a = globalCourse.getAssignments[j];
+                  String name = a.getDescription;
+                  print('Global Assignment Name: $name');
+                }
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                     builder: (BuildContext context) => AssignmentListHome(2, newCourse,1,this.courseCount,1),
+                     builder: (BuildContext context) => AssignmentListHome(2, newCourse,1,this.courseCount,1,newCourse),
                   ),
                       (route) => false,
                 );

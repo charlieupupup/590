@@ -20,30 +20,31 @@ class _TimeSelectorState extends State<TimeSelector> {
     this.hintText = hint;
     this.timeController = c;
   }
-  @override
+  /*@override
   void dispose() {
     // Clean up the controller when the widget is removed
     timeController.dispose();
     super.dispose();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        body: Center(
-      child: Expanded(
-          child: TextField(
-        readOnly: true,
-        controller: timeController,
-        decoration: InputDecoration(hintText: hintText),
-        onTap: () async {
-          var time = await showTimePicker(
-            initialTime: TimeOfDay.now(),
-            context: context,
-          );
-          timeController.text = time.format(context);
-        },
-      )),
-    ));
+      body: Center(
+        child: TextField(
+          readOnly: true,
+          controller: timeController,
+          decoration: InputDecoration(
+              hintText: hintText, suffixIcon: Icon(Icons.access_alarm)),
+          onTap: () async {
+            var time = await showTimePicker(
+              initialTime: TimeOfDay.now(),
+              context: context,
+            );
+            timeController.text = time.format(context);
+          },
+        ),
+      ),
+    );
   }
 }

@@ -58,6 +58,11 @@ class _CalendarState extends State<CalendarView> {
 
   @override
   Widget build(BuildContext context) {
+    var padding = MediaQuery.of(context).padding;
+    // double width = MediaQuery.of(context).size.width - padding.left - padding.right;
+    double height =
+        MediaQuery.of(context).size.height - padding.top - padding.bottom;
+
     _calendarCarousel = CalendarCarousel<Event>(
       onDayPressed: (DateTime date, List<Event> events) {
         this.setState(() => _currentDateWeekView = date);
@@ -72,80 +77,90 @@ class _CalendarState extends State<CalendarView> {
               DateFormat.yMMMd('en_US').format(_targetDateTime);
         }); //changes the _firstDayOfCurrentWeek when top is changed (for the header)
       },
-      weekendTextStyle: TextStyle(fontSize: 14, color: colorSoftMelon),
-      thisMonthDayBorderColor: colorAlmond,
-
-      headerText: "Week of $_firstDayOfCurrentWeek", //
+      customGridViewPhysics: NeverScrollableScrollPhysics(),
+      height: height * (1 / 3),
       weekFormat: true,
+      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
+      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
       markedDatesMap: _markedDateMap,
-      height: 200.0,
       selectedDateTime: _currentDateMonthView,
       showIconBehindDayText: true,
       daysHaveCircularBorder: true,
-
-      /// null for not rendering any border, true for circular border, false for rectangular border
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
-      todayTextStyle: TextStyle(
-        color: colorBlackCoral,
-      ),
-      selectedDayButtonColor: colorAeroBlue,
-      selectedDayBorderColor: colorAeroBlue,
-      selectedDayTextStyle: TextStyle(
-        color: colorBlackCoral,
-      ),
-      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
-      todayButtonColor: colorMelon,
-      todayBorderColor: colorAeroBlue,
-      markedDateMoreShowTotal:
-          false, // null for not showing hidden events indicator
-      // markedDateShowIcon: false,
-      // markedDateIconMaxShown: 2,
-//          markedDateIconMargin: 9,
-//          markedDateIconOffset: 3,
-    );
-
-    /// Bottom Calendar Carousel without header and with prev & next button
-    _calendarCarouselNoHeader = CalendarCarousel<Event>(
-      todayBorderColor: colorPowderBlue,
-      onDayPressed: (DateTime date, List<Event> events) {
-        this.setState(() => _currentDateMonthView = date);
-        events.forEach((event) => print(event.title));
-      },
-      daysHaveCircularBorder: false,
-      showOnlyCurrentMonthDate: false,
-      weekendTextStyle: TextStyle(
-        color: colorSoftMelon,
-      ),
-      thisMonthDayBorderColor: colorAlmond,
-      weekFormat: false,
-      // firstDayOfWeek: 4,
-      markedDatesMap: _markedDateMap,
-      height: 420.0,
-      selectedDateTime: _currentDateMonthView,
-      targetDateTime: _targetDateTime,
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
-      markedDateCustomShapeBorder: Border.all(width: 2.0, color: colorMelon),
+      iconColor: colorDarkSkyBlue,
+      thisMonthDayBorderColor: colorSoftMelon,
+      headerText: "Week of $_firstDayOfCurrentWeek",
+      headerTextStyle: TextStyle(
+          fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
+      markedDateCustomShapeBorder:
+          CircleBorder(side: BorderSide(color: colorMelon)),
       markedDateCustomTextStyle: TextStyle(
         fontSize: 16,
         color: colorMelon,
       ),
-      showHeader: false,
+      weekdayTextStyle: TextStyle(
+          fontSize: 16,
+          color: colorPewterBlue,
+          fontWeight: FontWeight.bold), //Sun Mon Tue
+      weekendTextStyle: TextStyle(
+          fontSize: 16, color: colorBlackCoral, fontWeight: FontWeight.bold),
+      daysTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral), //14 15 16
+      todayButtonColor: Colors.transparent,
+      todayBorderColor: colorMelon,
       todayTextStyle: TextStyle(
-        color: colorBlackCoral,
-      ),
-      todayButtonColor: colorSoftMelon,
+          fontSize: 22, color: colorMelon, fontWeight: FontWeight.bold),
+
+      /// null for not rendering any border, true for circular border, false for rectangular border
       selectedDayButtonColor: colorAeroBlue,
-      selectedDayBorderColor: colorAeroBlue,
+      selectedDayBorderColor: colorDarkSkyBlue,
       selectedDayTextStyle: TextStyle(
-        color: colorBlackCoral,
-      ),
+          fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
+    );
+
+    /// Bottom Calendar Carousel without header and with prev & next button
+    _calendarCarouselNoHeader = CalendarCarousel<Event>(
+      onDayPressed: (DateTime date, List<Event> events) {
+        this.setState(() => _currentDateMonthView = date);
+        events.forEach((event) => print(event.title));
+      },
+      customGridViewPhysics: NeverScrollableScrollPhysics(),
+      daysHaveCircularBorder: false,
+      showOnlyCurrentMonthDate: false,
+      thisMonthDayBorderColor: colorAlmond,
+      height: height * (2 / 3),
+      showHeader: false,
+      weekFormat: false,
+      // firstDayOfWeek: 4,
+      markedDatesMap: _markedDateMap,
+      selectedDateTime: _currentDateMonthView,
+      targetDateTime: _targetDateTime,
       minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
       maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
+      markedDateCustomShapeBorder: Border.all(width: 1.0, color: colorMelon),
+      markedDateCustomTextStyle: TextStyle(
+        fontSize: 16,
+        color: colorMelon,
+      ),
       prevDaysTextStyle: TextStyle(
         fontSize: 16,
         color: colorAlmond,
       ),
+      weekdayTextStyle: TextStyle(
+          fontSize: 16,
+          color: colorPewterBlue,
+          fontWeight: FontWeight.bold), //Sun Mon Tue
+      weekendTextStyle: TextStyle(
+          fontSize: 16, color: colorBlackCoral, fontWeight: FontWeight.bold),
+      daysTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral), //14 15 16
+      todayButtonColor: Colors.transparent,
+      todayBorderColor: colorMelon,
+      todayTextStyle: TextStyle(
+          fontSize: 22, color: colorMelon, fontWeight: FontWeight.bold),
+
+      /// null for not rendering any border, true for circular border, false for rectangular border
+      selectedDayButtonColor: colorAeroBlue,
+      selectedDayBorderColor: colorDarkSkyBlue,
+      selectedDayTextStyle: TextStyle(
+          fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
       inactiveDaysTextStyle: TextStyle(
         color: colorPowderBlue,
         fontSize: 16,

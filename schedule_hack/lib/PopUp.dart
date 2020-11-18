@@ -7,14 +7,14 @@ import 'main.dart';
 
 class PopUp extends AlertDialog {
   final String msg1 = 'Great to hear!';
-  final String msg2 = 'Head to the self care tab to destress';
+  final String msg2 = 'Head to the self care tab to de-stress';
   final String op1 = 'Good!';
   final String op2 = 'Not Great...';
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: colorAlmond,
+      backgroundColor: colorBeige,
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
@@ -62,27 +62,44 @@ class MidPopUp extends PopUp {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: colorAlmond,
+      backgroundColor: colorBeige,
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
-            Text(
-              msg1,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              msg2,
-              textAlign: TextAlign.center,
-            ),
-            FlatButton(
-              child: Text(op1),
+            Text(msg1 + ' ' + msg2,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 24,
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)),
+            MaterialButton(
+              height: 40,
+              minWidth: 150,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Text(op1,
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold)),
               color: colorAeroBlue,
               onPressed: () {
                 showDialog(context: context, builder: (_) => GladPopUp());
               },
             ),
-            FlatButton(
-              child: Text(op2),
+            MaterialButton(
+              height: 40,
+              minWidth: 150,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Text(op2,
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold)
+              ),
               color: colorMelon,
               onPressed: () {
                 showDialog(context: context, builder: (_) => SadPopUp());
@@ -97,38 +114,54 @@ class MidPopUp extends PopUp {
 
 class GladPopUp extends PopUp {
   final String msg1 = 'Great to hear!';
-  final String msg2 = 'Head to the self care tab to destress';
+  final String msg2 = 'Head to the self care tab to de-stress.';
   final String op1 = 'Take me there!';
   final String op2 = 'No thanks';
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: colorAlmond,
+      backgroundColor: colorBeige,
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
-            Text(
-              msg1,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              msg2,
-              textAlign: TextAlign.center,
-            ),
-            FlatButton(
-              child: Text(op1),
+            Text(msg1 + ' ' + msg2,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 24,
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)),
+            MaterialButton(
+              height: 40,
+              minWidth: 150,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Text(op1,
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold)),
               color: colorAeroBlue,
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => new SelfCare()),
+                  MaterialPageRoute(builder: (context) => new Home(1)),
                 );
                 // Navigator.pop(context);
               },
             ),
-            FlatButton(
-              child: Text(op2),
+            MaterialButton(
+              height: 40,
+              minWidth: 150,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Text(op2,
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold)),
               color: colorMelon,
               onPressed: () {
                 Navigator.push(
@@ -145,38 +178,54 @@ class GladPopUp extends PopUp {
 }
 
 class SadPopUp extends PopUp {
-  final String msg1 = 'Sorry to hear that';
-  final String msg2 = 'Head to the self care tab to destress';
+  final String msg1 = 'Sorry to hear that.';
+  final String msg2 = 'Head to the self care tab to de-stress.';
   final String op1 = 'Take me there!';
   final String op2 = 'No thanks';
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: colorAlmond,
+      backgroundColor: colorBeige,
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
-            Text(
-              msg1,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              msg2,
-              textAlign: TextAlign.center,
-            ),
-            FlatButton(
-              child: Text(op1),
+            Text(msg1 + ' ' + msg2,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 24,
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)),
+            MaterialButton(
+              height: 40,
+              minWidth: 150,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Text(op1,
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold)),
               color: colorAeroBlue,
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SelfCare()),
+                  MaterialPageRoute(builder: (context) => Home(1)),
                 );
               },
             ),
-            FlatButton(
-              child: Text(op2),
+            MaterialButton(
+              height: 40,
+              minWidth: 150,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Text(op2,
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold)),
               color: colorMelon,
               onPressed: () {
                 Navigator.push(
