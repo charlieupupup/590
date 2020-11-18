@@ -10,7 +10,7 @@ class SchduleElement extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(20),
         child: Container(
           color: colorPale,
           child: Row(

@@ -54,7 +54,7 @@ class ScheduleView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
           ),
           width: 300,
-          height: 75,
+          height: 200,
           decoration: BoxDecoration(color: colorAeroBlue),
         ),
         Container(
