@@ -424,7 +424,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorMelon,
+                color: colorSoftMelon,//colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -457,7 +457,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorMelon,
+                color: colorSoftMelon,//colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
