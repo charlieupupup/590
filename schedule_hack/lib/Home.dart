@@ -28,19 +28,10 @@ class _HomeState extends State<Home> {
   _HomeState(int i) {
     this._currentIndex = i;
   }
-  /*final List<Widget> _children = [
-    Schedule(
-        title: 'ScheduleHack',
-        date: DateTime.now() //initialize with today's date
-        ),
-    SelfCare(),
-    CourseList(jsonDataStorage),
-  ];*/
 
   @override
   void initState() {
     super.initState();
-    // showDialog(context: context, builder: (BuildContext context) => MidPopUp());
   }
 
   @override
@@ -99,37 +90,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-  /*return Scaffold(
-      body: _children[_currentIndex], // new
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: colorHoneydew,
-        onTap: onTabTapped, // new
-        currentIndex: _currentIndex, // new
-        items: [
-          new BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage("images/schedule.png"),
-              color: colorBlackCoral,
-            ),
-            label: 'Schedule',
-          ),
-          new BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage("images/self_care.png"),
-              color: colorBlackCoral,
-            ),
-            label: 'Self-Care',
-          ),
-          new BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage("images/classroom.png"),
-                color: colorBlackCoral,
-              ),
-              label: 'Courses')
-        ],
-      ),
-    );*/
-  //}
 
   void onTabTapped(int index) {
     setState(() {
@@ -153,7 +113,6 @@ class _HomeNotiState extends _HomeState {
   @override
   void initState() {
     super.initState();
-    // showDialog(context: context, builder: (BuildContext context) => MidPopUp());
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await showDialog<String>(
           context: context, builder: (BuildContext context) => MidPopUp());

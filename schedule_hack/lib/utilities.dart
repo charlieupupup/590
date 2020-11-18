@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/UserPreferences.dart';
 
 extension CalendarDateTime on DateTime {
@@ -91,3 +92,6 @@ bool surveyDone = false;
 
 //set global user preferences
 UserPreferences userSettings;
+
+// global variable for course currently being edited
+Course globalCourse;
