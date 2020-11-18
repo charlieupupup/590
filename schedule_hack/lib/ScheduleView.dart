@@ -31,7 +31,10 @@ class ScheduleView extends StatelessWidget {
           ),
           width: 300,
           height: 75,
-          decoration: BoxDecoration(color: colorPowderBlue),
+          decoration: BoxDecoration(
+            color: colorPowderBlue,
+            // borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
         ),
         Container(
           // margin: const EdgeInsets.all(24.0),
