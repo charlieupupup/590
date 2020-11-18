@@ -185,7 +185,7 @@ class _AssignmentListState extends State<AssignmentList> {
             this.viewingAssignments = 0;
           });
         },
-        backgroundColor: colorAlmond,
+        backgroundColor: colorSoftMelon,//colorAlmond,
         child: Image.asset('images/edit.png'),
       );
     } else {
@@ -424,7 +424,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorSoftMelon,//colorMelon,
+                color: colorPowderBlue,//colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -457,7 +457,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorSoftMelon,//colorMelon,
+                color: colorPowderBlue,//colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -471,7 +471,7 @@ class _AssignmentListState extends State<AssignmentList> {
                       )),
                       MaterialButton(
                           onPressed: () {},
-                          color: colorAlmond,
+                          color: colorSoftMelon,//colorAlmond,
                           child: Image.asset(
                             'images/edit.png',
                             height: 50,
