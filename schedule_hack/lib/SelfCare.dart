@@ -1,13 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:intl/intl.dart';
+import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/CalendarView.dart';
+import 'package:schedule_hack/Home.dart';
+import 'package:schedule_hack/NewCoursePopup.dart';
 import 'package:schedule_hack/Notify.dart';
-import 'package:schedule_hack/Schedule.dart';
+import 'package:schedule_hack/SettingsButton.dart';
+import 'package:schedule_hack/StandardPopup.dart';
 import 'package:schedule_hack/utilities.dart';
-import 'Home.dart';
-import 'SettingsButton.dart';
-import 'StandardPopup.dart';
-import 'PopUp.dart';
 
 class SelfCare extends StatefulWidget {
   @override
@@ -17,8 +20,22 @@ class SelfCare extends StatefulWidget {
 }
 
 class SelfCareState extends State<SelfCare> {
+  List<Event> events = new List<Event>();
+  // CalendarView cal = CalendarView.shared;
+
   @override
   void initState() {
+    /// Add more events to _markedDateMap EventList
+    events = new List<Event>();
+    Event e1 = new Activity(
+        DateTime.now().toIso8601String(), 1, "ECE564", "Attend ECE564");
+    Event e2 = Activity.assignment(
+        DateTime.now(), Duration(hours: 2), "ECE590", "Final Project");
+    Event e3 = new Activity.assignment(
+        DateTime.now(), Duration(hours: 3), "MENG570", "Final Exam");
+    events.add(e1);
+    events.add(e2);
+    events.add(e3);
     super.initState();
   }
 
@@ -116,6 +133,7 @@ class SelfCareState extends State<SelfCare> {
                           ),
                           color: colorAeroBlue,
                           onPressed: () {
+                            // cal.getActivities(DateTime.now());
                             String message =
                                 'Showing recommendations for things to do to center yourself';
                             //_showMaterialDialog2(message);
@@ -159,6 +177,7 @@ class SelfCareState extends State<SelfCare> {
                           ),
                           color: colorPowderBlue,
                           onPressed: () {
+                            // cal.addActivities(DateTime.now(), events);
                             String message =
                                 'Showing recommendations for things to do to escape';
                             //_showMaterialDialog2(message);
