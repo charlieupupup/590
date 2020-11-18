@@ -6,11 +6,13 @@ class SchduleElement extends StatelessWidget {
   String img = 'images/running.png';
   String event = 'Soccer';
   String time = '3-530';
+  Icon icon;
 
   SchduleElement(Activity activity) {
-    this.time = activity.duration.toString();
+    this.time = activity.date.hour.toString();
     this.event = activity.title;
     // this.img = activity.title;
+    icon = activity.icon;
   }
 
   @override
@@ -43,7 +45,8 @@ class SchduleElement extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image(image: AssetImage(img)),
+              // Image(image: AssetImage(img)),
+              icon,
               Text(event),
               Text(time),
               Icon(Icons.arrow_forward_ios),
