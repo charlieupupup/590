@@ -40,7 +40,11 @@ class DateBanner extends StatelessWidget {
         color: colorMelon,
         child: Row(
           children: [
-            IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: null),
+            IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: null,
+              color: Colors.white,
+            ),
             Card(
               // margin: EdgeInsets.all(6.0),
               elevation: 4.0,
@@ -64,7 +68,11 @@ class DateBanner extends StatelessWidget {
                 ),
               ),
             ),
-            IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: null),
+            IconButton(
+              icon: Icon(Icons.arrow_forward_ios),
+              onPressed: null,
+              color: Colors.white,
+            ),
           ],
         ),
       ),
