@@ -10,17 +10,18 @@ class SchduleElement extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Padding(
-        padding: EdgeInsets.all(20),
-        child: Container(
-          color: colorPale,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image(image: AssetImage(img)),
-              Text(event + ' ' + time),
-              Icon(Icons.arrow_forward_ios),
-            ],
-          ),
-        ));
+      padding: EdgeInsets.all(20),
+      // child: Container(
+      //   color: colorPale,
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       Image(image: AssetImage(img)),
+      //       Text(event + ' ' + time),
+      //       Icon(Icons.arrow_forward_ios),
+      //     ],
+      //   ),
+      // ),
+    );
   }
 }
