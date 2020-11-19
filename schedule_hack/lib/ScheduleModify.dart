@@ -58,7 +58,9 @@ class ScheduleModify extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Start:'),
+          Container(
+            child: Text('Start:'),
+          ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             // child: Text(_activity.date.month.toString() +
@@ -82,14 +84,16 @@ class ScheduleModify extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('End:'),
           Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(_activity.date.month.toString()),
+            child: Text('End:  '),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(_activity.date.month.toString()),
+            child: Text(getDate(_activity.endDate)),
+          ),
+          Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: Text(getTime(_activity.endDate)),
           ),
         ],
       );
@@ -120,17 +124,7 @@ class ScheduleModify extends StatelessWidget {
               //   ],
               // ),
               Start(_activity),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('End: '),
-                  Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.black)),
-                    child: Text(_activity.date.month.toString()),
-                  ),
-                ],
-              ),
+              End(_activity),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [Text('Details:'), Text('')],
