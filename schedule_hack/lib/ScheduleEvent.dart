@@ -1,35 +1,44 @@
 import 'package:schedule_hack/Activity.dart';
 
+//primitive equivalent of Activity
 class ScheduleEvent {
-  String title;
-  String date;
-  String endDate;
+  String subject;
+  String startTime;
+  String endTime;
 
-  ScheduleEvent({this.title, this.endDate, this.date});
+  ScheduleEvent({this.subject, this.startTime, this.endTime});
 
+  //test schedule event
   ScheduleEvent.test() {
-    title = "TEST";
-    date = DateTime.now().toIso8601String();
-    endDate = DateTime.now().add(Duration(hours: 2)).toIso8601String();
+    subject = "8 hours of sleep";
+    startTime =
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)
+            .toIso8601String();
+    endTime = DateTime(
+            DateTime.now().year, DateTime.now().month, DateTime.now().day, 8)
+        .toIso8601String();
   }
 
-  ScheduleEvent.fromActivityOld(ActivityOld activity) {
-    this.title = activity.title;
-    this.date = activity.date.toIso8601String();
-    this.endDate = activity.endDate.toIso8601String();
+  //convert from ActivityOld
+  ScheduleEvent.fromActivityOld(Activity activity) {
+    this.subject = activity.title;
+    this.startTime = activity.date.toIso8601String();
+    this.endTime = activity.endDate.toIso8601String();
   }
 
-  ScheduleEvent.fromActivity(Activity activity) {
-    this.title = activity.subject;
-    this.date = activity.startTime.toIso8601String();
-    this.endDate = activity.endTime.toIso8601String();
+  //convert from ActivityNew
+  ScheduleEvent.fromActivityNew(ActivityNew activity) {
+    this.subject = activity.subject;
+    this.startTime = activity.startTime.toIso8601String();
+    this.endTime = activity.endTime.toIso8601String();
   }
 
+  //convert from json encodable
   toJSONEncodable() {
     Map<String, dynamic> m = new Map();
-    m['title'] = title;
-    m['date'] = date;
-    m['endDate'] = endDate;
+    m['subject'] = subject;
+    m['startTime'] = startTime;
+    m['endTime'] = endTime;
     return m;
   }
 }

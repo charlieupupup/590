@@ -24,7 +24,7 @@ class ActivityNew extends Appointment {
             subject: scheduleEvent.subject);
   //convert from soon to be depreciated Activity class
   ActivityNew.fromActivityOld(Activity old)
-      : this.fromScheduleEvent(new ScheduleEvent.fromActivity(old));
+      : this.fromScheduleEvent(new ScheduleEvent.fromActivityOld(old));
 }
 
 //old class from old calendar
