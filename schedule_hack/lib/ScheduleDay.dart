@@ -75,7 +75,7 @@ class ScheduleDay {
           (item) => ScheduleEvent(
             title: item['title'],
             description: item['description'],
-            duration: item['duration'],
+            endDate: item['endDate'],
             date: item['date'],
           ),
         ),

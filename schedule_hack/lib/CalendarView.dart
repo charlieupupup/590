@@ -58,23 +58,6 @@ class _CalendarState extends State<CalendarView> {
   void initState() {
     super.initState();
     _markedDateMap = new EventList<Event>();
-    List<Activity> activities = [
-      new Activity(
-          DateTime.now().toIso8601String(), 2, "ECE564", "Attend ECE564"),
-      new Activity.assignment(
-          DateTime.now(), Duration(hours: 2), "ECE590", "Final Project"),
-      new Activity.assignment(
-          DateTime.now(), Duration(hours: 3), "MENG570", "Final Exam")
-    ];
-    _markedDateMap.add(
-        new DateTime(2020, 11, 22),
-        new Activity(DateTime(2020, 11, 22).toIso8601String(), 1, "Break",
-            "Take a stretch Break"));
-    _markedDateMap.add(
-        new DateTime(2020, 11, 3),
-        new Activity(DateTime(2020, 11, 19).toIso8601String(), 5, "ECE590",
-            "Final Project"));
-    _markedDateMap.addAll(DateTime.now(), activities);
   }
 
   @override
@@ -89,9 +72,6 @@ class _CalendarState extends State<CalendarView> {
       onDayPressed: (DateTime date, List<Event> events) {
         this.setState(() => _currentDateWeekView = date);
         events.forEach((event) => print(event.title));
-        Activity test = new Activity(date.toIso8601String(), 5, "TEST",
-            DateFormat.yMMMEd('en_US').format(date));
-        _markedDateMap.add(date, test);
       },
       onCalendarChanged: (DateTime date) {
         this.setState(() {

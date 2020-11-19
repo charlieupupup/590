@@ -48,6 +48,27 @@ class Activity extends Event {
     this.description = description;
   }
 
+  //default constructor string must be in iso
+  Activity.fromAssigment(DateTime dueDate, Assignment assignment)
+      : super(
+            date: (dueDate).subtract(Duration(
+                days: 5)), //TODO maybe change this from 5 day but whatever
+            title: assignment.description,
+            icon: Icon(
+              Icons.access_time,
+              color: colorBlackCoral,
+              size: 30.0,
+            ),
+            dot: Container(
+              margin: EdgeInsets.symmetric(horizontal: 1.0),
+              color: colorMelon,
+              height: 5.0,
+              width: 5.0,
+            )) {
+    this.endDate = dueDate;
+    this.description = "$title inputted from Syllabus";
+  }
+
   Assignment getAssignment() {
     return new Assignment.long(
         description, date.toIso8601String(), endDate.toIso8601String());
