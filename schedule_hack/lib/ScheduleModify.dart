@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
+import 'package:schedule_hack/CheckNavButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
 
 class ScheduleModify extends StatelessWidget {
@@ -34,6 +35,7 @@ class ScheduleModify extends StatelessWidget {
           ButtonBar(
             children: [
               CancelButton(),
+              CheckNavButton(),
             ],
           ),
         ],

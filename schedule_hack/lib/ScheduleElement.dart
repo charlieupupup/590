@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ScheduleModify.dart';
 
 import 'package:schedule_hack/utilities.dart';
 
@@ -23,7 +24,15 @@ class ScheduleElement extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        onPressed: null,
+        onPressed: () {
+          // Navigator.of(context).pop();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ScheduleModify(scheduledActivity),
+            ),
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),
