@@ -99,58 +99,79 @@ class ScheduleModify extends StatelessWidget {
       );
     }
 
-    return AlertDialog(
+    return SimpleDialog(
       backgroundColor: colorPowderBlue,
-      title: Text(_activity.title),
-      content: SingleChildScrollView(
-        child: Container(
-          color: colorAeroBlue,
-          child: Column(
+
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: 20),
+          child: Row(
             children: [
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Text('Start:'),
-              //     Container(
-              //       decoration:
-              //           BoxDecoration(border: Border.all(color: Colors.black)),
-              //       child: Text(_activity.date.month.toString()),
-              //     ),
-              //     Container(
-              //       decoration:
-              //           BoxDecoration(border: Border.all(color: Colors.black)),
-              //       child: Text(_activity.date.month.toString()),
-              //     ),
-              //   ],
-              // ),
-              SizedBox(height: 10),
-              Start(_activity),
-              SizedBox(height: 10),
-              End(_activity),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text('Details:'), Text('')],
-              ),
-              SizedBox(height: 10),
-              // Text('Details:'),
-              Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.black)),
-                child: Text(_activity.description),
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CancelButton(),
-                  CheckNavButton(),
-                ],
+              Text(
+                _activity.title,
+                textScaleFactor: 2,
               ),
             ],
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          ),
+          width: 300,
+          height: 75,
+          decoration: BoxDecoration(
+            color: colorPowderBlue,
+            // borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
-      ),
+        SingleChildScrollView(
+          child: Container(
+            color: colorAeroBlue,
+            child: Column(
+              children: [
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Text('Start:'),
+                //     Container(
+                //       decoration:
+                //           BoxDecoration(border: Border.all(color: Colors.black)),
+                //       child: Text(_activity.date.month.toString()),
+                //     ),
+                //     Container(
+                //       decoration:
+                //           BoxDecoration(border: Border.all(color: Colors.black)),
+                //       child: Text(_activity.date.month.toString()),
+                //     ),
+                //   ],
+                // ),
+                SizedBox(height: 10),
+                Start(_activity),
+                SizedBox(height: 10),
+                End(_activity),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text('Details:'), Text('')],
+                ),
+                SizedBox(height: 10),
+                // Text('Details:'),
+                Container(
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
+                  child: Text(_activity.description),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CancelButton(),
+                    CheckNavButton(),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+      // title: Text(_activity.title),
     );
   }
 }
