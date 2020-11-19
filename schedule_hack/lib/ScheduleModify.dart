@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
+import 'package:schedule_hack/utilities.dart';
 
 class ScheduleModify extends StatelessWidget {
   Activity _activity;
@@ -42,11 +43,19 @@ class ScheduleModify extends StatelessWidget {
     // );
 
     return AlertDialog(
+      title: Text(_activity.title),
       content: SingleChildScrollView(
         child: Container(
           child: Column(
             children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: colorPowderBlue,
+                ),
+                child: Text(_activity.title),
+              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Start:'),
                   Container(
@@ -54,16 +63,36 @@ class ScheduleModify extends StatelessWidget {
                         BoxDecoration(border: Border.all(color: Colors.black)),
                     child: Text(_activity.date.month.toString()),
                   ),
+                  Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black)),
+                    child: Text(_activity.date.month.toString()),
+                  ),
                 ],
               ),
-              Row(),
-              Text('Details:'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('End: '),
+                  Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black)),
+                    child: Text(_activity.date.month.toString()),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [Text('Details:'), Text('')],
+              ),
+              // Text('Details:'),
               Container(
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
                 child: Text(_activity.description),
               ),
-              ButtonBar(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CancelButton(),
                   CheckNavButton(),
