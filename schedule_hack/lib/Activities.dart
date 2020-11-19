@@ -2,7 +2,6 @@ import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 //class that holds activities
 class Activities {
