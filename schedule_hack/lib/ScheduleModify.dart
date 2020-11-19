@@ -123,18 +123,23 @@ class ScheduleModify extends StatelessWidget {
               //     ),
               //   ],
               // ),
+              SizedBox(height: 10),
               Start(_activity),
+              SizedBox(height: 10),
               End(_activity),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [Text('Details:'), Text('')],
               ),
+              SizedBox(height: 10),
               // Text('Details:'),
               Container(
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
                 child: Text(_activity.description),
               ),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
