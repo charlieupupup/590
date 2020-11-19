@@ -46,7 +46,7 @@ class _DateSelectorState extends State<DateSelector> {
             lastDate: DateTime(2100),
             builder: (context, child) {
               return Theme(
-                data: ThemeData.from(colorScheme: setColors()),
+                data: ThemeData.from(colorScheme: setDateColors()),
                 child: child,
               );
             },
@@ -58,7 +58,7 @@ class _DateSelectorState extends State<DateSelector> {
     );
   }
 
-  ColorScheme setColors() {
+  /*ColorScheme setDateColors() {
     return new ColorScheme(
         primary: colorMelon,
         primaryVariant: colorMelon,
@@ -73,5 +73,5 @@ class _DateSelectorState extends State<DateSelector> {
         onBackground: colorAlmond,
         brightness: Brightness.dark,
         background: colorBeige);
-  }
+  }*/
 }

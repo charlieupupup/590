@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/utilities.dart';
 
 class TimeSelector extends StatefulWidget {
   TimeSelector({Key key, this.hintText, this.timeController}) : super(key: key);
@@ -33,7 +34,7 @@ class _TimeSelectorState extends State<TimeSelector> {
               context: context,
               builder: (context, child) {
                 return Theme(
-                  data: ThemeData.from(colorScheme: setColors()),
+                  data: ThemeData.from(colorScheme: setTimeColors()),
                   child: child,
                 );
               },
@@ -45,7 +46,7 @@ class _TimeSelectorState extends State<TimeSelector> {
     );
   }
 
-  ColorScheme setColors() {
+  /*ColorScheme setTimeColors() {
     return new ColorScheme(
         primary: colorHoneydew,
         primaryVariant: colorMelon,
@@ -60,5 +61,5 @@ class _TimeSelectorState extends State<TimeSelector> {
         onBackground: colorAlmond,
         brightness: Brightness.dark,
         background: colorAlmond);
-  }
+  }*/
 }
