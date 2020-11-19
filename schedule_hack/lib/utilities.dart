@@ -99,4 +99,4 @@ UserPreferences userSettings;
 Course globalCourse;
 
 //global variable for referencing calendar json
-final AppStorage calendarStorage = new LocalStorage('calendar.json');
+final LocalStorage calendarStorage = new LocalStorage('calendar.json');

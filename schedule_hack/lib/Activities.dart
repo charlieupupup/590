@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -49,13 +48,13 @@ class Activities {
   }
 
   //from storage from key: today's date
-  Activities.todayFromStorage(AppStorage storage) {
+  Activities.todayFromStorage(LocalStorage storage) {
     this.day = DateTime.now();
     this.events = getFromStorage(DateTime.now(), storage);
   }
 
   //from storage from key: date
-  Activities.fromStorage(DateTime date, AppStorage storage) {
+  Activities.fromStorage(DateTime date, LocalStorage storage) {
     this.day = date;
     this.events = getFromStorage(date, storage);
   }
@@ -73,7 +72,7 @@ class Activities {
   }
 
   //Adds actitivies to storage with key = day.toIso8601String(), value = encoded Acitivites (i.e. List<Activity>)
-  void addToLocalStorage(AppStorage storage) {
+  void addToLocalStorage(LocalStorage storage) {
     final encoded = this.toJSONEncodable();
     storage.setItem(day.toIso8601String(), encoded);
     print(
@@ -81,7 +80,7 @@ class Activities {
   }
 
   //Removes all actitivies to storage with key = day.toIso8601String(), value = encoded Acitivites (i.e. List<Activity>)
-  void removeAllFromLocalStorage(AppStorage storage) {
+  void removeAllFromLocalStorage(LocalStorage storage) {
     storage.deleteItem(day.toIso8601String());
     print(
         "removing ${events.length} events on ${DateFormat.yMEd('en_US').format(day)}");
@@ -133,7 +132,7 @@ class Activities {
   }
 
   //get a list of ScheduleEvents on date from LocalStorage
-  List<ScheduleEvent> getFromStorage(DateTime date, AppStorage storage) {
+  List<ScheduleEvent> getFromStorage(DateTime date, LocalStorage storage) {
     String day = date.toIso8601String();
     List<ScheduleEvent> e = new List<ScheduleEvent>();
     var list = storage.getItem(day);

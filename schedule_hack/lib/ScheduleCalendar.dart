@@ -25,7 +25,7 @@ class ScheduleCalendar extends StatefulWidget {
   }
 }
 
-class _ScheduleCalendarState extends State<ScheduleCalendar> {
+class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
   Activities activities;
   int _currentIndex = 0;
 
@@ -141,8 +141,8 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
     });
   }
 
+  //random data in calendar
   Activities _getPrepopulatedDataSource() {
-    final AppStorage storage = new LocalStorage('calendar.json');
     ActivityNew course = new ActivityNew(DateTime.now(),
         DateTime.now().add(Duration(hours: 2)), "Attend ECE564");
     ActivityNew sleep = new ActivityNew(
@@ -159,15 +159,8 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
         "8 hours of sleep");
     Activities a = new Activities.fromActivityList(
         DateTime.now(), [course, sleep, sleep2]);
-    this.activities = storage.addActivitiesToStorage(DateTime.now(), a);
-    print(activities.getFromStorage(DateTime.now(), storage));
+    this.activities = this.addActivitiesToStorage(calendarStorage, a);
+    print(activities.getFromStorage(DateTime.now(), calendarStorage));
     return activities;
   }
 }
-//get Data for particular date -- currently not using
-//   Activities _getDateDataSource(LocalStorage s, DateTime date) {
-//     Activities local = getActivitiesFromDate(s, date);
-//     Activities activities = addActivities(s, date, local);
-//     return activities;
-//   }
-// }
