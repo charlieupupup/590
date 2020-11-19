@@ -49,6 +49,25 @@ class ScheduleModify extends StatelessWidget {
           Text('Start:'),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: Text(_activity.date.month.toString() +
+                '/' +
+                _activity.date.day.toString()),
+          ),
+          Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: Text(_activity.date.month.toString()),
+          ),
+        ],
+      );
+    }
+
+    Widget End(Activity _activity) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('End:'),
+          Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: Text(_activity.date.month.toString()),
           ),
           Container(
@@ -67,22 +86,23 @@ class ScheduleModify extends StatelessWidget {
           color: colorAeroBlue,
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Start:'),
-                  Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.black)),
-                    child: Text(_activity.date.month.toString()),
-                  ),
-                  Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.black)),
-                    child: Text(_activity.date.month.toString()),
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Text('Start:'),
+              //     Container(
+              //       decoration:
+              //           BoxDecoration(border: Border.all(color: Colors.black)),
+              //       child: Text(_activity.date.month.toString()),
+              //     ),
+              //     Container(
+              //       decoration:
+              //           BoxDecoration(border: Border.all(color: Colors.black)),
+              //       child: Text(_activity.date.month.toString()),
+              //     ),
+              //   ],
+              // ),
+              Start(_activity),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
