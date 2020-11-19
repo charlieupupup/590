@@ -22,6 +22,7 @@ class SyllabusPopup {
     showDialog(
         context: context,
         builder: (_) => new AlertDialog(
+              backgroundColor: colorBeige,
               elevation: 16,
               actions: <Widget>[
                 Center(
