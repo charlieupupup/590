@@ -45,17 +45,17 @@ class _CalendarStateOld extends State<CalendarViewOld> {
   EventList<Event> _markedDateMap = new EventList<Event>(
     events: {
       new DateTime(2020, 11, 1): [
-        new Activity.fromIso8601(
+        new ActivityOld.fromIso8601(
             DateTime(2020, 11, 1, 5).toIso8601String(),
             DateTime(2020, 11, 1, 7).toIso8601String(),
             "ECE564",
             "Final Presentation Prep"),
-        new Activity.fromIso8601(
+        new ActivityOld.fromIso8601(
             DateTime(2020, 11, 1, 9).toIso8601String(),
             DateTime(2020, 11, 1, 11).toIso8601String(),
             "ECE590",
             "Finish Prototype"),
-        new Activity.fromIso8601(
+        new ActivityOld.fromIso8601(
             DateTime(2020, 11, 1, 14).toIso8601String(),
             DateTime(2020, 11, 1, 19).toIso8601String(),
             "ECE564",
@@ -69,17 +69,17 @@ class _CalendarStateOld extends State<CalendarViewOld> {
   @override
   void initState() {
     _markedDateMap.addAll(new DateTime(2020, 11, 7), [
-      new Activity.fromIso8601(
+      new ActivityOld.fromIso8601(
           DateTime(2020, 11, 7, 5).toIso8601String(),
           DateTime(2020, 11, 7, 7).toIso8601String(),
           "ECE564",
           "Final Presentation Prep"),
-      new Activity.fromIso8601(
+      new ActivityOld.fromIso8601(
           DateTime(2020, 11, 7, 9).toIso8601String(),
           DateTime(2020, 11, 7, 11).toIso8601String(),
           "ECE590",
           "Finish Prototype"),
-      new Activity.fromIso8601(
+      new ActivityOld.fromIso8601(
           DateTime(2020, 11, 7, 14).toIso8601String(),
           DateTime(2020, 11, 7, 19).toIso8601String(),
           "ECE564",

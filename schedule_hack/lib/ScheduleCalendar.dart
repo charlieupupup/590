@@ -26,31 +26,32 @@ class ScheduleCalendar extends StatefulWidget {
 class _ScheduleCalendarState extends State<ScheduleCalendar> {
   final LocalStorage storage = new LocalStorage('calendar.json');
   List<Activity> meetings;
-  ScheduleDay day;
+  ScheduleDay currentDay;
   int _currentIndex = 0;
 
   _ScheduleCalendarState(int i) {
     this._currentIndex = i;
-    if (this.day != null) {
-      this.day = new ScheduleDay.fromActivities(_getDataSource());
-    } else {
-      this.day = new ScheduleDay.fromStorage(storage);
-      print("storage");
+    this.currentDay = new ScheduleDay.todayFromStorage(storage);
+    this.meetings = currentDay.activities;
+  }
+
+  List<Activity> getDayFromLocalStorage(DateTime date) {
+    ScheduleDay day = new ScheduleDay.fromStorage(date, storage);
+    print(day.activities.asMap());
+    currentDay = day;
+    return day.activities;
+  }
+
+  void addActivities(List<Activity> activities) {
+    for (int i = 0; i < activities.length; i++) {
+      activities[i].addToLocalStorage(storage);
     }
-    this.meetings = day.activities;
-    print("${day.activities}");
   }
 
-  _addItem(Activity activity) {
-    setState(() {
-      final item = new ScheduleEvent.fromActivity(activity);
-      day.events.add(item);
-      _saveToStorage();
-    });
-  }
-
-  _saveToStorage() {
-    storage.setItem('activities', day.toJSONEncodable());
+  void removeActivities(List<Activity> activities) {
+    for (int i = 0; i < activities.length; i++) {
+      activities[i].removeFromLocalStorage(storage);
+    }
   }
 
   @override
@@ -115,13 +116,11 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
         todayTextStyle: TextStyle(
             fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
         backgroundColor: colorBeige,
+        onLongPress: (CalendarLongPressDetails details) {
+          getDayFromLocalStorage(details.date);
+        },
         onTap: (CalendarTapDetails details) {
-          _addItem(new Activity.fromIso8601(
-              DateTime(2020, 11, 4, 1).toIso8601String(),
-              DateTime(2020, 11, 4, 3).toIso8601String(),
-              "ECE564",
-              "Attend ECE564"));
-          print("${day.activities}");
+          addActivities(_getDataSource());
           print("tap");
         },
         dataSource: ActivityDataSource(_getDataSource()),
@@ -168,16 +167,16 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
   }
 
   List<Activity> _getDataSource() {
-    meetings.add(new Activity.fromIso8601(
+    meetings.add(new Activity.fromActivityOld(new ActivityOld.fromIso8601(
         DateTime(2020, 11, 4, 1).toIso8601String(),
         DateTime(2020, 11, 4, 3).toIso8601String(),
         "ECE564",
-        "Attend ECE564"));
-    meetings.add(new Activity.fromIso8601(
+        "Attend ECE564")));
+    meetings.add(Activity.fromActivityOld((new ActivityOld.fromIso8601(
         DateTime(2020, 11, 7, 1).toIso8601String(),
         DateTime(2020, 11, 7, 3).toIso8601String(),
         "ECE590",
-        "Attend ECE564"));
+        "Attend ECE564"))));
     return meetings;
   }
 }
@@ -189,7 +188,7 @@ class ActivityDataSource extends CalendarDataSource {
   /// Creates a meeting data source, which used to set the appointment
   /// collection to the calendar
   ActivityDataSource(List<Activity> source) {
-    appointments = source;
+    appointments = ScheduleDay.fromActivities(source).activities;
   }
 
   @override

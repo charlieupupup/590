@@ -1,8 +1,7 @@
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
-
-class EventsMap {}
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class ScheduleDay {
   List<ScheduleEvent> events = new List<ScheduleEvent>();
@@ -28,8 +27,12 @@ class ScheduleDay {
     setEvents(e);
   }
 
-  ScheduleDay.fromStorage(LocalStorage storage) {
-    this.events = getFromStorage(storage);
+  ScheduleDay.todayFromStorage(LocalStorage storage) {
+    this.events = getFromStorage(DateTime.now(), storage);
+  }
+
+  ScheduleDay.fromStorage(DateTime date, LocalStorage storage) {
+    this.events = getFromStorage(date, storage);
   }
 
   //JSON conversion
@@ -85,15 +88,16 @@ class ScheduleDay {
   // }
   //
 
-  //get a list of ScheduleEvents from LocalStorage
-  List<ScheduleEvent> getFromStorage(LocalStorage storage) {
-    var list = storage.getItem('activities');
+  //get a list of ScheduleEvents on date from LocalStorage
+  List<ScheduleEvent> getFromStorage(DateTime date, LocalStorage storage) {
+    String day = date.toIso8601String();
+    var list = storage.getItem(day);
     if (list != null) {
       this.events = List<ScheduleEvent>.from(
         (list as List).map(
           (item) => ScheduleEvent(
             title: item['title'],
-            description: item['description'],
+            // description: item['description'],
             endDate: item['endDate'],
             date: item['date'],
           ),

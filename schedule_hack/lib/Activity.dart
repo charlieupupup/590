@@ -1,14 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/utilities.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class Activity extends Event {
+class Activity extends Appointment {
+  Activity.fromScheduleEvent(ScheduleEvent scheduleEvent)
+      : super(
+            startTime: DateTime.parse(scheduleEvent.date),
+            endTime: DateTime.parse(scheduleEvent.endDate),
+            isAllDay: false,
+            subject: scheduleEvent.title);
+
+  // this.description = scheduleEvent.description;
+  Activity.fromActivityOld(ActivityOld old)
+      : this.fromScheduleEvent(new ScheduleEvent.fromActivityOld(old));
+
+  void addToLocalStorage(LocalStorage storage) {
+    ScheduleEvent event = new ScheduleEvent.fromActivity(this);
+    final encoded = event.toJSONEncodable();
+    storage.setItem(startTime.toIso8601String(), encoded);
+  }
+
+  void removeFromLocalStorage(LocalStorage storage) {
+    storage.deleteItem(startTime.toIso8601String());
+  }
+}
+
+class ActivityOld extends Event {
   DateTime endDate;
   String description;
 
-  Activity.fromScheduleEvent(ScheduleEvent scheduleEvent)
+  ActivityOld.fromScheduleEvent(ScheduleEvent scheduleEvent)
       : super(
             date: DateTime.parse(scheduleEvent.date),
             title: scheduleEvent.title,
@@ -24,11 +49,10 @@ class Activity extends Event {
               width: 5.0,
             )) {
     this.endDate = DateTime.parse(scheduleEvent.endDate);
-    this.description = scheduleEvent.description;
   }
 
   //default constructor string must be in iso
-  Activity.fromIso8601(
+  ActivityOld.fromIso8601(
       String startDate, String endDate, String title, String description)
       : super(
             date: DateTime.parse(startDate),
@@ -45,10 +69,9 @@ class Activity extends Event {
               width: 5.0,
             )) {
     this.endDate = DateTime.parse(endDate);
-    this.description = description;
   }
 
-  Activity.fromAssigment(DateTime dueDate, Assignment assignment)
+  ActivityOld.fromAssigment(DateTime dueDate, Assignment assignment)
       : super(
             date: (dueDate).subtract(Duration(
                 days: 5)), //TODO maybe change this from 5 day but whatever
@@ -65,14 +88,5 @@ class Activity extends Event {
               width: 5.0,
             )) {
     this.endDate = dueDate;
-    this.description = "$title inputted from Syllabus";
   }
-
-  Assignment getAssignment() {
-    return new Assignment.long(
-        description, date.toIso8601String(), endDate.toIso8601String());
-  }
-
-  //TODO: course constructor that will add in repeat? or maybe ClassAttendance subclass of Activity with some kind of list of DaysOfWeek
-
 }

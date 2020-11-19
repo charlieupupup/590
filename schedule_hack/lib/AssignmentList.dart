@@ -53,7 +53,7 @@ class _AssignmentListState extends State<AssignmentList> {
   int courseCount;
   int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
-  List<Activity> activityList = new List<Activity>();
+  List<ActivityOld> activityList = new List<ActivityOld>();
   Course originalCourse;
 
   _AssignmentListState(Course c, int e, int cCount, int vA, Course oC) {
@@ -354,7 +354,7 @@ class _AssignmentListState extends State<AssignmentList> {
           } else {
             DateTime dueDate = DateTime.parse(myControllerDate.text);
             //for each day in difference create act and add to list
-            Activity activity = new Activity.fromAssigment(dueDate, a);
+            ActivityOld activity = new ActivityOld.fromAssigment(dueDate, a);
             activityList.add(activity);
             myControllerDate.clear();
             myControllerTime.clear();
