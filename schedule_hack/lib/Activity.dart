@@ -5,13 +5,13 @@ import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class Activity extends Event {
-  Duration duration;
+  DateTime endDate;
   String description;
 
-  Activity.fromScheduleEvent(ScheduleEvent scheduleItem)
+  Activity.fromScheduleEvent(ScheduleEvent scheduleEvent)
       : super(
-            date: DateTime.parse(scheduleItem.date),
-            title: scheduleItem.title,
+            date: DateTime.parse(scheduleEvent.date),
+            title: scheduleEvent.title,
             icon: Icon(
               Icons.access_time,
               color: colorBlackCoral,
@@ -23,14 +23,15 @@ class Activity extends Event {
               height: 5.0,
               width: 5.0,
             )) {
-    this.duration = Duration(hours: scheduleItem.duration);
-    this.description = scheduleItem.description;
+    this.endDate = DateTime.parse(scheduleEvent.endDate);
+    this.description = scheduleEvent.description;
   }
 
   //default constructor string must be in iso
-  Activity(String start, int duration, String title, String description)
+  Activity.fromIso8601(
+      String startDate, String endDate, String title, String description)
       : super(
-            date: DateTime.parse(start),
+            date: DateTime.parse(startDate),
             title: title,
             icon: Icon(
               Icons.access_time,
@@ -43,55 +44,13 @@ class Activity extends Event {
               height: 5.0,
               width: 5.0,
             )) {
-    this.duration = Duration(hours: duration);
+    this.endDate = DateTime.parse(endDate);
     this.description = description;
   }
 
   Assignment getAssignment() {
-    return new Assignment.long(description, date.toIso8601String(),
-        date.subtract(duration).toIso8601String());
-  }
-
-  Activity.standard(
-      DateTime start, Duration duration, String title, String description)
-      : super(
-            date: start,
-            title: title,
-            icon: Icon(
-              Icons.access_time,
-              color: colorBlackCoral,
-              size: 30.0,
-            ),
-            dot: Container(
-              margin: EdgeInsets.symmetric(horizontal: 1.0),
-              color: colorMelon,
-              height: 5.0,
-              width: 5.0,
-            )) {
-    this.duration = duration;
-    this.description = description;
-  }
-
-  //constructor for an assignment
-  Activity.assignment(DateTime dueDate, Duration timeToComplete, String title,
-      String description)
-      : super(
-            date: dueDate.subtract(
-                timeToComplete), //start time = dueDate - time to completeAssignment
-            title: title,
-            icon: Icon(
-              Icons.assignment,
-              color: colorBlackCoral,
-              size: 30.0,
-            ),
-            dot: Container(
-              margin: EdgeInsets.symmetric(horizontal: 1.0),
-              color: colorSoftMelon,
-              height: 5.0,
-              width: 5.0,
-            )) {
-    this.duration = timeToComplete;
-    this.description = description;
+    return new Assignment.long(
+        description, date.toIso8601String(), endDate.toIso8601String());
   }
 
   //TODO: course constructor that will add in repeat? or maybe ClassAttendance subclass of Activity with some kind of list of DaysOfWeek
