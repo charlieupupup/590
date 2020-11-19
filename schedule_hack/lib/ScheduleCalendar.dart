@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/Home.dart';
@@ -37,21 +38,25 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
 
   List<Activity> getDayFromLocalStorage(DateTime date) {
     ScheduleDay day = new ScheduleDay.fromStorage(date, storage);
-    print(day.activities.asMap());
     currentDay = day;
+    print(
+        "current day is now ${DateFormat.yMEd('en_US').format(currentDay.day)}");
+    print("current day activites are ${(currentDay.events.toList())}");
+
     return day.activities;
   }
 
-  void addActivities(List<Activity> activities) {
-    for (int i = 0; i < activities.length; i++) {
-      activities[i].addToLocalStorage(storage);
-    }
+  ScheduleDay addActivities(DateTime date, List<Activity> a) {
+    // ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
+    // scheduleDay.addToLocalStorage(storage);
+    ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
+    scheduleDay.addToLocalStorage(storage);
+    return scheduleDay;
   }
 
-  void removeActivities(List<Activity> activities) {
-    for (int i = 0; i < activities.length; i++) {
-      activities[i].removeFromLocalStorage(storage);
-    }
+  void removeActivities(DateTime date, List<Activity> a) {
+    ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
+    scheduleDay.removeFromLocalStorage(storage);
   }
 
   @override
@@ -117,13 +122,18 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
             fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
         backgroundColor: colorBeige,
         onLongPress: (CalendarLongPressDetails details) {
-          getDayFromLocalStorage(details.date);
+          details.appointments.clear();
+          removeActivities(details.date, _getDataSource(details.date));
+          print(
+              "REMOVE: ${details.appointments}  on ${DateFormat.yMEd('en_US').format(details.date)}");
         },
         onTap: (CalendarTapDetails details) {
-          addActivities(_getDataSource());
-          print("tap");
+          details.appointments.addAll(_getDataSource(details.date));
+          addActivities(details.date, _getDataSource(details.date));
+          print(
+              "ADD: ${details.appointments}  on ${DateFormat.yMEd('en_US').format(details.date)}");
         },
-        dataSource: ActivityDataSource(_getDataSource()),
+        dataSource: ActivityDataSource(_getActivityDataSource()),
         // by default the month appointment display mode set as Indicator, we can
         // change the display mode as appointment using the appointment display
         // mode property
@@ -166,18 +176,33 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
     });
   }
 
-  List<Activity> _getDataSource() {
+  List<Activity> _getActivityDataSource() {
     meetings.add(new Activity.fromActivityOld(new ActivityOld.fromIso8601(
-        DateTime(2020, 11, 4, 1).toIso8601String(),
-        DateTime(2020, 11, 4, 3).toIso8601String(),
+        DateTime.now().toIso8601String(),
+        DateTime.now().add(Duration(hours: 2)).toIso8601String(),
         "ECE564",
         "Attend ECE564")));
     meetings.add(Activity.fromActivityOld((new ActivityOld.fromIso8601(
-        DateTime(2020, 11, 7, 1).toIso8601String(),
-        DateTime(2020, 11, 7, 3).toIso8601String(),
+        DateTime.now().add(Duration(hours: 5)).toIso8601String(),
+        DateTime.now().add(Duration(hours: 6)).toIso8601String(),
         "ECE590",
         "Attend ECE564"))));
     return meetings;
+  }
+
+  List<Activity> _getDataSource(DateTime date) {
+    List<Activity> local = getDayFromLocalStorage(date);
+    ScheduleDay scheduleDay = addActivities(date, local);
+    scheduleDay.addActivity(new Activity.fromActivityOld(
+        new ActivityOld.fromIso8601(date.toIso8601String(),
+            date.toIso8601String(), "ECE564", "Attend ECE564")));
+    scheduleDay.addActivity(Activity.fromActivityOld(
+        (new ActivityOld.fromIso8601(
+            date.add(Duration(days: 2)).toIso8601String(),
+            date.add(Duration(days: 2)).toIso8601String(),
+            "ECE590",
+            "Attend ECE564"))));
+    return scheduleDay.activities;
   }
 }
 
@@ -188,7 +213,7 @@ class ActivityDataSource extends CalendarDataSource {
   /// Creates a meeting data source, which used to set the appointment
   /// collection to the calendar
   ActivityDataSource(List<Activity> source) {
-    appointments = ScheduleDay.fromActivities(source).activities;
+    appointments = source;
   }
 
   @override

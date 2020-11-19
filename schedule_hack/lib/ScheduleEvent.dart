@@ -7,6 +7,12 @@ class ScheduleEvent {
 
   ScheduleEvent({this.title, this.endDate, this.date});
 
+  ScheduleEvent.test() {
+    title = "TEST";
+    date = DateTime.now().toIso8601String();
+    endDate = DateTime.now().add(Duration(days: 2)).toIso8601String();
+  }
+
   ScheduleEvent.fromActivityOld(ActivityOld activity) {
     this.title = activity.title;
     this.date = activity.date.toIso8601String();
@@ -22,7 +28,7 @@ class ScheduleEvent {
   toJSONEncodable() {
     Map<String, dynamic> m = new Map();
     m['title'] = title;
-    m['startDate'] = date;
+    m['date'] = date;
     m['endDate'] = endDate;
     return m;
   }

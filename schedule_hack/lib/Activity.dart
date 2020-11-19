@@ -17,16 +17,6 @@ class Activity extends Appointment {
   // this.description = scheduleEvent.description;
   Activity.fromActivityOld(ActivityOld old)
       : this.fromScheduleEvent(new ScheduleEvent.fromActivityOld(old));
-
-  void addToLocalStorage(LocalStorage storage) {
-    ScheduleEvent event = new ScheduleEvent.fromActivity(this);
-    final encoded = event.toJSONEncodable();
-    storage.setItem(startTime.toIso8601String(), encoded);
-  }
-
-  void removeFromLocalStorage(LocalStorage storage) {
-    storage.deleteItem(startTime.toIso8601String());
-  }
 }
 
 class ActivityOld extends Event {
