@@ -423,12 +423,8 @@ class _AssignmentListState extends State<AssignmentList> {
             // if no date or time do nothing
           } else {
             DateTime dueDate = DateTime.parse(myControllerDate.text);
-            final currentDate = DateTime.now();
-            Duration duration =
-                Duration(days: currentDate.difference(dueDate).inDays);
             //for each day in difference create act and add to list
-            Activity activity = new Activity.assignment(
-                dueDate, duration, a.getDescription, 'Description');
+            Activity activity = new Activity.fromAssigment(dueDate, a);
             activityList.add(activity);
             myControllerDate.clear();
             myControllerTime.clear();
