@@ -7,9 +7,9 @@ import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
   //List<ScheduleEvent> _list;
-  List<ActivityOld> _list;
+  List<Activity> _list;
 
-  ScheduleView(List<ActivityOld> list) {
+  ScheduleView(List<Activity> list) {
     _list = list;
   }
 

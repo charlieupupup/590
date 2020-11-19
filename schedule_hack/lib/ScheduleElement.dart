@@ -6,10 +6,10 @@ import 'package:schedule_hack/utilities.dart';
 
 class ScheduleElement extends StatelessWidget {
   //ScheduleEvent scheduleEvent;
-  ActivityOld scheduledActivity;
+  Activity scheduledActivity;
 
   //ScheduleElement(ScheduleEvent scheduleEvent) {
-  ScheduleElement(ActivityOld scheduleEvent) {
+  ScheduleElement(Activity scheduleEvent) {
     //this.scheduleEvent = scheduleEvent;
     this.scheduledActivity = scheduleEvent;
   }
