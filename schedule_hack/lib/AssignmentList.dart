@@ -55,6 +55,7 @@ class _AssignmentListState extends State<AssignmentList> {
   int viewingAssignments; // default is that we're editing (0)
   List<Activity> activityList = new List<Activity>();
   Course originalCourse;
+  bool deleteItem = false;
 
   _AssignmentListState(Course c, int e, int cCount, int vA, Course oC) {
     this.course = c;
@@ -108,6 +109,7 @@ class _AssignmentListState extends State<AssignmentList> {
                   .getAssignments
                   .length, // might need to split this up
               itemBuilder: (BuildContext context, int index) {
+                // _confirmDeletePopup(index);
                 return Dismissible(
                   background: deleteBackground(),
                   onDismissed: (DismissDirection direction) {
@@ -124,11 +126,15 @@ class _AssignmentListState extends State<AssignmentList> {
                           this.course.getCourseDays,
                           assignmentList);
                       this.course = newCourse;
+                      myControllerDate.clear();
+                      myControllerTime.clear();
+                      myControllerDescription.clear();
                     });
                   },
                   child: returnAssignmentButtonIndex(index),
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
+                  confirmDismiss: (direction) => promptUser(direction),
                 );
               }) //returnAssignmentButton(),
           ),
@@ -141,6 +147,70 @@ class _AssignmentListState extends State<AssignmentList> {
       ),
       floatingActionButton: _fabDisplay(),
     );
+  }
+
+  Future<bool> promptUser(DismissDirection direction) async {
+    String action;
+    if (direction == DismissDirection.endToStart) {
+      // This is a delete action
+      action = "delete";
+    } else {
+      //archiveItem();
+      // This is an archive action
+      action = "archive";
+    }
+
+    return await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+              backgroundColor: colorBeige,
+              elevation: 16,
+              actions: <Widget>[
+                Center(
+                  child: Text('Are you sure you want to delete the assignment?',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: colorBlackCoral,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
+                ),
+                Container(
+                  child: ButtonBar(
+                    alignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      MaterialButton(
+                        onPressed: () {
+                          // Dismiss the dialog but don't
+                          // dismiss the swiped item
+                          return Navigator.of(context).pop(false);
+                        },
+                        color: colorMelon,
+                        child: Image.asset(
+                          'images/delete.png',
+                          height: 50,
+                          width: 50,
+                        ),
+                        shape: CircleBorder(),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          // Dismiss the dialog and
+                          // also dismiss the swiped item
+                          Navigator.of(context).pop(true);
+                        },
+                        color: colorHoneydew,
+                        child: Image.asset(
+                          'images/checkmark.png',
+                          height: 50,
+                          width: 50,
+                        ),
+                        shape: CircleBorder(),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ));
   }
 
   // Delete Dismissible background
