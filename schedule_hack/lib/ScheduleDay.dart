@@ -5,10 +5,14 @@ import 'package:schedule_hack/ScheduleEvent.dart';
 class EventsMap {}
 
 class ScheduleDay {
-  List<ScheduleEvent> events;
+  List<ScheduleEvent> events = new List<ScheduleEvent>();
   List<Activity> get activities {
     //returns list of activites automatically generated from events
-    return getActivitiesFromEvents(events);
+    List<Activity> list = new List<Activity>();
+    if (events != null) {
+      list = getActivitiesFromEvents(events);
+    }
+    return list;
   }
 
   //constructors
@@ -73,6 +77,14 @@ class ScheduleDay {
     return list;
   }
 
+  // final TodoList list = new TodoList();
+  // final LocalStorage storage = new LocalStorage('todo_app');
+
+  // _saveToStorage() {
+  //   storage.setItem('todos', list.toJSONEncodable());
+  // }
+  //
+
   //get a list of ScheduleEvents from LocalStorage
   List<ScheduleEvent> getFromStorage(LocalStorage storage) {
     var list = storage.getItem('activities');
@@ -87,9 +99,8 @@ class ScheduleDay {
           ),
         ),
       );
-    } else {
-      list = new List<ScheduleEvent>();
     }
+    print("list is of type $list");
     return list;
   }
 }
