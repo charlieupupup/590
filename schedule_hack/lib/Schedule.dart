@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CalendarButton.dart';
 import 'package:schedule_hack/DateBanner.dart';
-import 'package:schedule_hack/Day.dart';
 import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
@@ -18,12 +17,21 @@ class Schedule extends StatelessWidget {
   final String title;
   DateTime date;
 
-  Activity a0 = new Activity(Task.attendClass, DateTime(2020, 11, 4, 2),
-      Duration(hours: 1), "ECE564", "Attend ECE564");
-  Activity a1 = new Activity.assignment(
-      DateTime(2020, 11, 4, 4), Duration(hours: 2), "ECE590", "Final Project");
-  Activity a2 = new Activity.assignment(
-      DateTime(2020, 11, 4, 9), Duration(hours: 3), "MENG570", "Final Exam");
+  Activity a0 = new Activity.fromIso8601(
+      DateTime(2020, 11, 4, 1).toIso8601String(),
+      DateTime(2020, 11, 4, 3).toIso8601String(),
+      "ECE564",
+      "Attend ECE564");
+  Activity a1 = new Activity.fromIso8601(
+      DateTime(2020, 11, 7, 2).toIso8601String(),
+      DateTime.now().toIso8601String(),
+      "ECE564",
+      "Final Presentation");
+  Activity a2 = new Activity.fromIso8601(
+      DateTime(2020, 11, 12, 2).toIso8601String(),
+      DateTime.now().toIso8601String(),
+      "ECE564",
+      "Final Presentation");
 
   Schedule({Key key, this.title, this.date}) : super(key: key) {
     _scheduleToday = [a0, a1, a2];
