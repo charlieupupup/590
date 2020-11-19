@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
@@ -43,17 +44,13 @@ class ScheduleModify extends StatelessWidget {
     // );
 
     return AlertDialog(
+      backgroundColor: colorPowderBlue,
       title: Text(_activity.title),
       content: SingleChildScrollView(
         child: Container(
+          color: colorAeroBlue,
           child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: colorPowderBlue,
-                ),
-                child: Text(_activity.title),
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
