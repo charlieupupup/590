@@ -6,7 +6,8 @@ mixin AppStorage {
   //Gets the list activites from storage  for a particular date
   Activities getActivitiesFromStorage(
       LocalStorage localStorage, DateTime date) {
-    return Activities.fromStorage(date, localStorage);
+    Activities activities = getActivitiesFromStorage(localStorage, date);
+    return activities;
   }
 
   //Adds Activities to local storage and returns
