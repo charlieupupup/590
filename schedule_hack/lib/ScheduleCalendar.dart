@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ActivityDataSource.dart';
+import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
@@ -25,34 +26,12 @@ class ScheduleCalendar extends StatefulWidget {
 }
 
 class _ScheduleCalendarState extends State<ScheduleCalendar> {
-  final LocalStorage storage = new LocalStorage('calendar.json');
   Activities activities;
   int _currentIndex = 0;
 
   _ScheduleCalendarState(int i) {
     this._currentIndex = i;
-    this.activities = new Activities.todayFromStorage(storage);
-  }
-
-  //Gets the list activites from storage  for a particular date
-  Activities getActivitiesFromDate(LocalStorage s, DateTime date) {
-    Activities day = new Activities.fromStorage(date, s);
-    activities = day;
-    // print(
-    //     "current day is now ${DateFormat.yMEd('en_US').format(activities.day)}");
-    // print("current day activites are ${(activities.events.toList())}");
-    return day;
-  }
-
-  //Adds Activities to local calendar and returns that list of activities
-  Activities addActivities(LocalStorage s, DateTime date, Activities a) {
-    a.addToLocalStorage(s);
-    return a;
-  }
-
-  //removes all Activites from date
-  void removeActivities(LocalStorage s, DateTime date, Activities a) {
-    a.removeAllFromLocalStorage(s);
+    this.activities = new Activities.todayFromStorage(calendarStorage);
   }
 
   @override
@@ -163,7 +142,7 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
   }
 
   Activities _getPrepopulatedDataSource() {
-    final LocalStorage storage = new LocalStorage('calendar.json');
+    final AppStorage storage = new LocalStorage('calendar.json');
     ActivityNew course = new ActivityNew(DateTime.now(),
         DateTime.now().add(Duration(hours: 2)), "Attend ECE564");
     ActivityNew sleep = new ActivityNew(
@@ -180,7 +159,7 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
         "8 hours of sleep");
     Activities a = new Activities.fromActivityList(
         DateTime.now(), [course, sleep, sleep2]);
-    this.activities = addActivities(storage, DateTime.now(), a);
+    this.activities = storage.addActivitiesToStorage(DateTime.now(), a);
     print(activities.getFromStorage(DateTime.now(), storage));
     return activities;
   }
