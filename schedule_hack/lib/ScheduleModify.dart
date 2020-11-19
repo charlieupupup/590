@@ -15,7 +15,16 @@ class ScheduleModify extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Row(),
+          Row(
+            children: [
+              Text('Start:'),
+              Container(
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.black)),
+                child: Text(_activity.date.month.toString()),
+              ),
+            ],
+          ),
           Row(),
           Text('Details:'),
           Container(
