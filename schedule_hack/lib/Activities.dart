@@ -29,31 +29,36 @@ class Activities {
     this.events = new List<ScheduleEvent>();
   }
 
+  //from list of Activities (new)
   Activities.fromActivities(DateTime date, List<ActivityNew> a) {
     this.day = date;
     setActivities(a);
   }
 
+  //from list of Schedule Events (new)
   Activities.fromScheduleEvents(DateTime date, List<ScheduleEvent> e) {
     this.day = date;
     setEvents(e);
   }
 
+  //from storage from key: today's date
   Activities.todayFromStorage(LocalStorage storage) {
     this.day = DateTime.now();
     this.events = getFromStorage(DateTime.now(), storage);
   }
 
+  //from storage from key: date
   Activities.fromStorage(DateTime date, LocalStorage storage) {
     this.day = date;
     this.events = getFromStorage(date, storage);
   }
 
+  //Add individual activity to list
   void addActivity(ActivityNew activity) {
     events.add(new ScheduleEvent.fromActivityNew(activity));
   }
 
-  //JSON conversion
+  //JSON encodable conversion
   toJSONEncodable() {
     return this.events.map((event) {
       return event.toJSONEncodable();
@@ -82,7 +87,7 @@ class Activities {
   List<ScheduleEvent> getEvents() {
     return this.events;
   }
-
+  //get day
   DateTime getDay() {
     return this.day;
   }
