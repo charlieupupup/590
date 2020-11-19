@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
@@ -43,12 +44,14 @@ class ScheduleModify extends StatelessWidget {
     //   ),
     // );
 
-    String getDate(Activity _activity) {
-      return _activity.date.month.toString() +
-          '/' +
-          _activity.date.day.toString() +
-          ',   ' +
-          _activity.date.year.toString();
+    String getDate(DateTime dateTime) {
+      final df = new DateFormat('MMM dd, yyyy');
+      return df.format(dateTime);
+    }
+
+    String getTime(DateTime dateTime) {
+      final df = new DateFormat('hh:mm a');
+      return df.format(dateTime);
     }
 
     Widget Start(Activity _activity) {
@@ -64,11 +67,12 @@ class ScheduleModify extends StatelessWidget {
             //     ',   ' +
             //     _activity.date.year.toString()),
 
-            child: (Text(getDate(_activity))),
+            child: (Text(getDate(_activity.date))),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(_activity.date.month.toString()),
+            // child: Text(_activity.date.month.toString()),
+            child: Text(getTime(_activity.date)),
           ),
         ],
       );
