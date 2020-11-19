@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:schedule_hack/Assignment.dart';
-import 'package:schedule_hack/ScheduleList.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class Activity extends Event {
   Duration duration;
   String description;
 
-  Activity.fromScheduleItem(ScheduleItem scheduleItem)
+  Activity.fromScheduleEvent(ScheduleEvent scheduleItem)
       : super(
             date: DateTime.parse(scheduleItem.date),
             title: scheduleItem.title,

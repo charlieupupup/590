@@ -4,7 +4,7 @@ import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/ScheduleList.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/utilities.dart';
 
@@ -34,24 +34,6 @@ class CalendarView extends StatefulWidget {
 
 class _CalendarState extends State<CalendarView> {
   final LocalStorage storage = new LocalStorage('activity.json');
-  ScheduleList get list {
-    final ScheduleList list = new ScheduleList();
-    var items = storage.getItem('items');
-    if (items != null) {
-      list.items = List<ScheduleItem>.from(
-        (items as List).map(
-          (item) => ScheduleItem(
-            title: item['title'],
-            type: item['type'],
-            description: item['description'],
-            duration: item['duration'],
-            date: item['date'],
-          ),
-        ),
-      );
-    }
-    return list;
-  }
 
   int _currentIndex = 0;
   DateTime _currentDateWeekView;
@@ -72,28 +54,18 @@ class _CalendarState extends State<CalendarView> {
     _markedDateMap = events;
   }
 
-  addItem(ScheduleItem event) {
-    setState(() {
-      list.items.add(event);
-      saveToStorage();
-    });
-  }
-
-  saveToStorage() {
-    storage.setItem('items', list.toJSONEncodable());
-  }
-
-  _clearStorage() async {
-    await storage.clear();
-    setState(() {
-      list.items = storage.getItem('items') ?? [];
-    });
-  }
-
   @override
   void initState() {
     super.initState();
-    _markedDateMap.addAll(DateTime.now(), list.activityList);
+    _markedDateMap = new EventList<Event>();
+    List<Activity> activities = [
+      new Activity(
+          DateTime.now().toIso8601String(), 2, "ECE564", "Attend ECE564"),
+      new Activity.assignment(
+          DateTime.now(), Duration(hours: 2), "ECE590", "Final Project"),
+      new Activity.assignment(
+          DateTime.now(), Duration(hours: 3), "MENG570", "Final Exam")
+    ];
     _markedDateMap.add(
         new DateTime(2020, 11, 22),
         new Activity(DateTime(2020, 11, 22).toIso8601String(), 1, "Break",
@@ -102,16 +74,7 @@ class _CalendarState extends State<CalendarView> {
         new DateTime(2020, 11, 3),
         new Activity(DateTime(2020, 11, 19).toIso8601String(), 5, "ECE590",
             "Final Project"));
-    _markedDateMap.addAll(new DateTime(2020, 11, 4), [
-      new Activity(DateTime(2020, 11, 4, 2).toIso8601String(), 2, "ECE564",
-          "Attend ECE564"),
-      new Activity.assignment(DateTime(2020, 11, 4, 4), Duration(hours: 2),
-          "ECE590", "Final Project"),
-      new Activity.assignment(
-          DateTime(2020, 11, 4, 9), Duration(hours: 3), "MENG570", "Final Exam")
-    ]);
-    print(list.items);
-    saveToStorage();
+    _markedDateMap.addAll(DateTime.now(), activities);
   }
 
   @override
@@ -128,7 +91,6 @@ class _CalendarState extends State<CalendarView> {
         events.forEach((event) => print(event.title));
         Activity test = new Activity(date.toIso8601String(), 5, "TEST",
             DateFormat.yMMMEd('en_US').format(date));
-        addItem(ScheduleItem.fromActivity(test));
         _markedDateMap.add(date, test);
       },
       onCalendarChanged: (DateTime date) {
