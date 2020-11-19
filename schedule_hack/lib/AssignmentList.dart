@@ -39,8 +39,8 @@ class AssignmentList extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return new _AssignmentListState(
-        this.course, this.edit, this.courseCount, this.viewingAssignments, this.originalCourse);
+    return new _AssignmentListState(this.course, this.edit, this.courseCount,
+        this.viewingAssignments, this.originalCourse);
   }
 }
 
@@ -88,8 +88,7 @@ class _AssignmentListState extends State<AssignmentList> {
             onPressed: () {
               // popup - saying going back will delete data
               _backButton();
-            })
-        ,
+            }),
         actions: [
           Row(
             children: [SettingsButton()],
@@ -209,10 +208,8 @@ class _AssignmentListState extends State<AssignmentList> {
         jsonDataStorage.newEntry(this.course);
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => LoadingScreen()
-          ),
-              (route) => false,
+          MaterialPageRoute(builder: (BuildContext context) => LoadingScreen()),
+          (route) => false,
         );
       },
       color: colorHoneydew,
@@ -235,25 +232,35 @@ class _AssignmentListState extends State<AssignmentList> {
       return CancelButton.assignment(2, this.course);
     }
   }
-  _backButton(){
+
+  _backButton() {
     if (this.edit == 1) {
       print('edit cancel');
       // TODO: bug where hitting back still saves data
       List list = new List();
       list = globalCourse.getAssignments;
-      for (int i = 0; i < list.length; i++){
+      for (int i = 0; i < list.length; i++) {
         Assignment a = list[i];
         String assignmentName = a.getDescription;
         print('Assignment: $assignmentName');
       }
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',5,globalCourse);
+      StandardPopup.course(
+          context,
+          'Going back now will not save all progress. Are you sure?',
+          5,
+          globalCourse);
     } else {
       //return CancelButton.assignment(2, this.course);
       print('cancel should be working');
       //return CancelButton.assignment(6,this.course);
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',2,this.originalCourse);
+      StandardPopup.course(
+          context,
+          'Going back now will not save all progress. Are you sure?',
+          2,
+          this.originalCourse);
     }
   }
+
   // popup if no assignments listed yet
   _emptyDialog(BuildContext context) {
     List list = new List();
@@ -346,12 +353,8 @@ class _AssignmentListState extends State<AssignmentList> {
             // if no date or time do nothing
           } else {
             DateTime dueDate = DateTime.parse(myControllerDate.text);
-            final currentDate = DateTime.now();
-            Duration duration =
-                Duration(days: currentDate.difference(dueDate).inDays);
             //for each day in difference create act and add to list
-            Activity activity = new Activity.assignment(
-                dueDate, duration, a.getDescription, 'Description');
+            Activity activity = new Activity.fromAssigment(dueDate, a);
             activityList.add(activity);
             myControllerDate.clear();
             myControllerTime.clear();

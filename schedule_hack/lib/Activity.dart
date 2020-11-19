@@ -1,20 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:intl/intl.dart';
+import 'package:schedule_hack/Assignment.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/utilities.dart';
 
-enum Task { attendClass, doAssignment, sleep, takeBreak, workout }
-
 class Activity extends Event {
-  Task task;
-  Duration duration;
+  DateTime endDate;
   String description;
 
-  //default constructor
-  Activity(Task task, DateTime start, Duration duration, String title,
-      String description)
+  Activity.fromScheduleEvent(ScheduleEvent scheduleEvent)
       : super(
-            date: start,
+            date: DateTime.parse(scheduleEvent.date),
+            title: scheduleEvent.title,
+            icon: Icon(
+              Icons.access_time,
+              color: colorBlackCoral,
+              size: 30.0,
+            ),
+            dot: Container(
+              margin: EdgeInsets.symmetric(horizontal: 1.0),
+              color: colorMelon,
+              height: 5.0,
+              width: 5.0,
+            )) {
+    this.endDate = DateTime.parse(scheduleEvent.endDate);
+    this.description = scheduleEvent.description;
+  }
+
+  //default constructor string must be in iso
+  Activity.fromIso8601(
+      String startDate, String endDate, String title, String description)
+      : super(
+            date: DateTime.parse(startDate),
             title: title,
             icon: Icon(
               Icons.access_time,
@@ -27,46 +44,36 @@ class Activity extends Event {
               height: 5.0,
               width: 5.0,
             )) {
-    this.task = task;
-    this.duration = duration;
+    this.endDate = DateTime.parse(endDate);
     this.description = description;
   }
 
-  //constructor for an assignment
-  Activity.assignment(DateTime dueDate, Duration timeToComplete, String title,
-      String description)
+  //default constructor string must be in iso
+  Activity.fromAssigment(DateTime dueDate, Assignment assignment)
       : super(
-            date: dueDate.subtract(
-                timeToComplete), //start time = dueDate - time to completeAssignment
-            title: title,
+            date: (dueDate).subtract(Duration(
+                days: 5)), //TODO maybe change this from 5 day but whatever
+            title: assignment.description,
             icon: Icon(
-              Icons.assignment,
+              Icons.access_time,
               color: colorBlackCoral,
               size: 30.0,
             ),
             dot: Container(
               margin: EdgeInsets.symmetric(horizontal: 1.0),
-              color: colorSoftMelon,
+              color: colorMelon,
               height: 5.0,
               width: 5.0,
             )) {
-    this.task = Task.doAssignment;
-    this.duration = timeToComplete;
-    this.description = description;
+    this.endDate = dueDate;
+    this.description = "$title inputted from Syllabus";
+  }
+
+  Assignment getAssignment() {
+    return new Assignment.long(
+        description, date.toIso8601String(), endDate.toIso8601String());
   }
 
   //TODO: course constructor that will add in repeat? or maybe ClassAttendance subclass of Activity with some kind of list of DaysOfWeek
 
-//string to return currently just for testing
-  String getInfo() {
-    return description +
-        "(" +
-        task.toString() +
-        ") on " +
-        DateFormat.yMMMMEEEEd('en_US').format(date) +
-        "for " +
-        duration.inHours.toString() +
-        " hours starting " +
-        DateFormat.jm().format(date);
-  }
 }
