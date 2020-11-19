@@ -31,15 +31,14 @@ import 'package:schedule_hack/utilities.dart';
 //
 //
 //
-class CalendarView extends StatefulWidget {
+class CalendarViewOld extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _CalendarState();
+    return _CalendarStateOld();
   }
 }
 
-class _CalendarState extends State<CalendarView> {
-  DateTime _currentDateWeekView = DateTime.now();
+class _CalendarStateOld extends State<CalendarViewOld> {
   DateTime _currentDateMonthView = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format(DateTime.now());
   DateTime _targetDateTime = DateTime.now();
@@ -115,8 +114,8 @@ class _CalendarState extends State<CalendarView> {
       markedDatesMap: _markedDateMap,
       selectedDateTime: _currentDateMonthView,
       targetDateTime: _targetDateTime,
-      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
+      minSelectedDate: _currentDateMonthView.subtract(Duration(days: 360)),
+      maxSelectedDate: _currentDateMonthView.add(Duration(days: 360)),
       markedDateCustomShapeBorder: Border.all(width: 1.0, color: colorMelon),
       markedDateCustomTextStyle: TextStyle(
         fontSize: 16,

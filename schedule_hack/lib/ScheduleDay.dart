@@ -2,6 +2,8 @@ import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
 
+class EventsMap {}
+
 class ScheduleDay {
   List<ScheduleEvent> events;
   List<Activity> get activities {

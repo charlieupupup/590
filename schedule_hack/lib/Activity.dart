@@ -48,7 +48,6 @@ class Activity extends Event {
     this.description = description;
   }
 
-  //default constructor string must be in iso
   Activity.fromAssigment(DateTime dueDate, Assignment assignment)
       : super(
             date: (dueDate).subtract(Duration(
