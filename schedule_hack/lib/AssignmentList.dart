@@ -39,8 +39,8 @@ class AssignmentList extends StatefulWidget {
   }
   @override
   State<StatefulWidget> createState() {
-    return new _AssignmentListState(
-        this.course, this.edit, this.courseCount, this.viewingAssignments, this.originalCourse);
+    return new _AssignmentListState(this.course, this.edit, this.courseCount,
+        this.viewingAssignments, this.originalCourse);
   }
 }
 
@@ -55,6 +55,7 @@ class _AssignmentListState extends State<AssignmentList> {
   int viewingAssignments; // default is that we're editing (0)
   List<Activity> activityList = new List<Activity>();
   Course originalCourse;
+  bool deleteItem = false;
 
   _AssignmentListState(Course c, int e, int cCount, int vA, Course oC) {
     this.course = c;
@@ -88,8 +89,7 @@ class _AssignmentListState extends State<AssignmentList> {
             onPressed: () {
               // popup - saying going back will delete data
               _backButton();
-            })
-        ,
+            }),
         actions: [
           Row(
             children: [SettingsButton()],
@@ -109,6 +109,7 @@ class _AssignmentListState extends State<AssignmentList> {
                   .getAssignments
                   .length, // might need to split this up
               itemBuilder: (BuildContext context, int index) {
+                // _confirmDeletePopup(index);
                 return Dismissible(
                   background: deleteBackground(),
                   onDismissed: (DismissDirection direction) {
@@ -125,11 +126,15 @@ class _AssignmentListState extends State<AssignmentList> {
                           this.course.getCourseDays,
                           assignmentList);
                       this.course = newCourse;
+                      myControllerDate.clear();
+                      myControllerTime.clear();
+                      myControllerDescription.clear();
                     });
                   },
                   child: returnAssignmentButtonIndex(index),
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
+                  confirmDismiss: (direction) => promptUser(direction),
                 );
               }) //returnAssignmentButton(),
           ),
@@ -137,11 +142,75 @@ class _AssignmentListState extends State<AssignmentList> {
         height: 58,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[cancelA(), saveChanges()],
+          children: <Widget>[saveChanges()],
         ),
       ),
       floatingActionButton: _fabDisplay(),
     );
+  }
+
+  Future<bool> promptUser(DismissDirection direction) async {
+    String action;
+    if (direction == DismissDirection.endToStart) {
+      // This is a delete action
+      action = "delete";
+    } else {
+      //archiveItem();
+      // This is an archive action
+      action = "archive";
+    }
+
+    return await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+              backgroundColor: colorBeige,
+              elevation: 16,
+              actions: <Widget>[
+                Center(
+                  child: Text('Are you sure you want to delete the assignment?',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: colorBlackCoral,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
+                ),
+                Container(
+                  child: ButtonBar(
+                    alignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      MaterialButton(
+                        onPressed: () {
+                          // Dismiss the dialog but don't
+                          // dismiss the swiped item
+                          return Navigator.of(context).pop(false);
+                        },
+                        color: colorMelon,
+                        child: Image.asset(
+                          'images/delete.png',
+                          height: 50,
+                          width: 50,
+                        ),
+                        shape: CircleBorder(),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          // Dismiss the dialog and
+                          // also dismiss the swiped item
+                          Navigator.of(context).pop(true);
+                        },
+                        color: colorHoneydew,
+                        child: Image.asset(
+                          'images/checkmark.png',
+                          height: 50,
+                          width: 50,
+                        ),
+                        shape: CircleBorder(),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ));
   }
 
   // Delete Dismissible background
@@ -185,7 +254,7 @@ class _AssignmentListState extends State<AssignmentList> {
             this.viewingAssignments = 0;
           });
         },
-        backgroundColor: colorAlmond,
+        backgroundColor: colorSoftMelon, //colorAlmond,
         child: Image.asset('images/edit.png'),
       );
     } else {
@@ -194,7 +263,7 @@ class _AssignmentListState extends State<AssignmentList> {
         onPressed: () {
           _showMaterialDialog();
         },
-        backgroundColor: colorHoneydew,
+        backgroundColor: colorAeroBlue, //colorHoneydew,
         child: Image.asset('images/add.png'),
       );
     }
@@ -209,15 +278,13 @@ class _AssignmentListState extends State<AssignmentList> {
         jsonDataStorage.newEntry(this.course);
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => LoadingScreen()
-          ),
-              (route) => false,
+          MaterialPageRoute(builder: (BuildContext context) => LoadingScreen()),
+          (route) => false,
         );
       },
       color: colorHoneydew,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: new Text('Save Changes',
           style: TextStyle(
@@ -235,25 +302,35 @@ class _AssignmentListState extends State<AssignmentList> {
       return CancelButton.assignment(2, this.course);
     }
   }
-  _backButton(){
+
+  _backButton() {
     if (this.edit == 1) {
       print('edit cancel');
       // TODO: bug where hitting back still saves data
       List list = new List();
       list = globalCourse.getAssignments;
-      for (int i = 0; i < list.length; i++){
+      for (int i = 0; i < list.length; i++) {
         Assignment a = list[i];
         String assignmentName = a.getDescription;
         print('Assignment: $assignmentName');
       }
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',5,globalCourse);
+      StandardPopup.course(
+          context,
+          'Going back now will not save all progress. Are you sure?',
+          5,
+          globalCourse);
     } else {
       //return CancelButton.assignment(2, this.course);
       print('cancel should be working');
       //return CancelButton.assignment(6,this.course);
-      StandardPopup.course(context,'Going back now will not save all progress. Are you sure?',2,this.originalCourse);
+      StandardPopup.course(
+          context,
+          'Going back now will not save all progress. Are you sure?',
+          2,
+          this.originalCourse);
     }
   }
+
   // popup if no assignments listed yet
   _emptyDialog(BuildContext context) {
     List list = new List();
@@ -346,12 +423,8 @@ class _AssignmentListState extends State<AssignmentList> {
             // if no date or time do nothing
           } else {
             DateTime dueDate = DateTime.parse(myControllerDate.text);
-            final currentDate = DateTime.now();
-            Duration duration =
-                Duration(days: currentDate.difference(dueDate).inDays);
             //for each day in difference create act and add to list
-            Activity activity = new Activity.assignment(
-                dueDate, duration, a.getDescription, 'Description');
+            Activity activity = new Activity.fromAssigment(dueDate, a);
             activityList.add(activity);
             myControllerDate.clear();
             myControllerTime.clear();
@@ -424,7 +497,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorMelon,
+                color: colorPowderBlue, //colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -457,7 +530,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorMelon,
+                color: colorPowderBlue, //colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -471,7 +544,7 @@ class _AssignmentListState extends State<AssignmentList> {
                       )),
                       MaterialButton(
                           onPressed: () {},
-                          color: colorAlmond,
+                          color: colorSoftMelon, //colorAlmond,
                           child: Image.asset(
                             'images/edit.png',
                             height: 50,

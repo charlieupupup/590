@@ -36,6 +36,7 @@ dependencies:
   rxdart: ^0.24.1
 
   flutter_calendar_carousel: ^1.5.1
+  localstorage: ^3.0.0
 
 dev_dependencies:
   flutter_test:

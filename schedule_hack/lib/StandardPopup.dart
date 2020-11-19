@@ -31,6 +31,7 @@ class StandardPopup {
   _showMaterialDialog2(String message){
     showDialog(context: context,
         builder: (_) => new AlertDialog(
+          backgroundColor: colorBeige,
           elevation: 16,
           actions: <Widget> [
             Center(
