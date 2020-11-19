@@ -17,22 +17,28 @@ class Activities {
     return list;
   }
 
-  //constructors
+  ////////////constructors
   Activities.test() {
     this.day = DateTime.now();
     this.events = new List<ScheduleEvent>();
     events.add(new ScheduleEvent.test());
   }
 
-  Activities.day(DateTime date) {
+  Activities.fromDate(DateTime date) {
     this.day = date;
     this.events = new List<ScheduleEvent>();
   }
 
-  //from list of Activities (new)
-  Activities.fromActivities(DateTime date, List<ActivityNew> a) {
+  //from list of Activity (new)
+  Activities.fromActivityList(DateTime date, List<ActivityNew> a) {
     this.day = date;
     setActivities(a);
+  }
+
+  //copy another Activities object
+  Activities.fromActivities(Activities activities) {
+    this.day = activities.day;
+    this.events = activities.events;
   }
 
   //from list of Schedule Events (new)
