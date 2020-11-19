@@ -1,4 +1,5 @@
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/Assignment.dart';
 
 //primitive equivalent of Activity
 class ScheduleEvent {
@@ -7,6 +8,10 @@ class ScheduleEvent {
   String endTime;
 
   ScheduleEvent({this.subject, this.startTime, this.endTime});
+
+  ScheduleEvent.fromAssigment(Assignment a) {
+    this.subject = a.description;
+  }
 
   //test schedule event
   ScheduleEvent.test() {

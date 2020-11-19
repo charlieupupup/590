@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
 import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'Activity.dart';
 import 'CancelButton.dart';
@@ -53,7 +55,9 @@ class _AssignmentListState extends State<AssignmentList> {
   int courseCount;
   int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
-  List<ActivityOld> activityList = new List<ActivityOld>();
+  List<Activity> activityList = new List<Activity>();
+  // Activities activities =
+  //     new Activities.fromActivityList(DateTime.now(), List<ActivityNew>()); TODO: convert to new activity
   Course originalCourse;
 
   _AssignmentListState(Course c, int e, int cCount, int vA, Course oC) {
@@ -347,6 +351,7 @@ class _AssignmentListState extends State<AssignmentList> {
           Assignment a = new Assignment.long(myControllerDescription.text,
               myControllerDate.text, myControllerTime.text);
           this.course.setAssignments = a;
+          ScheduleEvent se = new ScheduleEvent.fromAssigment(a);
 
           // Making Activity.assignment
           if (myControllerDate.text.isEmpty || myControllerTime.text.isEmpty) {
@@ -354,8 +359,10 @@ class _AssignmentListState extends State<AssignmentList> {
           } else {
             DateTime dueDate = DateTime.parse(myControllerDate.text);
             //for each day in difference create act and add to list
-            ActivityOld activity = new ActivityOld.fromAssigment(dueDate, a);
+            Activity activity = new Activity.fromAssigment(dueDate, a);
+            // ActivityNew activity = new ActivityNew.fromScheduleEvent(se); TODO
             activityList.add(activity);
+            // activities.addActivity(activity); TODO
             myControllerDate.clear();
             myControllerTime.clear();
             myControllerDescription.clear();

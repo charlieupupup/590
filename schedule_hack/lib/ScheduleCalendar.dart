@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ActivityDataSource.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
@@ -37,10 +38,9 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
   Activities getActivitiesFromDate(LocalStorage s, DateTime date) {
     Activities day = new Activities.fromStorage(date, s);
     activities = day;
-    print(
-        "current day is now ${DateFormat.yMEd('en_US').format(activities.day)}");
-    print("current day activites are ${(activities.events.toList())}");
-
+    // print(
+    //     "current day is now ${DateFormat.yMEd('en_US').format(activities.day)}");
+    // print("current day activites are ${(activities.events.toList())}");
     return day;
   }
 
@@ -192,40 +192,3 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
 //     return activities;
 //   }
 // }
-
-/// An object to set the appointment collection data source to calendar, which
-/// used to map the custom appointment data to the calendar appointment, and
-/// allows to add, remove or reset the appointment collection.
-class ActivityDataSource extends CalendarDataSource {
-  /// Creates a meeting data source, which used to set the appointment
-  /// collection to the calendar
-  ActivityDataSource(Activities source) {
-    appointments = source.activities;
-  }
-
-  @override
-  DateTime getStartTime(int index) {
-    return appointments[index].startTime;
-  }
-
-  @override
-  DateTime getEndTime(int index) {
-    return appointments[index].endTime;
-  }
-
-  @override
-  String getSubject(int index) {
-    return appointments[index].subject;
-  }
-
-  @override
-  Color getColor(int index) {
-    return colorMelon;
-  }
-
-//   /// isAllDay which is equivalent to isAllDay property of [Appointment].
-  @override
-  bool isAllDay(int index) {
-    return false;
-  }
-}
