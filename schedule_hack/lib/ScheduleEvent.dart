@@ -10,7 +10,7 @@ class ScheduleEvent {
   ScheduleEvent.test() {
     title = "TEST";
     date = DateTime.now().toIso8601String();
-    endDate = DateTime.now().add(Duration(days: 2)).toIso8601String();
+    endDate = DateTime.now().add(Duration(hours: 2)).toIso8601String();
   }
 
   ScheduleEvent.fromActivityOld(ActivityOld activity) {

@@ -17,7 +17,7 @@ class ScheduleDay {
   }
 
   //constructors
-  ScheduleDay() {
+  ScheduleDay.test() {
     this.day = DateTime.now();
     this.events = new List<ScheduleEvent>();
     events.add(new ScheduleEvent.test());

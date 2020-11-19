@@ -36,8 +36,8 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
     this.meetings = currentDay.activities;
   }
 
-  List<Activity> getDayFromLocalStorage(DateTime date) {
-    ScheduleDay day = new ScheduleDay.fromStorage(date, storage);
+  List<Activity> getDayFromLocalStorage(LocalStorage s, DateTime date) {
+    ScheduleDay day = new ScheduleDay.fromStorage(date, s);
     currentDay = day;
     print(
         "current day is now ${DateFormat.yMEd('en_US').format(currentDay.day)}");
@@ -46,17 +46,17 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
     return day.activities;
   }
 
-  ScheduleDay addActivities(DateTime date, List<Activity> a) {
+  ScheduleDay addActivities(LocalStorage s, DateTime date, List<Activity> a) {
     // ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
     // scheduleDay.addToLocalStorage(storage);
     ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
-    scheduleDay.addToLocalStorage(storage);
+    scheduleDay.addToLocalStorage(s);
     return scheduleDay;
   }
 
-  void removeActivities(DateTime date, List<Activity> a) {
+  void removeActivities(LocalStorage s, DateTime date, List<Activity> a) {
     ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
-    scheduleDay.removeFromLocalStorage(storage);
+    scheduleDay.removeFromLocalStorage(s);
   }
 
   @override
@@ -123,17 +123,20 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
         backgroundColor: colorBeige,
         onLongPress: (CalendarLongPressDetails details) {
           details.appointments.clear();
-          removeActivities(details.date, _getDataSource(details.date));
+          removeActivities(
+              storage, details.date, _getDateDataSource(storage, details.date));
           print(
               "REMOVE: ${details.appointments}  on ${DateFormat.yMEd('en_US').format(details.date)}");
         },
         onTap: (CalendarTapDetails details) {
-          details.appointments.addAll(_getDataSource(details.date));
-          addActivities(details.date, _getDataSource(details.date));
+          details.appointments
+              .addAll(_getDateDataSource(storage, details.date));
+          addActivities(
+              storage, details.date, _getDateDataSource(storage, details.date));
           print(
               "ADD: ${details.appointments}  on ${DateFormat.yMEd('en_US').format(details.date)}");
         },
-        dataSource: ActivityDataSource(_getActivityDataSource()),
+        dataSource: ActivityDataSource(_getPrepopulatedDataSource()),
         // by default the month appointment display mode set as Indicator, we can
         // change the display mode as appointment using the appointment display
         // mode property
@@ -176,32 +179,32 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
     });
   }
 
-  List<Activity> _getActivityDataSource() {
-    meetings.add(new Activity.fromActivityOld(new ActivityOld.fromIso8601(
-        DateTime.now().toIso8601String(),
-        DateTime.now().add(Duration(hours: 2)).toIso8601String(),
-        "ECE564",
-        "Attend ECE564")));
-    meetings.add(Activity.fromActivityOld((new ActivityOld.fromIso8601(
-        DateTime.now().add(Duration(hours: 5)).toIso8601String(),
-        DateTime.now().add(Duration(hours: 6)).toIso8601String(),
-        "ECE590",
-        "Attend ECE564"))));
-    return meetings;
+  List<Activity> _getPrepopulatedDataSource() {
+    final LocalStorage storage = new LocalStorage('calendar.json');
+    Activity a = new Activity(DateTime.now(),
+        DateTime.now().add(Duration(hours: 2)), "Attend ECE564");
+    Activity sleep = new Activity(
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
+        DateTime(
+            DateTime.now().year, DateTime.now().month, DateTime.now().day, 8),
+        "8 hours of sleep");
+    Activity sleep2 = new Activity(
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)
+            .add(Duration(days: 2)),
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
+                8)
+            .add(Duration(days: 2)),
+        "8 hours of sleep");
+    ScheduleDay scheduleDay =
+        addActivities(storage, DateTime.now(), [a, sleep, sleep2]);
+
+    print(scheduleDay.getFromStorage(DateTime.now(), storage));
+    return scheduleDay.activities;
   }
 
-  List<Activity> _getDataSource(DateTime date) {
-    List<Activity> local = getDayFromLocalStorage(date);
-    ScheduleDay scheduleDay = addActivities(date, local);
-    scheduleDay.addActivity(new Activity.fromActivityOld(
-        new ActivityOld.fromIso8601(date.toIso8601String(),
-            date.toIso8601String(), "ECE564", "Attend ECE564")));
-    scheduleDay.addActivity(Activity.fromActivityOld(
-        (new ActivityOld.fromIso8601(
-            date.add(Duration(days: 2)).toIso8601String(),
-            date.add(Duration(days: 2)).toIso8601String(),
-            "ECE590",
-            "Attend ECE564"))));
+  List<Activity> _getDateDataSource(LocalStorage s, DateTime date) {
+    List<Activity> local = getDayFromLocalStorage(s, date);
+    ScheduleDay scheduleDay = addActivities(s, date, local);
     return scheduleDay.activities;
   }
 }
