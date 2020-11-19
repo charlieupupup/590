@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/CancelButton.dart';
+import 'package:schedule_hack/CheckmarkButton.dart';
 
 class ScheduleModify extends StatelessWidget {
   Activity _activity;
@@ -10,6 +12,23 @@ class ScheduleModify extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Column(
+        children: [
+          Row(),
+          Row(),
+          Text('Details:'),
+          Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: Text(_activity.description),
+          ),
+          ButtonBar(
+            children: [
+              CancelButton(),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
