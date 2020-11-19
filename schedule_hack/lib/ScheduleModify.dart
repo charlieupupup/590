@@ -42,6 +42,15 @@ class ScheduleModify extends StatelessWidget {
     //     ],
     //   ),
     // );
+
+    String getDate(Activity _activity) {
+      return _activity.date.month.toString() +
+          '/' +
+          _activity.date.day.toString() +
+          ',   ' +
+          _activity.date.year.toString();
+    }
+
     Widget Start(Activity _activity) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,9 +58,13 @@ class ScheduleModify extends StatelessWidget {
           Text('Start:'),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(_activity.date.month.toString() +
-                '/' +
-                _activity.date.day.toString()),
+            // child: Text(_activity.date.month.toString() +
+            //     '/' +
+            //     _activity.date.day.toString() +
+            //     ',   ' +
+            //     _activity.date.year.toString()),
+
+            child: (Text(getDate(_activity))),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
