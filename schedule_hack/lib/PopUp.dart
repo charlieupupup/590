@@ -66,7 +66,7 @@ class MidPopUp extends PopUp {
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
-            Text(msg1 + ' ' + msg2,
+            Text(msg1 + '\n' + msg2,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 24,
@@ -125,7 +125,7 @@ class GladPopUp extends PopUp {
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
-            Text(msg1 + ' ' + msg2,
+            Text(msg1 + '\n' + msg2,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 24,
@@ -190,7 +190,7 @@ class SadPopUp extends PopUp {
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
-            Text(msg1 + ' ' + msg2,
+            Text(msg1 + '\n' + msg2,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 24,

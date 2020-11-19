@@ -59,6 +59,7 @@ class _AssignmentListState extends State<AssignmentList> {
   // Activities activities =
   //     new Activities.fromActivityList(DateTime.now(), List<ActivityNew>()); TODO: convert to new activity
   Course originalCourse;
+  bool deleteItem = false;
 
   _AssignmentListState(Course c, int e, int cCount, int vA, Course oC) {
     this.course = c;
@@ -112,6 +113,7 @@ class _AssignmentListState extends State<AssignmentList> {
                   .getAssignments
                   .length, // might need to split this up
               itemBuilder: (BuildContext context, int index) {
+                // _confirmDeletePopup(index);
                 return Dismissible(
                   background: deleteBackground(),
                   onDismissed: (DismissDirection direction) {
@@ -128,11 +130,15 @@ class _AssignmentListState extends State<AssignmentList> {
                           this.course.getCourseDays,
                           assignmentList);
                       this.course = newCourse;
+                      myControllerDate.clear();
+                      myControllerTime.clear();
+                      myControllerDescription.clear();
                     });
                   },
                   child: returnAssignmentButtonIndex(index),
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
+                  confirmDismiss: (direction) => promptUser(direction),
                 );
               }) //returnAssignmentButton(),
           ),
@@ -140,11 +146,75 @@ class _AssignmentListState extends State<AssignmentList> {
         height: 58,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[cancelA(), saveChanges()],
+          children: <Widget>[saveChanges()],
         ),
       ),
       floatingActionButton: _fabDisplay(),
     );
+  }
+
+  Future<bool> promptUser(DismissDirection direction) async {
+    String action;
+    if (direction == DismissDirection.endToStart) {
+      // This is a delete action
+      action = "delete";
+    } else {
+      //archiveItem();
+      // This is an archive action
+      action = "archive";
+    }
+
+    return await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+              backgroundColor: colorBeige,
+              elevation: 16,
+              actions: <Widget>[
+                Center(
+                  child: Text('Are you sure you want to delete the assignment?',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: colorBlackCoral,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
+                ),
+                Container(
+                  child: ButtonBar(
+                    alignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      MaterialButton(
+                        onPressed: () {
+                          // Dismiss the dialog but don't
+                          // dismiss the swiped item
+                          return Navigator.of(context).pop(false);
+                        },
+                        color: colorMelon,
+                        child: Image.asset(
+                          'images/delete.png',
+                          height: 50,
+                          width: 50,
+                        ),
+                        shape: CircleBorder(),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          // Dismiss the dialog and
+                          // also dismiss the swiped item
+                          Navigator.of(context).pop(true);
+                        },
+                        color: colorHoneydew,
+                        child: Image.asset(
+                          'images/checkmark.png',
+                          height: 50,
+                          width: 50,
+                        ),
+                        shape: CircleBorder(),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ));
   }
 
   // Delete Dismissible background
@@ -188,7 +258,7 @@ class _AssignmentListState extends State<AssignmentList> {
             this.viewingAssignments = 0;
           });
         },
-        backgroundColor: colorAlmond,
+        backgroundColor: colorSoftMelon, //colorAlmond,
         child: Image.asset('images/edit.png'),
       );
     } else {
@@ -197,7 +267,7 @@ class _AssignmentListState extends State<AssignmentList> {
         onPressed: () {
           _showMaterialDialog();
         },
-        backgroundColor: colorHoneydew,
+        backgroundColor: colorAeroBlue, //colorHoneydew,
         child: Image.asset('images/add.png'),
       );
     }
@@ -218,7 +288,7 @@ class _AssignmentListState extends State<AssignmentList> {
       },
       color: colorHoneydew,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: new Text('Save Changes',
           style: TextStyle(
@@ -434,7 +504,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorMelon,
+                color: colorPowderBlue, //colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -467,7 +537,7 @@ class _AssignmentListState extends State<AssignmentList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0),
                 ),
-                color: colorMelon,
+                color: colorPowderBlue, //colorMelon,
                 onPressed: () {},
                 child: Container(
                   margin: const EdgeInsets.all(24.0),
@@ -481,7 +551,7 @@ class _AssignmentListState extends State<AssignmentList> {
                       )),
                       MaterialButton(
                           onPressed: () {},
-                          color: colorAlmond,
+                          color: colorSoftMelon, //colorAlmond,
                           child: Image.asset(
                             'images/edit.png',
                             height: 50,
