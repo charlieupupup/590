@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
-import 'package:schedule_hack/CheckmarkButton.dart';
 
 class ScheduleModify extends StatelessWidget {
   Activity _activity;
@@ -13,32 +12,66 @@ class ScheduleModify extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
+    // return Container(
+    //   child: Column(
+    //     children: [
+    //       Row(
+    //         children: [
+    //           Text('Start:'),
+    //           Container(
+    //             decoration:
+    //                 BoxDecoration(border: Border.all(color: Colors.black)),
+    //             child: Text(_activity.date.month.toString()),
+    //           ),
+    //         ],
+    //       ),
+    //       Row(),
+    //       Text('Details:'),
+    //       Container(
+    //         decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+    //         child: Text(_activity.description),
+    //       ),
+    //       ButtonBar(
+    //         children: [
+    //           CancelButton(),
+    //           CheckNavButton(),
+    //         ],
+    //       ),
+    //     ],
+    //   ),
+    // );
+
+    return AlertDialog(
+      content: SingleChildScrollView(
+        child: Container(
+          child: Column(
             children: [
-              Text('Start:'),
+              Row(
+                children: [
+                  Text('Start:'),
+                  Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black)),
+                    child: Text(_activity.date.month.toString()),
+                  ),
+                ],
+              ),
+              Row(),
+              Text('Details:'),
               Container(
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
-                child: Text(_activity.date.month.toString()),
+                child: Text(_activity.description),
+              ),
+              ButtonBar(
+                children: [
+                  CancelButton(),
+                  CheckNavButton(),
+                ],
               ),
             ],
           ),
-          Row(),
-          Text('Details:'),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(_activity.description),
-          ),
-          ButtonBar(
-            children: [
-              CancelButton(),
-              CheckNavButton(),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }
