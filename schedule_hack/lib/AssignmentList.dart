@@ -284,7 +284,7 @@ class _AssignmentListState extends State<AssignmentList> {
       },
       color: colorHoneydew,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: new Text('Save Changes',
           style: TextStyle(
