@@ -97,6 +97,3 @@ UserPreferences userSettings;
 
 // global variable for course currently being edited
 Course globalCourse;
-
-//global variable for referencing calendar json
-final LocalStorage calendarStorage = new LocalStorage('calendar.json');

@@ -26,6 +26,7 @@ class ScheduleCalendar extends StatefulWidget {
 }
 
 class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
+  final LocalStorage calendarStorage = new LocalStorage('calendar.json');
   Activities activities;
   int _currentIndex = 0;
 
@@ -159,8 +160,7 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
         "8 hours of sleep");
     Activities a = new Activities.fromActivityList(
         DateTime.now(), [course, sleep, sleep2]);
-    this.activities = this.addActivitiesToStorage(calendarStorage, a);
-    print(activities.getFromStorage(DateTime.now(), calendarStorage));
-    return activities;
+    this.activities = a;
+    return a;
   }
 }

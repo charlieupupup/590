@@ -6,7 +6,6 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 //class that holds activities
 class Activities {
-  DateTime day = DateTime.now();
   List<ScheduleEvent> events = new List<ScheduleEvent>();
   List<ActivityNew> get activities {
     //returns list of activites automatically generated from events
@@ -19,44 +18,37 @@ class Activities {
 
   ////////////constructors
   Activities.test() {
-    this.day = DateTime.now();
     this.events = new List<ScheduleEvent>();
     events.add(new ScheduleEvent.test());
   }
 
   Activities.fromDate(DateTime date) {
-    this.day = date;
     this.events = new List<ScheduleEvent>();
   }
 
   //from list of Activity (new)
   Activities.fromActivityList(DateTime date, List<ActivityNew> a) {
-    this.day = date;
     setActivities(a);
   }
 
   //copy another Activities object
   Activities.fromActivities(Activities activities) {
-    this.day = activities.day;
     this.events = activities.events;
   }
 
   //from list of Schedule Events (new)
-  Activities.fromScheduleEvents(DateTime date, List<ScheduleEvent> e) {
-    this.day = date;
-    setEvents(e);
+  Activities.fromScheduleEvents(DateTime date, List<ScheduleEvent> events) {
+    setEvents(events);
   }
 
   //from storage from key: today's date
   Activities.todayFromStorage(LocalStorage storage) {
-    this.day = DateTime.now();
-    this.events = getFromStorage(DateTime.now(), storage);
+    this.events = getEventListFromStorage(DateTime.now(), storage);
   }
 
   //from storage from key: date
   Activities.fromStorage(DateTime date, LocalStorage storage) {
-    this.day = date;
-    this.events = getFromStorage(date, storage);
+    this.events = getEventListFromStorage(date, storage);
   }
 
   //Add individual activity to list
@@ -72,18 +64,25 @@ class Activities {
   }
 
   //Adds actitivies to storage with key = day.toIso8601String(), value = encoded Acitivites (i.e. List<Activity>)
-  void addToLocalStorage(LocalStorage storage) {
+  void addToLocalStorage(DateTime date, LocalStorage storage) {
     final encoded = this.toJSONEncodable();
-    storage.setItem(day.toIso8601String(), encoded);
+    storage.setItem(date.toIso8601String(), encoded);
+    //getting into storage and getting out of storage to make sure it worked
+    List<ScheduleEvent> se = getEventListFromStorage(date, storage);
+    List<ActivityNew> acts = getActivitiesFromEvents(se);
+    Activities a = new Activities.fromActivityList(date, acts);
+
     print(
-        "adding ${events.length} events on ${DateFormat.yMEd('en_US').format(day)}");
+        "adding ${events.length} events on ${DateFormat.yMEd('en_US').format(date)}");
+    print(
+        "added ${a.events.length} events on ${DateFormat.yMEd('en_US').format(date)}");
   }
 
   //Removes all actitivies to storage with key = day.toIso8601String(), value = encoded Acitivites (i.e. List<Activity>)
-  void removeAllFromLocalStorage(LocalStorage storage) {
-    storage.deleteItem(day.toIso8601String());
+  void removeAllFromLocalStorage(DateTime date, LocalStorage storage) {
+    storage.deleteItem(date.toIso8601String());
     print(
-        "removing ${events.length} events on ${DateFormat.yMEd('en_US').format(day)}");
+        "removing ${events.length} events on ${DateFormat.yMEd('en_US').format(date)}");
   }
 
   //TODO: void removeActivityFromLocalStorage(Activity activity, LocalStorage storage); (or something -- search through for individual activity and remove from list)
@@ -92,11 +91,6 @@ class Activities {
 
   List<ScheduleEvent> getEvents() {
     return this.events;
-  }
-
-  //get day
-  DateTime getDay() {
-    return this.day;
   }
 
   //Sets events from a List<ScheduleEvent>
@@ -114,7 +108,7 @@ class Activities {
   }
 
   //get a List<ScheduleEvent> from an List<Activity>
-  List<ScheduleEvent> getEventsFromActivities(List<ActivityNew> a) {
+  static List<ScheduleEvent> getEventsFromActivities(List<ActivityNew> a) {
     List<ScheduleEvent> list = new List<ScheduleEvent>();
     for (int i = 0; i < a.length; i++) {
       list.add(ScheduleEvent.fromActivityNew(a[i]));
@@ -123,7 +117,7 @@ class Activities {
   }
 
   //get an List<Activity> from a List<ScheduleEvent>
-  List<ActivityNew> getActivitiesFromEvents(List<ScheduleEvent> e) {
+  static List<ActivityNew> getActivitiesFromEvents(List<ScheduleEvent> e) {
     List<ActivityNew> list = new List<ActivityNew>();
     for (int i = 0; i < e.length; i++) {
       list.add(ActivityNew.fromScheduleEvent(e[i]));
@@ -132,7 +126,8 @@ class Activities {
   }
 
   //get a list of ScheduleEvents on date from LocalStorage
-  List<ScheduleEvent> getFromStorage(DateTime date, LocalStorage storage) {
+  static List<ScheduleEvent> getEventListFromStorage(
+      DateTime date, LocalStorage storage) {
     String day = date.toIso8601String();
     List<ScheduleEvent> e = new List<ScheduleEvent>();
     var list = storage.getItem(day);
@@ -148,7 +143,18 @@ class Activities {
       );
     }
     print("list ($list) is of type ${list.runtimeType}");
-    print("events ($events) is of type ${events.runtimeType}");
+    // print("events ($events) is of type ${events.runtimeType}");
     return e;
+  }
+
+  static Activities getFromStorage(DateTime date, LocalStorage storage) {
+    List<ScheduleEvent> events =
+        Activities.getEventListFromStorage(date, storage);
+    Activities a = new Activities.fromScheduleEvents(date, events);
+    print("EVENTS (${events}) is of type ${events.runtimeType}");
+
+    print("ACTIVITIES (${a.events}) is of type ${a.runtimeType}");
+
+    return a;
   }
 }

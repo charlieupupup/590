@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:intl/intl.dart';
+import 'package:localstorage/localstorage.dart';
+import 'package:schedule_hack/Activities.dart';
+import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Notify.dart';
 import 'package:schedule_hack/SettingsButton.dart';
@@ -16,10 +19,7 @@ class SelfCare extends StatefulWidget {
   }
 }
 
-class SelfCareState extends State<SelfCare> {
-  List<Event> events = new List<Event>();
-  // CalendarView cal = CalendarView.shared;
-
+class SelfCareState extends State<SelfCare> with AppStorage {
   @override
   void initState() {
     /// Add more events to _markedDateMap EventList
@@ -160,7 +160,6 @@ class SelfCareState extends State<SelfCare> {
                           ),
                           color: colorPowderBlue,
                           onPressed: () {
-                            // cal.addActivities(DateTime.now(), events);
                             String message =
                                 'Showing recommendations for things to do to escape';
                             //_showMaterialDialog2(message);
