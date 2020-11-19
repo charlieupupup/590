@@ -3,17 +3,16 @@ import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/Home.dart';
-import 'package:schedule_hack/ScheduleDay.dart';
+import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-/// The hove page which hosts the calendar
 class ScheduleCalendar extends StatefulWidget {
-  int index;
+  int index; //TODO: I'm not using these correctly -- bottom nav doesn't work
 
-  /// Creates the home page to display teh calendar widget.
+  /// Creates the home page to display the calendar widget.
   ScheduleCalendar(int i) {
     this.index = i;
   }
@@ -26,37 +25,34 @@ class ScheduleCalendar extends StatefulWidget {
 
 class _ScheduleCalendarState extends State<ScheduleCalendar> {
   final LocalStorage storage = new LocalStorage('calendar.json');
-  List<Activity> meetings;
-  ScheduleDay currentDay;
+  Activities activities;
   int _currentIndex = 0;
 
   _ScheduleCalendarState(int i) {
     this._currentIndex = i;
-    this.currentDay = new ScheduleDay.todayFromStorage(storage);
-    this.meetings = currentDay.activities;
+    this.activities = new Activities.todayFromStorage(storage);
   }
 
-  List<Activity> getDayFromLocalStorage(LocalStorage s, DateTime date) {
-    ScheduleDay day = new ScheduleDay.fromStorage(date, s);
-    currentDay = day;
+  //Gets the list activites from storage  for a particular date
+  Activities getActivitiesFromDate(LocalStorage s, DateTime date) {
+    Activities day = new Activities.fromStorage(date, s);
+    activities = day;
     print(
-        "current day is now ${DateFormat.yMEd('en_US').format(currentDay.day)}");
-    print("current day activites are ${(currentDay.events.toList())}");
+        "current day is now ${DateFormat.yMEd('en_US').format(activities.day)}");
+    print("current day activites are ${(activities.events.toList())}");
 
-    return day.activities;
+    return day;
   }
 
-  ScheduleDay addActivities(LocalStorage s, DateTime date, List<Activity> a) {
-    // ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
-    // scheduleDay.addToLocalStorage(storage);
-    ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
-    scheduleDay.addToLocalStorage(s);
-    return scheduleDay;
+  //Adds Activities to local calendar and returns that list of activities
+  Activities addActivities(LocalStorage s, DateTime date, Activities a) {
+    a.addToLocalStorage(s);
+    return a;
   }
 
-  void removeActivities(LocalStorage s, DateTime date, List<Activity> a) {
-    ScheduleDay scheduleDay = new ScheduleDay.fromActivities(date, a);
-    scheduleDay.removeFromLocalStorage(s);
+  //removes all Activites from date
+  void removeActivities(LocalStorage s, DateTime date, Activities a) {
+    a.removeAllFromLocalStorage(s);
   }
 
   @override
@@ -121,21 +117,8 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
         todayTextStyle: TextStyle(
             fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
         backgroundColor: colorBeige,
-        onLongPress: (CalendarLongPressDetails details) {
-          details.appointments.clear();
-          removeActivities(
-              storage, details.date, _getDateDataSource(storage, details.date));
-          print(
-              "REMOVE: ${details.appointments}  on ${DateFormat.yMEd('en_US').format(details.date)}");
-        },
-        onTap: (CalendarTapDetails details) {
-          details.appointments
-              .addAll(_getDateDataSource(storage, details.date));
-          addActivities(
-              storage, details.date, _getDateDataSource(storage, details.date));
-          print(
-              "ADD: ${details.appointments}  on ${DateFormat.yMEd('en_US').format(details.date)}");
-        },
+        onLongPress: (CalendarLongPressDetails details) {},
+        onTap: (CalendarTapDetails details) {},
         dataSource: ActivityDataSource(_getPrepopulatedDataSource()),
         // by default the month appointment display mode set as Indicator, we can
         // change the display mode as appointment using the appointment display
@@ -179,35 +162,36 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
     });
   }
 
-  List<Activity> _getPrepopulatedDataSource() {
+  Activities _getPrepopulatedDataSource() {
     final LocalStorage storage = new LocalStorage('calendar.json');
-    Activity a = new Activity(DateTime.now(),
+    ActivityNew course = new ActivityNew(DateTime.now(),
         DateTime.now().add(Duration(hours: 2)), "Attend ECE564");
-    Activity sleep = new Activity(
+    ActivityNew sleep = new ActivityNew(
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
         DateTime(
             DateTime.now().year, DateTime.now().month, DateTime.now().day, 8),
         "8 hours of sleep");
-    Activity sleep2 = new Activity(
+    ActivityNew sleep2 = new ActivityNew(
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)
             .add(Duration(days: 2)),
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
                 8)
             .add(Duration(days: 2)),
         "8 hours of sleep");
-    ScheduleDay scheduleDay =
-        addActivities(storage, DateTime.now(), [a, sleep, sleep2]);
-
-    print(scheduleDay.getFromStorage(DateTime.now(), storage));
-    return scheduleDay.activities;
-  }
-
-  List<Activity> _getDateDataSource(LocalStorage s, DateTime date) {
-    List<Activity> local = getDayFromLocalStorage(s, date);
-    ScheduleDay scheduleDay = addActivities(s, date, local);
-    return scheduleDay.activities;
+    Activities a = new Activities.fromActivityList(
+        DateTime.now(), [course, sleep, sleep2]);
+    this.activities = addActivities(storage, DateTime.now(), a);
+    print(activities.getFromStorage(DateTime.now(), storage));
+    return activities;
   }
 }
+//get Data for particular date -- currently not using
+//   Activities _getDateDataSource(LocalStorage s, DateTime date) {
+//     Activities local = getActivitiesFromDate(s, date);
+//     Activities activities = addActivities(s, date, local);
+//     return activities;
+//   }
+// }
 
 /// An object to set the appointment collection data source to calendar, which
 /// used to map the custom appointment data to the calendar appointment, and
@@ -215,23 +199,23 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
 class ActivityDataSource extends CalendarDataSource {
   /// Creates a meeting data source, which used to set the appointment
   /// collection to the calendar
-  ActivityDataSource(List<Activity> source) {
-    appointments = source;
+  ActivityDataSource(Activities source) {
+    appointments = source.activities;
   }
 
   @override
   DateTime getStartTime(int index) {
-    return appointments[index].date;
+    return appointments[index].startTime;
   }
 
   @override
   DateTime getEndTime(int index) {
-    return appointments[index].endDate;
+    return appointments[index].endTime;
   }
 
   @override
   String getSubject(int index) {
-    return appointments[index].title;
+    return appointments[index].subject;
   }
 
   @override
