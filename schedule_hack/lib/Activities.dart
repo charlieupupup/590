@@ -87,6 +87,7 @@ class Activities {
   List<ScheduleEvent> getEvents() {
     return this.events;
   }
+
   //get day
   DateTime getDay() {
     return this.day;
