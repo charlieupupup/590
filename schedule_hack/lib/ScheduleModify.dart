@@ -42,6 +42,22 @@ class ScheduleModify extends StatelessWidget {
     //     ],
     //   ),
     // );
+    Widget Start(Activity _activity) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Start:'),
+          Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: Text(_activity.date.month.toString()),
+          ),
+          Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: Text(_activity.date.month.toString()),
+          ),
+        ],
+      );
+    }
 
     return AlertDialog(
       backgroundColor: colorPowderBlue,
