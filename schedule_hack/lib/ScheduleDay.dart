@@ -39,10 +39,12 @@ class ScheduleDay {
     return this.events;
   }
 
+  //Sets events from a List<ScheduleEvent>
   void setEvents(List<ScheduleEvent> e) {
     this.events = e;
   }
 
+  //Sets events from an List<Activity>
   void setActivities(List<Activity> a) {
     List<ScheduleEvent> list = new List<ScheduleEvent>();
     for (int i = 0; i < a.length; i++) {
@@ -51,6 +53,7 @@ class ScheduleDay {
     this.events = list;
   }
 
+  //get a List<ScheduleEvent> from an List<Activity>
   List<ScheduleEvent> getEventsFromActivities(List<Activity> a) {
     List<ScheduleEvent> list = new List<ScheduleEvent>();
     for (int i = 0; i < a.length; i++) {
@@ -59,6 +62,7 @@ class ScheduleDay {
     return list;
   }
 
+  //get an List<Activity> from a List<ScheduleEvent>
   List<Activity> getActivitiesFromEvents(List<ScheduleEvent> e) {
     List<Activity> list = new List<Activity>();
     for (int i = 0; i < e.length; i++) {
@@ -67,6 +71,7 @@ class ScheduleDay {
     return list;
   }
 
+  //get a list of ScheduleEvents from LocalStorage
   List<ScheduleEvent> getFromStorage(LocalStorage storage) {
     var list = storage.getItem('activities');
     if (list != null) {
