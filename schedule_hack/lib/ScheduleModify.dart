@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
+import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class ScheduleModify extends StatelessWidget {
@@ -63,14 +64,18 @@ class ScheduleModify extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            // child: Text(_activity.date.month.toString() +
-            //     '/' +
-            //     _activity.date.day.toString() +
-            //     ',   ' +
-            //     _activity.date.year.toString()),
-
             child: (Text(getDate(_activity.date))),
           ),
+          // Container(
+          //   child: Column(
+          //     children: [
+          //       DateSelector(
+          //         hintText: getDate(_activity.date),
+          //       ),
+          //     ],
+          //   ),
+          //   decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+          // ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             // child: Text(_activity.date.month.toString()),
@@ -105,8 +110,12 @@ class ScheduleModify extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.only(top: 20),
-          child: Row(
+          child: Column(
             children: [
+              Text(
+                'modify',
+                textScaleFactor: 1,
+              ),
               Text(
                 _activity.title,
                 textScaleFactor: 2,
@@ -126,22 +135,6 @@ class ScheduleModify extends StatelessWidget {
             color: colorAeroBlue,
             child: Column(
               children: [
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text('Start:'),
-                //     Container(
-                //       decoration:
-                //           BoxDecoration(border: Border.all(color: Colors.black)),
-                //       child: Text(_activity.date.month.toString()),
-                //     ),
-                //     Container(
-                //       decoration:
-                //           BoxDecoration(border: Border.all(color: Colors.black)),
-                //       child: Text(_activity.date.month.toString()),
-                //     ),
-                //   ],
-                // ),
                 SizedBox(height: 10),
                 Start(_activity),
                 SizedBox(height: 10),
@@ -162,7 +155,12 @@ class ScheduleModify extends StatelessWidget {
                   height: 100,
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.black)),
-                  child: Text(_activity.description),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: _activity.description,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 10),
                 Row(
