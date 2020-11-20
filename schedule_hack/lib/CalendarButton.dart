@@ -1,4 +1,3 @@
-import 'package:schedule_hack/CalendarViewOld.dart';
 import 'package:schedule_hack/ScheduleCalendar.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/cupertino.dart';

@@ -8,10 +8,9 @@ mixin AppStorage {
   //Gets the list activites from storage  for a particular date
   Activities getActivitiesFromStorage(
       DateTime date, LocalStorage localStorage) {
-    List<ScheduleEvent> se =
+    List<ScheduleEvent> events =
         Activities.getEventListFromStorage(date, localStorage);
-    List<ActivityNew> acts = Activities.getActivitiesFromEvents(se);
-    Activities a = new Activities.fromActivityList(date, acts);
+    Activities a = new Activities.fromScheduleEvents(date, events);
     return a;
   }
 
