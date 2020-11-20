@@ -34,7 +34,7 @@ class _SurveyQuestionTileState extends State<SurveyQuestionTile> {
           value: data.getAnswer(),
           controlAffinity: ListTileControlAffinity.leading,
           checkColor: colorBlackCoral,
-          activeColor: colorAlmond,
+          activeColor: colorAeroBlue,
           selected: data.getAnswer(),
           onChanged: (bool newValue) {
             setState(() {

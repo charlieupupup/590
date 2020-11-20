@@ -121,9 +121,9 @@ class IntakeSurveyState extends State<IntakeSurvey> {
     return MaterialButton(
       onPressed: () {
         // cancel just go back to last page (pop)
-        //Navigator.of(context).pop();
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
+        Navigator.of(context).pop();
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) => WelcomeScreen())); //this traps you in the survey/welcome screen
       },
       color: colorMelon,
       child: Image.asset(
