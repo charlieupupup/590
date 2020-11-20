@@ -9,6 +9,10 @@ import 'package:schedule_hack/utilities.dart';
 
 class ScheduleModify extends StatelessWidget {
   Activity _activity;
+  TextEditingController startTimeController = TextEditingController();
+  TextEditingController endTimeController = TextEditingController();
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
 
   ScheduleModify(Activity activity) {
     _activity = activity;
@@ -35,18 +39,28 @@ class ScheduleModify extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: (Text(getDate(_activity.date))),
+            //child: (Text(getDate(_activity.date))),
+            child: TextField(
+              readOnly: true,
+              controller: endTimeController,
+              decoration: InputDecoration(
+                  hintText: getDate(_activity.date),
+                  suffixIcon: Icon(Icons.access_alarm)),
+              onTap: () async {
+                var time = await showTimePicker(
+                  initialTime: TimeOfDay.now(),
+                  context: context,
+                  builder: (context, child) {
+                    return Theme(
+                      data: ThemeData.from(colorScheme: setTimeColors()),
+                      child: child,
+                    );
+                  },
+                );
+                endTimeController.text = time.format(context);
+              },
+            ),
           ),
-          // Container(
-          //   child: Column(
-          //     children: [
-          //       DateSelector(
-          //         hintText: getDate(_activity.date),
-          //       ),
-          //     ],
-          //   ),
-          //   decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-          // ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             // child: Text(_activity.date.month.toString()),

@@ -68,6 +68,7 @@ class Activity extends Event {
               width: 5.0,
             )) {
     this.endDate = DateTime.parse(endDate);
+    this.description = description;
   }
 
   Activity.fromAssigment(DateTime dueDate, Assignment assignment)
