@@ -59,7 +59,9 @@ class ScheduleElementDetail extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            child: Text('Start:'),
+            child: Text(
+              'Start:',
+            ),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
@@ -69,12 +71,18 @@ class ScheduleElementDetail extends StatelessWidget {
             //     ',   ' +
             //     _activity.date.year.toString()),
 
-            child: (Text(getDate(_activity.date))),
+            child: (Text(
+              getDate(_activity.date),
+              style: _style(),
+            )),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             // child: Text(_activity.date.month.toString()),
-            child: Text(getTime(_activity.date)),
+            child: Text(
+              getTime(_activity.date),
+              style: _style(),
+            ),
           ),
         ],
       );
@@ -89,11 +97,17 @@ class ScheduleElementDetail extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(getDate(_activity.endDate)),
+            child: Text(
+              getDate(_activity.endDate),
+              style: _style(),
+            ),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(getTime(_activity.endDate)),
+            child: Text(
+              getTime(_activity.endDate),
+              style: _style(),
+            ),
           ),
         ],
       );
@@ -162,7 +176,10 @@ class ScheduleElementDetail extends StatelessWidget {
                   height: 100,
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.black)),
-                  child: Text(_activity.description),
+                  child: Text(
+                    _activity.description,
+                    style: _style(),
+                  ),
                 ),
                 SizedBox(height: 10),
                 Row(
@@ -180,6 +197,10 @@ class ScheduleElementDetail extends StatelessWidget {
       // title: Text(_activity.title),
     );
   }
+}
+
+TextStyle _style() {
+  return TextStyle(color: Colors.grey);
 }
 
 FlatButton modify() {

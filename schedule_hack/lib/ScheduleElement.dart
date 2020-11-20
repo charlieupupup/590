@@ -28,13 +28,17 @@ class ScheduleElement extends StatelessWidget {
         ),
         onPressed: () {
           // Navigator.of(context).pop();
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ScheduleElementDetail(scheduledActivity),
-            ),
-          );
+          showDialog(
+              context: context,
+              builder: (_) {
+                return ScheduleElementDetail(scheduledActivity);
+              });
         },
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => ScheduleElementDetail(scheduledActivity),
+        //   ),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),
