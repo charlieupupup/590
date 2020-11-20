@@ -26,13 +26,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/NewCoursePopup.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/utilities.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/pubspec.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,13 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Removed all icons and replaced with recolored icons">
-      <created>1604071711123</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1604071711123</updated>
     </task>
     <task id="LOCAL-00015" summary="Update with master">
       <created>1604096442145</created>
@@ -462,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605733433584</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Fixed changes based on merge with updates to NewCoursePopup">
+      <created>1605753012112</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1605753012112</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -480,7 +477,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Update new entry to maintain old data" />
     <MESSAGE value="Course name on button error fixed" />
     <MESSAGE value="Added functionality to complete intake survey and proceed to home page" />
     <MESSAGE value="adding workspace files" />
@@ -505,7 +501,8 @@
     <MESSAGE value="UI and functionality updates to ScheduleView" />
     <MESSAGE value="Preference UI update: button change and text color change" />
     <MESSAGE value="Added color updates for time and date selector (CAN BE EASILY MODIFIED)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added color updates for time and date selector (CAN BE EASILY MODIFIED)" />
+    <MESSAGE value="Fixed changes based on merge with updates to NewCoursePopup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed changes based on merge with updates to NewCoursePopup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

@@ -45,21 +45,4 @@ class _TimeSelectorState extends State<TimeSelector> {
       ),
     );
   }
-
-  /*ColorScheme setTimeColors() {
-    return new ColorScheme(
-        primary: colorHoneydew,
-        primaryVariant: colorMelon,
-        secondary: colorHoneydew,
-        secondaryVariant: colorHoneydew,
-        error: colorBlackCoral,
-        surface: colorAlmond,
-        onPrimary: colorBeige,
-        onError: colorBlackCoral,
-        onSecondary: colorMelon,
-        onSurface: colorBlackCoral,
-        onBackground: colorAlmond,
-        brightness: Brightness.dark,
-        background: colorAlmond);
-  }*/
 }

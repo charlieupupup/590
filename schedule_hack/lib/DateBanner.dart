@@ -28,37 +28,44 @@ class DateBanner extends StatelessWidget {
 
           child: Row(
             children: <Widget>[
-              MaterialButton(
-                  child: Icon(
-                    (Icons.arrow_back_ios),
-                    color: colorIvory,
-                  ),
-                  onPressed: null),
-              Align(
-                //alignment: Alignment.center,
+              Expanded(
+                child: MaterialButton(
+                    child: Icon(
+                      (Icons.arrow_back_ios),
+                      color: colorIvory,
+                    ),
+                    onPressed: null),
+              ),
+              Expanded(
+                child: Align(
+                  //alignment: Alignment.center,
 
-                child: AutoSizeText(
-                  DateFormat.yMMMMEEEEd('en_US')
-                      .format(date), //Sunday, November 15, 2020
-                  style: TextStyle(fontSize: 24, color: colorIvory),
-                  maxLines: 1,
-                  minFontSize: 20,
-                  textAlign: TextAlign.center,
-                  overflowReplacement: AutoSizeText(
-                    DateFormat.yMMMEd('en_US').format(date), //Sun, Nov 15, 2020
+                  child: AutoSizeText(
+                    DateFormat.yMMMMEEEEd('en_US')
+                        .format(date), //Sunday, November 15, 2020
                     style: TextStyle(fontSize: 24, color: colorIvory),
                     maxLines: 1,
-                    minFontSize: 20.0,
+                    minFontSize: 20,
                     textAlign: TextAlign.center,
+                    overflowReplacement: AutoSizeText(
+                      DateFormat.yMMMEd('en_US')
+                          .format(date), //Sun, Nov 15, 2020
+                      style: TextStyle(fontSize: 24, color: colorIvory),
+                      maxLines: 1,
+                      minFontSize: 20.0,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
-              MaterialButton(
-                  child: Icon(
-                    (Icons.arrow_forward_ios),
-                    color: colorIvory,
-                  ),
-                  onPressed: null),
+              Expanded(
+                child: MaterialButton(
+                    child: Icon(
+                      (Icons.arrow_forward_ios),
+                      color: colorIvory,
+                    ),
+                    onPressed: null),
+              )
             ],
           ),
         ),

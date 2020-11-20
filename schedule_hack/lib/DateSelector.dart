@@ -57,21 +57,4 @@ class _DateSelectorState extends State<DateSelector> {
       )),
     );
   }
-
-  /*ColorScheme setDateColors() {
-    return new ColorScheme(
-        primary: colorMelon,
-        primaryVariant: colorMelon,
-        secondary: colorHoneydew,
-        secondaryVariant: colorHoneydew,
-        error: colorBlackCoral,
-        surface: colorAlmond,
-        onPrimary: colorBeige,
-        onError: colorBlackCoral,
-        onSecondary: colorPowderBlue,
-        onSurface: colorBlackCoral,
-        onBackground: colorAlmond,
-        brightness: Brightness.dark,
-        background: colorBeige);
-  }*/
 }
