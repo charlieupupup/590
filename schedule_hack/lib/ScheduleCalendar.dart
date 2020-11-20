@@ -10,26 +10,22 @@ import 'package:schedule_hack/utilities.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class ScheduleCalendar extends StatefulWidget {
-  int index; //TODO: I'm not using these correctly -- bottom nav doesn't work
 
   /// Creates the home page to display the calendar widget.
-  ScheduleCalendar(int i) {
-    this.index = i;
+  ScheduleCalendar() {
   }
 
   @override
   _ScheduleCalendarState createState() {
-    return _ScheduleCalendarState(this.index);
+    return _ScheduleCalendarState();
   }
 }
 
 class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
   final LocalStorage calendarStorage = new LocalStorage('calendar.json');
   Activities activities;
-  int _currentIndex = 0;
 
-  _ScheduleCalendarState(int i) {
-    this._currentIndex = i;
+  _ScheduleCalendarState() {
     this.activities = new Activities.todayFromStorage(calendarStorage);
   }
 
@@ -104,7 +100,7 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
         monthViewSettings: MonthViewSettings(
             appointmentDisplayMode: MonthAppointmentDisplayMode.appointment),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      /*bottomNavigationBar: BottomNavigationBar(
         backgroundColor: colorHoneydew,
         onTap: onTabTapped, // new
         currentIndex: _currentIndex, // new
@@ -130,15 +126,15 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
               ),
               label: 'Courses')
         ],
-      ),
+      ),*/
     );
   }
 
-  void onTabTapped(int index) {
+  /*void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
-  }
+  }*/
 
   //random data in calendar
   Activities _getPrepopulatedDataSource() {
