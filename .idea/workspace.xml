@@ -28,10 +28,8 @@
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleElement.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleElement.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleEvent.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="w_d" />
+        <entry key="$PROJECT_DIR$" value="Leighanne" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +70,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/schedule_hack/lib" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
@@ -80,6 +78,9 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/schedule_hack/images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\csadl\OneDrive - Duke University\DUKE\Fall_2020\ECE590-HCC\Final_Prototype\590\schedule_hack\lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -114,34 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Added intl/intl.dart dependency for date formatter">
-      <created>1604032381389</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1604032381389</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Added method to format date and placed that in banner">
-      <created>1604033016053</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1604033016053</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Fixed background color of Scaffolds">
-      <created>1604067062860</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1604067062860</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Removed all icons and replaced with recolored icons">
-      <created>1604071711123</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1604071711123</updated>
     </task>
     <task id="LOCAL-00015" summary="Update with master">
       <created>1604096442145</created>
@@ -458,7 +431,35 @@
       <option name="project" value="LOCAL" />
       <updated>1605712256068</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="UI and functionality updates to ScheduleView">
+      <created>1605720354452</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1605720354452</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Preference UI update: button change and text color change">
+      <created>1605729549383</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1605729549384</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Added color updates for time and date selector (CAN BE EASILY MODIFIED)">
+      <created>1605733433583</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1605733433584</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Fixed changes based on merge with updates to NewCoursePopup">
+      <created>1605753012112</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1605753012112</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -476,10 +477,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Write asset json to local storage on phone, add new course (not saving locally yet)" />
-    <MESSAGE value="Refactor json in own class" />
-    <MESSAGE value="Add json file reading error handling" />
-    <MESSAGE value="Update new entry to maintain old data" />
     <MESSAGE value="Course name on button error fixed" />
     <MESSAGE value="Added functionality to complete intake survey and proceed to home page" />
     <MESSAGE value="adding workspace files" />
@@ -501,7 +498,11 @@
     <MESSAGE value="added time image to popup" />
     <MESSAGE value="corrected typos in ScheduleElement" />
     <MESSAGE value="preparing for merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="preparing for merge" />
+    <MESSAGE value="UI and functionality updates to ScheduleView" />
+    <MESSAGE value="Preference UI update: button change and text color change" />
+    <MESSAGE value="Added color updates for time and date selector (CAN BE EASILY MODIFIED)" />
+    <MESSAGE value="Fixed changes based on merge with updates to NewCoursePopup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed changes based on merge with updates to NewCoursePopup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

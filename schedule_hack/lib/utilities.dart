@@ -93,5 +93,41 @@ bool surveyDone = false;
 //set global user preferences
 UserPreferences userSettings;
 
+//method for TimeSelector Color Theme
+ColorScheme setTimeColors() {
+  return new ColorScheme(
+      primary: colorHoneydew,
+      primaryVariant: colorMelon,
+      secondary: colorHoneydew,
+      secondaryVariant: colorHoneydew,
+      error: colorBlackCoral,
+      surface: colorAlmond,
+      onPrimary: colorBeige,
+      onError: colorBlackCoral,
+      onSecondary: colorMelon,
+      onSurface: colorBlackCoral,
+      onBackground: colorAlmond,
+      brightness: Brightness.dark,
+      background: colorAlmond);
+}
+
+//method for DateSelector Color Theme
+ColorScheme setDateColors() {
+  return new ColorScheme(
+      primary: colorMelon,
+      primaryVariant: colorMelon,
+      secondary: colorHoneydew,
+      secondaryVariant: colorHoneydew,
+      error: colorBlackCoral,
+      surface: colorAlmond,
+      onPrimary: colorBeige,
+      onError: colorBlackCoral,
+      onSecondary: colorPowderBlue,
+      onSurface: colorBlackCoral,
+      onBackground: colorAlmond,
+      brightness: Brightness.dark,
+      background: colorBeige);
+}
+
 // global variable for course currently being edited
 Course globalCourse;

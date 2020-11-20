@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/CancelButton.dart';
+import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/SurveyQuestionTile.dart';
 import 'package:schedule_hack/UserPreferences.dart';
+import 'package:schedule_hack/WelcomeScreen.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'StandardPopup.dart';
@@ -49,7 +51,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
     List<Widget> navButtons = new List<Widget>();
     if (pageNumber > 0) {
       alignment = MainAxisAlignment.spaceBetween;
-      FlatButton backButton = FlatButton(
+      MaterialButton backButton = MaterialButton(
         onPressed: () {
           //decrease pageNumber and save user preferences
           setState(() {
@@ -62,7 +64,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
         child: new Text("Back",
             style: TextStyle(fontSize: 20.0, color: colorBlackCoral)),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.0),
+          borderRadius: BorderRadius.circular(5.0),
         ),
         color: colorSoftMelon,
       );
@@ -73,7 +75,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
     } else {
       fwdButton = "Finish";
     }
-    FlatButton nextButton = FlatButton(
+    MaterialButton nextButton = MaterialButton(
       onPressed: () {
         //increase pageNumber and save user preferences
         setState(() {
@@ -92,7 +94,7 @@ class IntakeSurveyState extends State<IntakeSurvey> {
       child: new Text(fwdButton,
           style: TextStyle(fontSize: 20.0, color: colorBlackCoral)),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
+        borderRadius: BorderRadius.circular(5.0),
       ),
       color: colorAeroBlue,
     );
@@ -120,6 +122,8 @@ class IntakeSurveyState extends State<IntakeSurvey> {
       onPressed: () {
         // cancel just go back to last page (pop)
         Navigator.of(context).pop();
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) => WelcomeScreen())); //this traps you in the survey/welcome screen
       },
       color: colorMelon,
       child: Image.asset(

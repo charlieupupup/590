@@ -26,7 +26,7 @@ class ScheduleView extends StatelessWidget {
               Container(),
               Text(
                 'My Day',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: colorIvory),
                 textScaleFactor: 2,
               ),
               Container(
@@ -43,7 +43,6 @@ class ScheduleView extends StatelessWidget {
                   child: Image.asset('images/add.png'),
                 ),
               ),
-              // Icon(Icons.add),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceAround,
           ),

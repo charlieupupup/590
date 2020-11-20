@@ -26,11 +26,15 @@ class _SurveyQuestionTileState extends State<SurveyQuestionTile> {
     return new Card(
       color: colorBeige,
       child: CheckboxListTile(
-          title: Text(data.getQuestion()),
+          title: new Text(
+            data.getQuestion(),
+            style:
+                TextStyle(fontWeight: FontWeight.bold, color: colorBlackCoral),
+          ),
           value: data.getAnswer(),
           controlAffinity: ListTileControlAffinity.leading,
           checkColor: colorBlackCoral,
-          activeColor: colorPowderBlue,
+          activeColor: colorAeroBlue,
           selected: data.getAnswer(),
           onChanged: (bool newValue) {
             setState(() {
