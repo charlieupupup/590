@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
+import 'package:schedule_hack/ScheduleModify.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class ScheduleElementDetail extends StatelessWidget {
@@ -185,8 +186,8 @@ class ScheduleElementDetail extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    modify(),
                     delete(),
+                    modify(context),
                   ],
                 ),
               ],
@@ -197,35 +198,42 @@ class ScheduleElementDetail extends StatelessWidget {
       // title: Text(_activity.title),
     );
   }
+
+  FlatButton modify(BuildContext context) {
+    return FlatButton(
+      onPressed: () {
+        // Navigator.of(context).pop();
+        showDialog(
+            context: context,
+            builder: (_) {
+              return ScheduleModify(_activity);
+            });
+      },
+      color: colorPowderBlue,
+      child: Row(
+        children: [
+          Image.asset(
+            'images/edit.png',
+            // height: 50,
+            // width: 50,
+          ),
+          Text('Modify'),
+        ],
+      ),
+      // child: Image.asset(
+      //   'images/edit.png',
+      //   height: 50,
+      //   width: 50,
+      // ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+    );
+  }
 }
 
 TextStyle _style() {
   return TextStyle(color: Colors.grey);
-}
-
-FlatButton modify() {
-  return FlatButton(
-    onPressed: () {},
-    color: colorPowderBlue,
-    child: Row(
-      children: [
-        Image.asset(
-          'images/edit.png',
-          // height: 50,
-          // width: 50,
-        ),
-        Text('Modify'),
-      ],
-    ),
-    // child: Image.asset(
-    //   'images/edit.png',
-    //   height: 50,
-    //   width: 50,
-    // ),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(18.0),
-    ),
-  );
 }
 
 FlatButton delete() {
