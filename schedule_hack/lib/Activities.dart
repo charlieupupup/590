@@ -1,21 +1,20 @@
 import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
 
 //class that holds activities
 class Activities {
-  List<ScheduleEvent> activities = new List<ScheduleEvent>();
+  List<Activity> activities = new List<Activity>();
   DateTime date = DateTime.now();
 
   ////////////constructors
   Activities.test(int days) {
-    this.activities = new List<ScheduleEvent>();
-    activities.add(new ScheduleEvent.test("Study", 0));
+    this.activities = new List<Activity>();
+    activities.add(new Activity.test("Study", 0));
   }
 
   Activities.fromDate(DateTime date) {
-    this.activities = new List<ScheduleEvent>();
+    this.activities = new List<Activity>();
     this.date = date;
   }
 
@@ -25,7 +24,7 @@ class Activities {
   }
 
   //from list of Schedule Events (new)
-  Activities.fromScheduleEvents(DateTime date, List<ScheduleEvent> events) {
+  Activities.fromScheduleEvents(DateTime date, List<Activity> events) {
     this.date = date;
     setEvents(events);
   }
@@ -54,9 +53,9 @@ class Activities {
     final encoded = this.toJSONEncodable();
     storage.setItem(date.toIso8601String(), encoded);
     //getting into storage and getting out of storage to make sure it worked
-    List<ScheduleEvent> se = getEventListFromStorage(date, storage);
+    List<Activity> se = getEventListFromStorage(date, storage);
     print(
-        "adding ${activities.length} events on ${DateFormat.yMEd('en_US').format(date)}");
+        "adding ${se.length} events on ${DateFormat.yMEd('en_US').format(date)}");
   }
 
   //Removes all actitivies to storage with key = day.toIso8601String(), value = encoded Acitivites (i.e. List<Activity>)
@@ -70,12 +69,12 @@ class Activities {
 
   //various getters and getters
 
-  List<ScheduleEvent> getEvents() {
+  List<Activity> getEvents() {
     return this.activities;
   }
 
   //Sets events from a List<ScheduleEvent>
-  void setEvents(List<ScheduleEvent> e) {
+  void setEvents(List<Activity> e) {
     this.activities = e;
   }
 
@@ -84,15 +83,15 @@ class Activities {
   }
 
   //get a list of ScheduleEvents on date from LocalStorage
-  static List<ScheduleEvent> getEventListFromStorage(
+  static List<Activity> getEventListFromStorage(
       DateTime date, LocalStorage storage) {
     String day = date.toIso8601String();
-    List<ScheduleEvent> e = new List<ScheduleEvent>();
+    List<Activity> e = new List<Activity>();
     var list = storage.getItem(day);
     if (list != null) {
-      e = List<ScheduleEvent>.from(
+      e = List<Activity>.from(
         (list as List).map(
-          (item) => ScheduleEvent(
+          (item) => Activity(
               item['start'], item['end'], item['subject'], item['notes']),
         ),
       );
@@ -102,8 +101,7 @@ class Activities {
   }
 
   static Activities getFromStorage(DateTime date, LocalStorage storage) {
-    List<ScheduleEvent> events =
-        Activities.getEventListFromStorage(date, storage);
+    List<Activity> events = Activities.getEventListFromStorage(date, storage);
     Activities a = new Activities.fromScheduleEvents(date, events);
     print("EVENTS (${events}) is of type ${events.runtimeType}");
     return a;

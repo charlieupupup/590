@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
-import 'package:schedule_hack/DateSelector.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class ScheduleModify extends StatelessWidget {
-  ScheduleEvent _activity;
+  Activity _activity;
 
-  ScheduleModify(ScheduleEvent activity) {
+  ScheduleModify(Activity activity) {
     _activity = activity;
   }
 
@@ -27,7 +25,7 @@ class ScheduleModify extends StatelessWidget {
       return df.format(dateTime);
     }
 
-    Widget Start(ScheduleEvent _activity) {
+    Widget Start(Activity _activity) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -57,7 +55,7 @@ class ScheduleModify extends StatelessWidget {
       );
     }
 
-    Widget End(ScheduleEvent _activity) {
+    Widget End(Activity _activity) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

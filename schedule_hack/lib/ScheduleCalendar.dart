@@ -4,7 +4,7 @@ import 'package:schedule_hack/ActivityDataSource.dart';
 import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Activities.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -142,9 +142,9 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
 
   //random data in calendar
   Activities _getPrepopulatedDataSource() {
-    ScheduleEvent a0 = new ScheduleEvent.test("Study", 0);
-    ScheduleEvent a1 = new ScheduleEvent.test("Attend Class", 2);
-    ScheduleEvent a2 = new ScheduleEvent.test("Sleep", 4);
+    Activity a0 = new Activity.test("Study", 0);
+    Activity a1 = new Activity.test("Attend Class", 2);
+    Activity a2 = new Activity.test("Sleep", 4);
     Activities a =
         new Activities.fromScheduleEvents(DateTime.now(), [a0, a1, a2]);
     this.activities = a;

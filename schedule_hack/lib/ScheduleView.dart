@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
 
 import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
   //List<ScheduleEvent> _list;
-  List<ScheduleEvent> _list;
+  List<Activity> _list;
 
-  ScheduleView(List<ScheduleEvent> list) {
+  ScheduleView(List<Activity> list) {
     _list = list;
   }
 

@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
-import 'package:schedule_hack/ScheduleModify.dart';
 
 import 'package:schedule_hack/utilities.dart';
 
 import 'ScheduleElementDetail.dart';
 
 class ScheduleElement extends StatelessWidget {
-  ScheduleEvent activity;
+  Activity activity;
 
   //ScheduleElement(ScheduleEvent scheduleEvent) {
-  ScheduleElement(ScheduleEvent activity) {
+  ScheduleElement(Activity activity) {
     //this.scheduleEvent = scheduleEvent;
     this.activity = activity;
   }

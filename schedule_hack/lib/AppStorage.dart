@@ -1,14 +1,13 @@
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
 
 //add to classes to get local storage functions
 mixin AppStorage {
   //Gets the list activites from storage  for a particular date
   Activities getActivitiesFromStorage(
       DateTime date, LocalStorage localStorage) {
-    List<ScheduleEvent> events =
+    List<Activity> events =
         Activities.getEventListFromStorage(date, localStorage);
     Activities a = new Activities.fromScheduleEvents(date, events);
     return a;

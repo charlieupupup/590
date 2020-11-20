@@ -5,14 +5,12 @@ import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
 import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/utilities.dart';
-import 'Activity.dart';
 import 'CancelButton.dart';
 import 'Course.dart';
 
 import 'LoadingScreen.dart';
-import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
 import 'StandardPopup.dart';
 import 'TimeSelector.dart';
@@ -53,7 +51,7 @@ class _AssignmentListState extends State<AssignmentList> {
   int edit;
   Course course;
   int courseCount;
-  int _currentIndex = 2;
+  // int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
   Activities activities = new Activities.test(0);
   Course originalCourse;
@@ -424,8 +422,8 @@ class _AssignmentListState extends State<AssignmentList> {
             // if no date or time do nothing
           } else {
             DateTime dueDate = DateTime.parse(myControllerDate.text);
-            ScheduleEvent activity = new ScheduleEvent.assignment(
-                dueDate, myControllerDescription.text);
+            Activity activity =
+                new Activity.assignment(dueDate, myControllerDescription.text);
 
             //for each day in difference create act and add to list
             activities.activities.add(activity);
