@@ -149,7 +149,6 @@ class ScheduleModify extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 10),
-                // Text('Details:'),
                 Container(
                   width: 200,
                   height: 100,
