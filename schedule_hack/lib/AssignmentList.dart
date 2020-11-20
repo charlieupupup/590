@@ -309,21 +309,17 @@ class _AssignmentListState extends State<AssignmentList> {
 
   _backButton() {
     if (this.edit == 1) {
-      print('edit cancel');
       StandardPopup.course(
           context,
           'This will take you back to your Courses. Your data will be saved.',
           5,
           this.course);
     } else {
-      //return CancelButton.assignment(2, this.course);
-      print('cancel should be working');
-      //return CancelButton.assignment(6,this.course);
       StandardPopup.course(
           context,
-          'Going back now will not save all progress. Are you sure?',
-          2,
-          this.originalCourse);
+          'This will take you back to your Courses. Your data will be saved.',
+          5,
+          this.course);
     }
   }
 
