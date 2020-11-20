@@ -36,20 +36,18 @@ class ScheduleEvent extends Appointment {
     this.image = AppImage.getImageFromSubject(subject);
   }
 
+  //initializes assignment with subject == notes and start date 5 days before it's due
   ScheduleEvent.assignment(DateTime dueDate, String subject)
       : this.fromDateTime(
-            DateTime.now(),
-            DateTime.now().add(Duration(hours: 2)),
-            "sleep",
-            "8 hours of sleep");
+            dueDate.subtract(Duration(days: 5)), dueDate, subject, subject);
 
   //test schedule event
-  ScheduleEvent.test(int days)
+  ScheduleEvent.test(String subject, int day)
       : this.fromDateTime(
-            DateTime.now().add(Duration(days: days)),
-            DateTime.now().add(Duration(days: days, hours: 2)),
-            "sleep",
-            "8 hours of sleep");
+            DateTime.now().add(Duration(days: day)),
+            DateTime.now().add(Duration(days: day, hours: 2)),
+            subject,
+            subject);
 
   //convert from json encodable
   toJSONEncodable() {

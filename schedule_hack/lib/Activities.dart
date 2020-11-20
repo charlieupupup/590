@@ -11,7 +11,7 @@ class Activities {
   ////////////constructors
   Activities.test(int days) {
     this.activities = new List<ScheduleEvent>();
-    activities.add(new ScheduleEvent.test(days));
+    activities.add(new ScheduleEvent.test("Study", 0));
   }
 
   Activities.fromDate(DateTime date) {

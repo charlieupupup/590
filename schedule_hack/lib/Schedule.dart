@@ -14,9 +14,9 @@ class Schedule extends StatelessWidget {
   final String title;
   DateTime date;
 
-  ScheduleEvent a0 = new ScheduleEvent.test(0);
-  ScheduleEvent a1 = new ScheduleEvent.test(2);
-  ScheduleEvent a2 = new ScheduleEvent.test(4);
+  ScheduleEvent a0 = new ScheduleEvent.test("Study", 0);
+  ScheduleEvent a1 = new ScheduleEvent.test("Attend Class", 2);
+  ScheduleEvent a2 = new ScheduleEvent.test("Sleep", 4);
 
   Schedule({Key key, this.title, this.date}) : super(key: key) {
     _scheduleToday = [a0, a1, a2];

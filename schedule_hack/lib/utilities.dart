@@ -144,8 +144,9 @@ extension AppImage on Image {
     m['Go for a run'] = Image.asset('images/running.png');
     m['Meditate'] = Image.asset('images/meditation.png');
     m['Attend Class'] = Image.asset('images/teacher.png');
-    m['Sleep'] = Image.asset('images/sleeping.png');
-    if (m.containsValue(subject)) {
+    m['Sleep'] = Image.asset('images/sleep.png');
+    print("key: $subject; value: ${m[subject]}");
+    if (m.containsKey(subject)) {
       return m[subject];
     } else {
       return Image.asset('images/schedule.png');
