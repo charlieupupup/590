@@ -3,6 +3,7 @@ import 'package:schedule_hack/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schedule_hack/Notify.dart';
 import 'package:schedule_hack/PopUp.dart';
+import 'package:schedule_hack/WelcomeScreen.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'UserPreferences.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(0),
+      home: //WelcomeScreen(),
+      Home(0),
     );
   }
 }
