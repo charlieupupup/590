@@ -4,12 +4,16 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 class ScheduleEvent extends Appointment {
   String start;
   String end;
+  String subject;
+
+  ScheduleEvent({this.subject, this.start, this.end});
 
   ScheduleEvent.fromDateTime(
       DateTime startTime, DateTime endTime, String subject)
       : super(startTime: startTime, endTime: endTime, subject: subject) {
     this.start = startTime.toIso8601String();
     this.end = endTime.toIso8601String();
+    this.subject = subject;
   }
 
   ScheduleEvent.fromString(String start, String end, String subject)
@@ -19,6 +23,7 @@ class ScheduleEvent extends Appointment {
             subject: subject) {
     this.start = start;
     this.end = end;
+    this.subject = subject;
   }
 
   //test schedule event
