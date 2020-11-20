@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:schedule_hack/CalendarView.dart';
 import 'package:schedule_hack/CourseList.dart';
 import 'package:schedule_hack/PopUp.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';

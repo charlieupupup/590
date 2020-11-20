@@ -37,6 +37,8 @@ dependencies:
 
   flutter_calendar_carousel: ^1.5.1
   localstorage: ^3.0.0
+  syncfusion_flutter_calendar: ^18.3.50
+
 
 dev_dependencies:
   flutter_test:

@@ -8,56 +8,85 @@ import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/utilities.dart';
 
-enum Tab { schedule, selfCare, courses }
-
-class CalendarSingleton extends CalendarView {
-  static CalendarSingleton shared;
-  CalendarSingleton._internal();
-
-  factory CalendarSingleton() {
-    if (shared == null) {
-      shared = CalendarSingleton._internal();
-    }
-    return shared;
-  }
-}
-
-class CalendarView extends StatefulWidget {
-  EventList<Event> markedDateMap;
-  DateTime date = DateTime.now();
-
+// enum Tab { schedule, selfCare, courses }
+//
+// class CalendarView extends StatefulWidget {
+//   @override
+//   State<StatefulWidget> createState() {
+//     return _CalendarState();
+//   }
+// }
+//
+// class _CalendarState extends State<CalendarView> {
+//   DateTime _currentDateWeekView = DateTime.now();
+//   DateTime _currentDateMonthView = DateTime.now();
+//   String _currentMonth = DateFormat.yMMM().format(DateTime.now());
+//   String _firstDayOfCurrentWeek =
+//       DateFormat.yMMMd('en_US').format(DateTime.now());
+//   DateTime _targetDateTime = DateTime.now();
+//   EventList<Event> _markedDateMap = new EventList<Event>();
+//   final LocalStorage storage = new LocalStorage('activity.json');
+//
+//   CalendarCarousel _calendarCarousel, _calendarCarouselNoHeader;
+//
+//
+//
+class CalendarViewOld extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _CalendarState(date, markedDateMap);
+    return _CalendarStateOld();
   }
 }
 
-class _CalendarState extends State<CalendarView> {
-  final LocalStorage storage = new LocalStorage('activity.json');
+class _CalendarStateOld extends State<CalendarViewOld> {
+  DateTime _currentDateMonthView = DateTime.now();
+  String _currentMonth = DateFormat.yMMM().format(DateTime.now());
+  DateTime _targetDateTime = DateTime.now();
+  EventList<Event> _markedDateMap = new EventList<Event>(
+    events: {
+      new DateTime(2020, 11, 1): [
+        new Activity.fromIso8601(
+            DateTime(2020, 11, 1, 5).toIso8601String(),
+            DateTime(2020, 11, 1, 7).toIso8601String(),
+            "ECE564",
+            "Final Presentation Prep"),
+        new Activity.fromIso8601(
+            DateTime(2020, 11, 1, 9).toIso8601String(),
+            DateTime(2020, 11, 1, 11).toIso8601String(),
+            "ECE590",
+            "Finish Prototype"),
+        new Activity.fromIso8601(
+            DateTime(2020, 11, 1, 14).toIso8601String(),
+            DateTime(2020, 11, 1, 19).toIso8601String(),
+            "ECE564",
+            "Final Presentation")
+      ],
+    },
+  );
 
-  int _currentIndex = 0;
-  DateTime _currentDateWeekView;
-  DateTime _currentDateMonthView;
-  String _currentMonth;
-  String _firstDayOfCurrentWeek;
-  DateTime _targetDateTime;
-  EventList<Event> _markedDateMap;
-
-  CalendarCarousel _calendarCarousel, _calendarCarouselNoHeader;
-
-  _CalendarState(DateTime date, EventList<Event> events) {
-    _currentDateWeekView = date;
-    _currentDateMonthView = date;
-    _currentMonth = DateFormat.yMMM().format(date);
-    _firstDayOfCurrentWeek = DateFormat.yMMMd('en_US').format(date);
-    _targetDateTime = date;
-    _markedDateMap = events;
-  }
+  CalendarCarousel _calendarCarouselNoHeader;
 
   @override
   void initState() {
+    _markedDateMap.addAll(new DateTime(2020, 11, 7), [
+      new Activity.fromIso8601(
+          DateTime(2020, 11, 7, 5).toIso8601String(),
+          DateTime(2020, 11, 7, 7).toIso8601String(),
+          "ECE564",
+          "Final Presentation Prep"),
+      new Activity.fromIso8601(
+          DateTime(2020, 11, 7, 9).toIso8601String(),
+          DateTime(2020, 11, 7, 11).toIso8601String(),
+          "ECE590",
+          "Finish Prototype"),
+      new Activity.fromIso8601(
+          DateTime(2020, 11, 7, 14).toIso8601String(),
+          DateTime(2020, 11, 7, 19).toIso8601String(),
+          "ECE564",
+          "Final Presentation")
+    ]);
+    print("in initState ${_markedDateMap.events.entries}");
     super.initState();
-    _markedDateMap = new EventList<Event>();
   }
 
   @override
@@ -67,61 +96,6 @@ class _CalendarState extends State<CalendarView> {
     // double width = MediaQuery.of(context).size.width - padding.left - padding.right;
     double height =
         MediaQuery.of(context).size.height - padding.top - padding.bottom;
-
-    _calendarCarousel = CalendarCarousel<Event>(
-      onDayPressed: (DateTime date, List<Event> events) {
-        this.setState(() => _currentDateWeekView = date);
-        events.forEach((event) => print(event.title));
-      },
-      onCalendarChanged: (DateTime date) {
-        this.setState(() {
-          _currentDateWeekView = date;
-          _targetDateTime =
-              CalendarDateTime.firstDayOfWeek(_currentDateWeekView);
-          _firstDayOfCurrentWeek =
-              DateFormat.yMMMd('en_US').format(_targetDateTime);
-        }); //changes the _firstDayOfCurrentWeek when top is changed (for the header)
-      },
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
-      height: height * (9 / 32),
-      weekFormat: true,
-      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
-      markedDatesMap: _markedDateMap,
-      selectedDateTime: _currentDateMonthView,
-      showIconBehindDayText: true,
-      daysHaveCircularBorder: true,
-      iconColor: colorDarkSkyBlue,
-      thisMonthDayBorderColor: colorAlmond,
-      headerText: "Week of $_firstDayOfCurrentWeek",
-      headerTextStyle: TextStyle(
-          fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
-      markedDateCustomShapeBorder:
-          CircleBorder(side: BorderSide(color: colorMelon)),
-      markedDateCustomTextStyle: TextStyle(
-        fontSize: 16,
-        color: colorMelon,
-      ),
-      weekdayTextStyle: TextStyle(
-          fontSize: 16,
-          color: colorPewterBlue,
-          fontWeight: FontWeight.bold), //Sun Mon Tue
-      weekendTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral),
-      daysTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral), //14 15 16
-      todayButtonColor: Colors.transparent,
-      todayBorderColor: colorMelon,
-      todayTextStyle: TextStyle(
-          fontSize: 22, color: colorMelon, fontWeight: FontWeight.bold),
-
-      /// null for not rendering any border, true for circular border, false for rectangular border
-      selectedDayButtonColor: colorAeroBlue,
-      selectedDayBorderColor: colorDarkSkyBlue,
-      selectedDayTextStyle: TextStyle(
-          fontSize: 22, color: colorBlackCoral, fontWeight: FontWeight.bold),
-      onDayLongPressed: (DateTime date) {
-        print('long pressed date $date');
-      },
-    );
 
     /// Bottom Calendar Carousel without header and with prev & next button
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
@@ -133,15 +107,15 @@ class _CalendarState extends State<CalendarView> {
       daysHaveCircularBorder: false,
       showOnlyCurrentMonthDate: false,
       thisMonthDayBorderColor: colorAlmond,
-      height: height * (9 / 16),
+      height: height * (2 / 3),
       showHeader: false,
       weekFormat: false,
       // firstDayOfWeek: 4,
       markedDatesMap: _markedDateMap,
       selectedDateTime: _currentDateMonthView,
       targetDateTime: _targetDateTime,
-      minSelectedDate: _currentDateWeekView.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDateWeekView.add(Duration(days: 360)),
+      minSelectedDate: _currentDateMonthView.subtract(Duration(days: 360)),
+      maxSelectedDate: _currentDateMonthView.add(Duration(days: 360)),
       markedDateCustomShapeBorder: Border.all(width: 1.0, color: colorMelon),
       markedDateCustomTextStyle: TextStyle(
         fontSize: 16,
@@ -152,11 +126,11 @@ class _CalendarState extends State<CalendarView> {
         color: colorAlmond,
       ),
       weekdayTextStyle: TextStyle(
-          fontSize: 16,
-          color: colorPewterBlue,
-          fontWeight: FontWeight.bold), //Sun Mon Tue
+          fontSize: 16, color: colorPewterBlue, fontWeight: FontWeight.bold),
+      //Sun Mon Tue
       weekendTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral),
-      daysTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral), //14 15 16
+      daysTextStyle: TextStyle(fontSize: 16, color: colorBlackCoral),
+      //14 15 16
       todayButtonColor: Colors.transparent,
       todayBorderColor: colorMelon,
       todayTextStyle: TextStyle(
@@ -210,15 +184,7 @@ class _CalendarState extends State<CalendarView> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             //custom icon
-            Container(
-              margin: EdgeInsets.only(
-                top: 0.0,
-                bottom: 0.0,
-                left: 16.0,
-                right: 16.0,
-              ),
-              child: _calendarCarousel,
-            ), // This trailing comma makes auto-formatting nicer for build methods.
+            // This trailing comma makes auto-formatting nicer for build methods.
             //custom icon without header
             Container(
               margin: EdgeInsets.only(
@@ -270,47 +236,14 @@ class _CalendarState extends State<CalendarView> {
                 right: 16.0,
               ),
               child: _calendarCarouselNoHeader,
-            ), //
+            ),
+            //
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: colorHoneydew,
-        onTap: onTabTapped, // new
-        currentIndex: _currentIndex, // new
-        items: [
-          new BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage("images/schedule.png"),
-              color: colorBlackCoral,
-            ),
-            label: 'Schedule',
-          ),
-          new BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage("images/self_care.png"),
-              color: colorBlackCoral,
-            ),
-            label: 'Self-Care',
-          ),
-          new BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage("images/classroom.png"),
-                color: colorBlackCoral,
-              ),
-              label: 'Courses')
-        ],
-      ),
     );
   }
-
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
 }
-
 // class _MyHomePageState extends State<HomePage> {
 //   final List<Activity> activities = new List<Activity>();
 //   final ScheduleList list = new ScheduleList();
