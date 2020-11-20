@@ -83,11 +83,18 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
                 readOnly: true,
                 controller: startTimeController,
                 decoration: InputDecoration(
-                    hintText: 'Start Time', suffixIcon: Icon(Icons.access_alarm)),
+                    hintText: 'Start Time',
+                    suffixIcon: Icon(Icons.access_alarm)),
                 onTap: () async {
                   var time = await showTimePicker(
                     initialTime: TimeOfDay.now(),
                     context: context,
+                    builder: (context, child) {
+                      return Theme(
+                        data: ThemeData.from(colorScheme: setTimeColors()),
+                        child: child,
+                      );
+                    },
                   );
                   startTimeController.text = time.format(context);
                 },
@@ -101,12 +108,18 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
                   var time = await showTimePicker(
                     initialTime: TimeOfDay.now(),
                     context: context,
+                    builder: (context, child) {
+                      return Theme(
+                        data: ThemeData.from(colorScheme: setTimeColors()),
+                        child: child,
+                      );
+                    },
                   );
                   endTimeController.text = time.format(context);
                 },
               ),
-             // DaySelector(dayValues),
-             // selectDayBoxes(),
+              // DaySelector(dayValues),
+              // selectDayBoxes(),
               dayBoxesTest(),
               ButtonBar(
                 alignment: MainAxisAlignment.spaceAround,
@@ -135,7 +148,7 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
         children: tiles, mainAxisAlignment: MainAxisAlignment.spaceAround);
   }
 
-  Widget dayBoxesTest(){
+  Widget dayBoxesTest() {
     List<Widget> tiles = new List<Widget>();
     for (String day in dayValues.keys) {
       tiles.add(Checkbox(
@@ -151,13 +164,11 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
     return new Column(
       children: <Widget>[
         new Row(
-          children: tiles, mainAxisAlignment: MainAxisAlignment.spaceAround
-        ),
+            children: tiles, mainAxisAlignment: MainAxisAlignment.spaceAround),
         showCaptions()
       ],
     );
   }
-
 
   Widget selectDayBoxes() {
     List<Widget> tiles = new List<Widget>();
