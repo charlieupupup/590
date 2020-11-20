@@ -1,42 +1,30 @@
-import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/Assignment.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 //primitive equivalent of Activity
-class ScheduleEvent {
-  String subject;
-  String startTime;
-  String endTime;
+class ScheduleEvent extends Appointment {
+  String start;
+  String end;
 
-  ScheduleEvent({this.subject, this.startTime, this.endTime});
+  ScheduleEvent.fromDateTime(
+      DateTime startTime, DateTime endTime, String subject)
+      : super(startTime: startTime, endTime: endTime, subject: subject) {
+    this.start = startTime.toIso8601String();
+    this.end = endTime.toIso8601String();
+  }
 
-  ScheduleEvent.fromAssigment(Assignment a) {
-    this.subject = a.description;
+  ScheduleEvent.fromString(String start, String end, String subject)
+      : super(
+            startTime: DateTime.parse(start),
+            endTime: DateTime.parse(end),
+            subject: subject) {
+    this.start = start;
+    this.end = end;
   }
 
   //test schedule event
-  ScheduleEvent.test() {
-    subject = "8 hours of sleep";
-    startTime =
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)
-            .toIso8601String();
-    endTime = DateTime(
-            DateTime.now().year, DateTime.now().month, DateTime.now().day, 8)
-        .toIso8601String();
-  }
-
-  //convert from ActivityOld
-  ScheduleEvent.fromActivityOld(Activity activity) {
-    this.subject = activity.title;
-    this.startTime = activity.date.toIso8601String();
-    this.endTime = activity.endDate.toIso8601String();
-  }
-
-  //convert from ActivityNew
-  ScheduleEvent.fromActivityNew(ActivityNew activity) {
-    this.subject = activity.subject;
-    this.startTime = activity.startTime.toIso8601String();
-    this.endTime = activity.endTime.toIso8601String();
-  }
+  ScheduleEvent.test()
+      : this.fromDateTime(DateTime.now(),
+            DateTime.now().add(Duration(hours: 2)), "8 hours of sleep");
 
   //convert from json encodable
   toJSONEncodable() {
