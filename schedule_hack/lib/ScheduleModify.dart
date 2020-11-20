@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
+import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/utilities.dart';
 
@@ -151,7 +152,8 @@ class ScheduleModify extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CancelButton(),
-                    CheckNavButton(),
+                    //CheckNavButton(),
+                    CheckmarkButton.schedule(7)
                   ],
                 ),
               ],
