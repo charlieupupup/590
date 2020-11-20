@@ -168,9 +168,8 @@ class ScheduleElementDetail extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CancelButton(),
-                    CheckNavButton(),
                     modify(),
+                    delete(),
                   ],
                 ),
               ],
@@ -195,6 +194,31 @@ FlatButton modify() {
           // width: 50,
         ),
         Text('Modify'),
+      ],
+    ),
+    // child: Image.asset(
+    //   'images/edit.png',
+    //   height: 50,
+    //   width: 50,
+    // ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(18.0),
+    ),
+  );
+}
+
+FlatButton delete() {
+  return FlatButton(
+    onPressed: () {},
+    color: colorMelon,
+    child: Row(
+      children: [
+        Image.asset(
+          'images/trashcan.png',
+          // height: 50,
+          // width: 50,
+        ),
+        Text('Delete'),
       ],
     ),
     // child: Image.asset(
