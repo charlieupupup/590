@@ -5,12 +5,14 @@ import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
 import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
-import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/utilities.dart';
+import 'Activity.dart';
 import 'CancelButton.dart';
 import 'Course.dart';
 
 import 'LoadingScreen.dart';
+import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
 import 'StandardPopup.dart';
 import 'TimeSelector.dart';
@@ -51,9 +53,11 @@ class _AssignmentListState extends State<AssignmentList> {
   int edit;
   Course course;
   int courseCount;
-  // int _currentIndex = 2;
+  int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
-  Activities activities = new Activities.test(0);
+  List<Activity> activityList = new List<Activity>();
+  // Activities activities =
+  //     new Activities.fromActivityList(DateTime.now(), List<ActivityNew>()); TODO: convert to new activity
   Course originalCourse;
   bool deleteItem = false;
 
@@ -417,16 +421,18 @@ class _AssignmentListState extends State<AssignmentList> {
           Assignment a = new Assignment.long(myControllerDescription.text,
               myControllerDate.text, myControllerTime.text);
           this.course.setAssignments = a;
+          ScheduleEvent se = new ScheduleEvent.fromAssigment(a);
+
           // Making Activity.assignment
           if (myControllerDate.text.isEmpty || myControllerTime.text.isEmpty) {
             // if no date or time do nothing
           } else {
             DateTime dueDate = DateTime.parse(myControllerDate.text);
-            Activity activity =
-                new Activity.assignment(dueDate, myControllerDescription.text);
-
             //for each day in difference create act and add to list
-            activities.activities.add(activity);
+            Activity activity = new Activity.fromAssigment(dueDate, a);
+            // ActivityNew activity = new ActivityNew.fromScheduleEvent(se); TODO
+            activityList.add(activity);
+            // activities.addActivity(activity); TODO
             myControllerDate.clear();
             myControllerTime.clear();
             myControllerDescription.clear();
