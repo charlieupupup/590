@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CalendarButton.dart';
 import 'package:schedule_hack/DateBanner.dart';
 import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
-import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
+
 
 import 'Home.dart';
 

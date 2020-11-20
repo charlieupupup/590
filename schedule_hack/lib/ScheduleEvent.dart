@@ -44,10 +44,10 @@ class ScheduleEvent extends Appointment {
             "8 hours of sleep");
 
   //test schedule event
-  ScheduleEvent.test()
+  ScheduleEvent.test(int days)
       : this.fromDateTime(
-            DateTime.now(),
-            DateTime.now().add(Duration(hours: 2)),
+            DateTime.now().add(Duration(days: days)),
+            DateTime.now().add(Duration(days: days, hours: 2)),
             "sleep",
             "8 hours of sleep");
 
