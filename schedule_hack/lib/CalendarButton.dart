@@ -1,5 +1,4 @@
-import 'package:schedule_hack/CalendarViewOld.dart';
-import 'package:schedule_hack/ScheduleCalendar.dart';
+import 'package:schedule_hack/Calendar.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +21,8 @@ class _CalendarButtonState extends State<CalendarButton> {
       color: colorHoneydew,
       tooltip: 'calendar',
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ScheduleCalendar(0)));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Calendar(0)));
       },
     );
   }

@@ -1,34 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ActivityDataSource.dart';
 import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Activities.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class ScheduleCalendar extends StatefulWidget {
+class Calendar extends StatefulWidget {
   int index; //TODO: I'm not using these correctly -- bottom nav doesn't work
-
   /// Creates the home page to display the calendar widget.
-  ScheduleCalendar(int i) {
+  Calendar(int i) {
     this.index = i;
   }
 
   @override
-  _ScheduleCalendarState createState() {
-    return _ScheduleCalendarState(this.index);
+  _CalendarState createState() {
+    return _CalendarState(this.index);
   }
 }
 
-class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
+class _CalendarState extends State<Calendar> with AppStorage {
   final LocalStorage calendarStorage = new LocalStorage('calendar.json');
   Activities activities;
   int _currentIndex = 0;
 
-  _ScheduleCalendarState(int i) {
+  _CalendarState(int i) {
     this._currentIndex = i;
     this.activities = new Activities.todayFromStorage(calendarStorage);
   }
@@ -142,22 +141,10 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
 
   //random data in calendar
   Activities _getPrepopulatedDataSource() {
-    ActivityNew course = new ActivityNew(DateTime.now(),
-        DateTime.now().add(Duration(hours: 2)), "Attend ECE564");
-    ActivityNew sleep = new ActivityNew(
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
-        DateTime(
-            DateTime.now().year, DateTime.now().month, DateTime.now().day, 8),
-        "8 hours of sleep");
-    ActivityNew sleep2 = new ActivityNew(
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)
-            .add(Duration(days: 2)),
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
-                8)
-            .add(Duration(days: 2)),
-        "8 hours of sleep");
-    Activities a = new Activities.fromActivityList(
-        DateTime.now(), [course, sleep, sleep2]);
+    Activity a0 = new Activity.test("Study", 0);
+    Activity a1 = new Activity.test("Attend Class", 2);
+    Activity a2 = new Activity.test("Sleep", 4);
+    Activities a = new Activities.fromActivities(DateTime.now(), [a0, a1, a2]);
     this.activities = a;
     return a;
   }
