@@ -9,26 +9,25 @@ import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class ScheduleCalendar extends StatefulWidget {
+class Calendar extends StatefulWidget {
   int index; //TODO: I'm not using these correctly -- bottom nav doesn't work
-
   /// Creates the home page to display the calendar widget.
-  ScheduleCalendar(int i) {
+  Calendar(int i) {
     this.index = i;
   }
 
   @override
-  _ScheduleCalendarState createState() {
-    return _ScheduleCalendarState(this.index);
+  _CalendarState createState() {
+    return _CalendarState(this.index);
   }
 }
 
-class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
+class _CalendarState extends State<Calendar> with AppStorage {
   final LocalStorage calendarStorage = new LocalStorage('calendar.json');
   Activities activities;
   int _currentIndex = 0;
 
-  _ScheduleCalendarState(int i) {
+  _CalendarState(int i) {
     this._currentIndex = i;
     this.activities = new Activities.todayFromStorage(calendarStorage);
   }
