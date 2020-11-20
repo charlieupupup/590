@@ -6,10 +6,10 @@ import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
 import 'package:schedule_hack/utilities.dart';
 
-class ScheduleModify extends StatelessWidget {
+class ScheduleElementDetail extends StatelessWidget {
   Activity _activity;
 
-  ScheduleModify(Activity activity) {
+  ScheduleElementDetail(Activity activity) {
     _activity = activity;
   }
 
@@ -170,6 +170,7 @@ class ScheduleModify extends StatelessWidget {
                   children: [
                     CancelButton(),
                     CheckNavButton(),
+                    modify(),
                   ],
                 ),
               ],
@@ -180,4 +181,29 @@ class ScheduleModify extends StatelessWidget {
       // title: Text(_activity.title),
     );
   }
+}
+
+FlatButton modify() {
+  return FlatButton(
+    onPressed: () {},
+    color: colorPowderBlue,
+    child: Row(
+      children: [
+        Image.asset(
+          'images/edit.png',
+          // height: 50,
+          // width: 50,
+        ),
+        Text('Modify'),
+      ],
+    ),
+    // child: Image.asset(
+    //   'images/edit.png',
+    //   height: 50,
+    //   width: 50,
+    // ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(18.0),
+    ),
+  );
 }

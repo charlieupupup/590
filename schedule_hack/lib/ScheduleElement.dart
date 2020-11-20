@@ -5,6 +5,8 @@ import 'package:schedule_hack/ScheduleModify.dart';
 
 import 'package:schedule_hack/utilities.dart';
 
+import 'ScheduleElementDetail.dart';
+
 class ScheduleElement extends StatelessWidget {
   //ScheduleEvent scheduleEvent;
   Activity scheduledActivity;
@@ -29,7 +31,7 @@ class ScheduleElement extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ScheduleModify(scheduledActivity),
+              builder: (context) => ScheduleElementDetail(scheduledActivity),
             ),
           );
         },
