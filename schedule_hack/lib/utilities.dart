@@ -98,8 +98,8 @@ UserPreferences userSettings;
 //method for TimeSelector Color Theme
 ColorScheme setTimeColors() {
   return new ColorScheme(
-      primary: colorAlmond,
-      primaryVariant: colorAlmond,
+      primary: colorIvory,  // hours
+      primaryVariant: colorIvory,
       secondary: colorAlmond,
       secondaryVariant: colorAlmond,
       error: colorBlackCoral,
@@ -107,7 +107,7 @@ ColorScheme setTimeColors() {
       onPrimary: colorBlackCoral,
       onError: colorBlackCoral,
       onSecondary: colorBlackCoral,
-      onSurface: colorAlmond,
+      onSurface: colorIvory, // seconds
       onBackground: colorBlackCoral,
       brightness: Brightness.dark,
       background: colorBlackCoral // circle
