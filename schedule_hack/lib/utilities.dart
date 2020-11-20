@@ -98,19 +98,20 @@ UserPreferences userSettings;
 //method for TimeSelector Color Theme
 ColorScheme setTimeColors() {
   return new ColorScheme(
-      primary: colorHoneydew,
-      primaryVariant: colorMelon,
-      secondary: colorHoneydew,
-      secondaryVariant: colorHoneydew,
+      primary: colorAlmond,
+      primaryVariant: colorAlmond,
+      secondary: colorAlmond,
+      secondaryVariant: colorAlmond,
       error: colorBlackCoral,
-      surface: colorAlmond,
-      onPrimary: colorBeige,
+      surface: colorMelon,
+      onPrimary: colorBlackCoral,
       onError: colorBlackCoral,
-      onSecondary: colorMelon,
-      onSurface: colorBlackCoral,
-      onBackground: colorAlmond,
+      onSecondary: colorBlackCoral,
+      onSurface: colorAlmond,
+      onBackground: colorBlackCoral,
       brightness: Brightness.dark,
-      background: colorAlmond);
+      background: colorBlackCoral // circle
+  );
 }
 
 //method for DateSelector Color Theme
