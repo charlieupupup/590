@@ -19,7 +19,7 @@ class ScheduleElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    //print("Building schedule element " + scheduledActivity.description);
     return Padding(
       padding: EdgeInsets.all(10),
       child: MaterialButton(

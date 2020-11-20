@@ -27,9 +27,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateBanner.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/TimeSelector.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleElementDetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleElementDetail.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,11 +74,11 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/schedule_hack/images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\csadl\OneDrive - Duke University\DUKE\Fall_2020\ECE590-HCC\Final_Prototype\590\schedule_hack\lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/schedule_hack/images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -115,20 +113,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Update with master">
-      <created>1604096442145</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1604096442145</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Change page to courses home">
-      <created>1604163387247</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1604163387247</updated>
     </task>
     <task id="LOCAL-00017" summary="Change page to courses home">
       <created>1604163428197</created>
@@ -459,7 +443,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605753012112</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="started fixed date selector and time selector for modify">
+      <created>1605894306700</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1605894306707</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Schedule modify UI update with date and time selector">
+      <created>1605907754819</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1605907754821</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,8 +475,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Course name on button error fixed" />
-    <MESSAGE value="Added functionality to complete intake survey and proceed to home page" />
     <MESSAGE value="adding workspace files" />
     <MESSAGE value="Starter code for SelfCare Tab" />
     <MESSAGE value="Added new survey questions" />
@@ -502,7 +498,9 @@
     <MESSAGE value="Preference UI update: button change and text color change" />
     <MESSAGE value="Added color updates for time and date selector (CAN BE EASILY MODIFIED)" />
     <MESSAGE value="Fixed changes based on merge with updates to NewCoursePopup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed changes based on merge with updates to NewCoursePopup" />
+    <MESSAGE value="started fixed date selector and time selector for modify" />
+    <MESSAGE value="Schedule modify UI update with date and time selector" />
+    <option name="LAST_COMMIT_MESSAGE" value="Schedule modify UI update with date and time selector" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

@@ -10,7 +10,23 @@ class ScheduleView extends StatelessWidget {
   List<Activity> _list;
 
   ScheduleView(List<Activity> list) {
-    _list = list;
+    //_list = list;
+    Activity a0 = new Activity.fromIso8601(
+        DateTime(2020, 11, 4, 1).toIso8601String(),
+        DateTime(2020, 11, 4, 3).toIso8601String(),
+        "ECE590",
+        "Attend ECE564");
+    Activity a1 = new Activity.fromIso8601(
+        DateTime(2020, 11, 7, 2).toIso8601String(),
+        DateTime.now().toIso8601String(),
+        "ECE564",
+        "Final Project");
+    Activity a2 = new Activity.fromIso8601(
+        DateTime(2020, 11, 12, 2).toIso8601String(),
+        DateTime.now().toIso8601String(),
+        "ECE551",
+        "Final Presentation");
+    _list = [a0, a1, a2];
   }
 
   @override
@@ -39,7 +55,7 @@ class ScheduleView extends StatelessWidget {
                           return;
                         });
                   },
-                  backgroundColor: colorAeroBlue,//colorHoneydew,
+                  backgroundColor: colorAeroBlue, //colorHoneydew,
                   child: Image.asset('images/add.png'),
                 ),
               ),
