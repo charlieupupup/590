@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
-import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/CheckmarkButton.dart';
+import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class ScheduleModify extends StatelessWidget {
@@ -34,7 +36,7 @@ class ScheduleModify extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: (Text(getDate(_activity.startTime))),
+            child: (Text(getDate(_activity.date))),
           ),
           // Container(
           //   child: Column(
@@ -49,7 +51,7 @@ class ScheduleModify extends StatelessWidget {
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             // child: Text(_activity.date.month.toString()),
-            child: Text(getTime(_activity.startTime)),
+            child: Text(getTime(_activity.date)),
           ),
         ],
       );
@@ -64,11 +66,11 @@ class ScheduleModify extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(getDate(_activity.endTime)),
+            child: Text(getDate(_activity.endDate)),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(getTime(_activity.endTime)),
+            child: Text(getTime(_activity.endDate)),
           ),
         ],
       );
@@ -87,7 +89,7 @@ class ScheduleModify extends StatelessWidget {
                 textScaleFactor: 1,
               ),
               Text(
-                _activity.subject,
+                _activity.title,
                 textScaleFactor: 2,
               ),
             ],
@@ -127,7 +129,7 @@ class ScheduleModify extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: _activity.notes,
+                      labelText: _activity.description,
                     ),
                   ),
                 ),
@@ -136,7 +138,8 @@ class ScheduleModify extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CancelButton(),
-                    CheckNavButton(),
+                    //CheckNavButton(),
+                    CheckmarkButton.schedule(7)
                   ],
                 ),
               ],

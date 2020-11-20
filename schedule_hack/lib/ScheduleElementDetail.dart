@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/CancelButton.dart';
+import 'package:schedule_hack/CheckNavButton.dart';
 import 'package:schedule_hack/ScheduleModify.dart';
 import 'package:schedule_hack/utilities.dart';
 
@@ -14,6 +16,35 @@ class ScheduleElementDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return Container(
+    //   child: Column(
+    //     children: [
+    //       Row(
+    //         children: [
+    //           Text('Start:'),
+    //           Container(
+    //             decoration:
+    //                 BoxDecoration(border: Border.all(color: Colors.black)),
+    //             child: Text(_activity.date.month.toString()),
+    //           ),
+    //         ],
+    //       ),
+    //       Row(),
+    //       Text('Details:'),
+    //       Container(
+    //         decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+    //         child: Text(_activity.description),
+    //       ),
+    //       ButtonBar(
+    //         children: [
+    //           CancelButton(),
+    //           CheckNavButton(),
+    //         ],
+    //       ),
+    //     ],
+    //   ),
+    // );
+
     String getDate(DateTime dateTime) {
       final df = new DateFormat('MMM dd, yyyy');
       return df.format(dateTime);
@@ -42,7 +73,7 @@ class ScheduleElementDetail extends StatelessWidget {
             //     _activity.date.year.toString()),
 
             child: (Text(
-              getDate(_activity.startTime),
+              getDate(_activity.date),
               style: _style(),
             )),
           ),
@@ -50,7 +81,7 @@ class ScheduleElementDetail extends StatelessWidget {
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             // child: Text(_activity.date.month.toString()),
             child: Text(
-              getTime(_activity.startTime),
+              getTime(_activity.date),
               style: _style(),
             ),
           ),
@@ -68,14 +99,14 @@ class ScheduleElementDetail extends StatelessWidget {
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: Text(
-              getDate(_activity.endTime),
+              getDate(_activity.endDate),
               style: _style(),
             ),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: Text(
-              getTime(_activity.endTime),
+              getTime(_activity.endDate),
               style: _style(),
             ),
           ),
@@ -92,7 +123,7 @@ class ScheduleElementDetail extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                _activity.subject,
+                _activity.title,
                 textScaleFactor: 2,
               ),
             ],
@@ -110,6 +141,22 @@ class ScheduleElementDetail extends StatelessWidget {
             color: colorAeroBlue,
             child: Column(
               children: [
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Text('Start:'),
+                //     Container(
+                //       decoration:
+                //           BoxDecoration(border: Border.all(color: Colors.black)),
+                //       child: Text(_activity.date.month.toString()),
+                //     ),
+                //     Container(
+                //       decoration:
+                //           BoxDecoration(border: Border.all(color: Colors.black)),
+                //       child: Text(_activity.date.month.toString()),
+                //     ),
+                //   ],
+                // ),
                 SizedBox(height: 10),
                 Start(_activity),
                 SizedBox(height: 10),
@@ -131,7 +178,7 @@ class ScheduleElementDetail extends StatelessWidget {
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.black)),
                   child: Text(
-                    _activity.notes,
+                    _activity.description,
                     style: _style(),
                   ),
                 ),
