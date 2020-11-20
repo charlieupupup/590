@@ -4,13 +4,14 @@ import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckNavButton.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/ScheduleModify.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class ScheduleElementDetail extends StatelessWidget {
-  Activity _activity;
+  ScheduleEvent _activity;
 
-  ScheduleElementDetail(Activity activity) {
+  ScheduleElementDetail(ScheduleEvent activity) {
     _activity = activity;
   }
 
@@ -55,7 +56,7 @@ class ScheduleElementDetail extends StatelessWidget {
       return df.format(dateTime);
     }
 
-    Widget Start(Activity _activity) {
+    Widget Start(ScheduleEvent _activity) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -73,7 +74,7 @@ class ScheduleElementDetail extends StatelessWidget {
             //     _activity.date.year.toString()),
 
             child: (Text(
-              getDate(_activity.date),
+              getDate(_activity.startTime),
               style: _style(),
             )),
           ),
@@ -81,7 +82,7 @@ class ScheduleElementDetail extends StatelessWidget {
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             // child: Text(_activity.date.month.toString()),
             child: Text(
-              getTime(_activity.date),
+              getTime(_activity.startTime),
               style: _style(),
             ),
           ),
@@ -89,7 +90,7 @@ class ScheduleElementDetail extends StatelessWidget {
       );
     }
 
-    Widget End(Activity _activity) {
+    Widget End(ScheduleEvent _activity) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -99,14 +100,14 @@ class ScheduleElementDetail extends StatelessWidget {
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: Text(
-              getDate(_activity.endDate),
+              getDate(_activity.endTime),
               style: _style(),
             ),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: Text(
-              getTime(_activity.endDate),
+              getTime(_activity.endTime),
               style: _style(),
             ),
           ),
@@ -123,7 +124,7 @@ class ScheduleElementDetail extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                _activity.title,
+                _activity.subject,
                 textScaleFactor: 2,
               ),
             ],
@@ -178,7 +179,7 @@ class ScheduleElementDetail extends StatelessWidget {
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.black)),
                   child: Text(
-                    _activity.description,
+                    _activity.notes,
                     style: _style(),
                   ),
                 ),

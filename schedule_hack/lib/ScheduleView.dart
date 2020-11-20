@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 
 import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
   //List<ScheduleEvent> _list;
-  List<Activity> _list;
+  List<ScheduleEvent> _list;
 
-  ScheduleView(List<Activity> list) {
+  ScheduleView(List<ScheduleEvent> list) {
     _list = list;
   }
 
@@ -39,7 +40,7 @@ class ScheduleView extends StatelessWidget {
                           return;
                         });
                   },
-                  backgroundColor: colorAeroBlue,//colorHoneydew,
+                  backgroundColor: colorAeroBlue, //colorHoneydew,
                   child: Image.asset('images/add.png'),
                 ),
               ),
