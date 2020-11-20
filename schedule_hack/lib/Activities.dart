@@ -9,9 +9,9 @@ class Activities {
   DateTime date = DateTime.now();
 
   ////////////constructors
-  Activities.test() {
+  Activities.test(int days) {
     this.activities = new List<ScheduleEvent>();
-    activities.add(new ScheduleEvent.test());
+    activities.add(new ScheduleEvent.test(days));
   }
 
   Activities.fromDate(DateTime date) {

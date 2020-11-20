@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CalendarButton.dart';
 import 'package:schedule_hack/DateBanner.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
@@ -12,26 +13,13 @@ import 'Home.dart';
 import 'SettingsButton.dart';
 
 class Schedule extends StatelessWidget {
-  //EventList<Event> _scheduleToday;
-  List<Activity> _scheduleToday;
+  List<ScheduleEvent> _scheduleToday;
   final String title;
   DateTime date;
 
-  Activity a0 = new Activity.fromIso8601(
-      DateTime(2020, 11, 4, 1).toIso8601String(),
-      DateTime(2020, 11, 4, 3).toIso8601String(),
-      "ECE564",
-      "Attend ECE564");
-  Activity a1 = new Activity.fromIso8601(
-      DateTime(2020, 11, 7, 2).toIso8601String(),
-      DateTime.now().toIso8601String(),
-      "ECE564",
-      "Final Presentation");
-  Activity a2 = new Activity.fromIso8601(
-      DateTime(2020, 11, 12, 2).toIso8601String(),
-      DateTime.now().toIso8601String(),
-      "ECE564",
-      "Final Presentation");
+  ScheduleEvent a0 = new ScheduleEvent.test(0);
+  ScheduleEvent a1 = new ScheduleEvent.test(2);
+  ScheduleEvent a2 = new ScheduleEvent.test(4);
 
   Schedule({Key key, this.title, this.date}) : super(key: key) {
     _scheduleToday = [a0, a1, a2];
