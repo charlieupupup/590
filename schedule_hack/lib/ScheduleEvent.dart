@@ -54,8 +54,8 @@ class ScheduleEvent extends Appointment {
   //convert from json encodable
   toJSONEncodable() {
     Map<String, dynamic> m = new Map();
-    m['start'] = startTime;
-    m['end'] = endTime;
+    m['start'] = start;
+    m['end'] = end;
     m['subject'] = subject;
     m['notes'] = notes;
     return m;
