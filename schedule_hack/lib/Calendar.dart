@@ -144,8 +144,7 @@ class _CalendarState extends State<Calendar> with AppStorage {
     Activity a0 = new Activity.test("Study", 0);
     Activity a1 = new Activity.test("Attend Class", 2);
     Activity a2 = new Activity.test("Sleep", 4);
-    Activities a =
-        new Activities.fromScheduleEvents(DateTime.now(), [a0, a1, a2]);
+    Activities a = new Activities.fromActivities(DateTime.now(), [a0, a1, a2]);
     this.activities = a;
     return a;
   }

@@ -8,8 +8,8 @@ mixin AppStorage {
   Activities getActivitiesFromStorage(
       DateTime date, LocalStorage localStorage) {
     List<Activity> events =
-        Activities.getEventListFromStorage(date, localStorage);
-    Activities a = new Activities.fromScheduleEvents(date, events);
+        Activities.getActivitiesFromStorage(date, localStorage);
+    Activities a = new Activities.fromActivities(date, events);
     return a;
   }
 

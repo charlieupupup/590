@@ -18,27 +18,22 @@ class Activities {
     this.date = date;
   }
 
-  //copy another Activities object
-  Activities.fromActivities(Activities activities) {
-    this.activities = activities.activities;
-  }
-
   //from list of Schedule Events (new)
-  Activities.fromScheduleEvents(DateTime date, List<Activity> events) {
+  Activities.fromActivities(DateTime date, List<Activity> events) {
     this.date = date;
-    setEvents(events);
+    setActivities(events);
   }
 
   //from storage from key: today's date
   Activities.todayFromStorage(LocalStorage storage) {
-    this.activities = getEventListFromStorage(DateTime.now(), storage);
+    this.activities = getActivitiesFromStorage(DateTime.now(), storage);
     this.date = DateTime.now();
   }
 
   //from storage from key: date
   Activities.fromStorage(DateTime date, LocalStorage storage) {
     this.date = date;
-    this.activities = getEventListFromStorage(date, storage);
+    this.activities = getActivitiesFromStorage(date, storage);
   }
 
   //JSON encodable conversion
@@ -53,7 +48,7 @@ class Activities {
     final encoded = this.toJSONEncodable();
     storage.setItem(date.toIso8601String(), encoded);
     //getting into storage and getting out of storage to make sure it worked
-    List<Activity> se = getEventListFromStorage(date, storage);
+    List<Activity> se = getActivitiesFromStorage(date, storage);
     print(
         "adding ${se.length} events on ${DateFormat.yMEd('en_US').format(date)}");
   }
@@ -69,13 +64,12 @@ class Activities {
 
   //various getters and getters
 
-  List<Activity> getEvents() {
+  List<Activity> getActivities() {
     return this.activities;
   }
 
-  //Sets events from a List<ScheduleEvent>
-  void setEvents(List<Activity> e) {
-    this.activities = e;
+  void setActivities(List<Activity> a) {
+    this.activities = a;
   }
 
   DateTime getDate() {
@@ -83,7 +77,7 @@ class Activities {
   }
 
   //get a list of ScheduleEvents on date from LocalStorage
-  static List<Activity> getEventListFromStorage(
+  static List<Activity> getActivitiesFromStorage(
       DateTime date, LocalStorage storage) {
     String day = date.toIso8601String();
     List<Activity> e = new List<Activity>();
@@ -101,9 +95,9 @@ class Activities {
   }
 
   static Activities getFromStorage(DateTime date, LocalStorage storage) {
-    List<Activity> events = Activities.getEventListFromStorage(date, storage);
-    Activities a = new Activities.fromScheduleEvents(date, events);
-    print("EVENTS (${events}) is of type ${events.runtimeType}");
+    List<Activity> events = Activities.getActivitiesFromStorage(date, storage);
+    Activities a = new Activities.fromActivities(date, events);
+    print("ACTIVITIES (${events}) is of type ${events.runtimeType}");
     return a;
   }
 }
