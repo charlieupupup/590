@@ -29,6 +29,9 @@ class CheckmarkButton extends StatefulWidget {
     this.index = i;
     this.course = c;
   }
+  CheckmarkButton.schedule(int i) {
+    this.index = i;
+  }
   CheckmarkButton.course(int i, TextEditingController name,
       TextEditingController sT, TextEditingController eT) {
     this.index = i;
