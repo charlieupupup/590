@@ -35,25 +35,36 @@ class ScheduleElementDetail extends StatelessWidget {
               'Start:',
             ),
           ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            // child: Text(_activity.date.month.toString() +
-            //     '/' +
-            //     _activity.date.day.toString() +
-            //     ',   ' +
-            //     _activity.date.year.toString()),
-
-            child: (Text(
-              getDate(_activity.date),
-              style: _style(),
-            )),
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              enabled: false,
+              decoration: InputDecoration(
+                hintText: getDate(_activity.date),
+                filled: true,
+                fillColor: colorBeige,
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: colorBlackCoral),
+                ),
+              ),
+            ),
           ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            // child: Text(_activity.date.month.toString()),
-            child: Text(
-              getTime(_activity.date),
-              style: _style(),
+          SizedBox(
+            width: 10.0,
+          ),
+          //),
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              enabled: false,
+              decoration: InputDecoration(
+                hintText: getTime(_activity.date),
+                filled: true,
+                fillColor: colorBeige,
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: colorBlackCoral),
+                ),
+              ),
             ),
           ),
         ],
@@ -67,18 +78,35 @@ class ScheduleElementDetail extends StatelessWidget {
           Container(
             child: Text('End:  '),
           ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(
-              getDate(_activity.endDate),
-              style: _style(),
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              enabled: false,
+              decoration: InputDecoration(
+                hintText: getDate(_activity.date),
+                filled: true,
+                fillColor: colorBeige,
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: colorBlackCoral),
+                ),
+              ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(
-              getTime(_activity.endDate),
-              style: _style(),
+          SizedBox(
+            width: 10.0,
+          ),
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              enabled: false,
+              decoration: InputDecoration(
+                hintText: getTime(_activity.date),
+                filled: true,
+                fillColor: colorBeige,
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: colorBlackCoral),
+                ),
+              ),
             ),
           ),
         ],
@@ -100,34 +128,19 @@ class ScheduleElementDetail extends StatelessWidget {
             ],
             mainAxisAlignment: MainAxisAlignment.spaceAround,
           ),
-          width: 300,
+          width: 400,
           height: 75,
           decoration: BoxDecoration(
             color: colorPowderBlue,
-            // borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
-        SingleChildScrollView(
-          child: Container(
-            color: colorAeroBlue,
+        //SingleChildScrollView(
+        Container(
+          color: colorAeroBlue,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               children: [
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text('Start:'),
-                //     Container(
-                //       decoration:
-                //           BoxDecoration(border: Border.all(color: Colors.black)),
-                //       child: Text(_activity.date.month.toString()),
-                //     ),
-                //     Container(
-                //       decoration:
-                //           BoxDecoration(border: Border.all(color: Colors.black)),
-                //       child: Text(_activity.date.month.toString()),
-                //     ),
-                //   ],
-                // ),
                 SizedBox(height: 10),
                 Start(_activity),
                 SizedBox(height: 10),
@@ -144,10 +157,12 @@ class ScheduleElementDetail extends StatelessWidget {
                 SizedBox(height: 10),
                 // Text('Details:'),
                 Container(
-                  width: 200,
+                  width: 300,
                   height: 100,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black)),
+                  decoration: BoxDecoration(
+                    color: colorBeige,
+                    border: Border.all(color: colorBlackCoral),
+                  ),
                   child: Text(
                     _activity.description,
                     style: _style(),
@@ -164,7 +179,7 @@ class ScheduleElementDetail extends StatelessWidget {
               ],
             ),
           ),
-        ),
+        )
       ],
       // title: Text(_activity.title),
     );
@@ -185,17 +200,10 @@ class ScheduleElementDetail extends StatelessWidget {
         children: [
           Image.asset(
             'images/edit.png',
-            // height: 50,
-            // width: 50,
           ),
           Text('Modify'),
         ],
       ),
-      // child: Image.asset(
-      //   'images/edit.png',
-      //   height: 50,
-      //   width: 50,
-      // ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18.0),
       ),
@@ -215,17 +223,10 @@ FlatButton delete() {
       children: [
         Image.asset(
           'images/trashcan.png',
-          // height: 50,
-          // width: 50,
         ),
         Text('Delete'),
       ],
     ),
-    // child: Image.asset(
-    //   'images/edit.png',
-    //   height: 50,
-    //   width: 50,
-    // ),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(18.0),
     ),
