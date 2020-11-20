@@ -310,19 +310,11 @@ class _AssignmentListState extends State<AssignmentList> {
   _backButton() {
     if (this.edit == 1) {
       print('edit cancel');
-      // TODO: bug where hitting back still saves data
-      List list = new List();
-      list = globalCourse.getAssignments;
-      for (int i = 0; i < list.length; i++) {
-        Assignment a = list[i];
-        String assignmentName = a.getDescription;
-        print('Assignment: $assignmentName');
-      }
       StandardPopup.course(
           context,
-          'Going back now will not save all progress. Are you sure?',
+          'This will take you back to your Courses. Your data will be saved.',
           5,
-          globalCourse);
+          this.course);
     } else {
       //return CancelButton.assignment(2, this.course);
       print('cancel should be working');
@@ -402,7 +394,8 @@ class _AssignmentListState extends State<AssignmentList> {
                         child: ButtonBar(
                           alignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
-                            CancelButton(),
+                            //CancelButton(),
+                            cancelAssignment(),
                             saveAssignment(),
                           ],
                         ),
@@ -412,6 +405,24 @@ class _AssignmentListState extends State<AssignmentList> {
                 ),
               ),
             ));
+  }
+
+  Widget cancelAssignment(){
+    return MaterialButton(
+      onPressed: (){
+        myControllerDate.clear();
+        myControllerTime.clear();
+        myControllerDescription.clear();
+        Navigator.of(context).pop();
+      },
+      color: colorMelon,
+      child: Image.asset(
+        'images/delete.png',
+        height: 50,
+        width: 50,
+      ),
+      shape: CircleBorder(),
+    );
   }
 
   Widget saveAssignment() {
@@ -433,12 +444,12 @@ class _AssignmentListState extends State<AssignmentList> {
             // ActivityNew activity = new ActivityNew.fromScheduleEvent(se); TODO
             activityList.add(activity);
             // activities.addActivity(activity); TODO
-            myControllerDate.clear();
-            myControllerTime.clear();
-            myControllerDescription.clear();
           }
         });
         printText();
+        myControllerDate.clear();
+        myControllerTime.clear();
+        myControllerDescription.clear();
         Navigator.of(context).pop();
       },
       color: colorHoneydew,
