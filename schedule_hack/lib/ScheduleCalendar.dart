@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ActivityDataSource.dart';
 import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Activities.dart';
+import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -142,22 +142,11 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> with AppStorage {
 
   //random data in calendar
   Activities _getPrepopulatedDataSource() {
-    ActivityNew course = new ActivityNew(DateTime.now(),
-        DateTime.now().add(Duration(hours: 2)), "Attend ECE564");
-    ActivityNew sleep = new ActivityNew(
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
-        DateTime(
-            DateTime.now().year, DateTime.now().month, DateTime.now().day, 8),
-        "8 hours of sleep");
-    ActivityNew sleep2 = new ActivityNew(
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)
-            .add(Duration(days: 2)),
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day,
-                8)
-            .add(Duration(days: 2)),
-        "8 hours of sleep");
-    Activities a = new Activities.fromActivityList(
-        DateTime.now(), [course, sleep, sleep2]);
+    ScheduleEvent a0 = new ScheduleEvent.test(0);
+    ScheduleEvent a1 = new ScheduleEvent.test(2);
+    ScheduleEvent a2 = new ScheduleEvent.test(4);
+    Activities a =
+        new Activities.fromScheduleEvents(DateTime.now(), [a0, a1, a2]);
     this.activities = a;
     return a;
   }

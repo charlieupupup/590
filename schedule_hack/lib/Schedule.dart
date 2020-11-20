@@ -5,7 +5,6 @@ import 'package:schedule_hack/ScheduleEvent.dart';
 import 'package:schedule_hack/ScheduleView.dart';
 import 'package:schedule_hack/utilities.dart';
 
-
 import 'Home.dart';
 
 import 'SettingsButton.dart';
