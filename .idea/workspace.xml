@@ -26,8 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/AddScheduleEventPopup.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleElementDetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleElementDetail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,11 +77,11 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\csadl\OneDrive - Duke University\DUKE\Fall_2020\ECE590-HCC\Final_Prototype\590\schedule_hack\lib" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/schedule_hack/images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\csadl\OneDrive - Duke University\DUKE\Fall_2020\ECE590-HCC\Final_Prototype\590\schedule_hack\lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -113,13 +116,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Change page to courses home">
-      <created>1604163428197</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1604163428197</updated>
     </task>
     <task id="LOCAL-00018" summary="Added onPressed capability to AddButton to PlaceholderWidget">
       <created>1604164777144</created>
@@ -457,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605907754821</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="make add button unclickable">
+      <created>1605984946666</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1605984946667</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,7 +478,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding workspace files" />
     <MESSAGE value="Starter code for SelfCare Tab" />
     <MESSAGE value="Added new survey questions" />
     <MESSAGE value="Basic setup of self care tab with check in/out buttons" />
@@ -500,7 +502,8 @@
     <MESSAGE value="Fixed changes based on merge with updates to NewCoursePopup" />
     <MESSAGE value="started fixed date selector and time selector for modify" />
     <MESSAGE value="Schedule modify UI update with date and time selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Schedule modify UI update with date and time selector" />
+    <MESSAGE value="make add button unclickable" />
+    <option name="LAST_COMMIT_MESSAGE" value="make add button unclickable" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

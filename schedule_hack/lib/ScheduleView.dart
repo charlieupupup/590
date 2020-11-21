@@ -4,6 +4,7 @@ import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ActivityDataSource.dart';
 
 import 'package:schedule_hack/utilities.dart';
+import 'AddScheduleEventPopup.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
@@ -35,8 +36,7 @@ class ScheduleView extends StatelessWidget {
                     showDialog(
                         context: context,
                         builder: (_) {
-                          //return NewCoursePopup(nameController, startTimeController, endTimeController);
-                          return;
+                          return AddScheduleEventPopup();
                         });
                   },
                   backgroundColor: colorAeroBlue, //colorHoneydew,

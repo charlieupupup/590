@@ -37,7 +37,10 @@ class _DateSelectorState extends State<DateSelector> {
           child: TextField(
         readOnly: true,
         controller: dateController,
-        decoration: InputDecoration(hintText: hintText),
+        decoration: InputDecoration(
+          hintText: hintText,
+          suffixIcon: Icon(Icons.calendar_today),
+        ),
         onTap: () async {
           var date = await showDatePicker(
             context: context,

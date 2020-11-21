@@ -10,8 +10,8 @@ class ScheduleElement extends StatelessWidget {
   List<Activity> _dayActivities;
 
   ScheduleElement(Activity activity, List<Activity> dayActivities) {
-    _activity = activity;
-    _dayActivities = dayActivities;
+    this._activity = activity;
+    this._dayActivities = dayActivities;
   }
 
   @override
@@ -46,12 +46,15 @@ class ScheduleElement extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              //Image(image: AssetImage(scheduleEvent.img)),
-              _activity.image,
-              //Text(scheduleEvent.title),
-              Text(_activity.subject),
-              //Text(scheduleEvent.interval),
-
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _activity.image,
+              ),
+              Text(_activity.subject,
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold)),
               Icon(Icons.arrow_forward_ios),
             ],
           ),

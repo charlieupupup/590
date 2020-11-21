@@ -13,15 +13,13 @@ class ScheduleModify extends StatelessWidget {
   Activity activity;
   TextEditingController startTimeController = TextEditingController();
   TextEditingController endTimeController = TextEditingController();
-  TextEditingController notesController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
-
-  ScheduleModify(Activity activity, List<Activity> activities) {
+  TextEditingController notesController = TextEditingController();
+  ScheduleModify(Activity _activityy, List<Activity> activities) {
     this.activity = activity;
     dayActivities = activities;
-    print(
-        "line 23 SM  activity selected is subject: ${this.activity.subject} notes: ${this.activity.notes}");
+
   }
 
   @override
@@ -102,7 +100,9 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                startTimeController.text = time.format(context);
+                if (time != null){
+                  startTimeController.text = time.format(context);
+                }
               },
             ),
           ),
@@ -174,7 +174,9 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                endTimeController.text = time.format(context);
+                if (time != null){
+                  endTimeController.text = time.format(context);
+                }
               },
             ),
           ),
@@ -195,8 +197,7 @@ class ScheduleModify extends StatelessWidget {
                 textScaleFactor: 1,
               ),
               Text(
-                "",
-                // activity.subject,
+                _activity.subject,
                 textScaleFactor: 2,
               ),
             ],
@@ -236,6 +237,7 @@ class ScheduleModify extends StatelessWidget {
                   height: 100,
                   //decoration: BoxDecoration(border: Border.all(color: colorBlackCoral)),
                   child: TextField(
+                    controller: notesController,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: colorBeige,
