@@ -96,7 +96,9 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                startTimeController.text = time.format(context);
+                if (time != null){
+                  startTimeController.text = time.format(context);
+                }
               },
             ),
           ),
@@ -168,7 +170,9 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                endTimeController.text = time.format(context);
+                if (time != null){
+                  endTimeController.text = time.format(context);
+                }
               },
             ),
           ),

@@ -39,7 +39,9 @@ class _TimeSelectorState extends State<TimeSelector> {
                 );
               },
             );
-            timeController.text = time.format(context);
+            if (time != null){
+              timeController.text = time.format(context);
+            }
           },
         ),
       ),
