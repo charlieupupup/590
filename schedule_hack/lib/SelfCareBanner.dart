@@ -13,6 +13,7 @@ class CarouselBanner extends StatelessWidget {
           options: CarouselOptions(
             autoPlay: true,
             enlargeCenterPage: true,
+            viewportFraction: 0.4,
             aspectRatio: 2,
           ),
         ),
@@ -28,7 +29,13 @@ class CarouselBanner extends StatelessWidget {
         color: colorAeroBlue,
         borderRadius: BorderRadius.circular(22.0),
       ),
-      child: Image.asset("images/relax.png"),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text('tired? recommendation based on recent activity'),
+          Image.asset("images/relax.png"),
+        ],
+      ),
     ));
 
     img.add(Container(
