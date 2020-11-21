@@ -23,17 +23,32 @@ class CarouselBanner extends StatelessWidget {
     List<Widget> img = new List();
 
     img.add(Container(
-      width: 300,
-      height: 50,
+      width: 500,
+      height: 40,
       decoration: BoxDecoration(
         color: colorAeroBlue,
         borderRadius: BorderRadius.circular(22.0),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('tired? recommendation based on recent activity'),
+          Center(
+            child: Text(
+              'meditation?',
+              textScaleFactor: 2,
+            ),
+          ),
           Image.asset("images/relax.png"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'suggestion based on history',
+                textScaleFactor: 0.7,
+              ),
+            ],
+          ),
         ],
       ),
     ));
