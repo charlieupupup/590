@@ -16,10 +16,9 @@ class ScheduleModify extends StatelessWidget {
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
   TextEditingController notesController = TextEditingController();
-  ScheduleModify(Activity _activityy, List<Activity> activities) {
-    this.activity = activity;
-    dayActivities = activities;
-
+  ScheduleModify(Activity _activity, List<Activity> activities) {
+    this.activity = _activity;
+    this.dayActivities = activities;
   }
 
   @override
@@ -100,7 +99,7 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                if (time != null){
+                if (time != null) {
                   startTimeController.text = time.format(context);
                 }
               },
@@ -174,7 +173,7 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                if (time != null){
+                if (time != null) {
                   endTimeController.text = time.format(context);
                 }
               },
@@ -197,7 +196,7 @@ class ScheduleModify extends StatelessWidget {
                 textScaleFactor: 1,
               ),
               Text(
-                _activity.subject,
+                activity.subject,
                 textScaleFactor: 2,
               ),
             ],
@@ -320,8 +319,8 @@ class _ModifyButtonState extends State<ModifyButton> {
     return MaterialButton(
       onPressed: () {
         setState(() {
-          new Activity.fromController(_activity.subject, _startDateController,
-              _endDateController, _notesController);
+          _activity = new Activity.fromController(_activity.subject,
+              _startDateController, _endDateController, _notesController);
         });
 
         Navigator.pushAndRemoveUntil(
