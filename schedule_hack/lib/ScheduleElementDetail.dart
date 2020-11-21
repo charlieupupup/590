@@ -31,6 +31,9 @@ class ScheduleElementDetail extends StatelessWidget {
           Container(
             child: Text(
               'Start:',
+                style: TextStyle(
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)
             ),
           ),
           Expanded(
@@ -74,7 +77,10 @@ class ScheduleElementDetail extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            child: Text('End:  '),
+            child: Text('End:  ',
+                style: TextStyle(
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)),
           ),
           Expanded(
             child: TextField(
@@ -121,7 +127,10 @@ class ScheduleElementDetail extends StatelessWidget {
             children: [
               Text(
                 _activity.subject,
-                textScaleFactor: 2,
+                style: TextStyle(
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold),
+                textScaleFactor: 2.5,
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -147,7 +156,10 @@ class ScheduleElementDetail extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Details:'),
+                    Text('Details:',
+                        style: TextStyle(
+                            color: colorBlackCoral,
+                            fontWeight: FontWeight.bold)),
                     Text(''),
                     Text(''),
                   ],
@@ -183,10 +195,10 @@ class ScheduleElementDetail extends StatelessWidget {
     );
   }
 
-  FlatButton modify(BuildContext context) {
-    return FlatButton(
+  Widget modify(BuildContext context) {
+    return MaterialButton(
+      elevation: 12,
       onPressed: () {
-        // Navigator.of(context).pop();
         showDialog(
             context: context,
             builder: (_) {
@@ -199,11 +211,15 @@ class ScheduleElementDetail extends StatelessWidget {
           Image.asset(
             'images/edit.png',
           ),
-          Text('Modify'),
+          Text('Modify',
+              style: TextStyle(
+                  fontSize: 16,
+                  color: colorBlackCoral,
+                  fontWeight: FontWeight.bold)),
         ],
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
+        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
@@ -213,8 +229,9 @@ TextStyle _style() {
   return TextStyle(color: Colors.grey);
 }
 
-FlatButton delete() {
-  return FlatButton(
+Widget delete() {
+  return MaterialButton(
+    elevation: 12,
     onPressed: () {},
     color: colorMelon,
     child: Row(
@@ -222,11 +239,15 @@ FlatButton delete() {
         Image.asset(
           'images/trashcan.png',
         ),
-        Text('Delete'),
+        Text('Delete',
+            style: TextStyle(
+                fontSize: 16,
+                color: colorBlackCoral,
+                fontWeight: FontWeight.bold)),
       ],
     ),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(18.0),
+      borderRadius: BorderRadius.circular(10.0),
     ),
   );
 }
