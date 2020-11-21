@@ -19,20 +19,9 @@ class CarouselBanner extends StatelessWidget {
       ]);
 
   List<Widget> getImgs() {
-    List a = [
-      "images/relax.png",
-      "images/checkout.png",
-      "images/sleepingbed.png",
-    ];
     List<Widget> img = new List();
-    img.add(buildImg());
-    img.add(Image.asset(a[1]));
-    img.add(Image.asset(a[2]));
-    return img;
-  }
 
-  Widget buildImg() {
-    return Container(
+    img.add(Container(
       width: 300,
       height: 50,
       decoration: BoxDecoration(
@@ -40,6 +29,28 @@ class CarouselBanner extends StatelessWidget {
         borderRadius: BorderRadius.circular(22.0),
       ),
       child: Image.asset("images/relax.png"),
-    );
+    ));
+
+    img.add(Container(
+      width: 300,
+      height: 50,
+      decoration: BoxDecoration(
+        color: colorPowderBlue,
+        borderRadius: BorderRadius.circular(22.0),
+      ),
+      child: Image.asset("images/relax.png"),
+    ));
+
+    img.add(Container(
+      width: 300,
+      height: 50,
+      decoration: BoxDecoration(
+        color: colorAeroBlue,
+        borderRadius: BorderRadius.circular(22.0),
+      ),
+      child: Image.asset("images/relax.png"),
+    ));
+
+    return img;
   }
 }
