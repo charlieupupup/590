@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/utilities.dart';
 
 class CarouselBanner extends StatelessWidget {
   CarouselController buttonCarouselController = CarouselController();
@@ -12,6 +13,7 @@ class CarouselBanner extends StatelessWidget {
           options: CarouselOptions(
             autoPlay: true,
             enlargeCenterPage: true,
+            aspectRatio: 2,
           ),
         ),
       ]);
@@ -23,9 +25,21 @@ class CarouselBanner extends StatelessWidget {
       "images/sleepingbed.png",
     ];
     List<Widget> img = new List();
-    img.add(Image.asset(a[0]));
+    img.add(buildImg());
     img.add(Image.asset(a[1]));
     img.add(Image.asset(a[2]));
     return img;
+  }
+
+  Widget buildImg() {
+    return Container(
+      width: 300,
+      height: 50,
+      decoration: BoxDecoration(
+        color: colorAeroBlue,
+        borderRadius: BorderRadius.circular(22.0),
+      ),
+      child: Image.asset("images/relax.png"),
+    );
   }
 }
