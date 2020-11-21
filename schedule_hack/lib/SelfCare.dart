@@ -8,6 +8,7 @@ import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Notify.dart';
+import 'package:schedule_hack/SelfCareBanner.dart';
 import 'package:schedule_hack/SettingsButton.dart';
 import 'package:schedule_hack/StandardPopup.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -87,13 +88,14 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                   color: colorMelon,
                   child: Align(
                     alignment: Alignment.center,
-                    child: AutoSizeText(
-                      "This is the self care banner",
-                      style: TextStyle(fontSize: 24, color: colorIvory),
-                      maxLines: 1,
-                      minFontSize: 20,
-                      textAlign: TextAlign.center,
-                    ),
+                    // child: AutoSizeText(
+                    //   "This is the self care banner",
+                    //   style: TextStyle(fontSize: 24, color: colorIvory),
+                    //   maxLines: 1,
+                    //   minFontSize: 20,
+                    //   textAlign: TextAlign.center,
+                    // ),
+                    child: CarouselBanner(),
                   ),
                 ),
               ),

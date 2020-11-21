@@ -7,7 +7,7 @@ class CarouselBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(children: <Widget>[
         CarouselSlider(
-          items: child,
+          items: getImgs(),
           carouselController: buttonCarouselController,
           options: CarouselOptions(
             autoPlay: false,
@@ -37,6 +37,8 @@ class CarouselBanner extends StatelessWidget {
       "https://cdn.pixabay.com/photo/2013/11/28/10/03/autumn-219972_960_720.jpg",
       "https://cdn.pixabay.com/photo/2017/12/17/19/08/away-3024773_960_720.jpg",
     ];
-    return a;
+    List<Widget> img = new List();
+    img.add(Image.network(a[0]));
+    return img;
   }
 }
