@@ -1,17 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ActivityDataSource.dart';
 
 import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
   //List<ScheduleEvent> _list;
-  List<Activity> _list;
+  // List<Activity> _list;
+  ActivityDataSource _activityDataSource;
 
-  ScheduleView(List<Activity> list) {
+  ScheduleView(ActivityDataSource activityDataSource) {
     //_list = list;
-    _list = list;
+    _activityDataSource = activityDataSource;
   }
 
   @override
@@ -54,7 +56,7 @@ class ScheduleView extends StatelessWidget {
             // borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
-        for (var scheduleEvent in _list)
+        for (var scheduleEvent in _activityDataSource.appointments)
           Container(
             // margin: const EdgeInsets.all(24.0),
             child: Column(

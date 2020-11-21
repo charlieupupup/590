@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Activities.dart';
+import 'package:schedule_hack/ActivityDataSource.dart';
 import 'package:schedule_hack/CalendarButton.dart';
 import 'package:schedule_hack/DateBanner.dart';
 import 'package:schedule_hack/Activity.dart';
@@ -10,16 +12,21 @@ import 'Home.dart';
 import 'SettingsButton.dart';
 
 class Schedule extends StatelessWidget {
-  List<Activity> _scheduleToday;
+  Activities _scheduleToday;
+  // List<Activity> _scheduleToday;
   final String title;
   DateTime date;
+  ActivityDataSource get activityDataSource {
+    return new ActivityDataSource(_scheduleToday);
+  }
 
   Activity a0 = new Activity.test("Study", 0);
   Activity a1 = new Activity.test("Attend Class", 2);
   Activity a2 = new Activity.test("Sleep", 4);
 
   Schedule({Key key, this.title, this.date}) : super(key: key) {
-    _scheduleToday = [a0, a1, a2];
+    List<Activity> activities = [a0, a1, a2];
+    _scheduleToday = new Activities.fromActivities(DateTime.now(), activities);
   }
   @override
   Widget build(BuildContext context) {
@@ -58,7 +65,7 @@ class Schedule extends StatelessWidget {
       body: Container(
         child: ListView(
           //children: [DateBanner(date: date), ScheduleView(_list)],
-          children: [DateBanner(date: date), ScheduleView(_scheduleToday)],
+          children: [DateBanner(date: date), ScheduleView(activityDataSource)],
         ),
       ),
     );
