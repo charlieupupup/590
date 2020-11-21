@@ -91,6 +91,7 @@ DateFormat.jm().format(date) // 12:48 PM
  */
 //global variable for whether or not survey has been completed by the user
 bool surveyDone = false;
+//bool calendarView = true;
 
 //set global user preferences
 UserPreferences userSettings;
@@ -98,19 +99,20 @@ UserPreferences userSettings;
 //method for TimeSelector Color Theme
 ColorScheme setTimeColors() {
   return new ColorScheme(
-      primary: colorHoneydew,
-      primaryVariant: colorMelon,
-      secondary: colorHoneydew,
-      secondaryVariant: colorHoneydew,
+      primary: colorIvory,  // hours
+      primaryVariant: colorIvory,
+      secondary: colorAlmond,
+      secondaryVariant: colorAlmond,
       error: colorBlackCoral,
-      surface: colorAlmond,
-      onPrimary: colorBeige,
+      surface: colorMelon,
+      onPrimary: colorBlackCoral,
       onError: colorBlackCoral,
-      onSecondary: colorMelon,
-      onSurface: colorBlackCoral,
-      onBackground: colorAlmond,
+      onSecondary: colorBlackCoral,
+      onSurface: colorIvory, // seconds
+      onBackground: colorBlackCoral,
       brightness: Brightness.dark,
-      background: colorAlmond);
+      background: colorBlackCoral // circle
+  );
 }
 
 //method for DateSelector Color Theme
@@ -133,3 +135,23 @@ ColorScheme setDateColors() {
 
 // global variable for course currently being edited
 Course globalCourse;
+
+//to add methods for getting image asset from string
+extension AppImage on Image {
+  static Image getImageFromSubject(String subject) {
+    Map<String, Image> m = new Map();
+    m['Study'] = Image.asset('images/books_filled.png');
+    m['Relax'] = Image.asset('images/relax.png');
+    m['Meeting'] = Image.asset('images/schedule.png');
+    m['Go for a run'] = Image.asset('images/running.png');
+    m['Meditate'] = Image.asset('images/meditation.png');
+    m['Attend Class'] = Image.asset('images/teacher.png');
+    m['Sleep'] = Image.asset('images/sleep.png');
+    print("key: $subject; value: ${m[subject]}");
+    if (m.containsKey(subject)) {
+      return m[subject];
+    } else {
+      return Image.asset('images/schedule.png');
+    }
+  }
+}

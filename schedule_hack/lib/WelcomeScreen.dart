@@ -18,41 +18,49 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              new Text(
-                'scheduleHack',
-                style: TextStyle(
-                  color: colorAlmond,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 35.0,
                 ),
-                textScaleFactor: 4,
-                textAlign: TextAlign.center,
+                child: new Text(
+                  'scheduleHack',
+                  style: TextStyle(
+                    color: colorIvory,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textScaleFactor: 4,
+                 // textAlign: TextAlign.center,
+                ),
               ),
-              new Text(
-                'Welcome!',
-                style: TextStyle(
-                  color: colorAlmond,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 10.0
                 ),
-                textScaleFactor: 3,
-                textAlign: TextAlign.center,
+                child: new Text(
+                  'Welcome!',
+                  style: TextStyle(
+                    color: colorIvory,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textScaleFactor: 3,
+                  textAlign: TextAlign.center,
+                ),
               ),
-              new Text(
-                'Help us crack the code to your balanced routine by answering a few questions',
-                style: TextStyle(
-                  color: colorAlmond,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 15.0,
+                  right: 8.0,
+                  left: 8.0
                 ),
-                textScaleFactor: 1,
-                textAlign: TextAlign.center,
-              ),
-              new Text(
-                'Help us crack the code to your balanced routine by answering a few questions',
-                style: TextStyle(
-                  color: colorPewterBlue,
-                  fontWeight: FontWeight.bold,
+                child: new Text(
+                  'Help us crack the code to your balanced routine by answering a few questions',
+                  style: TextStyle(
+                    color: colorIvory,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textScaleFactor: 1,
+                  textAlign: TextAlign.center,
                 ),
-                textScaleFactor: 1,
-                textAlign: TextAlign.center,
               ),
               MaterialButton(
                 height: 50,

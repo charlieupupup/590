@@ -1,8 +1,8 @@
-import 'package:schedule_hack/CalendarViewOld.dart';
-import 'package:schedule_hack/ScheduleCalendar.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'CalendarHome.dart';
 
 class CalendarButton extends StatefulWidget {
   @override
@@ -23,7 +23,8 @@ class _CalendarButtonState extends State<CalendarButton> {
       tooltip: 'calendar',
       onPressed: () {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ScheduleCalendar(0)));
+            MaterialPageRoute(builder: (context) => CalendarHome(0,true)));
+                //ScheduleCalendar(0)));
       },
     );
   }

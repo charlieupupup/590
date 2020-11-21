@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/CancelButton.dart';
-import 'package:schedule_hack/CheckNavButton.dart';
 import 'package:schedule_hack/ScheduleModify.dart';
 import 'package:schedule_hack/utilities.dart';
 
@@ -40,7 +38,7 @@ class ScheduleElementDetail extends StatelessWidget {
               readOnly: true,
               enabled: false,
               decoration: InputDecoration(
-                hintText: getDate(_activity.date),
+                hintText: getDate(_activity.startTime),
                 filled: true,
                 fillColor: colorBeige,
                 disabledBorder: OutlineInputBorder(
@@ -58,7 +56,7 @@ class ScheduleElementDetail extends StatelessWidget {
               readOnly: true,
               enabled: false,
               decoration: InputDecoration(
-                hintText: getTime(_activity.date),
+                hintText: getTime(_activity.startTime),
                 filled: true,
                 fillColor: colorBeige,
                 disabledBorder: OutlineInputBorder(
@@ -83,7 +81,7 @@ class ScheduleElementDetail extends StatelessWidget {
               readOnly: true,
               enabled: false,
               decoration: InputDecoration(
-                hintText: getDate(_activity.date),
+                hintText: getDate(_activity.endTime),
                 filled: true,
                 fillColor: colorBeige,
                 disabledBorder: OutlineInputBorder(
@@ -100,7 +98,7 @@ class ScheduleElementDetail extends StatelessWidget {
               readOnly: true,
               enabled: false,
               decoration: InputDecoration(
-                hintText: getTime(_activity.date),
+                hintText: getTime(_activity.endTime),
                 filled: true,
                 fillColor: colorBeige,
                 disabledBorder: OutlineInputBorder(
@@ -122,7 +120,7 @@ class ScheduleElementDetail extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                _activity.title,
+                _activity.subject,
                 textScaleFactor: 2,
               ),
             ],
@@ -164,7 +162,7 @@ class ScheduleElementDetail extends StatelessWidget {
                     border: Border.all(color: colorBlackCoral),
                   ),
                   child: Text(
-                    _activity.description,
+                    _activity.notes,
                     style: _style(),
                   ),
                 ),

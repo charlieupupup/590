@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CancelButton.dart';
-import 'package:schedule_hack/CheckNavButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
 import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -44,7 +43,7 @@ class ScheduleModify extends StatelessWidget {
               readOnly: true,
               controller: startDateController,
               decoration: InputDecoration(
-                hintText: getDate(_activity.date),
+                hintText: getDate(_activity.startTime),
                 filled: true,
                 fillColor: colorBeige,
                 enabledBorder: OutlineInputBorder(
@@ -79,7 +78,7 @@ class ScheduleModify extends StatelessWidget {
               readOnly: true,
               controller: startTimeController,
               decoration: InputDecoration(
-                  hintText: getTime(_activity.date),
+                  hintText: getTime(_activity.startTime),
                   filled: true,
                   fillColor: colorBeige,
                   enabledBorder: OutlineInputBorder(
@@ -117,7 +116,7 @@ class ScheduleModify extends StatelessWidget {
               readOnly: true,
               controller: endDateController,
               decoration: InputDecoration(
-                hintText: getDate(_activity.date),
+                hintText: getDate(_activity.endTime),
                 filled: true,
                 fillColor: colorBeige,
                 enabledBorder: OutlineInputBorder(
@@ -151,7 +150,7 @@ class ScheduleModify extends StatelessWidget {
               readOnly: true,
               controller: endTimeController,
               decoration: InputDecoration(
-                  hintText: getTime(_activity.date),
+                  hintText: getTime(_activity.endTime),
                   filled: true,
                   fillColor: colorBeige,
                   enabledBorder: OutlineInputBorder(
@@ -190,7 +189,7 @@ class ScheduleModify extends StatelessWidget {
                 textScaleFactor: 1,
               ),
               Text(
-                _activity.title,
+                _activity.subject,
                 textScaleFactor: 2,
               ),
             ],
@@ -234,7 +233,7 @@ class ScheduleModify extends StatelessWidget {
                       filled: true,
                       fillColor: colorBeige,
                       border: OutlineInputBorder(),
-                      labelText: _activity.description,
+                      labelText: _activity.notes,
                     ),
                   ),
                 ),

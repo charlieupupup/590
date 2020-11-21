@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/ScheduleModify.dart';
 
 import 'package:schedule_hack/utilities.dart';
 
 import 'ScheduleElementDetail.dart';
 
 class ScheduleElement extends StatelessWidget {
-  //ScheduleEvent scheduleEvent;
-  Activity scheduledActivity;
+  Activity activity;
 
   //ScheduleElement(ScheduleEvent scheduleEvent) {
-  ScheduleElement(Activity scheduleEvent) {
+  ScheduleElement(Activity activity) {
     //this.scheduleEvent = scheduleEvent;
-    this.scheduledActivity = scheduleEvent;
+    this.activity = activity;
   }
 
   @override
@@ -32,7 +29,7 @@ class ScheduleElement extends StatelessWidget {
           showDialog(
               context: context,
               builder: (_) {
-                return ScheduleElementDetail(scheduledActivity);
+                return ScheduleElementDetail(activity);
               });
         },
         // Navigator.push(
@@ -50,9 +47,9 @@ class ScheduleElement extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //Image(image: AssetImage(scheduleEvent.img)),
-              scheduledActivity.icon,
+              activity.image,
               //Text(scheduleEvent.title),
-              Text(scheduledActivity.title),
+              Text(activity.subject),
               //Text(scheduleEvent.interval),
 
               Icon(Icons.arrow_forward_ios),

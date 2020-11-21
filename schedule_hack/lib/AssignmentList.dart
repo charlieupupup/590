@@ -5,14 +5,12 @@ import 'package:schedule_hack/Assignment.dart';
 import 'package:schedule_hack/ConfirmPopup.dart';
 import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
-import 'package:schedule_hack/ScheduleEvent.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/utilities.dart';
-import 'Activity.dart';
 import 'CancelButton.dart';
 import 'Course.dart';
 
 import 'LoadingScreen.dart';
-import 'PlaceHolderWidget.dart';
 import 'SettingsButton.dart';
 import 'StandardPopup.dart';
 import 'TimeSelector.dart';
@@ -53,11 +51,9 @@ class _AssignmentListState extends State<AssignmentList> {
   int edit;
   Course course;
   int courseCount;
-  int _currentIndex = 2;
+  // int _currentIndex = 2;
   int viewingAssignments; // default is that we're editing (0)
-  List<Activity> activityList = new List<Activity>();
-  // Activities activities =
-  //     new Activities.fromActivityList(DateTime.now(), List<ActivityNew>()); TODO: convert to new activity
+  Activities activities = new Activities.test(0);
   Course originalCourse;
   bool deleteItem = false;
 
@@ -141,7 +137,7 @@ class _AssignmentListState extends State<AssignmentList> {
                   confirmDismiss: (direction) => promptUser(direction),
                 );
               }) //returnAssignmentButton(),
-          ),
+      ),
       bottomNavigationBar: SizedBox(
         height: 58,
         child: ButtonBar(
@@ -167,54 +163,54 @@ class _AssignmentListState extends State<AssignmentList> {
     return await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-              backgroundColor: colorBeige,
-              elevation: 16,
-              actions: <Widget>[
-                Center(
-                  child: Text('Are you sure you want to delete the assignment?',
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: colorBlackCoral,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center),
-                ),
-                Container(
-                  child: ButtonBar(
-                    alignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      MaterialButton(
-                        onPressed: () {
-                          // Dismiss the dialog but don't
-                          // dismiss the swiped item
-                          return Navigator.of(context).pop(false);
-                        },
-                        color: colorMelon,
-                        child: Image.asset(
-                          'images/delete.png',
-                          height: 50,
-                          width: 50,
-                        ),
-                        shape: CircleBorder(),
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          // Dismiss the dialog and
-                          // also dismiss the swiped item
-                          Navigator.of(context).pop(true);
-                        },
-                        color: colorHoneydew,
-                        child: Image.asset(
-                          'images/checkmark.png',
-                          height: 50,
-                          width: 50,
-                        ),
-                        shape: CircleBorder(),
-                      )
-                    ],
+          backgroundColor: colorBeige,
+          elevation: 16,
+          actions: <Widget>[
+            Center(
+              child: Text('Are you sure you want to delete the assignment?',
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center),
+            ),
+            Container(
+              child: ButtonBar(
+                alignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  MaterialButton(
+                    onPressed: () {
+                      // Dismiss the dialog but don't
+                      // dismiss the swiped item
+                      return Navigator.of(context).pop(false);
+                    },
+                    color: colorMelon,
+                    child: Image.asset(
+                      'images/delete.png',
+                      height: 50,
+                      width: 50,
+                    ),
+                    shape: CircleBorder(),
                   ),
-                )
-              ],
-            ));
+                  MaterialButton(
+                    onPressed: () {
+                      // Dismiss the dialog and
+                      // also dismiss the swiped item
+                      Navigator.of(context).pop(true);
+                    },
+                    color: colorHoneydew,
+                    child: Image.asset(
+                      'images/checkmark.png',
+                      height: 50,
+                      width: 50,
+                    ),
+                    shape: CircleBorder(),
+                  )
+                ],
+              ),
+            )
+          ],
+        ));
   }
 
   // Delete Dismissible background
@@ -283,7 +279,7 @@ class _AssignmentListState extends State<AssignmentList> {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (BuildContext context) => LoadingScreen()),
-          (route) => false,
+              (route) => false,
         );
       },
       color: colorHoneydew,
@@ -309,27 +305,18 @@ class _AssignmentListState extends State<AssignmentList> {
 
   _backButton() {
     if (this.edit == 1) {
-      print('edit cancel');
-      // TODO: bug where hitting back still saves data
-      List list = new List();
-      list = globalCourse.getAssignments;
-      for (int i = 0; i < list.length; i++) {
-        Assignment a = list[i];
-        String assignmentName = a.getDescription;
-        print('Assignment: $assignmentName');
-      }
       StandardPopup.course(
           context,
-          'Going back now will not save all progress. Are you sure?',
+          'This will take you back to Course List. All data will be saved',
           5,
-          globalCourse);
+          this.course);
     } else {
       //return CancelButton.assignment(2, this.course);
       print('cancel should be working');
       //return CancelButton.assignment(6,this.course);
       StandardPopup.course(
           context,
-          'Going back now will not save all progress. Are you sure?',
+          'This will take you back to Course List. All data will be saved',
           2,
           this.originalCourse);
     }
@@ -367,51 +354,51 @@ class _AssignmentListState extends State<AssignmentList> {
     showDialog(
         context: context,
         builder: (_) => new AlertDialog(
-              backgroundColor: colorBeige,
-              elevation: 16,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-              content: Container(
-                height: 280,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('ADD ASSIGNMENT',
-                          style: TextStyle(
-                              fontSize: 24,
-                              color: colorBlackCoral,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center),
-                      TextFormField(
-                        controller: myControllerDescription,
-                        decoration: InputDecoration(hintText: 'Name'),
-                      ),
-                      new Expanded(
-                          child: DateSelector(
-                              hintText: 'Due Date',
-                              dateController: myControllerDate)),
-                      new Expanded(
-                          child: TimeSelector(
-                              hintText: 'Due Time',
-                              timeController: myControllerTime)),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12.0),
-                        child: ButtonBar(
-                          alignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            CancelButton(),
-                            saveAssignment(),
-                          ],
-                        ),
-                      ),
-                    ],
+          backgroundColor: colorBeige,
+          elevation: 16,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0)),
+          content: Container(
+            height: 280,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('ADD ASSIGNMENT',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: colorBlackCoral,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
+                  TextFormField(
+                    controller: myControllerDescription,
+                    decoration: InputDecoration(hintText: 'Name'),
                   ),
-                ),
+                  new Expanded(
+                      child: DateSelector(
+                          hintText: 'Due Date',
+                          dateController: myControllerDate)),
+                  new Expanded(
+                      child: TimeSelector(
+                          hintText: 'Due Time',
+                          timeController: myControllerTime)),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: ButtonBar(
+                      alignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        CancelButton(),
+                        saveAssignment(),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ));
+            ),
+          ),
+        ));
   }
 
   Widget saveAssignment() {
@@ -421,18 +408,16 @@ class _AssignmentListState extends State<AssignmentList> {
           Assignment a = new Assignment.long(myControllerDescription.text,
               myControllerDate.text, myControllerTime.text);
           this.course.setAssignments = a;
-          ScheduleEvent se = new ScheduleEvent.fromAssigment(a);
-
           // Making Activity.assignment
           if (myControllerDate.text.isEmpty || myControllerTime.text.isEmpty) {
             // if no date or time do nothing
           } else {
             DateTime dueDate = DateTime.parse(myControllerDate.text);
+            Activity activity =
+            new Activity.assignment(dueDate, myControllerDescription.text);
+
             //for each day in difference create act and add to list
-            Activity activity = new Activity.fromAssigment(dueDate, a);
-            // ActivityNew activity = new ActivityNew.fromScheduleEvent(se); TODO
-            activityList.add(activity);
-            // activities.addActivity(activity); TODO
+            activities.activities.add(activity);
             myControllerDate.clear();
             myControllerTime.clear();
             myControllerDescription.clear();
@@ -512,10 +497,10 @@ class _AssignmentListState extends State<AssignmentList> {
                     children: [
                       Expanded(
                           child: Text(
-                        des,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 24, color: colorBlackCoral),
-                      )),
+                            des,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 24, color: colorBlackCoral),
+                          )),
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
@@ -545,10 +530,10 @@ class _AssignmentListState extends State<AssignmentList> {
                     children: [
                       Expanded(
                           child: Text(
-                        des,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 24, color: colorBlackCoral),
-                      )),
+                            des,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 24, color: colorBlackCoral),
+                          )),
                       MaterialButton(
                           onPressed: () {},
                           color: colorSoftMelon, //colorAlmond,
