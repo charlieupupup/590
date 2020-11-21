@@ -1,14 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/CancelButton.dart';
+import 'package:schedule_hack/CheckNavButton.dart';
+import 'package:schedule_hack/CheckmarkButton.dart';
+import 'package:schedule_hack/DateSelector.dart';
 import 'package:schedule_hack/utilities.dart';
-
-import 'CheckmarkButton.dart';
 
 class ScheduleModify extends StatelessWidget {
   Activity _activity;
+  TextEditingController startTimeController = TextEditingController();
+  TextEditingController endTimeController = TextEditingController();
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
 
   ScheduleModify(Activity activity) {
     _activity = activity;
@@ -28,29 +33,73 @@ class ScheduleModify extends StatelessWidget {
 
     Widget Start(Activity _activity) {
       return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             child: Text('Start:'),
           ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: (Text(getDate(_activity.startTime))),
+
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              controller: startDateController,
+              decoration: InputDecoration(
+                hintText: getDate(_activity.date),
+                filled: true,
+                fillColor: colorBeige,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: colorBlackCoral),
+                ),
+              ),
+              onTap: () async {
+                var date = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime(2100),
+                  builder: (context, child) {
+                    return Theme(
+                      data: ThemeData.from(colorScheme: setDateColors()),
+                      child: child,
+                    );
+                  },
+                );
+                startDateController.text = date
+                    .toString()
+                    .substring(0, 10); //save to json to send back out
+              },
+            ),
           ),
-          // Container(
-          //   child: Column(
-          //     children: [
-          //       DateSelector(
-          //         hintText: getDate(_activity.date),
-          //       ),
-          //     ],
-          //   ),
-          //   decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-          // ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            // child: Text(_activity.date.month.toString()),
-            child: Text(getTime(_activity.startTime)),
+          SizedBox(
+            width: 10.0,
+          ),
+          //),
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              controller: startTimeController,
+              decoration: InputDecoration(
+                  hintText: getTime(_activity.date),
+                  filled: true,
+                  fillColor: colorBeige,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: colorBlackCoral),
+                  ),
+                  suffixIcon: Icon(Icons.access_alarm)),
+              onTap: () async {
+                var time = await showTimePicker(
+                  initialTime: TimeOfDay.now(),
+                  context: context,
+                  builder: (context, child) {
+                    return Theme(
+                      data: ThemeData.from(colorScheme: setTimeColors()),
+                      child: child,
+                    );
+                  },
+                );
+                startTimeController.text = time.format(context);
+              },
+            ),
           ),
         ],
       );
@@ -63,13 +112,66 @@ class ScheduleModify extends StatelessWidget {
           Container(
             child: Text('End:  '),
           ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(getDate(_activity.endTime)),
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              controller: endDateController,
+              decoration: InputDecoration(
+                hintText: getDate(_activity.date),
+                filled: true,
+                fillColor: colorBeige,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: colorBlackCoral),
+                ),
+              ),
+              onTap: () async {
+                var date = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime(2100),
+                  builder: (context, child) {
+                    return Theme(
+                      data: ThemeData.from(colorScheme: setDateColors()),
+                      child: child,
+                    );
+                  },
+                );
+                endDateController.text = date
+                    .toString()
+                    .substring(0, 10); //save to json to send back out
+              },
+            ),
           ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Text(getTime(_activity.endTime)),
+          SizedBox(
+            width: 10.0,
+          ),
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              controller: endTimeController,
+              decoration: InputDecoration(
+                  hintText: getTime(_activity.date),
+                  filled: true,
+                  fillColor: colorBeige,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: colorBlackCoral),
+                  ),
+                  suffixIcon: Icon(Icons.access_alarm)),
+              onTap: () async {
+                var time = await showTimePicker(
+                  initialTime: TimeOfDay.now(),
+                  context: context,
+                  builder: (context, child) {
+                    return Theme(
+                      data: ThemeData.from(colorScheme: setTimeColors()),
+                      child: child,
+                    );
+                  },
+                );
+                endTimeController.text = time.format(context);
+              },
+            ),
           ),
         ],
       );
@@ -77,33 +179,36 @@ class ScheduleModify extends StatelessWidget {
 
     return SimpleDialog(
       backgroundColor: colorPowderBlue,
-
+      elevation: 16,
       children: [
         Container(
-          margin: const EdgeInsets.only(top: 20),
+          //margin: const EdgeInsets.only(top: 20),
           child: Column(
             children: [
               Text(
-                'modify',
+                'Modify Task',
                 textScaleFactor: 1,
               ),
               Text(
-                _activity.subject,
+                _activity.title,
                 textScaleFactor: 2,
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceAround,
           ),
-          width: 300,
+          width: 400,
           height: 75,
           decoration: BoxDecoration(
             color: colorPowderBlue,
             // borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
-        SingleChildScrollView(
-          child: Container(
-            color: colorAeroBlue,
+        //SingleChildScrollView(
+        //child: Container(
+        Container(
+          color: colorAeroBlue,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               children: [
                 SizedBox(height: 10),
@@ -121,30 +226,29 @@ class ScheduleModify extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  width: 200,
+                  width: 300,
                   height: 100,
-                  decoration:
-                  BoxDecoration(border: Border.all(color: Colors.black)),
+                  //decoration: BoxDecoration(border: Border.all(color: colorBlackCoral)),
                   child: TextField(
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: colorBeige,
                       border: OutlineInputBorder(),
-                      labelText: _activity.notes,
+                      labelText: _activity.description,
                     ),
                   ),
                 ),
                 SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CancelButton(),
-                    CheckmarkButton.schedule(2)
-                    //CheckNavButton(),
-                  ],
+                  children: [CancelButton(), CheckmarkButton.schedule(7)],
                 ),
               ],
             ),
           ),
-        ),
+        )
+
+        //),
       ],
       // title: Text(_activity.title),
     );
