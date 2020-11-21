@@ -2,10 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
 
-
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
-
 
 class AddScheduleEventPopup extends StatefulWidget {
   BuildContext context;
