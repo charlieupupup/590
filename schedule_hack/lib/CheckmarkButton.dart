@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:schedule_hack/PlaceHolderWidget.dart';
 import 'package:schedule_hack/MockPhoto.dart';
 
-import 'Activity.dart';
 import 'ConfirmPopup.dart';
 import 'LoadingScreen.dart';
 

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/ScheduleModify.dart';
 import 'package:schedule_hack/utilities.dart';
 
@@ -15,35 +14,6 @@ class ScheduleElementDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   child: Column(
-    //     children: [
-    //       Row(
-    //         children: [
-    //           Text('Start:'),
-    //           Container(
-    //             decoration:
-    //                 BoxDecoration(border: Border.all(color: Colors.black)),
-    //             child: Text(_activity.date.month.toString()),
-    //           ),
-    //         ],
-    //       ),
-    //       Row(),
-    //       Text('Details:'),
-    //       Container(
-    //         decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-    //         child: Text(_activity.description),
-    //       ),
-    //       ButtonBar(
-    //         children: [
-    //           CancelButton(),
-    //           CheckNavButton(),
-    //         ],
-    //       ),
-    //     ],
-    //   ),
-    // );
-
     String getDate(DateTime dateTime) {
       final df = new DateFormat('MMM dd, yyyy');
       return df.format(dateTime);
@@ -72,7 +42,7 @@ class ScheduleElementDetail extends StatelessWidget {
             //     _activity.date.year.toString()),
 
             child: (Text(
-              getDate(_activity.date),
+              getDate(_activity.startTime),
               style: _style(),
             )),
           ),
@@ -80,7 +50,7 @@ class ScheduleElementDetail extends StatelessWidget {
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             // child: Text(_activity.date.month.toString()),
             child: Text(
-              getTime(_activity.date),
+              getTime(_activity.startTime),
               style: _style(),
             ),
           ),
@@ -98,14 +68,14 @@ class ScheduleElementDetail extends StatelessWidget {
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: Text(
-              getDate(_activity.endDate),
+              getDate(_activity.endTime),
               style: _style(),
             ),
           ),
           Container(
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: Text(
-              getTime(_activity.endDate),
+              getTime(_activity.endTime),
               style: _style(),
             ),
           ),
@@ -122,7 +92,7 @@ class ScheduleElementDetail extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                _activity.title,
+                _activity.subject,
                 textScaleFactor: 2,
               ),
             ],
@@ -140,22 +110,6 @@ class ScheduleElementDetail extends StatelessWidget {
             color: colorAeroBlue,
             child: Column(
               children: [
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text('Start:'),
-                //     Container(
-                //       decoration:
-                //           BoxDecoration(border: Border.all(color: Colors.black)),
-                //       child: Text(_activity.date.month.toString()),
-                //     ),
-                //     Container(
-                //       decoration:
-                //           BoxDecoration(border: Border.all(color: Colors.black)),
-                //       child: Text(_activity.date.month.toString()),
-                //     ),
-                //   ],
-                // ),
                 SizedBox(height: 10),
                 Start(_activity),
                 SizedBox(height: 10),
@@ -175,9 +129,9 @@ class ScheduleElementDetail extends StatelessWidget {
                   width: 200,
                   height: 100,
                   decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black)),
+                  BoxDecoration(border: Border.all(color: Colors.black)),
                   child: Text(
-                    _activity.description,
+                    _activity.notes,
                     style: _style(),
                   ),
                 ),

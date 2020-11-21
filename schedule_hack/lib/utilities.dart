@@ -135,3 +135,23 @@ ColorScheme setDateColors() {
 
 // global variable for course currently being edited
 Course globalCourse;
+
+//to add methods for getting image asset from string
+extension AppImage on Image {
+  static Image getImageFromSubject(String subject) {
+    Map<String, Image> m = new Map();
+    m['Study'] = Image.asset('images/books_filled.png');
+    m['Relax'] = Image.asset('images/relax.png');
+    m['Meeting'] = Image.asset('images/schedule.png');
+    m['Go for a run'] = Image.asset('images/running.png');
+    m['Meditate'] = Image.asset('images/meditation.png');
+    m['Attend Class'] = Image.asset('images/teacher.png');
+    m['Sleep'] = Image.asset('images/sleep.png');
+    print("key: $subject; value: ${m[subject]}");
+    if (m.containsKey(subject)) {
+      return m[subject];
+    } else {
+      return Image.asset('images/schedule.png');
+    }
+  }
+}

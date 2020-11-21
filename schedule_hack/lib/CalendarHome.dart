@@ -6,8 +6,9 @@ import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/SelfCare.dart';
 import 'package:schedule_hack/utilities.dart';
 
+import 'Calendar.dart';
 import 'Schedule.dart';
-import 'ScheduleCalendar.dart';
+
 
 class CalendarHome extends StatefulWidget {
   int index;
@@ -50,7 +51,7 @@ class _CalendarHomeState extends State<CalendarHome> {
           if(calendarView == true) {
             calendarView = false;
             this._children = [
-              ScheduleCalendar(),
+              Calendar(),
               SelfCare(),
               CourseList(jsonDataStorage),
             ];
