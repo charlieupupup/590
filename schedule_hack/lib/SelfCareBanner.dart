@@ -47,7 +47,7 @@ class CarouselBanner extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'let\'s medidate',
+              'let\'s medidate!',
               textScaleFactor: 2,
               style: TextStyle(
                 color: colorBlackCoral,
@@ -64,7 +64,7 @@ class CarouselBanner extends StatelessWidget {
             children: [
               Text(
                 'suggestion based on history',
-                textScaleFactor: 0.7,
+                textScaleFactor: 0.8,
                 style: TextStyle(
                   color: colorBlackCoral,
                 ),
@@ -88,7 +88,7 @@ class CarouselBanner extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'take a nap',
+              'take a nap?',
               textScaleFactor: 2,
               style: TextStyle(
                 color: colorBlackCoral,
@@ -129,7 +129,7 @@ class CarouselBanner extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'take a nap',
+              'music time!',
               textScaleFactor: 2,
               style: TextStyle(
                 color: colorBlackCoral,
