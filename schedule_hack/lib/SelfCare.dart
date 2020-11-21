@@ -79,26 +79,27 @@ class SelfCareState extends State<SelfCare> with AppStorage {
         body: Container(
           child: ListView(
             children: [
-              SizedBox(
-                width: 300,
-                height: 150,
-                child: Card(
-                  margin: EdgeInsets.all(6.0),
-                  elevation: 4.0,
-                  color: colorMelon,
-                  child: Align(
-                    alignment: Alignment.center,
-                    // child: AutoSizeText(
-                    //   "This is the self care banner",
-                    //   style: TextStyle(fontSize: 24, color: colorIvory),
-                    //   maxLines: 1,
-                    //   minFontSize: 20,
-                    //   textAlign: TextAlign.center,
-                    // ),
-                    child: CarouselBanner(),
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   width: 300,
+              //   height: 150,
+              //   child: Card(
+              //     margin: EdgeInsets.all(6.0),
+              //     elevation: 4.0,
+              //     color: colorMelon,
+              //     child: Align(
+              //       alignment: Alignment.center,
+              //       // child: AutoSizeText(
+              //       //   "This is the self care banner",
+              //       //   style: TextStyle(fontSize: 24, color: colorIvory),
+              //       //   maxLines: 1,
+              //       //   minFontSize: 20,
+              //       //   textAlign: TextAlign.center,
+              //       // ),
+              //       child: CarouselBanner(),
+              //     ),
+              //   ),
+              // ),
+              CarouselBanner(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

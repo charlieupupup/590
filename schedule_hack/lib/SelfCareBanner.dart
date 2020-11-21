@@ -17,11 +17,6 @@ class CarouselBanner extends StatelessWidget {
             initialPage: 2,
           ),
         ),
-        RaisedButton(
-          onPressed: () => buttonCarouselController.nextPage(
-              duration: Duration(milliseconds: 300), curve: Curves.linear),
-          child: Text('→'),
-        )
       ]);
 
   List<Widget> getImgs() {
