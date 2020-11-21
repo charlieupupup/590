@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/CheckmarkButton.dart';
 
-import 'package:schedule_hack/DaySelector.dart';
-import 'package:schedule_hack/TimeSelector.dart';
+
 import 'package:schedule_hack/utilities.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+
 
 class AddScheduleEventPopup extends StatefulWidget {
   BuildContext context;
