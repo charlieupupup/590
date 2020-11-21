@@ -34,14 +34,7 @@ class ScheduleView extends StatelessWidget {
               ),
               Container(
                 child: FloatingActionButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (_) {
-                          //return NewCoursePopup(nameController, startTimeController, endTimeController);
-                          return;
-                        });
-                  },
+                  onPressed: () {},
                   backgroundColor: colorAeroBlue, //colorHoneydew,
                   child: Image.asset('images/add.png'),
                 ),
