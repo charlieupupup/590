@@ -13,10 +13,10 @@ class Activity extends Appointment {
 
   Activity(String start, String end, String subject, String notes)
       : super(
-      startTime: DateTime.parse(start),
-      endTime: DateTime.parse(end),
-      subject: subject,
-      notes: notes) {
+            startTime: DateTime.parse(start),
+            endTime: DateTime.parse(end),
+            subject: subject,
+            notes: notes) {
     this.start = start;
     this.end = end;
     this.subject = subject;
@@ -26,10 +26,10 @@ class Activity extends Appointment {
   Activity.fromDateTime(
       DateTime startTime, DateTime endTime, String subject, String notes)
       : super(
-      startTime: startTime,
-      endTime: endTime,
-      subject: subject,
-      notes: notes) {
+            startTime: startTime,
+            endTime: endTime,
+            subject: subject,
+            notes: notes) {
     this.start = startTime.toIso8601String();
     this.end = endTime.toIso8601String();
     this.subject = subject;
@@ -39,15 +39,19 @@ class Activity extends Appointment {
   //initializes assignment with subject == notes and start date 5 days before it's due
   Activity.assignment(DateTime dueDate, String subject)
       : this.fromDateTime(
-      dueDate.subtract(Duration(days: 5)), dueDate, subject, subject);
+            dueDate.subtract(Duration(days: 5)), dueDate, subject, subject);
 
   //test schedule event
   Activity.test(String subject, int day)
       : this.fromDateTime(
-      DateTime.now().add(Duration(days: day)),
-      DateTime.now().add(Duration(days: day, hours: 2)),
-      subject,
-      subject);
+            DateTime.now().add(Duration(days: day)),
+            DateTime.now().add(Duration(days: day, hours: 2)),
+            subject,
+            subject);
+
+  Activity.fromController(String name, TextEditingController startDate,
+      TextEditingController endDate, TextEditingController notes)
+      : this(startDate.text, endDate.text, name, notes.text);
 
   //convert from json encodable
   toJSONEncodable() {

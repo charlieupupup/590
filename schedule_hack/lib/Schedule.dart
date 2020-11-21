@@ -12,22 +12,20 @@ import 'Home.dart';
 import 'SettingsButton.dart';
 
 class Schedule extends StatelessWidget {
-  Activities _scheduleToday;
-  // List<Activity> _scheduleToday;
-  final String title;
-  DateTime date;
+  List<Activity> _scheduleToday;
   ActivityDataSource get activityDataSource {
     return new ActivityDataSource(_scheduleToday);
   }
 
-  Activity a0 = new Activity.test("Study", 0);
-  Activity a1 = new Activity.test("Attend Class", 2);
-  Activity a2 = new Activity.test("Sleep", 4);
-
-  Schedule({Key key, this.title, this.date}) : super(key: key) {
-    List<Activity> activities = [a0, a1, a2];
-    _scheduleToday = new Activities.fromActivities(DateTime.now(), activities);
+  //returns list of appointmnets from activity datasource
+  List<Activity> get _appointments {
+    return activityDataSource.appointments as List<Activity>;
   }
+
+  Schedule(List<Activity> activities) {
+    this._scheduleToday = activities;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +63,11 @@ class Schedule extends StatelessWidget {
       body: Container(
         child: ListView(
           //children: [DateBanner(date: date), ScheduleView(_list)],
-          children: [DateBanner(date: date), ScheduleView(activityDataSource)],
+          // children: [DateBanner(date: date), ScheduleView(activityDataSource)],
+          children: [
+            DateBanner(date: DateTime.now()),
+            ScheduleView(_appointments)
+          ],
         ),
       ),
     );

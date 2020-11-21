@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
+import 'package:schedule_hack/Activities.dart';
+import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ActivityDataSource.dart';
+import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/CourseList.dart';
 import 'package:schedule_hack/PopUp.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
@@ -10,6 +16,7 @@ import 'Schedule.dart';
 
 class Home extends StatefulWidget {
   int index;
+
   Home(int i) {
     this.index = i;
   }
@@ -20,16 +27,30 @@ class Home extends StatefulWidget {
   }
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with AppStorage {
   int _currentIndex = 0;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
+  final LocalStorage _scheduleStorage = new LocalStorage('schedule.json');
+
+  List<Activity> _dayActivities = new List<Activity>();
+
+  ActivityDataSource _activityDataSource;
+
   List<Widget> _children = new List<Widget>();
+
   _HomeState(int i) {
+    _dayActivities.add(Activity.test("Study", 0));
+    _dayActivities.add(Activity.test("Attend Class", 2));
+    _dayActivities.add(Activity.test("Sleep", 4));
+    _activityDataSource = new ActivityDataSource(_dayActivities);
+
     this._currentIndex = i;
   }
 
   @override
   void initState() {
+    _activityDataSource = new ActivityDataSource(_dayActivities);
+
     super.initState();
   }
 
@@ -42,10 +63,7 @@ class _HomeState extends State<Home> {
           //snapshot.hasData) {
           print('Has data');
           this._children = [
-            Schedule(
-                title: 'ScheduleHack',
-                date: DateTime.now() //initialize with today's date
-                ),
+            Schedule(_activityDataSource.appointments),
             SelfCare(),
             CourseList(jsonDataStorage),
           ];

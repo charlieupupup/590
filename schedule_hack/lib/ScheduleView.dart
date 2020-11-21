@@ -7,13 +7,10 @@ import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
-  //List<ScheduleEvent> _list;
-  // List<Activity> _list;
-  ActivityDataSource _activityDataSource;
+  List<Activity> _dayActivities;
 
-  ScheduleView(ActivityDataSource activityDataSource) {
-    //_list = list;
-    _activityDataSource = activityDataSource;
+  ScheduleView(List<Activity> appointments) {
+    _dayActivities = appointments;
   }
 
   @override
@@ -56,12 +53,12 @@ class ScheduleView extends StatelessWidget {
             // borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
-        for (var scheduleEvent in _activityDataSource.appointments)
+        for (var scheduleEvent in _dayActivities)
           Container(
             // margin: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                Expanded(child: ScheduleElement(scheduleEvent)),
+                Expanded(child: ScheduleElement(scheduleEvent, _dayActivities)),
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),

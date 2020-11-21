@@ -6,12 +6,12 @@ import 'package:schedule_hack/utilities.dart';
 import 'ScheduleElementDetail.dart';
 
 class ScheduleElement extends StatelessWidget {
-  Activity activity;
+  Activity _activity;
+  List<Activity> _dayActivities;
 
-  //ScheduleElement(ScheduleEvent scheduleEvent) {
-  ScheduleElement(Activity activity) {
-    //this.scheduleEvent = scheduleEvent;
-    this.activity = activity;
+  ScheduleElement(Activity activity, List<Activity> dayActivities) {
+    _activity = activity;
+    _dayActivities = dayActivities;
   }
 
   @override
@@ -29,7 +29,7 @@ class ScheduleElement extends StatelessWidget {
           showDialog(
               context: context,
               builder: (_) {
-                return ScheduleElementDetail(activity);
+                return ScheduleElementDetail(_activity, _dayActivities);
               });
         },
         // Navigator.push(
@@ -47,9 +47,9 @@ class ScheduleElement extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //Image(image: AssetImage(scheduleEvent.img)),
-              activity.image,
+              _activity.image,
               //Text(scheduleEvent.title),
-              Text(activity.subject),
+              Text(_activity.subject),
               //Text(scheduleEvent.interval),
 
               Icon(Icons.arrow_forward_ios),

@@ -2,20 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ActivityDataSource.dart';
+import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/CancelButton.dart';
-import 'package:schedule_hack/CheckmarkButton.dart';
-import 'package:schedule_hack/DateSelector.dart';
+import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class ScheduleModify extends StatelessWidget {
-  Activity _activity;
+  List<Activity> dayActivities;
+  Activity activity;
   TextEditingController startTimeController = TextEditingController();
   TextEditingController endTimeController = TextEditingController();
+  TextEditingController notesController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
 
-  ScheduleModify(Activity activity) {
-    _activity = activity;
+  ScheduleModify(Activity activity, List<Activity> activities) {
+    this.activity = activity;
+    dayActivities = activities;
+    print(
+        "line 23 SM  activity selected is subject: ${this.activity.subject} notes: ${this.activity.notes}");
   }
 
   @override
@@ -189,7 +195,8 @@ class ScheduleModify extends StatelessWidget {
                 textScaleFactor: 1,
               ),
               Text(
-                _activity.subject,
+                "",
+                // activity.subject,
                 textScaleFactor: 2,
               ),
             ],
@@ -211,9 +218,9 @@ class ScheduleModify extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 10),
-                Start(_activity),
+                Start(activity),
                 SizedBox(height: 10),
-                End(_activity),
+                End(activity),
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -233,14 +240,18 @@ class ScheduleModify extends StatelessWidget {
                       filled: true,
                       fillColor: colorBeige,
                       border: OutlineInputBorder(),
-                      labelText: _activity.notes,
+                      labelText: activity.notes,
                     ),
                   ),
                 ),
                 SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [CancelButton(), CheckmarkButton.schedule(7)],
+                  children: [
+                    CancelButton(),
+                    ModifyButton(context, activity, notesController,
+                        startDateController, endDateController)
+                  ],
                 ),
               ],
             ),
@@ -250,6 +261,80 @@ class ScheduleModify extends StatelessWidget {
         //),
       ],
       // title: Text(_activity.title),
+    );
+  }
+}
+
+class ModifyButton extends StatefulWidget with AppStorage {
+  BuildContext context;
+  Activity activity;
+  TextEditingController notesController = TextEditingController();
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
+
+  ModifyButton(
+      BuildContext context,
+      Activity activity,
+      TextEditingController notesController,
+      TextEditingController startDateController,
+      TextEditingController endDateController) {
+    activity = activity;
+    context = context;
+    notesController = notesController;
+    startDateController = startDateController;
+    endDateController = endDateController;
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    return _ModifyButtonState(context, activity, notesController,
+        startDateController, endDateController);
+  }
+}
+
+class _ModifyButtonState extends State<ModifyButton> {
+  BuildContext _context;
+  Activity _activity;
+  TextEditingController _notesController = TextEditingController();
+  TextEditingController _startDateController = TextEditingController();
+  TextEditingController _endDateController = TextEditingController();
+
+  _ModifyButtonState(
+      BuildContext context,
+      Activity activity,
+      notesController,
+      TextEditingController startDateController,
+      TextEditingController endDateController) {
+    _activity = activity;
+    _context = context;
+    _notesController = notesController;
+    _startDateController = startDateController;
+    _endDateController = endDateController;
+  }
+  _ModifyButtonState createState() => _ModifyButtonState(_context, _activity,
+      _startDateController, _endDateController, _notesController);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      onPressed: () {
+        setState(() {
+          new Activity.fromController(_activity.subject, _startDateController,
+              _endDateController, _notesController);
+        });
+
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => Home(0)),
+          (route) => false,
+        );
+      },
+      color: colorHoneydew,
+      child: Image.asset(
+        'images/checkmark.png',
+        height: 50,
+        width: 50,
+      ),
+      shape: CircleBorder(),
     );
   }
 }

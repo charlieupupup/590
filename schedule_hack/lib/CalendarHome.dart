@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/CourseList.dart';
 import 'package:schedule_hack/PopUp.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
@@ -8,7 +9,6 @@ import 'package:schedule_hack/utilities.dart';
 
 import 'Calendar.dart';
 import 'Schedule.dart';
-
 
 class CalendarHome extends StatefulWidget {
   int index;
@@ -42,13 +42,13 @@ class _CalendarHomeState extends State<CalendarHome> {
 
   @override
   Widget build(BuildContext context) => FutureBuilder(
-    //{
+      //{
       future: jsonDataStorage.writeJsonLocal(), //fetchData(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           //snapshot.hasData) {
           print('Has data');
-          if(calendarView == true) {
+          if (calendarView == true) {
             calendarView = false;
             this._children = [
               Calendar(),
@@ -57,10 +57,11 @@ class _CalendarHomeState extends State<CalendarHome> {
             ];
           } else {
             this._children = [
-              Schedule(
-                  title: 'ScheduleHack',
-                  date: DateTime.now() //initialize with today's date
-              ),
+              Schedule([
+                new Activity.test("Study", 0),
+                new Activity.test("Attend Class", 2),
+                new Activity.test("Sleep", 4)
+              ]),
               SelfCare(),
               CourseList(jsonDataStorage),
             ];

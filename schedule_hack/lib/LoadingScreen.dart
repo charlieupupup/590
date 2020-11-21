@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/utilities.dart';
 
 import 'Home.dart';
@@ -52,10 +53,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
             ),
             //Padding(padding: EdgeInsets.only(top: 20.0)),
             Padding(
-                padding: EdgeInsets.only(
-                    left: 20.0,
-                    right: 20.0
-                ),
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Text(
                   this.inspirationString,
                   // "Loading",

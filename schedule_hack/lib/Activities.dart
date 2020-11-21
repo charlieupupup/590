@@ -85,7 +85,7 @@ class Activities {
     if (list != null) {
       e = List<Activity>.from(
         (list as List).map(
-              (item) => Activity(
+          (item) => Activity(
               item['start'], item['end'], item['subject'], item['notes']),
         ),
       );

@@ -7,9 +7,13 @@ import 'package:schedule_hack/utilities.dart';
 
 class ScheduleElementDetail extends StatelessWidget {
   Activity _activity;
+  List<Activity> _dayActivities;
 
-  ScheduleElementDetail(Activity activity) {
+  ScheduleElementDetail(Activity activity, List<Activity> dayActivities) {
     _activity = activity;
+    _dayActivities = dayActivities;
+    print(
+        "activity selected is subject: ${_activity.subject} notes: ${_activity.notes}");
   }
 
   @override
@@ -190,7 +194,7 @@ class ScheduleElementDetail extends StatelessWidget {
         showDialog(
             context: context,
             builder: (_) {
-              return ScheduleModify(_activity);
+              return ScheduleModify(_activity, _dayActivities);
             });
       },
       color: colorPowderBlue,

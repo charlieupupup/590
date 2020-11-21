@@ -12,8 +12,7 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 class Calendar extends StatefulWidget {
   int index; //TODO: I'm not using these correctly -- bottom nav doesn't work
   /// Creates the home page to display the calendar widget.
-  Calendar() {
-  }
+  Calendar() {}
 
   @override
   _CalendarState createState() {
@@ -104,14 +103,11 @@ class _CalendarState extends State<Calendar> with AppStorage {
     );
   }
 
-
   //random data in calendar
-  Activities _getPrepopulatedDataSource() {
+  List<Activity> _getPrepopulatedDataSource() {
     Activity a0 = new Activity.test("Study", 0);
     Activity a1 = new Activity.test("Attend Class", 2);
     Activity a2 = new Activity.test("Sleep", 4);
-    Activities a = new Activities.fromActivities(DateTime.now(), [a0, a1, a2]);
-    this.activities = a;
-    return a;
+    return [a0, a1, a2];
   }
 }
