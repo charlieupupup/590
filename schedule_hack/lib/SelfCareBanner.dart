@@ -45,7 +45,7 @@ class CarouselBanner extends StatelessWidget {
       width: 300,
       height: 50,
       decoration: BoxDecoration(
-        color: colorAeroBlue,
+        color: colorSoftMelon,
         borderRadius: BorderRadius.circular(22.0),
       ),
       child: Image.asset("images/relax.png"),
