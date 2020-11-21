@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: //WelcomeScreen(),
-      Home(0),
+          Home(0),
     );
   }
 }

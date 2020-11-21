@@ -13,7 +13,7 @@ class ScheduleModify extends StatelessWidget {
   TextEditingController endTimeController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
-
+  TextEditingController notesController = TextEditingController();
   ScheduleModify(Activity activity) {
     _activity = activity;
   }
@@ -233,6 +233,7 @@ class ScheduleModify extends StatelessWidget {
                   height: 100,
                   //decoration: BoxDecoration(border: Border.all(color: colorBlackCoral)),
                   child: TextField(
+                    controller: notesController,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: colorBeige,
