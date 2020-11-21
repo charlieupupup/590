@@ -14,7 +14,7 @@ class CarouselBanner extends StatelessWidget {
             autoPlay: true,
             height: 150,
             enlargeCenterPage: true,
-            viewportFraction: 0.4,
+            viewportFraction: 1,
             aspectRatio: 2,
           ),
         ),
@@ -23,19 +23,19 @@ class CarouselBanner extends StatelessWidget {
   List<Widget> getImgs() {
     List<Widget> img = new List();
 
-    img.add(SizedBox(
-      width: 300,
-      height: 150,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: colorAeroBlue,
-          borderRadius: BorderRadius.circular(22.0),
-        ),
-      ),
-    ));
+    // img.add(SizedBox(
+    //   width: 300,
+    //   height: 150,
+    //   child: DecoratedBox(
+    //     decoration: BoxDecoration(
+    //       color: colorAeroBlue,
+    //       borderRadius: BorderRadius.circular(22.0),
+    //     ),
+    //   ),
+    // ));
 
     img.add(Container(
-      width: 500,
+      width: 400,
       height: 40,
       decoration: BoxDecoration(
         color: colorAeroBlue,
@@ -47,17 +47,27 @@ class CarouselBanner extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'meditation?',
+              'let\'s medidate',
               textScaleFactor: 2,
+              style: TextStyle(
+                color: colorBlackCoral,
+              ),
             ),
           ),
-          Image.asset("images/relax.png"),
+          ImageIcon(
+            AssetImage("images/relax.png"),
+            color: colorBlackCoral,
+            size: 75.0,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'suggestion based on history',
                 textScaleFactor: 0.7,
+                style: TextStyle(
+                  color: colorBlackCoral,
+                ),
               ),
             ],
           ),
@@ -66,7 +76,7 @@ class CarouselBanner extends StatelessWidget {
     ));
 
     img.add(Container(
-      width: 300,
+      width: 400,
       height: 50,
       decoration: BoxDecoration(
         color: colorSoftMelon,
