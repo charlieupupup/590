@@ -77,6 +77,47 @@ class CarouselBanner extends StatelessWidget {
 
     img.add(Container(
       width: 400,
+      height: 40,
+      decoration: BoxDecoration(
+        color: colorSoftMelon,
+        borderRadius: BorderRadius.circular(22.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              'take a nap',
+              textScaleFactor: 2,
+              style: TextStyle(
+                color: colorBlackCoral,
+              ),
+            ),
+          ),
+          ImageIcon(
+            AssetImage("images/sleepingbed.png"),
+            color: colorBlackCoral,
+            size: 75.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'suggestion based on history',
+                textScaleFactor: 0.8,
+                style: TextStyle(
+                  color: colorBlackCoral,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ));
+
+    img.add(Container(
+      width: 400,
       height: 50,
       decoration: BoxDecoration(
         color: colorSoftMelon,
