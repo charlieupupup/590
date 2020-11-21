@@ -4,6 +4,7 @@ import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ActivityDataSource.dart';
 
 import 'package:schedule_hack/utilities.dart';
+import 'AddScheduleEventPopup.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
@@ -34,7 +35,13 @@ class ScheduleView extends StatelessWidget {
               ),
               Container(
                 child: FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (_) {
+                          return AddScheduleEventPopup();
+                        });
+                  },
                   backgroundColor: colorAeroBlue, //colorHoneydew,
                   child: Image.asset('images/add.png'),
                 ),
