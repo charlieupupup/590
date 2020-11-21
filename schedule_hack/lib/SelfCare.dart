@@ -99,7 +99,15 @@ class SelfCareState extends State<SelfCare> with AppStorage {
               //     ),
               //   ),
               // ),
+              // SizedBox(
+              //   width: 300,
+              //   height: 150,
+              //   child: CarouselBanner(),
+              // ),
               CarouselBanner(),
+              SizedBox(
+                height: 20,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

@@ -12,6 +12,7 @@ class CarouselBanner extends StatelessWidget {
           carouselController: buttonCarouselController,
           options: CarouselOptions(
             autoPlay: true,
+            height: 150,
             enlargeCenterPage: true,
             viewportFraction: 0.4,
             aspectRatio: 2,
@@ -21,6 +22,17 @@ class CarouselBanner extends StatelessWidget {
 
   List<Widget> getImgs() {
     List<Widget> img = new List();
+
+    img.add(SizedBox(
+      width: 300,
+      height: 150,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: colorAeroBlue,
+          borderRadius: BorderRadius.circular(22.0),
+        ),
+      ),
+    ));
 
     img.add(Container(
       width: 500,
