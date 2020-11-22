@@ -10,7 +10,34 @@ import 'package:schedule_hack/CancelButton.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/utilities.dart';
 
-class ScheduleModify extends StatelessWidget {
+class ScheduleModify extends StatefulWidget {
+  List<Activity> dayActivities;
+  Activity activity;
+  LocalStorage scheduleStorage;
+
+  ScheduleModify(
+      Activity _activity, List<Activity> activities, LocalStorage storage) {
+    this.activity = _activity;
+    this.dayActivities = activities;
+    this.scheduleStorage = storage;
+  }
+  String getDate(DateTime dateTime) {
+    final df = new DateFormat('yyyy-MM-dd');
+    return df.format(dateTime);
+  }
+
+  String getTime(DateTime dateTime) {
+    final df = new DateFormat('hh:mm a');
+    return df.format(dateTime);
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    return new _ScheduleModifyState(activity, dayActivities, scheduleStorage);
+  }
+}
+
+class _ScheduleModifyState extends State<ScheduleModify> {
   Activities dayActivities;
   Activity activity;
   LocalStorage scheduleStorage;
@@ -25,7 +52,7 @@ class ScheduleModify extends StatelessWidget {
   String endDate;
   String notes;
 
-  ScheduleModify(
+  _ScheduleModifyState(
       Activity _activity, List<Activity> activities, LocalStorage storage) {
     this.activity = _activity;
     this.dayActivities =
@@ -50,6 +77,66 @@ class ScheduleModify extends StatelessWidget {
   String getTime(DateTime dateTime) {
     final df = new DateFormat('hh:mm a');
     return df.format(dateTime);
+  }
+
+  Widget modifyButton(
+      BuildContext _context,
+      Activity _activity,
+      Activities _activities,
+      LocalStorage _scheduleStorage,
+      String _notesController,
+      String _startDateController,
+      String _endDateController,
+      String _startTimeController,
+      String _endTimeController) {
+    return MaterialButton(
+      onPressed: () {
+        setState(() {
+          TimeOfDay startTimeOfDay =
+              TimeOfDayConverter.fromString(_startTimeController);
+          TimeOfDay endTimeOfDay =
+              TimeOfDayConverter.fromString(_endTimeController);
+//add Time of Day to DateTime to get full DateTime
+          DateTime startTime = DateTime.parse(_startDateController).add(
+              Duration(
+                  hours: startTimeOfDay.hour, minutes: startTimeOfDay.minute));
+          DateTime endTime = DateTime.parse(_endDateController).add(
+              Duration(hours: endTimeOfDay.hour, minutes: endTimeOfDay.minute));
+          Activity newActivity = new Activity(startTime.toIso8601String(),
+              endTime.toIso8601String(), _activity.subject, _notesController);
+
+          _activities.removeActivityFromLocalStorage(
+              _activity, _scheduleStorage);
+
+          _activities.activities.add(newActivity);
+
+          _activities.addToLocalStorage(_activity.startTime, _scheduleStorage);
+
+          print("new activity");
+          Activities a = new Activities.fromStorage(
+              newActivity.startTime, _scheduleStorage);
+          a.printActivities();
+          a.removeActivityFromLocalStorage(newActivity, _scheduleStorage);
+          a.printActivities();
+          a.activities.add(_activity);
+          a.printActivities();
+          a.addToLocalStorage(newActivity.startTime, _scheduleStorage);
+          a.printActivities();
+        });
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => Home(0)),
+          (route) => false,
+        );
+      },
+      color: colorHoneydew,
+      child: Image.asset(
+        'images/checkmark.png',
+        height: 50,
+        width: 50,
+      ),
+      shape: CircleBorder(),
+    );
   }
 
   @override
@@ -275,8 +362,19 @@ class ScheduleModify extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CancelButton(),
-                    ModifyButton(activity, dayActivities, context, endDate,
-                        endTime, notes, scheduleStorage, startDate, startTime),
+                    modifyButton(
+                      context,
+                      activity,
+                      dayActivities,
+                      scheduleStorage,
+                      notes,
+                      startDate,
+                      endDate,
+                      startTime,
+                      endTime,
+                    ),
+
+                    //ModifyButton(activity, dayActivities, context, endDate, endTime, notes, scheduleStorage, startDate, startTime),
                   ],
                 ),
               ],

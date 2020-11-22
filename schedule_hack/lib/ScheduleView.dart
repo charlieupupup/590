@@ -8,11 +8,24 @@ import 'package:schedule_hack/utilities.dart';
 import 'AddScheduleEventPopup.dart';
 import 'ScheduleElement.dart';
 
-class ScheduleView extends StatelessWidget {
+class ScheduleView extends StatefulWidget {
+  List<Activity> _dayActivities;
+  LocalStorage scheduleStorage;
+  ScheduleView(List<Activity> appointments, LocalStorage storage) {
+    _dayActivities = appointments;
+    scheduleStorage = storage;
+  }
+  @override
+  State<StatefulWidget> createState() {
+    return new _ScheduleViewState(_dayActivities, scheduleStorage);
+  }
+}
+
+class _ScheduleViewState extends State<ScheduleView> {
   List<Activity> _dayActivities;
   LocalStorage scheduleStorage;
 
-  ScheduleView(List<Activity> appointments, LocalStorage storage) {
+  _ScheduleViewState(List<Activity> appointments, LocalStorage storage) {
     _dayActivities = appointments;
     scheduleStorage = storage;
   }
