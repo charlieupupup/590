@@ -15,12 +15,19 @@ extension CalendarDateTime on DateTime {
 extension TimeOfDayConverter on TimeOfDay {
   //takes in string form '12:34PM' returns TimeOfDay
   static TimeOfDay fromString(String time) {
+    print("time is $time");
     int hourOffset = 0;
     if (time.endsWith('PM')) {
       hourOffset = 12;
     }
-    int hour = int.parse(time.split(':')[0]) + hourOffset;
-    int minute = int.parse(time.split(':')[1].substring(0, 2));
+    List<String> times = time.split(":");
+    print("times $times");
+
+    int hour = int.parse(times[0]) + hourOffset;
+    print("hour $hour");
+    int lastIndex = times[1].length;
+    int minute = int.parse(times[1].substring(0, lastIndex - 2));
+    print("hour $hour minute $minute");
     return TimeOfDay(hour: hour, minute: minute);
   }
 
@@ -99,7 +106,7 @@ UserPreferences userSettings;
 //method for TimeSelector Color Theme
 ColorScheme setTimeColors() {
   return new ColorScheme(
-      primary: colorIvory,  // hours
+      primary: colorIvory, // hours
       primaryVariant: colorIvory,
       secondary: colorAlmond,
       secondaryVariant: colorAlmond,
@@ -112,7 +119,7 @@ ColorScheme setTimeColors() {
       onBackground: colorBlackCoral,
       brightness: Brightness.dark,
       background: colorBlackCoral // circle
-  );
+      );
 }
 
 //method for DateSelector Color Theme
@@ -147,7 +154,6 @@ extension AppImage on Image {
     m['Meditate'] = Image.asset('images/meditation.png');
     m['Attend Class'] = Image.asset('images/teacher.png');
     m['Sleep'] = Image.asset('images/sleep.png');
-    print("key: $subject; value: ${m[subject]}");
     if (m.containsKey(subject)) {
       return m[subject];
     } else {
