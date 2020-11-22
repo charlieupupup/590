@@ -84,12 +84,18 @@ class CarouselBanner extends StatelessWidget {
     ));
 
     img.add(Container(
-      width: 400,
+      width: 350,
       height: 40,
-      decoration: BoxDecoration(
-        color: colorSoftMelon,
-        // borderRadius: BorderRadius.circular(22.0),
-      ),
+      decoration: BoxDecoration(color: colorSoftMelon, boxShadow: [
+        BoxShadow(
+          color: Colors.black,
+          blurRadius: 2.0,
+          spreadRadius: 0.0,
+          offset: Offset(10.0, 10.0), // shadow direction: bottom right
+        ),
+      ]
+          // borderRadius: BorderRadius.circular(22.0),
+          ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -125,12 +131,18 @@ class CarouselBanner extends StatelessWidget {
     ));
 
     img.add(Container(
-      width: 400,
+      width: 350,
       height: 40,
-      decoration: BoxDecoration(
-        color: colorDarkSkyBlue,
-        // borderRadius: BorderRadius.circular(22.0),
-      ),
+      decoration: BoxDecoration(color: colorDarkSkyBlue, boxShadow: [
+        BoxShadow(
+          color: Colors.black,
+          blurRadius: 2.0,
+          spreadRadius: 0.0,
+          offset: Offset(10.0, 10.0), // shadow direction: bottom right
+        ),
+      ]
+          // borderRadius: BorderRadius.circular(22.0),
+          ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
