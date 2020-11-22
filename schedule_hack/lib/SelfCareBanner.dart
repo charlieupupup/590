@@ -35,10 +35,18 @@ class CarouselBanner extends StatelessWidget {
     // ));
 
     img.add(Container(
-      width: 400,
+      width: 350,
       height: 40,
       decoration: BoxDecoration(
         color: colorAlmond,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 2.0,
+            spreadRadius: 0.0,
+            offset: Offset(10.0, 10.0), // shadow direction: bottom right
+          )
+        ],
         // borderRadius: BorderRadius.circular(22.0),
       ),
       child: Column(
