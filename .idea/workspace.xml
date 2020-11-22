@@ -26,10 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/AddScheduleEventPopup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Leighanne" />
+        <entry key="$PROJECT_DIR$" value="self_banner" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,11 +74,11 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/schedule_hack/images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\csadl\OneDrive - Duke University\DUKE\Fall_2020\ECE590-HCC\Final_Prototype\590\schedule_hack\lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/schedule_hack/images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -116,34 +113,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Added onPressed capability to AddButton to PlaceholderWidget">
-      <created>1604164777144</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1604164777144</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added onPressed capability to CourseButton to PlaceholderWidget">
-      <created>1604165601413</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1604165601413</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Added popup when hitting add button in Course List">
-      <created>1604169565197</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1604169565197</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Made checkmarkbutton and cancelbutton classes">
-      <created>1604171591434</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1604171591434</updated>
     </task>
     <task id="LOCAL-00022" summary="Added comments">
       <created>1604171668241</created>
@@ -460,7 +429,35 @@
       <option name="project" value="LOCAL" />
       <updated>1605984946667</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="working code">
+      <created>1606012377733</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1606012377734</updated>
+    </task>
+    <task id="LOCAL-00068" summary="working code">
+      <created>1606014335203</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1606014335204</updated>
+    </task>
+    <task id="LOCAL-00069" summary="changed scheduleview and schedule modify to statefulwidgets">
+      <created>1606016875305</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1606016875305</updated>
+    </task>
+    <task id="LOCAL-00070" summary="stateful schedule update">
+      <created>1606017312100</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1606017312102</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -478,9 +475,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Starter code for SelfCare Tab" />
-    <MESSAGE value="Added new survey questions" />
-    <MESSAGE value="Basic setup of self care tab with check in/out buttons" />
     <MESSAGE value="Finally working day selector using check boxes for course popup" />
     <MESSAGE value="Rounded button for self care tabs" />
     <MESSAGE value="Added time selector functionality" />
@@ -503,7 +497,10 @@
     <MESSAGE value="started fixed date selector and time selector for modify" />
     <MESSAGE value="Schedule modify UI update with date and time selector" />
     <MESSAGE value="make add button unclickable" />
-    <option name="LAST_COMMIT_MESSAGE" value="make add button unclickable" />
+    <MESSAGE value="working code" />
+    <MESSAGE value="changed scheduleview and schedule modify to statefulwidgets" />
+    <MESSAGE value="stateful schedule update" />
+    <option name="LAST_COMMIT_MESSAGE" value="stateful schedule update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
