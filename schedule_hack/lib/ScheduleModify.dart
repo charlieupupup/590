@@ -59,7 +59,10 @@ class ScheduleModify extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            child: Text('Start:'),
+            child: Text('Start:',
+                style: TextStyle(
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)),
           ),
 
           Expanded(
@@ -87,10 +90,12 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                startDateController.text = date
-                    .toString()
-                    .substring(0, 10); //save to json to send back out
-                startDate = startDateController.text;
+                if (date != null){
+                  startDateController.text = date
+                      .toString()
+                      .substring(0, 10); //save to json to send back out
+                  startDate = startDateController.text;
+                }
               },
             ),
           ),
@@ -137,7 +142,10 @@ class ScheduleModify extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            child: Text('End:  '),
+            child: Text('End:  ',
+                style: TextStyle(
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)),
           ),
           Expanded(
             child: TextField(
@@ -164,10 +172,12 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                endDateController.text = date
-                    .toString()
-                    .substring(0, 10); //save to json to send back out
-                endDate = endDateController.text;
+                if (date != null){
+                  endDateController.text = date
+                      .toString()
+                      .substring(0, 10); //save to json to send back out
+                  endDate = endDateController.text;
+                }
               },
             ),
           ),
@@ -219,10 +229,16 @@ class ScheduleModify extends StatelessWidget {
               Text(
                 'Modify Task',
                 textScaleFactor: 1,
+                  style: TextStyle(
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold),
               ),
               Text(
                 activity.subject,
                 textScaleFactor: 2,
+                  style: TextStyle(
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold),
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -250,7 +266,10 @@ class ScheduleModify extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Details:'),
+                    Text('Details:',
+                        style: TextStyle(
+                            color: colorBlackCoral,
+                            fontWeight: FontWeight.bold)),
                     Text(''),
                     Text(''),
                   ],
