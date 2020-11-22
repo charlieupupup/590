@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
@@ -87,37 +88,43 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: colorAeroBlue,
-                        borderRadius: BorderRadius.circular(22.0),
-                      ),
+                          // color: colorAeroBlue,
+                          // borderRadius: BorderRadius.circular(22.0),
+                          ),
                       child: RaisedButton(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           color: colorAeroBlue,
                           onPressed: () {
-                            // cal.getActivities(DateTime.now());
                             String message =
-                                'Showing recommendations for things to do to center yourself';
-                            //_showMaterialDialog2(message);
+                                'Showing recommendations for self-reflection';
                             StandardPopup(context, message, 2);
                           },
                           child: Container(
-                            margin:
-                                EdgeInsets.only(left: 10, top: 50, right: 10),
+                            margin: EdgeInsets.only(
+                                left: padding.left,
+                                top: padding.top,
+                                right: padding.right),
                             child: ListView(children: [
-                              new Text("Check-In",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 20.0, color: colorBlackCoral)),
+                              new AutoSizeText(
+                                "Check-In",
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    color: colorBlackCoral,
+                                    fontWeight: FontWeight.bold),
+                                maxLines: 1,
+                                minFontSize: 20,
+                                textAlign: TextAlign.center,
+                              ),
                               ImageIcon(
-                                AssetImage("images/relax.png"),
+                                AssetImage("images/yoga.png"),
                                 color: colorBlackCoral,
-                                size: 75.0,
+                                size: 100.0,
                               ),
                               new Text(
-                                  "Click for methods to recenter yourself and tune into your mental health",
-                                  //textAlign: TextAlign.center,
+                                  "Click here to learn more and tune into your mental health",
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 14.0, color: colorBlackCoral)),
                             ]),
@@ -131,42 +138,50 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: colorPowderBlue,
-                        borderRadius: BorderRadius.circular(22.0),
-                      ),
+                          // color: colorPowderBlue,
+                          // borderRadius: BorderRadius.circular(22.0),
+                          ),
                       child: RaisedButton(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           color: colorPowderBlue,
                           onPressed: () {
                             String message =
-                                'Showing recommendations for things to do to escape';
+                                'Showing recommendations for relaxation';
                             //_showMaterialDialog2(message);
                             StandardPopup(context, message, 2);
                           },
                           child: Container(
-                            margin:
-                                EdgeInsets.only(left: 10, top: 50, right: 10),
+                            margin: EdgeInsets.only(
+                                left: padding.left,
+                                top: padding.top,
+                                right: padding.right),
                             child: ListView(children: [
-                              new Text("Check-Out",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 20.0, color: colorBlackCoral)),
+                              new AutoSizeText(
+                                "Check-Out",
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    color: colorBlackCoral,
+                                    fontWeight: FontWeight.bold),
+                                maxLines: 1,
+                                minFontSize: 20,
+                                textAlign: TextAlign.center,
+                              ),
                               ImageIcon(
-                                AssetImage("images/checkout.png"),
+                                AssetImage("images/music.png"),
                                 color: colorBlackCoral,
-                                size: 75.0,
+                                size: 100.0,
                               ),
                               new Text(
-                                  "Click for methods to decompress and relax",
-                                  //textAlign: TextAlign.center,
+                                  "Click here to destress and tune out the world",
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 14.0, color: colorBlackCoral)),
                             ]),
                           )),
                     ),
-                  )
+                  ),
                 ],
               )
             ],

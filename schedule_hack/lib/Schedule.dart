@@ -37,7 +37,8 @@ class _Schedule extends State<Schedule> {
   }
 
   _Schedule(List<Activity> activities) {
-    this._scheduleToday = activities;
+    // this._scheduleToday = activities;
+    this._scheduleToday = globalActivities.activities;
   }
 
   @override

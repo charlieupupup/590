@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ActivityDataSource.dart';
 import 'package:schedule_hack/Home.dart';
@@ -13,8 +14,16 @@ import 'UserPreferences.dart';
 
 void main() {
   runApp(MyApp());
-
+  globalActivities = getActivities();
   userSettings = new UserPreferences();
+}
+
+Activities getActivities() {
+  List<Activity> _dayActivities = new List<Activity>();
+  _dayActivities.add(Activity.test("Yoga", 0));
+  _dayActivities.add(Activity.test("Attend Class", 2));
+  _dayActivities.add(Activity.test("Sleep", 4));
+  return new Activities.fromActivities(DateTime.now(), _dayActivities);
 }
 
 class MyApp extends StatelessWidget {

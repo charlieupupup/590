@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/utilities.dart';
@@ -40,26 +41,29 @@ class CarouselBanner extends StatelessWidget {
       height: height / 10,
       child: Card(
         // margin: EdgeInsets.all(6.0),
-        elevation: 4.0,
-        color: colorAlmond,
+        elevation: 5.0,
+        color: colorSoftMelon,
         // borderRadius: BorderRadius.circular(22.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Text(
-                'Let\s Read!',
-                textScaleFactor: 2,
+              child: AutoSizeText(
+                "Let\'s read",
                 style: TextStyle(
-                  color: colorBlackCoral,
-                ),
+                    fontSize: 36,
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold),
+                maxLines: 1,
+                minFontSize: 20,
+                textAlign: TextAlign.center,
               ),
             ),
             ImageIcon(
               AssetImage("images/books_filled.png"),
               color: colorBlackCoral,
-              size: 75.0,
+              size: height / 15,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -68,8 +72,7 @@ class CarouselBanner extends StatelessWidget {
                   'suggestion based on history',
                   textScaleFactor: 1,
                   style: TextStyle(
-                    color: colorBlackCoral,
-                  ),
+                      color: colorBlackCoral, fontStyle: FontStyle.italic),
                 ),
               ],
             ),
@@ -83,25 +86,28 @@ class CarouselBanner extends StatelessWidget {
       height: height / 10,
       child: Card(
         // margin: EdgeInsets.all(6.0),
-        elevation: 4.0,
-        color: colorSoftMelon,
+        elevation: 5.0,
+        color: colorAlmond,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Text(
-                'How about a nap?',
-                textScaleFactor: 2,
+              child: AutoSizeText(
+                "How about a nap?",
                 style: TextStyle(
-                  color: colorBlackCoral,
-                ),
+                    fontSize: 36,
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold),
+                maxLines: 1,
+                minFontSize: 20,
+                textAlign: TextAlign.center,
               ),
             ),
             ImageIcon(
               AssetImage("images/sleepingbed.png"),
               color: colorBlackCoral,
-              size: 75.0,
+              size: height / 15,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -110,8 +116,7 @@ class CarouselBanner extends StatelessWidget {
                   'suggestion based on history',
                   textScaleFactor: 1,
                   style: TextStyle(
-                    color: colorBlackCoral,
-                  ),
+                      color: colorBlackCoral, fontStyle: FontStyle.italic),
                 ),
               ],
             ),
@@ -124,25 +129,28 @@ class CarouselBanner extends StatelessWidget {
       height: height / 10,
       child: Card(
         // margin: EdgeInsets.all(6.0),
-        elevation: 4.0,
-        color: colorDarkSkyBlue,
+        elevation: 5.0,
+        color: CustomColor('#F4D2C4'),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Text(
-                'Let\'s run!',
-                textScaleFactor: 2,
+              child: AutoSizeText(
+                "Let\'s run",
                 style: TextStyle(
-                  color: colorBlackCoral,
-                ),
+                    fontSize: 36,
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold),
+                maxLines: 1,
+                minFontSize: 20,
+                textAlign: TextAlign.center,
               ),
             ),
             ImageIcon(
               AssetImage("images/running.png"),
               color: colorBlackCoral,
-              size: 75.0,
+              size: height / 15,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -151,8 +159,7 @@ class CarouselBanner extends StatelessWidget {
                   'suggestion based on history',
                   textScaleFactor: 1,
                   style: TextStyle(
-                    color: colorBlackCoral,
-                  ),
+                      color: colorBlackCoral, fontStyle: FontStyle.italic),
                 ),
               ],
             ),

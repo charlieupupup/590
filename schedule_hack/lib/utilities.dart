@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:schedule_hack/Activities.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/UserPreferences.dart';
@@ -81,6 +83,9 @@ final Color colorSoftMelon = CustomColor('#FDC2BE');
 final Color colorPale = CustomColor('#FAF3DD');
 
 enum Tab { schedule, selfCare, courses }
+
+//global activites list
+Activities globalActivities;
 
 /*
 These are impossible to remember so I'm leaving them here in utilities as an easy resource
