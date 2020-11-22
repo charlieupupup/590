@@ -96,7 +96,9 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
                       );
                     },
                   );
-                  startTimeController.text = time.format(context);
+                  if (time != null){
+                    startTimeController.text = time.format(context);
+                  }
                 },
               ),
               TextField(
@@ -115,7 +117,9 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
                       );
                     },
                   );
-                  endTimeController.text = time.format(context);
+                  if (time != null){
+                    endTimeController.text = time.format(context);
+                  }
                 },
               ),
               // DaySelector(dayValues),
