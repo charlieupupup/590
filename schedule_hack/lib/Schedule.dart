@@ -12,7 +12,19 @@ import 'Home.dart';
 
 import 'SettingsButton.dart';
 
-class Schedule extends StatelessWidget {
+class Schedule extends StatefulWidget {
+  List<Activity> scheduleToday;
+
+  Schedule(List<Activity> _scheduleToday) {
+    this.scheduleToday = _scheduleToday;
+  }
+  @override
+  State<StatefulWidget> createState() {
+    return _Schedule(scheduleToday);
+  }
+}
+
+class _Schedule extends State<Schedule> {
   final LocalStorage scheduleStorage = new LocalStorage('schedule.json');
   List<Activity> _scheduleToday;
   ActivityDataSource get activityDataSource {
@@ -24,7 +36,7 @@ class Schedule extends StatelessWidget {
     return activityDataSource.appointments as List<Activity>;
   }
 
-  Schedule(List<Activity> activities) {
+  _Schedule(List<Activity> activities) {
     this._scheduleToday = activities;
   }
 

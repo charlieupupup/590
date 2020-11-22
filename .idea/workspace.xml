@@ -25,7 +25,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="" />
+    <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/Schedule.dart" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +73,11 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/schedule_hack/images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\csadl\OneDrive - Duke University\DUKE\Fall_2020\ECE590-HCC\Final_Prototype\590\schedule_hack\lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/schedule_hack/images" />
     </key>
   </component>
   <component name="RunDashboard">
