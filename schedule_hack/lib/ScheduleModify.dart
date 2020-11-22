@@ -36,11 +36,11 @@ class ScheduleModify extends StatelessWidget {
     startTimeController.text = getTime(activity.startTime);
     endTimeController.text = getTime(activity.endTime);
     notesController.text = activity.notes;
-    startTime = getDate(activity.startTime);
-    endTime = getDate(activity.endTime);
-    startDate = getDate(activity.startTime);
-    endDate = getDate(activity.endTime);
     notes = activity.notes;
+    endDate = getDate(activity.endTime);
+    endTime = getTime(activity.endTime);
+    startDate = getDate(activity.startTime);
+    startTime = getTime(activity.startTime);
   }
   String getDate(DateTime dateTime) {
     final df = new DateFormat('yyyy-MM-dd');
@@ -275,16 +275,6 @@ class ScheduleModify extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CancelButton(),
-                    // ModifyButton(
-                    //     context,
-                    //     activity,
-                    //     dayActivities,
-                    //     notesController,
-                    //     startTimeController,
-                    //     endTimeController,
-                    //     startDateController,
-                    //     endDateController,
-                    //     scheduleStorage)
                     ModifyButton(activity, dayActivities, context, endDate,
                         endTime, notes, scheduleStorage, startDate, startTime),
                   ],
@@ -333,8 +323,8 @@ class ModifyButton extends StatefulWidget with AppStorage {
     this.notes = _notes;
     this.startDate = _startDate;
     this.endDate = _endDate;
-    this.startDate = _startDate;
-    this.endDate = _endDate;
+    this.startTime = _startTime;
+    this.endTime = _endTime;
     this.scheduleStorage = storage;
   }
 
@@ -360,12 +350,12 @@ class _ModifyButtonState extends State<ModifyButton> {
       Activity activity,
       Activities activities,
       BuildContext context,
-      String notesController,
-      String startDateController,
       String endDateController,
+      String endTimeController,
+      String notesController,
       LocalStorage scheduleStorage,
-      String startTimeController,
-      String endTimeController) {
+      String startDateController,
+      String startTimeController) {
     _activity = activity;
     _activities = activities;
     _context = context;
@@ -402,25 +392,35 @@ class _ModifyButtonState extends State<ModifyButton> {
                   hours: startTimeOfDay.hour, minutes: startTimeOfDay.minute));
           DateTime endTime = DateTime.parse(_endDateController).add(
               Duration(hours: endTimeOfDay.hour, minutes: endTimeOfDay.minute));
-          Activity newActivity = new Activity.fromDateTime(
-              startTime, endTime, _activity.subject, _notesController);
-
-          print("activities before ${_activities.activities}");
-          print(
-              "local storage before ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
+          Activity newActivity = new Activity(startTime.toIso8601String(),
+              endTime.toIso8601String(), _activity.subject, _notesController);
+          //
+          // print("activities before ${_activities.activities}");
+          // print(
+          //     "local storage before ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           _activities.removeActivityFromLocalStorage(
               _activity, _scheduleStorage);
-          print("activity is now ${_activities.activities}");
-          print(
-              "local storage after ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
+          // print("activity is now ${_activities.activities}");
+          // print(
+          //     "local storage after ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           _activities.activities.add(newActivity);
-          print("activity after add  ${_activities.activities}");
-          print(
-              "local storage after add ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
+          // print("activity after add  ${_activities.activities}");
+          // print(
+          //     "local storage after add ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           _activities.addToLocalStorage(_activity.startTime, _scheduleStorage);
-          print("activity after add  to storage ${_activities.activities}");
-          print(
-              "local storage after add to storage ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
+          // print("activity after add  to storage ${_activities.activities}");
+          // print(
+          //     "local storage after add to storage ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
+          print("new activity");
+          Activities a = new Activities.fromStorage(
+              newActivity.startTime, _scheduleStorage);
+          a.printActivities();
+          a.removeActivityFromLocalStorage(newActivity, _scheduleStorage);
+          a.printActivities();
+          a.activities.add(_activity);
+          a.printActivities();
+          a.addToLocalStorage(newActivity.startTime, _scheduleStorage);
+          a.printActivities();
         });
         Navigator.pushAndRemoveUntil(
           context,

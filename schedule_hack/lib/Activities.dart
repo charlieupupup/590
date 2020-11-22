@@ -101,17 +101,29 @@ class Activities {
     return a;
   }
 
+  void printActivities() {
+    String _print = "${DateFormat.yMMMd('en_US').format(date)}: (";
+    for (int i = 0; i < activities.length; i++) {
+      _print += activities[i].subject + ", ";
+    }
+    _print += ")";
+    print(_print);
+  }
+
   List<Activity> removeActivityFromLocalStorage(
       Activity activityToRemove, LocalStorage storage) {
-    print(
-        "storage before ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
+    // print(
+    //     "storage before ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
+    this.printActivities();
     removeAllFromLocalStorage(activityToRemove.startTime, storage);
-    print(
-        "storage after removal ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
+    // print(
+    //     "storage after removal ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
     this.activities.remove(activityToRemove);
-    addToLocalStorage(activityToRemove.startTime, storage);
-    print(
-        "storage once added back ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
+    this.printActivities();
+    this.addToLocalStorage(activityToRemove.startTime, storage);
+    this.printActivities();
+    // print(
+    //     "storage once added back ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
     return this.activities;
   }
 }
