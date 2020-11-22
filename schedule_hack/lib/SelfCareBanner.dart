@@ -4,29 +4,41 @@ import 'package:schedule_hack/utilities.dart';
 
 class CarouselBanner extends StatelessWidget {
   CarouselController buttonCarouselController = CarouselController();
+  BuildContext context;
+  double height;
+  double width;
+
+  CarouselBanner(BuildContext _context) {
+    this.context = _context;
+    var padding = MediaQuery.of(context).padding;
+    height = MediaQuery.of(context).size.height - padding.top - padding.bottom;
+    width = MediaQuery.of(context).size.width - padding.left - padding.right;
+  }
 
   @override
-  Widget build(BuildContext context) => Column(children: <Widget>[
-    CarouselSlider(
-      items: getImgs(),
-      carouselController: buttonCarouselController,
-      options: CarouselOptions(
-        autoPlay: true,
-        height: 150,
-        enlargeCenterPage: true,
-        viewportFraction: 1,
-        aspectRatio: 2,
+  Widget build(context) {
+    return Column(children: <Widget>[
+      CarouselSlider(
+        items: getImgs(),
+        carouselController: buttonCarouselController,
+        options: CarouselOptions(
+          autoPlay: true,
+          height: height / 5,
+          enlargeCenterPage: true,
+          viewportFraction: 1,
+          aspectRatio: 2,
+        ),
       ),
-    ),
-  ]);
+    ]);
+  }
 
   List<Widget> getImgs() {
     List<Widget> img = new List();
 
-    img.add( Material(
+    img.add(Material(
       elevation: 5,
       child: Container(
-        width: 350,
+        width: width,
         height: 40,
         decoration: BoxDecoration(
           color: colorAlmond,
@@ -70,7 +82,7 @@ class CarouselBanner extends StatelessWidget {
     img.add(Material(
       elevation: 5,
       child: Container(
-        width: 350,
+        width: width,
         height: 40,
         decoration: BoxDecoration(
           color: colorSoftMelon,
@@ -114,11 +126,10 @@ class CarouselBanner extends StatelessWidget {
     img.add(Material(
       elevation: 5,
       child: Container(
-        width: 350,
+        width: width,
         height: 40,
         decoration: BoxDecoration(
           color: colorDarkSkyBlue,
-
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -1,10 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
-import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:intl/intl.dart';
-import 'package:localstorage/localstorage.dart';
-import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Notify.dart';
@@ -29,6 +23,11 @@ class SelfCareState extends State<SelfCare> with AppStorage {
 
   @override
   Widget build(BuildContext context) {
+    var padding = MediaQuery.of(context).padding;
+    double width =
+        MediaQuery.of(context).size.width - padding.left - padding.right;
+    double height =
+        MediaQuery.of(context).size.height - padding.top - padding.bottom;
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -59,11 +58,6 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                     Notify n = Notify();
                     n.ini(context);
                     n.notify();
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => Home(0)),
-                    // );
-                    // showDialog(context: context, child: MidPopUp());
                   },
                 )
               ],
@@ -79,32 +73,7 @@ class SelfCareState extends State<SelfCare> with AppStorage {
         body: Container(
           child: ListView(
             children: [
-              // SizedBox(
-              //   width: 300,
-              //   height: 150,
-              //   child: Card(
-              //     margin: EdgeInsets.all(6.0),
-              //     elevation: 4.0,
-              //     color: colorMelon,
-              //     child: Align(
-              //       alignment: Alignment.center,
-              //       // child: AutoSizeText(
-              //       //   "This is the self care banner",
-              //       //   style: TextStyle(fontSize: 24, color: colorIvory),
-              //       //   maxLines: 1,
-              //       //   minFontSize: 20,
-              //       //   textAlign: TextAlign.center,
-              //       // ),
-              //       child: CarouselBanner(),
-              //     ),
-              //   ),
-              // ),
-              // SizedBox(
-              //   width: 300,
-              //   height: 150,
-              //   child: CarouselBanner(),
-              // ),
-              CarouselBanner(),
+              CarouselBanner(context),
               SizedBox(
                 height: 20,
               ),
@@ -112,8 +81,8 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 180.0,
-                    height: 300.0,
+                    width: (width * 0.90) / 2,
+                    height: height / 2,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
@@ -135,7 +104,7 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                           },
                           child: Container(
                             margin:
-                            EdgeInsets.only(left: 10, top: 50, right: 10),
+                                EdgeInsets.only(left: 10, top: 50, right: 10),
                             child: ListView(children: [
                               new Text("Check-In",
                                   textAlign: TextAlign.center,
@@ -156,8 +125,8 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                     ),
                   ),
                   Container(
-                    width: 180.0,
-                    height: 300.0,
+                    width: (width * 0.90) / 2,
+                    height: height / 2,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
@@ -178,7 +147,7 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                           },
                           child: Container(
                             margin:
-                            EdgeInsets.only(left: 10, top: 50, right: 10),
+                                EdgeInsets.only(left: 10, top: 50, right: 10),
                             child: ListView(children: [
                               new Text("Check-Out",
                                   textAlign: TextAlign.center,
