@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
-import 'package:schedule_hack/ActivityDataSource.dart';
-
 import 'package:schedule_hack/utilities.dart';
 import 'AddScheduleEventPopup.dart';
 import 'ScheduleElement.dart';
@@ -32,43 +30,48 @@ class _ScheduleViewState extends State<ScheduleView> {
 
   @override
   Widget build(BuildContext context) {
+    var padding = MediaQuery.of(context).padding;
+    double height =
+        MediaQuery.of(context).size.height - padding.top - padding.bottom;
+    double width =
+        MediaQuery.of(context).size.width - padding.left - padding.right;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: const EdgeInsets.only(top: 20),
-          child: Row(
-            children: [
-              Container(),
-              Text(
-                'My Day',
-                style: TextStyle(color: colorIvory),
-                textScaleFactor: 2,
+        SizedBox(
+            width: width * 0.80,
+            height: 120,
+            child: Card(
+              margin: EdgeInsets.only(top: 30.0),
+              elevation: 5.0,
+              color: colorPowderBlue,
+              // borderRadius: BorderRadius.circular(22.0),
+              child: Row(
+                children: [
+                  Container(),
+                  Text(
+                    'My Day',
+                    style: TextStyle(color: colorIvory),
+                    textScaleFactor: 2,
+                  ),
+                  Container(
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (_) {
+                              return AddScheduleEventPopup();
+                            });
+                      },
+                      backgroundColor: colorAeroBlue, //colorHoneydew,
+                      child: Image.asset('images/add.png'),
+                    ),
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
               ),
-              Container(
-                child: FloatingActionButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (_) {
-                          return AddScheduleEventPopup();
-                        });
-                  },
-                  backgroundColor: colorAeroBlue, //colorHoneydew,
-                  child: Image.asset('images/add.png'),
-                ),
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-          ),
-          width: 300,
-          height: 75,
-          decoration: BoxDecoration(
-            color: colorPowderBlue,
-            // borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-        ),
+            )),
         for (var scheduleEvent in _dayActivities)
           Container(
             // margin: const EdgeInsets.all(24.0),
@@ -80,8 +83,8 @@ class _ScheduleViewState extends State<ScheduleView> {
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),
-            width: 300,
-            height: 75,
+            width: width * 0.80,
+            height: (height / 3) / _dayActivities.length,
             decoration: BoxDecoration(color: colorAeroBlue),
           ),
 
