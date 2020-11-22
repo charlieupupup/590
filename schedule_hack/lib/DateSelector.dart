@@ -54,8 +54,10 @@ class _DateSelectorState extends State<DateSelector> {
               );
             },
           );
-          dateController.text =
-              date.toString().substring(0, 10); //save to json to send back out
+          if (date != null){
+            dateController.text =
+                date.toString().substring(0, 10); //save to json to send back out
+          }
         },
       )),
     );

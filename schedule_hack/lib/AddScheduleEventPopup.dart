@@ -92,9 +92,11 @@ class _AddScheduleEventPopupState extends State<AddScheduleEventPopup> {
                       );
                     },
                   );
-                  startDateController.text = date
-                      .toString()
-                      .substring(0, 10); //save to json to send back out
+                  if (date != null){
+                    startDateController.text = date
+                        .toString()
+                        .substring(0, 10); //save to json to send back out
+                  }
                 },
               ),
               TextField(
@@ -120,9 +122,11 @@ class _AddScheduleEventPopupState extends State<AddScheduleEventPopup> {
                       );
                     },
                   );
-                  endDateController.text = date
-                      .toString()
-                      .substring(0, 10); //save to json to send back out
+                  if (date != null){
+                    endDateController.text = date
+                        .toString()
+                        .substring(0, 10); //save to json to send back out
+                  }
                 },
               ),
               TextField(
@@ -142,7 +146,9 @@ class _AddScheduleEventPopupState extends State<AddScheduleEventPopup> {
                       );
                     },
                   );
-                  startTimeController.text = time.format(context);
+                  if (time != null){
+                    startTimeController.text = time.format(context);
+                  }
                 },
               ),
               TextField(
@@ -161,7 +167,9 @@ class _AddScheduleEventPopupState extends State<AddScheduleEventPopup> {
                       );
                     },
                   );
-                  endTimeController.text = time.format(context);
+                  if (time != null){
+                    endTimeController.text = time.format(context);
+                  }
                 },
               ),
               new TextFormField(

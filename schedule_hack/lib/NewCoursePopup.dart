@@ -117,7 +117,9 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
                       );
                     },
                   );
-                  endTimeController.text = time.format(context);
+                  if (time != null){
+                    endTimeController.text = time.format(context);
+                  }
                 },
               ),
               // DaySelector(dayValues),
