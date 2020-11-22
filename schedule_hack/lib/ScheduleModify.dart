@@ -454,7 +454,7 @@ class _ModifyButtonState extends State<ModifyButton> {
           actions: <Widget> [
             Center(
               child: Text(
-                  'Save changes?',
+                  'Save changes? ',
                   style: TextStyle(fontSize: 24, color: colorBlackCoral, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center
               ),
