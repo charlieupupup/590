@@ -1,15 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ScheduleModify.dart';
 import 'package:schedule_hack/utilities.dart';
 
 class ScheduleElementDetail extends StatelessWidget {
   Activity _activity;
+  List<Activity> _dayActivities;
+  LocalStorage scheduleStorage;
 
-  ScheduleElementDetail(Activity activity) {
+  ScheduleElementDetail(
+      Activity activity, List<Activity> dayActivities, LocalStorage storage) {
     _activity = activity;
+    _dayActivities = dayActivities;
+    scheduleStorage = storage;
+    print(
+        "activity selected is subject: ${_activity.subject} notes: ${_activity.notes}");
   }
 
   @override
@@ -29,12 +37,9 @@ class ScheduleElementDetail extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            child: Text(
-              'Start:',
+            child: Text('Start:',
                 style: TextStyle(
-                    color: colorBlackCoral,
-                    fontWeight: FontWeight.bold)
-            ),
+                    color: colorBlackCoral, fontWeight: FontWeight.bold)),
           ),
           Expanded(
             child: TextField(
@@ -79,8 +84,7 @@ class ScheduleElementDetail extends StatelessWidget {
           Container(
             child: Text('End:  ',
                 style: TextStyle(
-                    color: colorBlackCoral,
-                    fontWeight: FontWeight.bold)),
+                    color: colorBlackCoral, fontWeight: FontWeight.bold)),
           ),
           Expanded(
             child: TextField(
@@ -128,8 +132,7 @@ class ScheduleElementDetail extends StatelessWidget {
               Text(
                 _activity.subject,
                 style: TextStyle(
-                    color: colorBlackCoral,
-                    fontWeight: FontWeight.bold),
+                    color: colorBlackCoral, fontWeight: FontWeight.bold),
                 textScaleFactor: 2.5,
               ),
             ],
@@ -202,7 +205,7 @@ class ScheduleElementDetail extends StatelessWidget {
         showDialog(
             context: context,
             builder: (_) {
-              return ScheduleModify(_activity);
+              return ScheduleModify(_activity, _dayActivities, scheduleStorage);
             });
       },
       color: colorPowderBlue,

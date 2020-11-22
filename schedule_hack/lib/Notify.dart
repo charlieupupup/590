@@ -30,8 +30,10 @@ class Notify extends StatelessWidget {
       //   MaterialPageRoute(builder: (context) => HomeNoti(0)),
       // );
       // showDialog(context: context, builder: (_) => MidPopUp());
-      MyApp.navigatorKey.currentState
-          .push(MaterialPageRoute(builder: (context) => HomeNoti(0)));
+      MyApp.navigatorKey.currentState.push(MaterialPageRoute(
+          builder: (context) => HomeNoti(
+                0,
+              )));
     });
   }
 

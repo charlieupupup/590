@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_hack/Activities.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -9,8 +10,8 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 class ActivityDataSource extends CalendarDataSource {
   /// Creates a Activities data source, which used to set the appointment
   /// collection to the calendar
-  ActivityDataSource(Activities source) {
-    appointments = source.activities;
+  ActivityDataSource(List<Activity> source) {
+    appointments = source;
   }
 
   @override

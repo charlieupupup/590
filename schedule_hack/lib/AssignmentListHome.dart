@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/AssignmentList.dart';
 import 'package:schedule_hack/Course.dart';
 import 'package:schedule_hack/CourseList.dart';
@@ -17,7 +18,7 @@ class AssignmentListHome extends StatefulWidget {
   int viewingAssignment;
   Course originalCourse;
 
-  AssignmentListHome(int i,Course c,int e, int cCount, int vA, Course oC){
+  AssignmentListHome(int i, Course c, int e, int cCount, int vA, Course oC) {
     this.index = i;
     this.course = c;
     this.edit = e;
@@ -28,7 +29,8 @@ class AssignmentListHome extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _AssignmentListHomeState(this.index,this.course,this.edit,this.courseCount, this.viewingAssignment,this.originalCourse);
+    return _AssignmentListHomeState(this.index, this.course, this.edit,
+        this.courseCount, this.viewingAssignment, this.originalCourse);
   }
 }
 
@@ -41,7 +43,8 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
   int viewingAssignment;
   Course originalCourse;
 
-  _AssignmentListHomeState(int i,Course c, int e, int cCount,int vA, Course oC){
+  _AssignmentListHomeState(
+      int i, Course c, int e, int cCount, int vA, Course oC) {
     this._currentIndex = i;
     this.course = c;
     this.edit = e;
@@ -49,12 +52,18 @@ class _AssignmentListHomeState extends State<AssignmentListHome> {
     this.viewingAssignment = vA;
     this.originalCourse = oC;
     this._children = [
-      Schedule(
-          title: 'ScheduleHack',
-          date: DateTime.now() //initialize with today's date
-      ),
+      Schedule([
+        new Activity.test("Study", 0),
+        new Activity.test("Attend Class", 2),
+        new Activity.test("Sleep", 4)
+      ]), //TODO: connect this to other calendar
       SelfCare(),
-      AssignmentList(this.course,this.edit,this.courseCount,this.viewingAssignment,this.originalCourse)//just placeholders until Self-Care and Courses widgets are made
+      AssignmentList(
+          this.course,
+          this.edit,
+          this.courseCount,
+          this.viewingAssignment,
+          this.originalCourse) //just placeholders until Self-Care and Courses widgets are made
     ];
   }
 
