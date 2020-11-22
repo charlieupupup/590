@@ -99,7 +99,7 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                           onPressed: () {
                             String message =
                                 'Showing recommendations for self-reflection';
-                            StandardPopup(context, message, 2);
+                            StandardPopup(context, message, 8);
                           },
                           child: Container(
                             margin: EdgeInsets.only(
@@ -150,7 +150,7 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                             String message =
                                 'Showing recommendations for relaxation';
                             //_showMaterialDialog2(message);
-                            StandardPopup(context, message, 2);
+                            StandardPopup(context, message, 8);
                           },
                           child: Container(
                             margin: EdgeInsets.only(
