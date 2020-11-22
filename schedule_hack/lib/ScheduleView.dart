@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 import 'package:schedule_hack/ActivityDataSource.dart';
 
@@ -8,13 +9,12 @@ import 'AddScheduleEventPopup.dart';
 import 'ScheduleElement.dart';
 
 class ScheduleView extends StatelessWidget {
-  //List<ScheduleEvent> _list;
-  // List<Activity> _list;
-  ActivityDataSource _activityDataSource;
+  List<Activity> _dayActivities;
+  LocalStorage scheduleStorage;
 
-  ScheduleView(ActivityDataSource activityDataSource) {
-    //_list = list;
-    _activityDataSource = activityDataSource;
+  ScheduleView(List<Activity> appointments, LocalStorage storage) {
+    _dayActivities = appointments;
+    scheduleStorage = storage;
   }
 
   @override
@@ -56,12 +56,14 @@ class ScheduleView extends StatelessWidget {
             // borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
         ),
-        for (var scheduleEvent in _activityDataSource.appointments)
+        for (var scheduleEvent in _dayActivities)
           Container(
             // margin: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                Expanded(child: ScheduleElement(scheduleEvent)),
+                Expanded(
+                    child: ScheduleElement(
+                        scheduleEvent, _dayActivities, scheduleStorage)),
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),

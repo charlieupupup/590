@@ -49,15 +49,15 @@ class Activities {
     storage.setItem(date.toIso8601String(), encoded);
     //getting into storage and getting out of storage to make sure it worked
     List<Activity> se = getActivitiesFromStorage(date, storage);
-    print(
-        "adding ${se.length} events on ${DateFormat.yMEd('en_US').format(date)}");
+    // print(
+    //     "adding ${se.length} events on ${DateFormat.yMEd('en_US').format(date)}");
   }
 
   //Removes all actitivies to storage with key = day.toIso8601String(), value = encoded Acitivites (i.e. List<Activity>)
   void removeAllFromLocalStorage(DateTime date, LocalStorage storage) {
     storage.deleteItem(date.toIso8601String());
-    print(
-        "removing ${activities.length} events on ${DateFormat.yMEd('en_US').format(date)}");
+    // print(
+    //     "removing ${activities.length} events on ${DateFormat.yMEd('en_US').format(date)}");
   }
 
   //TODO: void removeActivityFromLocalStorage(Activity activity, LocalStorage storage); (or something -- search through for individual activity and remove from list)
@@ -85,19 +85,45 @@ class Activities {
     if (list != null) {
       e = List<Activity>.from(
         (list as List).map(
-              (item) => Activity(
+          (item) => Activity(
               item['start'], item['end'], item['subject'], item['notes']),
         ),
       );
     }
-    print("list ($list) is of type ${list.runtimeType}");
+    // print("list ($list) is of type ${list.runtimeType}");
     return e;
   }
 
   static Activities getFromStorage(DateTime date, LocalStorage storage) {
     List<Activity> events = Activities.getActivitiesFromStorage(date, storage);
     Activities a = new Activities.fromActivities(date, events);
-    print("ACTIVITIES (${events}) is of type ${events.runtimeType}");
+    // print("ACTIVITIES (${events}) is of type ${events.runtimeType}");
     return a;
+  }
+
+  void printActivities() {
+    String _print = "${DateFormat.yMMMd('en_US').format(date)}: (";
+    for (int i = 0; i < activities.length; i++) {
+      _print += activities[i].subject + ", ";
+    }
+    _print += ")";
+    print(_print);
+  }
+
+  List<Activity> removeActivityFromLocalStorage(
+      Activity activityToRemove, LocalStorage storage) {
+    // print(
+    //     "storage before ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
+    this.printActivities();
+    removeAllFromLocalStorage(activityToRemove.startTime, storage);
+    // print(
+    //     "storage after removal ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
+    this.activities.remove(activityToRemove);
+    this.printActivities();
+    this.addToLocalStorage(activityToRemove.startTime, storage);
+    this.printActivities();
+    // print(
+    //     "storage once added back ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
+    return this.activities;
   }
 }

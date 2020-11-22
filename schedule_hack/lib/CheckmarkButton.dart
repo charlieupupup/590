@@ -1,3 +1,5 @@
+import 'package:localstorage/localstorage.dart';
+import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/JsonDataStorage.dart';
 import 'package:schedule_hack/SyllabusPopup.dart';
@@ -13,7 +15,7 @@ import 'LoadingScreen.dart';
 
 // Class that builds checkmark green button
 // Takes in index to know where to pass user next depending on where used
-class CheckmarkButton extends StatefulWidget {
+class CheckmarkButton extends StatefulWidget with AppStorage {
   int index;
   String data;
   int edit;
@@ -58,6 +60,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
   int edit;
   int courseCount;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
+
   TextEditingController nameController;
   Course course = new Course();
   TextEditingController startTimeController;
@@ -230,6 +233,7 @@ class _CheckmarkButtonState extends State<CheckmarkButton> {
               Navigator.of(context).pop();
               break;
             }
+
           default:
             {
               Navigator.push(

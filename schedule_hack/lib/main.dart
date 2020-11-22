@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
+import 'package:schedule_hack/Activity.dart';
+import 'package:schedule_hack/ActivityDataSource.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schedule_hack/Notify.dart';
@@ -10,11 +13,13 @@ import 'UserPreferences.dart';
 
 void main() {
   runApp(MyApp());
+
   userSettings = new UserPreferences();
 }
 
 class MyApp extends StatelessWidget {
   static final navigatorKey = new GlobalKey<NavigatorState>();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
