@@ -96,7 +96,9 @@ class _NewCoursePopupState extends State<NewCoursePopup> {
                       );
                     },
                   );
-                  startTimeController.text = time.format(context);
+                  if (time != null){
+                    startTimeController.text = time.format(context);
+                  }
                 },
               ),
               TextField(
