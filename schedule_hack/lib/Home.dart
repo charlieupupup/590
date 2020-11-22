@@ -31,11 +31,8 @@ class _HomeState extends State<Home> with AppStorage {
   int _currentIndex = 0;
   JsonDataStorage jsonDataStorage = new JsonDataStorage();
   final LocalStorage _scheduleStorage = new LocalStorage('schedule.json');
-
   List<Activity> _dayActivities = new List<Activity>();
-
   ActivityDataSource _activityDataSource;
-
   List<Widget> _children = new List<Widget>();
 
   _HomeState(int i) {

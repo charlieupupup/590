@@ -46,7 +46,8 @@ class Activities {
   //Adds actitivies to storage with key = day.toIso8601String(), value = encoded Acitivites (i.e. List<Activity>)
   void addToLocalStorage(DateTime date, LocalStorage storage) {
     final encoded = this.toJSONEncodable();
-    storage.setItem(date.toIso8601String(), encoded);
+    String day = new DateFormat('yyyy-MM-dd').format(date);
+    storage.setItem(day, encoded);
     //getting into storage and getting out of storage to make sure it worked
     List<Activity> se = getActivitiesFromStorage(date, storage);
     // print(
@@ -55,7 +56,8 @@ class Activities {
 
   //Removes all actitivies to storage with key = day.toIso8601String(), value = encoded Acitivites (i.e. List<Activity>)
   void removeAllFromLocalStorage(DateTime date, LocalStorage storage) {
-    storage.deleteItem(date.toIso8601String());
+    String day = new DateFormat('yyyy-MM-dd').format(date);
+    storage.deleteItem(day);
     // print(
     //     "removing ${activities.length} events on ${DateFormat.yMEd('en_US').format(date)}");
   }
@@ -79,7 +81,7 @@ class Activities {
   //get a list of ScheduleEvents on date from LocalStorage
   static List<Activity> getActivitiesFromStorage(
       DateTime date, LocalStorage storage) {
-    String day = date.toIso8601String();
+    String day = new DateFormat('yyyy-MM-dd').format(date);
     List<Activity> e = new List<Activity>();
     var list = storage.getItem(day);
     if (list != null) {
@@ -101,26 +103,25 @@ class Activities {
     return a;
   }
 
-  void printActivities() {
+  String printActivities() {
     String _print = "${DateFormat.yMMMd('en_US').format(date)}: (";
     for (int i = 0; i < activities.length; i++) {
       _print += activities[i].subject + ", ";
     }
-    _print += ")";
-    print(_print);
+    return _print + ")";
   }
 
   List<Activity> removeActivityFromLocalStorage(
       Activity activityToRemove, LocalStorage storage) {
-    // print(
-    //     "storage before ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
-    this.printActivities();
+    print("activity to remove ${activityToRemove.subject}");
+    print("activities at start==> " + printActivities());
     removeAllFromLocalStorage(activityToRemove.startTime, storage);
-    // print(
-    //     "storage after removal ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");
+    print("activities after removal from storage==> " + printActivities());
     this.activities.remove(activityToRemove);
-    this.printActivities();
+    print("activities after removal of activity to remove==> " +
+        printActivities());
     this.addToLocalStorage(activityToRemove.startTime, storage);
+    print("activities after adding to local storage ==> " + printActivities());
     this.printActivities();
     // print(
     //     "storage once added back ${Activities.getActivitiesFromStorage(activityToRemove.startTime, storage)}");

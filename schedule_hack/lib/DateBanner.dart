@@ -18,7 +18,6 @@ class DateBanner extends StatefulWidget {
 
 class _DateBannerState extends State<DateBanner> {
   DateTime _date;
-  String _banner;
 
   String getAbbreviatedDateString() {
     return DateFormat.yMMMEd('en_US').format(_date);
@@ -30,7 +29,6 @@ class _DateBannerState extends State<DateBanner> {
 
   _DateBannerState(DateTime date) {
     _date = date;
-    _banner = getAbbreviatedDateString();
   }
 
   _DateBannerState createState() => _DateBannerState(_date);

@@ -418,14 +418,6 @@ class _AssignmentListState extends State<AssignmentList> {
             Activity activity =
                 new Activity.assignment(dueDate, myControllerDescription.text);
 
-            // Activity activity = new Activity.fromController(
-            //     myControllerDescription.text,
-            //     myControllerTime,
-            //     myControllerTime,
-            //     myControllerDate,
-            //     myControllerDate,
-            //     myControllerDescription);
-            //for each day in difference create act and add to listmyControllerTime.text
             activities.activities.add(activity);
             myControllerDate.clear();
             myControllerTime.clear();
