@@ -34,55 +34,94 @@ class CarouselBanner extends StatelessWidget {
     //   ),
     // ));
 
-    img.add(Container(
-      width: 350,
-      height: 40,
-      decoration: BoxDecoration(
-        color: colorAlmond,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black,
-            blurRadius: 2.0,
-            spreadRadius: 0.0,
-            offset: Offset(10.0, 10.0), // shadow direction: bottom right
-          )
-        ],
-        // borderRadius: BorderRadius.circular(22.0),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Text(
-              'reading time!',
-              textScaleFactor: 2,
-              style: TextStyle(
-                color: colorBlackCoral,
-              ),
-            ),
-          ),
-          ImageIcon(
-            AssetImage("images/books_filled.png"),
-            // color: colorBlackCoral,
-            size: 75.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'suggestion based on history',
-                textScaleFactor: 1,
+    img.add(Material(
+      elevation: 20,
+      child: Container(
+        width: 350,
+        height: 40,
+        decoration: BoxDecoration(
+          color: colorAlmond,
+
+          // borderRadius: BorderRadius.circular(22.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                'reading time!',
+                textScaleFactor: 2,
                 style: TextStyle(
                   color: colorBlackCoral,
                 ),
               ),
-            ],
-          ),
-        ],
+            ),
+            ImageIcon(
+              AssetImage("images/books_filled.png"),
+              // color: colorBlackCoral,
+              size: 75.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'suggestion based on history',
+                  textScaleFactor: 1,
+                  style: TextStyle(
+                    color: colorBlackCoral,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     ));
 
+    img.add(Material(
+      elevation: 10,
+      child: Container(
+        width: 350,
+        height: 40,
+        decoration: BoxDecoration(
+          color: colorSoftMelon,
+          // borderRadius: BorderRadius.circular(22.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                'take a nap?',
+                textScaleFactor: 2,
+                style: TextStyle(
+                  color: colorBlackCoral,
+                ),
+              ),
+            ),
+            ImageIcon(
+              AssetImage("images/sleepingbed.png"),
+              color: colorBlackCoral,
+              size: 75.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'suggestion based on history',
+                  textScaleFactor: 1,
+                  style: TextStyle(
+                    color: colorBlackCoral,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ));
     img.add(Container(
       width: 350,
       height: 40,
