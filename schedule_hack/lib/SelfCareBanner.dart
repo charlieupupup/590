@@ -38,8 +38,8 @@ class CarouselBanner extends StatelessWidget {
       width: 400,
       height: 40,
       decoration: BoxDecoration(
-        color: colorAeroBlue,
-        borderRadius: BorderRadius.circular(22.0),
+        color: colorAlmond,
+        // borderRadius: BorderRadius.circular(22.0),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -47,7 +47,7 @@ class CarouselBanner extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'let\'s medidate!',
+              'reading time!',
               textScaleFactor: 2,
               style: TextStyle(
                 color: colorBlackCoral,
@@ -55,8 +55,8 @@ class CarouselBanner extends StatelessWidget {
             ),
           ),
           ImageIcon(
-            AssetImage("images/relax.png"),
-            color: colorBlackCoral,
+            AssetImage("images/books_filled.png"),
+            // color: colorBlackCoral,
             size: 75.0,
           ),
           Row(
@@ -64,7 +64,7 @@ class CarouselBanner extends StatelessWidget {
             children: [
               Text(
                 'suggestion based on history',
-                textScaleFactor: 0.8,
+                textScaleFactor: 1,
                 style: TextStyle(
                   color: colorBlackCoral,
                 ),
@@ -80,7 +80,7 @@ class CarouselBanner extends StatelessWidget {
       height: 40,
       decoration: BoxDecoration(
         color: colorSoftMelon,
-        borderRadius: BorderRadius.circular(22.0),
+        // borderRadius: BorderRadius.circular(22.0),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -105,7 +105,7 @@ class CarouselBanner extends StatelessWidget {
             children: [
               Text(
                 'suggestion based on history',
-                textScaleFactor: 0.8,
+                textScaleFactor: 1,
                 style: TextStyle(
                   color: colorBlackCoral,
                 ),
@@ -120,8 +120,8 @@ class CarouselBanner extends StatelessWidget {
       width: 400,
       height: 40,
       decoration: BoxDecoration(
-        color: colorPowderBlue,
-        borderRadius: BorderRadius.circular(22.0),
+        color: colorDarkSkyBlue,
+        // borderRadius: BorderRadius.circular(22.0),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -129,7 +129,7 @@ class CarouselBanner extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'music time!',
+              'let\'s run!',
               textScaleFactor: 2,
               style: TextStyle(
                 color: colorBlackCoral,
@@ -137,7 +137,7 @@ class CarouselBanner extends StatelessWidget {
             ),
           ),
           ImageIcon(
-            AssetImage("images/checkout.png"),
+            AssetImage("images/running.png"),
             color: colorBlackCoral,
             size: 75.0,
           ),
@@ -146,7 +146,7 @@ class CarouselBanner extends StatelessWidget {
             children: [
               Text(
                 'suggestion based on history',
-                textScaleFactor: 0.8,
+                textScaleFactor: 1,
                 style: TextStyle(
                   color: colorBlackCoral,
                 ),
