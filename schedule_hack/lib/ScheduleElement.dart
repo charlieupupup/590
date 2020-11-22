@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activity.dart';
 
 import 'package:schedule_hack/utilities.dart';
@@ -8,10 +9,13 @@ import 'ScheduleElementDetail.dart';
 class ScheduleElement extends StatelessWidget {
   Activity _activity;
   List<Activity> _dayActivities;
+  LocalStorage scheduleStorage;
 
-  ScheduleElement(Activity activity, List<Activity> dayActivities) {
+  ScheduleElement(Activity activity, List<Activity> dayActivities,
+      LocalStorage localStorage) {
     this._activity = activity;
     this._dayActivities = dayActivities;
+    this.scheduleStorage = localStorage;
   }
 
   @override
@@ -29,7 +33,8 @@ class ScheduleElement extends StatelessWidget {
           showDialog(
               context: context,
               builder: (_) {
-                return ScheduleElementDetail(_activity, _dayActivities);
+                return ScheduleElementDetail(
+                    _activity, _dayActivities, scheduleStorage);
               });
         },
         // Navigator.push(

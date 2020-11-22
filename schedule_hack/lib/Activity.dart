@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/utilities.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -7,9 +9,6 @@ class Activity extends Appointment {
   String start;
   String end;
   Image image;
-
-  // ScheduleEvent(String start, String end, String subject, String notes)
-  //     : this.fromString(start, end, subject, notes);
 
   Activity(String start, String end, String subject, String notes)
       : super(
@@ -48,10 +47,6 @@ class Activity extends Appointment {
             DateTime.now().add(Duration(days: day, hours: 2)),
             subject,
             subject);
-
-  Activity.fromController(String name, TextEditingController startDate,
-      TextEditingController endDate, TextEditingController notes)
-      : this(startDate.text, endDate.text, name, notes.text);
 
   //convert from json encodable
   toJSONEncodable() {

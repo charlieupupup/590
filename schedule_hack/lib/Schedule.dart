@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/ActivityDataSource.dart';
 import 'package:schedule_hack/CalendarButton.dart';
@@ -12,6 +13,7 @@ import 'Home.dart';
 import 'SettingsButton.dart';
 
 class Schedule extends StatelessWidget {
+  final LocalStorage scheduleStorage = new LocalStorage('schedule.json');
   List<Activity> _scheduleToday;
   ActivityDataSource get activityDataSource {
     return new ActivityDataSource(_scheduleToday);
@@ -66,7 +68,7 @@ class Schedule extends StatelessWidget {
           // children: [DateBanner(date: date), ScheduleView(activityDataSource)],
           children: [
             DateBanner(date: DateTime.now()),
-            ScheduleView(_appointments)
+            ScheduleView(_appointments, scheduleStorage)
           ],
         ),
       ),
