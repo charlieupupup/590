@@ -208,7 +208,7 @@ class ScheduleElementDetail extends StatelessWidget {
               return ScheduleModify(_activity, _dayActivities, scheduleStorage);
             });
       },
-      color: colorPowderBlue,
+      color: colorAlmond,
       child: Row(
         children: [
           Image.asset(
