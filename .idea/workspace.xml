@@ -26,8 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleModify.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleModify.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/SelfCareBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/SelfCareBanner.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,13 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Added onPressed capability to AddButton to PlaceholderWidget">
-      <created>1604164777144</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1604164777144</updated>
     </task>
     <task id="LOCAL-00019" summary="Added onPressed capability to CourseButton to PlaceholderWidget">
       <created>1604165601413</created>
@@ -457,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605984946667</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="working code">
+      <created>1606012377733</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1606012377734</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,7 +476,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Starter code for SelfCare Tab" />
     <MESSAGE value="Added new survey questions" />
     <MESSAGE value="Basic setup of self care tab with check in/out buttons" />
     <MESSAGE value="Finally working day selector using check boxes for course popup" />
@@ -500,7 +500,8 @@
     <MESSAGE value="started fixed date selector and time selector for modify" />
     <MESSAGE value="Schedule modify UI update with date and time selector" />
     <MESSAGE value="make add button unclickable" />
-    <option name="LAST_COMMIT_MESSAGE" value="make add button unclickable" />
+    <MESSAGE value="working code" />
+    <option name="LAST_COMMIT_MESSAGE" value="working code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />

@@ -23,7 +23,7 @@ class CarouselBanner extends StatelessWidget {
   List<Widget> getImgs() {
     List<Widget> img = new List();
 
-    img.add( Material(
+    img.add(Material(
       elevation: 5,
       child: Container(
         width: 350,
@@ -118,7 +118,6 @@ class CarouselBanner extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           color: colorDarkSkyBlue,
-
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
