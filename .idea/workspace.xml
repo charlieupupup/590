@@ -25,12 +25,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleModify.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleModify.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" afterDir="false" />
-    </list>
+    <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,13 +110,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603908454822</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Added popup when hitting add button in Course List">
-      <created>1604169565197</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1604169565197</updated>
     </task>
     <task id="LOCAL-00021" summary="Made checkmarkbutton and cancelbutton classes">
       <created>1604171591434</created>
@@ -459,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606014335204</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="changed scheduleview and schedule modify to statefulwidgets">
+      <created>1606016875305</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1606016875305</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,7 +472,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added new survey questions" />
     <MESSAGE value="Basic setup of self care tab with check in/out buttons" />
     <MESSAGE value="Finally working day selector using check boxes for course popup" />
     <MESSAGE value="Rounded button for self care tabs" />
@@ -502,7 +496,8 @@
     <MESSAGE value="Schedule modify UI update with date and time selector" />
     <MESSAGE value="make add button unclickable" />
     <MESSAGE value="working code" />
-    <option name="LAST_COMMIT_MESSAGE" value="working code" />
+    <MESSAGE value="changed scheduleview and schedule modify to statefulwidgets" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed scheduleview and schedule modify to statefulwidgets" />
   </component>
   <component name="WindowStateProjectService">
     <state x="113" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
