@@ -26,11 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc13d7a9-9e21-4b12-ad0e-b1330dcb18d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/schedule_hack/lib/AddScheduleEventPopup.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/DateSelector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleView.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule_hack/lib/ScheduleModify.dart" beforeDir="false" afterPath="$PROJECT_DIR$/schedule_hack/lib/ScheduleModify.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Leighanne" />
+        <entry key="$PROJECT_DIR$" value="self_banner" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

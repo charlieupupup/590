@@ -9,6 +9,7 @@ import 'package:schedule_hack/utilities.dart';
 
 class ScheduleModify extends StatelessWidget {
   Activity _activity;
+  String startTime;
   TextEditingController startTimeController = TextEditingController();
   TextEditingController endTimeController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
@@ -16,20 +17,21 @@ class ScheduleModify extends StatelessWidget {
   TextEditingController notesController = TextEditingController();
   ScheduleModify(Activity activity) {
     _activity = activity;
+    startDateController.text = getDate(_activity.startTime);
+    endDateController.text = getDate(_activity.endTime);
+  }
+  String getDate(DateTime dateTime) {
+    final df = new DateFormat('yyyy-MM-dd');
+    return df.format(dateTime);
+  }
+
+  String getTime(DateTime dateTime) {
+    final df = new DateFormat('hh:mm a');
+    return df.format(dateTime);
   }
 
   @override
   Widget build(BuildContext context) {
-    String getDate(DateTime dateTime) {
-      final df = new DateFormat('MMM dd, yyyy');
-      return df.format(dateTime);
-    }
-
-    String getTime(DateTime dateTime) {
-      final df = new DateFormat('hh:mm a');
-      return df.format(dateTime);
-    }
-
     Widget Start(Activity _activity) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -96,7 +98,7 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                if (time != null){
+                if (time != null) {
                   startTimeController.text = time.format(context);
                 }
               },
@@ -170,7 +172,7 @@ class ScheduleModify extends StatelessWidget {
                     );
                   },
                 );
-                if (time != null){
+                if (time != null) {
                   endTimeController.text = time.format(context);
                 }
               },
