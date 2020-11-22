@@ -35,15 +35,14 @@ class CarouselBanner extends StatelessWidget {
   List<Widget> getImgs() {
     List<Widget> img = new List();
 
-    img.add(Material(
-      elevation: 5,
-      child: Container(
-        width: width,
-        height: 40,
-        decoration: BoxDecoration(
-          color: colorAlmond,
-          // borderRadius: BorderRadius.circular(22.0),
-        ),
+    img.add(SizedBox(
+      width: width,
+      height: height / 10,
+      child: Card(
+        // margin: EdgeInsets.all(6.0),
+        elevation: 4.0,
+        color: colorAlmond,
+        // borderRadius: BorderRadius.circular(22.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,15 +78,13 @@ class CarouselBanner extends StatelessWidget {
       ),
     ));
 
-    img.add(Material(
-      elevation: 5,
-      child: Container(
-        width: width,
-        height: 40,
-        decoration: BoxDecoration(
-          color: colorSoftMelon,
-          // borderRadius: BorderRadius.circular(22.0),
-        ),
+    img.add(SizedBox(
+      width: width,
+      height: height / 10,
+      child: Card(
+        // margin: EdgeInsets.all(6.0),
+        elevation: 4.0,
+        color: colorSoftMelon,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -122,15 +119,13 @@ class CarouselBanner extends StatelessWidget {
         ),
       ),
     ));
-
-    img.add(Material(
-      elevation: 5,
-      child: Container(
-        width: width,
-        height: 40,
-        decoration: BoxDecoration(
-          color: colorDarkSkyBlue,
-        ),
+    img.add(SizedBox(
+      width: width,
+      height: height / 10,
+      child: Card(
+        // margin: EdgeInsets.all(6.0),
+        elevation: 4.0,
+        color: colorDarkSkyBlue,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
