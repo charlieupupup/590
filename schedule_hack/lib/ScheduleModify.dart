@@ -400,7 +400,8 @@ class _ModifyButtonState extends State<ModifyButton> {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {
-        setState(() {
+        _showMaterialDialog();
+        /*setState(() {
           TimeOfDay startTimeOfDay =
               TimeOfDayConverter.fromString(_startTimeController);
           TimeOfDay endTimeOfDay =
@@ -413,23 +414,10 @@ class _ModifyButtonState extends State<ModifyButton> {
               Duration(hours: endTimeOfDay.hour, minutes: endTimeOfDay.minute));
           Activity newActivity = new Activity(startTime.toIso8601String(),
               endTime.toIso8601String(), _activity.subject, _notesController);
-          //
-          // print("activities before ${_activities.activities}");
-          // print(
-          //     "local storage before ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
-          _activities.removeActivityFromLocalStorage(
+         _activities.removeActivityFromLocalStorage(
               _activity, _scheduleStorage);
-          // print("activity is now ${_activities.activities}");
-          // print(
-          //     "local storage after ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           _activities.activities.add(newActivity);
-          // print("activity after add  ${_activities.activities}");
-          // print(
-          //     "local storage after add ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           _activities.addToLocalStorage(_activity.startTime, _scheduleStorage);
-          // print("activity after add  to storage ${_activities.activities}");
-          // print(
-          //     "local storage after add to storage ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           print("new activity");
           Activities a = new Activities.fromStorage(
               newActivity.startTime, _scheduleStorage);
@@ -445,6 +433,80 @@ class _ModifyButtonState extends State<ModifyButton> {
           context,
           MaterialPageRoute(builder: (BuildContext context) => Home(0)),
           (route) => false,
+        );*/
+      },
+      color: colorHoneydew,
+      child: Image.asset(
+        'images/checkmark.png',
+        height: 50,
+        width: 50,
+      ),
+      shape: CircleBorder(),
+    );
+  }
+
+  // Confirm save popup
+  _showMaterialDialog() {
+    showDialog(context: context,
+        builder: (_) => new AlertDialog(
+          backgroundColor: colorBeige,
+          elevation: 16,
+          actions: <Widget> [
+            Center(
+              child: Text(
+                  'Save changes?',
+                  style: TextStyle(fontSize: 24, color: colorBlackCoral, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center
+              ),
+            ),
+            Container(
+              child: ButtonBar(
+                alignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  CancelButton(),
+                  saveSchedule(),
+                ],
+              ),
+            )
+          ],
+        )
+    );
+  }
+  Widget saveSchedule(){
+    return MaterialButton(
+      onPressed: (){
+        setState(() {
+          TimeOfDay startTimeOfDay =
+          TimeOfDayConverter.fromString(_startTimeController);
+          TimeOfDay endTimeOfDay =
+          TimeOfDayConverter.fromString(_endTimeController);
+//add Time of Day to DateTime to get full DateTime
+          DateTime startTime = DateTime.parse(_startDateController).add(
+              Duration(
+                  hours: startTimeOfDay.hour, minutes: startTimeOfDay.minute));
+          DateTime endTime = DateTime.parse(_endDateController).add(
+              Duration(hours: endTimeOfDay.hour, minutes: endTimeOfDay.minute));
+          Activity newActivity = new Activity(startTime.toIso8601String(),
+              endTime.toIso8601String(), _activity.subject, _notesController);
+          _activities.removeActivityFromLocalStorage(
+              _activity, _scheduleStorage);
+          _activities.activities.add(newActivity);
+          _activities.addToLocalStorage(_activity.startTime, _scheduleStorage);
+          print("new activity");
+          Activities a = new Activities.fromStorage(
+              newActivity.startTime, _scheduleStorage);
+          a.printActivities();
+          a.removeActivityFromLocalStorage(newActivity, _scheduleStorage);
+          a.printActivities();
+          a.activities.add(_activity);
+          a.printActivities();
+          a.addToLocalStorage(newActivity.startTime, _scheduleStorage);
+          a.printActivities();
+        });
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => Home(0)),
+              (route) => false,
         );
       },
       color: colorHoneydew,
