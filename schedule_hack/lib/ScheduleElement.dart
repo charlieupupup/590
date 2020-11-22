@@ -20,7 +20,6 @@ class ScheduleElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //print("Building schedule element " + scheduledActivity.description);
     return Padding(
       padding: EdgeInsets.all(10),
       child: MaterialButton(
@@ -29,7 +28,6 @@ class ScheduleElement extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         onPressed: () {
-          // Navigator.of(context).pop();
           showDialog(
               context: context,
               builder: (_) {
@@ -37,11 +35,6 @@ class ScheduleElement extends StatelessWidget {
                     _activity, _dayActivities, scheduleStorage);
               });
         },
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => ScheduleElementDetail(scheduledActivity),
-        //   ),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),

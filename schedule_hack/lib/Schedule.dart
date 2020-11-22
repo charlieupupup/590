@@ -38,7 +38,7 @@ class _Schedule extends State<Schedule> {
 
   _Schedule(List<Activity> activities) {
     // this._scheduleToday = activities;
-    this._scheduleToday = globalActivities.activities;
+     this._scheduleToday = globalActivities.activities;
   }
 
   @override
@@ -82,6 +82,7 @@ class _Schedule extends State<Schedule> {
           children: [
             DateBanner(date: DateTime.now()),
             ScheduleView(_appointments, scheduleStorage)
+           // ScheduleView(this._scheduleToday, scheduleStorage)
           ],
         ),
       ),
