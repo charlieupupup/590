@@ -1,10 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
-import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:intl/intl.dart';
-import 'package:localstorage/localstorage.dart';
-import 'package:schedule_hack/Activities.dart';
 import 'package:schedule_hack/AppStorage.dart';
 import 'package:schedule_hack/Home.dart';
 import 'package:schedule_hack/Notify.dart';
@@ -29,6 +24,11 @@ class SelfCareState extends State<SelfCare> with AppStorage {
 
   @override
   Widget build(BuildContext context) {
+    var padding = MediaQuery.of(context).padding;
+    double width =
+        MediaQuery.of(context).size.width - padding.left - padding.right;
+    double height =
+        MediaQuery.of(context).size.height - padding.top - padding.bottom;
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -59,11 +59,6 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                     Notify n = Notify();
                     n.ini(context);
                     n.notify();
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => Home(0)),
-                    // );
-                    // showDialog(context: context, child: MidPopUp());
                   },
                 )
               ],
@@ -79,32 +74,7 @@ class SelfCareState extends State<SelfCare> with AppStorage {
         body: Container(
           child: ListView(
             children: [
-              // SizedBox(
-              //   width: 300,
-              //   height: 150,
-              //   child: Card(
-              //     margin: EdgeInsets.all(6.0),
-              //     elevation: 4.0,
-              //     color: colorMelon,
-              //     child: Align(
-              //       alignment: Alignment.center,
-              //       // child: AutoSizeText(
-              //       //   "This is the self care banner",
-              //       //   style: TextStyle(fontSize: 24, color: colorIvory),
-              //       //   maxLines: 1,
-              //       //   minFontSize: 20,
-              //       //   textAlign: TextAlign.center,
-              //       // ),
-              //       child: CarouselBanner(),
-              //     ),
-              //   ),
-              // ),
-              // SizedBox(
-              //   width: 300,
-              //   height: 150,
-              //   child: CarouselBanner(),
-              // ),
-              CarouselBanner(),
+              CarouselBanner(context),
               SizedBox(
                 height: 20,
               ),
@@ -112,43 +82,49 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 180.0,
-                    height: 300.0,
+                    width: (width * 0.90) / 2,
+                    height: height / 2,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: colorAeroBlue,
-                        borderRadius: BorderRadius.circular(22.0),
-                      ),
+                          // color: colorAeroBlue,
+                          // borderRadius: BorderRadius.circular(22.0),
+                          ),
                       child: RaisedButton(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           color: colorAeroBlue,
                           onPressed: () {
-                            // cal.getActivities(DateTime.now());
                             String message =
-                                'Showing recommendations for things to do to center yourself';
-                            //_showMaterialDialog2(message);
+                                'Showing recommendations for self-reflection';
                             StandardPopup(context, message, 2);
                           },
                           child: Container(
-                            margin:
-                            EdgeInsets.only(left: 10, top: 50, right: 10),
+                            margin: EdgeInsets.only(
+                                left: padding.left,
+                                top: padding.top,
+                                right: padding.right),
                             child: ListView(children: [
-                              new Text("Check-In",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 20.0, color: colorBlackCoral)),
+                              new AutoSizeText(
+                                "Check-In",
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    color: colorBlackCoral,
+                                    fontWeight: FontWeight.bold),
+                                maxLines: 1,
+                                minFontSize: 20,
+                                textAlign: TextAlign.center,
+                              ),
                               ImageIcon(
-                                AssetImage("images/relax.png"),
+                                AssetImage("images/yoga.png"),
                                 color: colorBlackCoral,
-                                size: 75.0,
+                                size: 100.0,
                               ),
                               new Text(
-                                  "Click for methods to recenter yourself and tune into your mental health",
-                                  //textAlign: TextAlign.center,
+                                  "Click here to learn more and tune into your mental health",
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 14.0, color: colorBlackCoral)),
                             ]),
@@ -156,48 +132,56 @@ class SelfCareState extends State<SelfCare> with AppStorage {
                     ),
                   ),
                   Container(
-                    width: 180.0,
-                    height: 300.0,
+                    width: (width * 0.90) / 2,
+                    height: height / 2,
                     color: Colors.transparent,
                     margin: EdgeInsets.all(6.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: colorPowderBlue,
-                        borderRadius: BorderRadius.circular(22.0),
-                      ),
+                          // color: colorPowderBlue,
+                          // borderRadius: BorderRadius.circular(22.0),
+                          ),
                       child: RaisedButton(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           color: colorPowderBlue,
                           onPressed: () {
                             String message =
-                                'Showing recommendations for things to do to escape';
+                                'Showing recommendations for relaxation';
                             //_showMaterialDialog2(message);
                             StandardPopup(context, message, 2);
                           },
                           child: Container(
-                            margin:
-                            EdgeInsets.only(left: 10, top: 50, right: 10),
+                            margin: EdgeInsets.only(
+                                left: padding.left,
+                                top: padding.top,
+                                right: padding.right),
                             child: ListView(children: [
-                              new Text("Check-Out",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 20.0, color: colorBlackCoral)),
+                              new AutoSizeText(
+                                "Check-Out",
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    color: colorBlackCoral,
+                                    fontWeight: FontWeight.bold),
+                                maxLines: 1,
+                                minFontSize: 20,
+                                textAlign: TextAlign.center,
+                              ),
                               ImageIcon(
-                                AssetImage("images/checkout.png"),
+                                AssetImage("images/music.png"),
                                 color: colorBlackCoral,
-                                size: 75.0,
+                                size: 100.0,
                               ),
                               new Text(
-                                  "Click for methods to decompress and relax",
-                                  //textAlign: TextAlign.center,
+                                  "Click here to destress and tune out the world",
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 14.0, color: colorBlackCoral)),
                             ]),
                           )),
                     ),
-                  )
+                  ),
                 ],
               )
             ],

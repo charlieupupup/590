@@ -56,7 +56,7 @@ class _DateBannerState extends State<DateBanner> {
         MediaQuery.of(context).size.height - padding.top - padding.bottom;
     return SizedBox(
       width: width,
-      height: height / 10,
+      height: height / 8,
       child: Card(
         // margin: EdgeInsets.all(6.0),
         elevation: 4.0,

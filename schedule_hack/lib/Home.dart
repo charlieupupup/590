@@ -36,11 +36,6 @@ class _HomeState extends State<Home> with AppStorage {
   List<Widget> _children = new List<Widget>();
 
   _HomeState(int i) {
-    _dayActivities.add(Activity.test("Study", 0));
-    _dayActivities.add(Activity.test("Attend Class", 2));
-    _dayActivities.add(Activity.test("Sleep", 4));
-    _activityDataSource = new ActivityDataSource(_dayActivities);
-
     this._currentIndex = i;
   }
 
