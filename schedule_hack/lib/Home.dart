@@ -16,9 +16,15 @@ import 'Schedule.dart';
 
 class Home extends StatefulWidget {
   int index;
+  List<Activity> activitylist;
 
   Home(int i) {
     this.index = i;
+  }
+
+  Home.schedule(int i, List<Activity> list){
+    this.index = i;
+    this.activitylist = list;
   }
 
   @override
@@ -34,9 +40,11 @@ class _HomeState extends State<Home> with AppStorage {
   List<Activity> _dayActivities = new List<Activity>();
   ActivityDataSource _activityDataSource;
   List<Widget> _children = new List<Widget>();
+  List<Activity> activityList;
 
   _HomeState(int i) {
     this._currentIndex = i;
+   // this.activityList = list;
   }
 
   @override
@@ -56,6 +64,7 @@ class _HomeState extends State<Home> with AppStorage {
           print('Has data');
           this._children = [
             Schedule(_activityDataSource.appointments),
+          //  Schedule(this.activityList),
             SelfCare(),
             CourseList(jsonDataStorage),
           ];

@@ -92,7 +92,8 @@ class _ScheduleModifyState extends State<ScheduleModify> {
     return MaterialButton(
       onPressed: () {
         setState(() {
-          TimeOfDay startTimeOfDay =
+          _activities.activities.remove(_activity);
+        /*  TimeOfDay startTimeOfDay =
               TimeOfDayConverter.fromString(_startTimeController);
           TimeOfDay endTimeOfDay =
               TimeOfDayConverter.fromString(_endTimeController);
@@ -121,7 +122,7 @@ class _ScheduleModifyState extends State<ScheduleModify> {
           a.activities.add(_activity);
           a.printActivities();
           a.addToLocalStorage(newActivity.startTime, _scheduleStorage);
-          a.printActivities();
+          a.printActivities();*/
         });
         Navigator.pushAndRemoveUntil(
           context,
@@ -574,7 +575,8 @@ class _ModifyButtonState extends State<ModifyButton> {
     return MaterialButton(
       onPressed: (){
         setState(() {
-          TimeOfDay startTimeOfDay =
+          _activities.activities.remove(_activity);
+         /* TimeOfDay startTimeOfDay =
           TimeOfDayConverter.fromString(_startTimeController);
           TimeOfDay endTimeOfDay =
           TimeOfDayConverter.fromString(_endTimeController);
@@ -599,7 +601,7 @@ class _ModifyButtonState extends State<ModifyButton> {
           a.activities.add(_activity);
           a.printActivities();
           a.addToLocalStorage(newActivity.startTime, _scheduleStorage);
-          a.printActivities();
+          a.printActivities();*/
         });
         Navigator.pushAndRemoveUntil(
           context,
