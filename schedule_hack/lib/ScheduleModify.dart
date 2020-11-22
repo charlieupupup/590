@@ -146,7 +146,10 @@ class _ScheduleModifyState extends State<ScheduleModify> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            child: Text('Start:'),
+            child: Text('Start:',
+                style: TextStyle(
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)),
           ),
 
           Expanded(
@@ -174,10 +177,12 @@ class _ScheduleModifyState extends State<ScheduleModify> {
                     );
                   },
                 );
-                startDateController.text = date
-                    .toString()
-                    .substring(0, 10); //save to json to send back out
-                startDate = startDateController.text;
+                if (date != null){
+                  startDateController.text = date
+                      .toString()
+                      .substring(0, 10); //save to json to send back out
+                  startDate = startDateController.text;
+                }
               },
             ),
           ),
@@ -224,7 +229,10 @@ class _ScheduleModifyState extends State<ScheduleModify> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            child: Text('End:  '),
+            child: Text('End:  ',
+                style: TextStyle(
+                    color: colorBlackCoral,
+                    fontWeight: FontWeight.bold)),
           ),
           Expanded(
             child: TextField(
@@ -251,10 +259,12 @@ class _ScheduleModifyState extends State<ScheduleModify> {
                     );
                   },
                 );
-                endDateController.text = date
-                    .toString()
-                    .substring(0, 10); //save to json to send back out
-                endDate = endDateController.text;
+                if (date != null){
+                  endDateController.text = date
+                      .toString()
+                      .substring(0, 10); //save to json to send back out
+                  endDate = endDateController.text;
+                }
               },
             ),
           ),
@@ -306,10 +316,16 @@ class _ScheduleModifyState extends State<ScheduleModify> {
               Text(
                 'Modify Task',
                 textScaleFactor: 1,
+                  style: TextStyle(
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold),
               ),
               Text(
                 activity.subject,
                 textScaleFactor: 2,
+                  style: TextStyle(
+                      color: colorBlackCoral,
+                      fontWeight: FontWeight.bold),
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -337,7 +353,10 @@ class _ScheduleModifyState extends State<ScheduleModify> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Details:'),
+                    Text('Details:',
+                        style: TextStyle(
+                            color: colorBlackCoral,
+                            fontWeight: FontWeight.bold)),
                     Text(''),
                     Text(''),
                   ],
@@ -479,7 +498,8 @@ class _ModifyButtonState extends State<ModifyButton> {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {
-        setState(() {
+        _showMaterialDialog();
+        /*setState(() {
           TimeOfDay startTimeOfDay =
               TimeOfDayConverter.fromString(_startTimeController);
           TimeOfDay endTimeOfDay =
@@ -492,23 +512,10 @@ class _ModifyButtonState extends State<ModifyButton> {
               Duration(hours: endTimeOfDay.hour, minutes: endTimeOfDay.minute));
           Activity newActivity = new Activity(startTime.toIso8601String(),
               endTime.toIso8601String(), _activity.subject, _notesController);
-          //
-          // print("activities before ${_activities.activities}");
-          // print(
-          //     "local storage before ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
-          _activities.removeActivityFromLocalStorage(
+         _activities.removeActivityFromLocalStorage(
               _activity, _scheduleStorage);
-          // print("activity is now ${_activities.activities}");
-          // print(
-          //     "local storage after ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           _activities.activities.add(newActivity);
-          // print("activity after add  ${_activities.activities}");
-          // print(
-          //     "local storage after add ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           _activities.addToLocalStorage(_activity.startTime, _scheduleStorage);
-          // print("activity after add  to storage ${_activities.activities}");
-          // print(
-          //     "local storage after add to storage ${Activities.getActivitiesFromStorage(_activity.startTime, _scheduleStorage)}");
           print("new activity");
           Activities a = new Activities.fromStorage(
               newActivity.startTime, _scheduleStorage);
@@ -524,6 +531,80 @@ class _ModifyButtonState extends State<ModifyButton> {
           context,
           MaterialPageRoute(builder: (BuildContext context) => Home(0)),
           (route) => false,
+        );*/
+      },
+      color: colorHoneydew,
+      child: Image.asset(
+        'images/checkmark.png',
+        height: 50,
+        width: 50,
+      ),
+      shape: CircleBorder(),
+    );
+  }
+
+  // Confirm save popup
+  _showMaterialDialog() {
+    showDialog(context: context,
+        builder: (_) => new AlertDialog(
+          backgroundColor: colorBeige,
+          elevation: 16,
+          actions: <Widget> [
+            Center(
+              child: Text(
+                  'Save changes? ',
+                  style: TextStyle(fontSize: 24, color: colorBlackCoral, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center
+              ),
+            ),
+            Container(
+              child: ButtonBar(
+                alignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  CancelButton(),
+                  saveSchedule(),
+                ],
+              ),
+            )
+          ],
+        )
+    );
+  }
+  Widget saveSchedule(){
+    return MaterialButton(
+      onPressed: (){
+        setState(() {
+          TimeOfDay startTimeOfDay =
+          TimeOfDayConverter.fromString(_startTimeController);
+          TimeOfDay endTimeOfDay =
+          TimeOfDayConverter.fromString(_endTimeController);
+//add Time of Day to DateTime to get full DateTime
+          DateTime startTime = DateTime.parse(_startDateController).add(
+              Duration(
+                  hours: startTimeOfDay.hour, minutes: startTimeOfDay.minute));
+          DateTime endTime = DateTime.parse(_endDateController).add(
+              Duration(hours: endTimeOfDay.hour, minutes: endTimeOfDay.minute));
+          Activity newActivity = new Activity(startTime.toIso8601String(),
+              endTime.toIso8601String(), _activity.subject, _notesController);
+          _activities.removeActivityFromLocalStorage(
+              _activity, _scheduleStorage);
+          _activities.activities.add(newActivity);
+          _activities.addToLocalStorage(_activity.startTime, _scheduleStorage);
+          print("new activity");
+          Activities a = new Activities.fromStorage(
+              newActivity.startTime, _scheduleStorage);
+          a.printActivities();
+          a.removeActivityFromLocalStorage(newActivity, _scheduleStorage);
+          a.printActivities();
+          a.activities.add(_activity);
+          a.printActivities();
+          a.addToLocalStorage(newActivity.startTime, _scheduleStorage);
+          a.printActivities();
+        });
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => Home(0)),
+              (route) => false,
         );
       },
       color: colorHoneydew,
