@@ -23,25 +23,13 @@ class CarouselBanner extends StatelessWidget {
   List<Widget> getImgs() {
     List<Widget> img = new List();
 
-    // img.add(SizedBox(
-    //   width: 300,
-    //   height: 150,
-    //   child: DecoratedBox(
-    //     decoration: BoxDecoration(
-    //       color: colorAeroBlue,
-    //       borderRadius: BorderRadius.circular(22.0),
-    //     ),
-    //   ),
-    // ));
-
-    img.add(Material(
-      elevation: 20,
+    img.add( Material(
+      elevation: 5,
       child: Container(
         width: 350,
         height: 40,
         decoration: BoxDecoration(
           color: colorAlmond,
-
           // borderRadius: BorderRadius.circular(22.0),
         ),
         child: Column(
@@ -50,7 +38,7 @@ class CarouselBanner extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                'reading time!',
+                'Let\s Read!',
                 textScaleFactor: 2,
                 style: TextStyle(
                   color: colorBlackCoral,
@@ -59,7 +47,7 @@ class CarouselBanner extends StatelessWidget {
             ),
             ImageIcon(
               AssetImage("images/books_filled.png"),
-              // color: colorBlackCoral,
+              color: colorBlackCoral,
               size: 75.0,
             ),
             Row(
@@ -80,7 +68,7 @@ class CarouselBanner extends StatelessWidget {
     ));
 
     img.add(Material(
-      elevation: 20,
+      elevation: 5,
       child: Container(
         width: 350,
         height: 40,
@@ -94,7 +82,7 @@ class CarouselBanner extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                'take a nap?',
+                'How about a nap?',
                 textScaleFactor: 2,
                 style: TextStyle(
                   color: colorBlackCoral,
@@ -124,14 +112,13 @@ class CarouselBanner extends StatelessWidget {
     ));
 
     img.add(Material(
-      elevation: 20,
+      elevation: 5,
       child: Container(
         width: 350,
         height: 40,
         decoration: BoxDecoration(
           color: colorDarkSkyBlue,
 
-          // borderRadius: BorderRadius.circular(22.0),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -139,7 +126,7 @@ class CarouselBanner extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                'let\'s run!',
+                'Let\'s run!',
                 textScaleFactor: 2,
                 style: TextStyle(
                   color: colorBlackCoral,
